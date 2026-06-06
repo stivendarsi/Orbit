@@ -1,0 +1,10 @@
+name: Orbit
+version: '${version}'
+
+main: me.stivendarsi.orbit.Orbit
+api-version: '26.1.2'
+load: POSTWORLD
+dependencies:
+  server:
+    Nexo:
+      required: true
