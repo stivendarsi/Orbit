@@ -16,31 +16,30 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
 import java.util.UUID;
 
 public class OrbitMenu {
     private UUID user;
     private int userExperience;
-    private final TreeMap<Integer, Integer> levelIndexRequiredExperienceMap; // level index , the amount of experience to unlock it.
+    private int currentLevelIndex;
+    private final int[] levelRequiredExperience; // level index , the amount of experience to unlock it.
 
     public OrbitMenu(UUID user, int userCurrentXp) {
         this.user = user;
         this.userExperience = userCurrentXp;
-        this.levelIndexRequiredExperienceMap = new TreeMap<>();
+        this.levelRequiredExperience = new int[100];
 
-        for (int levelIndex = 0; levelIndex < 100; levelIndex++) {
-            levelIndexRequiredExperienceMap.put(levelIndex, levelIndex * 100);
+        for (int levelIndex = 0; levelIndex < levelRequiredExperience.length; levelIndex++) {
+            this.levelRequiredExperience[levelIndex] = levelIndex * 100;
         }
+        updateUserLevelIndex();
     }
 
     public void openOrbitMenu() {
         Player player = Bukkit.getPlayer(this.user);
         if (player == null) return;
 
-        int levelIndex = getLevelIndex();
-
-        int pageIndex = levelIndex % 10;
+        int pageIndex = currentLevelIndex % 10;
 
         player.showDialog(getOrbitPage(pageIndex));
     }
@@ -48,77 +47,113 @@ public class OrbitMenu {
     private Dialog getOrbitPage(int pageIndex) {
         return Dialog.create(builder -> {
             List<DialogBody> dialogBodies = new ArrayList<>();
-            dialogBodies.add(progressBar());
+
+            dialogBodies.add(getExperienceLeft());
+            dialogBodies.add(experienceProgressBar());
 
             DialogBase base = DialogBase.builder(Component.text("מסלול התקדמות")).body(dialogBodies).build();
 
-            builder.empty().base(base).type(getOrbitButtons(pageIndex));
+
+            builder.empty().base(base).type(getOrbitButtons(pageIndex, false));
 
         });
     }
 
-    public int getLevelIndex() {
-        return this.levelIndexRequiredExperienceMap.floorKey(this.userExperience);
+    private void updateUserLevelIndex() {
+        for (int i = 0; i < levelRequiredExperience.length - 1; i++) {
+            if (userExperience < levelRequiredExperience[i + 1]) {
+                currentLevelIndex = i;
+                return;
+            }
+        }
+
+        currentLevelIndex = levelRequiredExperience.length - 1;
     }
 
-    private MultiActionType getOrbitButtons(int pageIndex) {
+    private int getNextLvlRequiredXp() {
+        int index = this.currentLevelIndex + 1;
+        return this.levelRequiredExperience.length <= index ? this.levelRequiredExperience[this.currentLevelIndex] : this.levelRequiredExperience[index];
+    }
+
+    private DialogBody getExperienceLeft() {
+        int nextLvlRequiredXp = getNextLvlRequiredXp();
+        return DialogBody.plainMessage(MiniMessage.miniMessage().deserialize("<#ff85fd>" + this.userExperience + " / " + nextLvlRequiredXp + "</#ff85fd>"));
+    }
+
+    private MultiActionType getOrbitButtons(int pageIndex, boolean orbitPlus) {
         List<ActionButton> tiers = new ArrayList<>();
 
-        int maxTier = 10 * pageIndex;
-        int mimTier = 10 * (pageIndex - 1);
+        int minPageTierIndex = pageIndex * 10; // 1 * 10 = 10  2 * 10 = 20
+        int maxPageTierIndex = (pageIndex + 1) * 10;
 
-        int levelIndex = getLevelIndex();
-
-        for (int index = mimTier; index < maxTier; index++) {
+        for (int index = minPageTierIndex; index < maxPageTierIndex; index++) {
             Component text;
 
-            if (levelIndex > index) text = Component.text("\uD83D\uDD13 " + levelIndex + 1);
-            else text = Component.text("\uD83D\uDD12 " + levelIndex + 1);
+            if (this.currentLevelIndex >= index)
+                text = Component.text("%s \uD83D\uDD13 ".formatted(index) + (index + 1)); // unlock
+            else text = Component.text("\uD83D\uDD12 " + (index + 1)); // lock
 
             tiers.add(ActionButton.create(text, null, 35, null));
         }
 
-        DialogAction previousPageAction = DialogAction.customClick((response, audience) -> {
-            if (pageIndex - 1 <= 0) return;
-            audience.showDialog(getOrbitPage(pageIndex - 1));
-        }, ClickCallback.Options.builder().build());
+        boolean positivePage = 0 < pageIndex;
+        boolean allowedNextPage = pageIndex < 9;
 
-        DialogAction nextPageAction = DialogAction.customClick((response, audience) -> {
-            if (pageIndex + 1 > 10) return;
-            audience.showDialog(getOrbitPage(pageIndex + 1));
-        }, ClickCallback.Options.builder().build());
-
-        tiers.add(ActionButton.create(Component.text("עמוד קודם"), null, 100, previousPageAction));
-        tiers.add(ActionButton.create(Component.text("עמוד הבא"), null, 100, nextPageAction));
+        if (positivePage) tiers.add(ActionButton.create(Component.text("עמוד קודם"), null, 100, getPageButtonAction(pageIndex, false)));
+        if (allowedNextPage) tiers.add(ActionButton.create(Component.text("עמוד הבא"), null, 100, getPageButtonAction(pageIndex, true)));
 
         return DialogType.multiAction(tiers).columns(10).build();
     }
 
-    private DialogBody progressBar() {
-        int level = getLevelIndex() + 1;
-        int left = 100 - level;
+    private DialogAction getPageButtonAction(int pageIndex, boolean nextPage) {
+        return DialogAction.customClick((response, audience) -> {
+            if (nextPage) audience.showDialog(getOrbitPage(pageIndex + 1));
+            else audience.showDialog(getOrbitPage(pageIndex - 1));
+        }, ClickCallback.Options.builder().build());
+    }
+
+    private DialogBody experienceProgressBar() {
+        int nextXp = getNextLvlRequiredXp();
+        int previousXp = this.levelRequiredExperience[this.currentLevelIndex];
+
+        double progressPercent = nextXp == previousXp ? 100 : (double) (userExperience - previousXp) / (nextXp - previousXp) * 100;
+
+        System.out.println("Current Level Index: " + this.currentLevelIndex);
+        System.out.println("nextXp: " + nextXp);
+        System.out.println("previousXp: " + previousXp);
+        System.out.println("Progress: " + progressPercent);
+
+        double remainingPercent = 100.0 - progressPercent;
+
+        int currentLevel = this.currentLevelIndex + 1;
+
+
         StringBuilder sb = new StringBuilder();
 
-        sb.append("#ff85fd");
+        sb.append("<#ff85fd>").append(currentLevel).append(" </#ff85fd>");
 
         sb.append("<gradient:#d6ffd1:#00ff48>");
-        int shifts = 0;
-        for (int i = 0; i < level; i++) {
+
+
+        sb.append("···");
+
+
+        for (int i = 0; i <= progressPercent; i++) {
             sb.append("‑");
             sb.append("<shift:-1>");
-            shifts++;
         }
 
-        if (left > 0) {
+        if (remainingPercent > 0) {
             sb.append("<dark_gray>");
-            for (int i = 0; i < left; i++) {
+            for (int i = 0; i < remainingPercent; i++) {
                 sb.append("‑");
                 sb.append("<shift:-1>");
-                shifts++;
             }
-            sb.append("</gradient>");
         }
-        System.out.println(shifts);
+        sb.append("→</gradient>");
+
+
+        sb.append("<#ff85fd> ").append(Math.min(100, currentLevel + 1)).append("</#ff85fd>");
 
         return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(sb.toString()), 510);
     }
