@@ -26,8 +26,8 @@ public class OrbitCommands {
 
         if (!(context.getSource().getExecutor() instanceof Player player)) return 0;
 
-        OrbitMenu orbit = new OrbitMenu(player.getUniqueId(),userExperience);
-        orbit.openOrbitMenu();
+        OrbitMenu orbit = new OrbitMenu(userExperience);
+        orbit.openOrbit(player);
         return 1;
     }
 }
