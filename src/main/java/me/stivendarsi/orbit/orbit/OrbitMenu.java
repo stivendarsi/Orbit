@@ -11,6 +11,7 @@ import io.papermc.paper.registry.data.dialog.type.MultiActionType;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,12 @@ public class OrbitMenu {
     }
 
     public Dialog getOrbitMenu() {
+        return getPage(getUserPage());
+    }
+
+    private Dialog getPage(int page) {
         Dialog dialog = Dialog.create(builder -> {
-            DialogType buttons = getPageButtons(getUserPage(), false);
+            DialogType buttons = getPageButtons(page, false);
             List<DialogBody> bodies = new ArrayList<>();
             bodies.add(getDoneText());
             bodies.add(getProgressBar());
@@ -41,9 +46,9 @@ public class OrbitMenu {
         return dialog;
     }
 
-    private DialogBody getDoneText(){
+    private DialogBody getDoneText() {
         int len = this.requiredExperience.length;
-        int nextLvlXp = this.currentIndex + 1 >= len ? this.requiredExperience[len-1] : this.requiredExperience[currentIndex + 1];
+        int nextLvlXp = this.currentIndex + 1 >= len ? this.requiredExperience[len - 1] : this.requiredExperience[currentIndex + 1];
 
         StringBuilder b = new StringBuilder();
         b.append("<gradient:#ff8cec:#ff54c3>").append(this.currentExperience).append("⭐ / ").append(nextLvlXp).append("⭐</gradient:#ff8cec:#ff54c3>");
@@ -100,7 +105,7 @@ public class OrbitMenu {
 
         b.append("</dark_gray>");
         b.append("</gradient:#b2f7c1:#08ff3d>");
-        if (this.currentIndex + 1 < len) b.append(" ").append(this.currentIndex+1);
+        if (this.currentIndex + 1 < len) b.append(" ").append(this.currentIndex + 1);
 
         return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 500);
     }
@@ -110,8 +115,7 @@ public class OrbitMenu {
         int min = page * 10;
         int max = min + 10;
 
-        ActionButton type;
-        if (plus) type = ActionButton.create(Component.text("רגיל"), Component.text("מסלול שפתוח לכל השחקנים"), 30, null);
+        //    ActionButton  ActionButton.create(Component.text("רגיל"), Component.text("מסלול שפתוח לכל השחקנים"), 30, null);
 
         for (int levelIndex = min; levelIndex < max; levelIndex++) {
             Component tierComponent;
@@ -126,10 +130,21 @@ public class OrbitMenu {
             actionButtons.add(actionButton);
         }
 
+        if (page + 1 < this.requiredExperience.length / 10) {
+            ActionButton nextPage = ActionButton.create(Component.text("הבא"), null, 60, DialogAction.customClick((response, audience) -> {
+                if (!(audience instanceof Player player)) return;
+                player.showDialog(getPage(page + 1));
+            }, ClickCallback.Options.builder().build()));
+            actionButtons.add(nextPage);
+        }
 
-        ActionButton nextPage = ActionButton.create(Component.text("הבא"), null, 60, DialogAction.customClick((response, audience) -> {
-
-        }, ClickCallback.Options.builder().build()));
+        if (0 <= page - 1) {
+            ActionButton prevPage = ActionButton.create(Component.text("קודם"), null, 60, DialogAction.customClick((response, audience) -> {
+                if (!(audience instanceof Player player)) return;
+                player.showDialog(getPage(page - 1));
+            }, ClickCallback.Options.builder().build()));
+            actionButtons.add(prevPage);
+        }
 
         return DialogType.multiAction(actionButtons).columns(10).build();
     }
