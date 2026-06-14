@@ -1,13 +1,15 @@
-package me.stivendarsi.orbit;
+package me.stivendarsi.orbit.orbit;
 
 import com.nexomc.nexo.glyphs.GlyphTag;
 import io.papermc.paper.dialog.Dialog;
 import io.papermc.paper.registry.data.dialog.ActionButton;
 import io.papermc.paper.registry.data.dialog.DialogBase;
+import io.papermc.paper.registry.data.dialog.action.DialogAction;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.data.dialog.type.MultiActionType;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.entity.Player;
 
@@ -28,9 +30,9 @@ public class OrbitMenu {
         updateCurrentIndex();
     }
 
-    public void openOrbit(Player player) {
+    public Dialog getOrbitMenu(Player player) {
         Dialog dialog = Dialog.create(builder -> {
-            DialogType buttons = getPageButtons(getUserPage());
+            DialogType buttons = getPageButtons(getUserPage(), false);
             List<DialogBody> bodies = new ArrayList<>();
             bodies.add(getDoneText());
             bodies.add(getProgressBar());
@@ -39,19 +41,21 @@ public class OrbitMenu {
         });
 
         player.showDialog(dialog);
+
+        return dialog;
     }
 
-    public DialogBody getDoneText(){
+    private DialogBody getDoneText(){
         int len = this.requiredExperience.length;
         int nextLvlXp = this.currentIndex + 1 >= len ? this.requiredExperience[len-1] : this.requiredExperience[currentIndex + 1];
 
         StringBuilder b = new StringBuilder();
-        b.append("<#ff80f9>").append(this.currentExperience).append(" / ").append(nextLvlXp);
+        b.append("<gradient:#ff8cec:#ff54c3>").append(this.currentExperience).append("⭐ / ").append(nextLvlXp).append("⭐</gradient:#ff8cec:#ff54c3>");
 
         return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 500);
     }
 
-    public DialogBody getProgressBar() {
+    private DialogBody getProgressBar() {
         StringBuilder b = new StringBuilder();
 
         int len = this.requiredExperience.length;
@@ -75,7 +79,7 @@ public class OrbitMenu {
         System.out.println("progress: " + percentDone);
         System.out.println("left: " + percentLeft);
 
-        b.append("<white>").append(this.currentIndex + 1).append(" ");
+        b.append("<white>").append(this.currentIndex).append(" ");
 
         b.append("<gradient:#b2f7c1:#08ff3d>");
 
@@ -100,35 +104,50 @@ public class OrbitMenu {
 
         b.append("</dark_gray>");
         b.append("</gradient:#b2f7c1:#08ff3d>");
-        if (this.currentIndex + 1 < len) b.append(" ").append(this.currentIndex+2);
+        if (this.currentIndex + 1 < len) b.append(" ").append(this.currentIndex+1);
 
         return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 500);
     }
 
-    public MultiActionType getPageButtons(int page) {
+    private MultiActionType getPageButtons(int page, boolean plus) {
         List<ActionButton> actionButtons = new ArrayList<>();
         int min = page * 10;
         int max = min + 10;
 
+        ActionButton type;
+        if (plus) type = ActionButton.create(Component.text("רגיל"), Component.text("מסלול שפתוח לכל השחקנים"), 30, null);
+
         for (int levelIndex = min; levelIndex < max; levelIndex++) {
             Component tierComponent;
 
-            if (isLevelIndexUnLocked(levelIndex)) tierComponent = Component.text(levelIndex + "\uD83D\uDD12");
-            else tierComponent = Component.text(levelIndex + "\uD83D\uDD13");
+            System.out.println("level index: " + levelIndex);
+            System.out.println("page: " + page);
 
-            ActionButton actionButton = ActionButton.create(tierComponent, null, 30, null);
+            if (isLevelIndexUnLocked(levelIndex)) tierComponent = Component.text(levelIndex + "\uD83D\uDD13");
+            else tierComponent = Component.text(levelIndex + "\uD83D\uDD12");
+
+            ActionButton actionButton = ActionButton.create(tierComponent, Component.text(levelIndex), 30, null);
             actionButtons.add(actionButton);
         }
+
+
+        ActionButton nextPage = ActionButton.create(Component.text("הבא"), null, 60, DialogAction.customClick((response, audience) -> {
+
+        }, ClickCallback.Options.builder().build()));
 
         return DialogType.multiAction(actionButtons).columns(10).build();
     }
 
     private int getUserPage() {
-        return this.currentIndex % 10;
+        return this.currentIndex / 10;
     }
 
     private boolean isLevelIndexUnLocked(int levelIndex) {
         int xp = this.requiredExperience[levelIndex];
+
+        System.out.println("Requiered: " + xp);
+        System.out.println("Has: " + this.currentIndex);
+
         return xp <= this.currentExperience;
     }
 
