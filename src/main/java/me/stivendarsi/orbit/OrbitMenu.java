@@ -23,7 +23,7 @@ public class OrbitMenu {
         this.currentExperience = userExperience;
         this.requiredExperience = new int[100];
         for (int i = 0; i < this.requiredExperience.length; i++) {
-            this.requiredExperience[i] = i * 120;
+            this.requiredExperience[i] = i * 100;
         }
         updateCurrentIndex();
     }
@@ -32,7 +32,7 @@ public class OrbitMenu {
         Dialog dialog = Dialog.create(builder -> {
             DialogType buttons = getPageButtons(getUserPage());
             List<DialogBody> bodies = new ArrayList<>();
-
+            bodies.add(getDoneText());
             bodies.add(getProgressBar());
 
             builder.empty().type(buttons).base(DialogBase.builder(Component.text("מסלול  התקדמות")).body(bodies).build());
@@ -41,42 +41,68 @@ public class OrbitMenu {
         player.showDialog(dialog);
     }
 
+    public DialogBody getDoneText(){
+        int len = this.requiredExperience.length;
+        int nextLvlXp = this.currentIndex + 1 >= len ? this.requiredExperience[len-1] : this.requiredExperience[currentIndex + 1];
+
+        StringBuilder b = new StringBuilder();
+        b.append("<#ff80f9>").append(this.currentExperience).append(" / ").append(nextLvlXp);
+
+        return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 500);
+    }
+
     public DialogBody getProgressBar() {
         StringBuilder b = new StringBuilder();
 
         int len = this.requiredExperience.length;
+        int currentLvlXp = this.requiredExperience[currentIndex];
+        int nextLvlXp = this.currentIndex + 1 >= len
+                ? this.requiredExperience[len - 1]
+                : this.requiredExperience[currentIndex + 1];
 
-        int nextLvlXp = len <= this.currentIndex + 1 ? this.requiredExperience[len - 1] : this.requiredExperience[this.currentIndex + 1];
+        int levelXpRange = nextLvlXp - currentLvlXp;
+        int xpGainedInLevel = this.currentExperience - currentLvlXp;
 
-        int progress = (int) (((nextLvlXp - this.currentExperience) / (double) nextLvlXp) * 100);
-        int left = 100 - progress;
+        int percentDone;
+
+        if (levelXpRange <= 0) percentDone = 100;
+        else percentDone = (int) (((double) xpGainedInLevel / levelXpRange) * 100);
 
 
-        b.append("<green>");
+        percentDone = Math.max(0, Math.min(100, percentDone));
 
-        for (int i = 0; i < progress; i++) {
+        int percentLeft = 100 - percentDone;
+        System.out.println("progress: " + percentDone);
+        System.out.println("left: " + percentLeft);
+
+        b.append("<white>").append(this.currentIndex + 1).append(" ");
+
+        b.append("<gradient:#b2f7c1:#08ff3d>");
+
+        for (int i = 0; i < percentDone; i++) {
             if (i == 0) b.append("···");
-            else if (i == progress - 1 && left == 0) b.append("→");
+            else if (i == percentDone - 1 && percentLeft == 0) b.append("→");
             else {
                 b.append("‑");
                 b.append("<shift:-1>");
             }
         }
 
-        b.append("</green>");
         b.append("<dark_gray>");
-        for (int i = 0; i < left; i++) {
-            if (i == 0 && progress == 0) b.append("···");
-            else if (i == left - 1) b.append("→");
+        for (int i = 0; i < percentLeft; i++) {
+            if (i == 0 && percentDone == 0) b.append("···");
+            else if (i == percentLeft - 1) b.append("→");
             else {
                 b.append("‑");
                 b.append("<shift:-1>");
             }
         }
 
-        b.append("<reset>");
+        b.append("</dark_gray>");
+        b.append("</gradient:#b2f7c1:#08ff3d>");
+        if (this.currentIndex + 1 < len) b.append(" ").append(this.currentIndex+2);
 
-        return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 600);
+        return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 500);
     }
 
     public MultiActionType getPageButtons(int page) {
