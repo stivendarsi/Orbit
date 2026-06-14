@@ -2,8 +2,10 @@ package me.stivendarsi.orbit.orbit;
 
 import io.papermc.paper.dialog.Dialog;
 import io.papermc.paper.registry.RegistryKey;
+import io.papermc.paper.registry.data.dialog.DialogBase;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.set.RegistrySet;
+import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -23,12 +25,13 @@ public class MainMenu {
 
             List<Dialog> dialogs = new ArrayList<>();
 
-            dialogs.add(orbitMenu.getOrbitMenu());
             dialogs.add(questMenu.getQuestDialog());
+            dialogs.add(orbitMenu.getOrbitMenu());
 
-            RegistrySet<Dialog> set = RegistrySet.keySetFromValues(RegistryKey.DIALOG, dialogs);
+
+            RegistrySet<Dialog> set = RegistrySet.valueSet(RegistryKey.DIALOG, dialogs);
             DialogType type = DialogType.dialogList(set).build();
-            b.empty().type(type);
+            b.empty().type(type).base(DialogBase.builder(Component.text("תפריט ראשי")).build());
         });
         player.showDialog(dialog);
     }

@@ -36,7 +36,7 @@ public class OrbitMenu {
             bodies.add(getDoneText());
             bodies.add(getProgressBar());
 
-            builder.empty().type(buttons).base(DialogBase.builder(Component.text("מסלול  התקדמות")).body(bodies).build());
+            builder.empty().type(buttons).base(DialogBase.builder(Component.text("מסלול  התקדמות")).externalTitle(Component.text("מסלול התקדמות")).body(bodies).build());
         });
         return dialog;
     }
