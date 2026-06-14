@@ -2,6 +2,7 @@ package me.stivendarsi.orbit.command;
 
 import com.mojang.brigadier.context.CommandContext;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
+import me.stivendarsi.orbit.orbit.MainMenu;
 import me.stivendarsi.orbit.orbit.OrbitMenu;
 import org.bukkit.entity.Player;
 
@@ -12,8 +13,8 @@ public class OrbitCommands {
 
         if (!(context.getSource().getExecutor() instanceof Player player)) return 0;
 
-        OrbitMenu orbit = new OrbitMenu(userExperience);
-        orbit.openOrbit(player);
+        MainMenu mainMenu = new MainMenu(userExperience);
+        mainMenu.openMainMenu(player);
         return 1;
     }
 }

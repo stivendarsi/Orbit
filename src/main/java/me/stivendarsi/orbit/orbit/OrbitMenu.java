@@ -11,7 +11,6 @@ import io.papermc.paper.registry.data.dialog.type.MultiActionType;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,7 @@ public class OrbitMenu {
         updateCurrentIndex();
     }
 
-    public Dialog getOrbitMenu(Player player) {
+    public Dialog getOrbitMenu() {
         Dialog dialog = Dialog.create(builder -> {
             DialogType buttons = getPageButtons(getUserPage(), false);
             List<DialogBody> bodies = new ArrayList<>();
@@ -39,9 +38,6 @@ public class OrbitMenu {
 
             builder.empty().type(buttons).base(DialogBase.builder(Component.text("מסלול  התקדמות")).body(bodies).build());
         });
-
-        player.showDialog(dialog);
-
         return dialog;
     }
 

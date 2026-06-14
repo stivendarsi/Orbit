@@ -18,7 +18,6 @@ public final class Orbit extends JavaPlugin {
     @Override
     public void onEnable() {
         orbit = this;
-
         mainHandler = new MainHandler();
 
         saveDefaultConfig();

@@ -1,8 +1,13 @@
 package me.stivendarsi.orbit.orbit;
 
 import io.papermc.paper.dialog.Dialog;
+import io.papermc.paper.registry.RegistryKey;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
+import io.papermc.paper.registry.set.RegistrySet;
 import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainMenu {
     private final int currentExperience;
@@ -13,10 +18,18 @@ public class MainMenu {
 
     public void openMainMenu(Player player){
         Dialog dialog = Dialog.create(b -> {
+            OrbitMenu orbitMenu = new OrbitMenu(this.currentExperience);
+            QuestMenu questMenu = new QuestMenu();
 
-            DialogType type = DialogType.dialogList()
+            List<Dialog> dialogs = new ArrayList<>();
 
-            b.empty().type();
+            dialogs.add(orbitMenu.getOrbitMenu());
+            dialogs.add(questMenu.getQuestDialog());
+
+            RegistrySet<Dialog> set = RegistrySet.keySetFromValues(RegistryKey.DIALOG, dialogs);
+            DialogType type = DialogType.dialogList(set).build();
+            b.empty().type(type);
         });
+        player.showDialog(dialog);
     }
 }
