@@ -130,6 +130,14 @@ public class OrbitMenu {
             actionButtons.add(actionButton);
         }
 
+        if (0 <= page - 1) {
+            ActionButton prevPage = ActionButton.create(Component.text("קודם"), null, 60, DialogAction.customClick((response, audience) -> {
+                if (!(audience instanceof Player player)) return;
+                player.showDialog(getPage(page - 1));
+            }, ClickCallback.Options.builder().build()));
+            actionButtons.add(prevPage);
+        }
+
         if (page + 1 < this.requiredExperience.length / 10) {
             ActionButton nextPage = ActionButton.create(Component.text("הבא"), null, 60, DialogAction.customClick((response, audience) -> {
                 if (!(audience instanceof Player player)) return;
@@ -138,13 +146,7 @@ public class OrbitMenu {
             actionButtons.add(nextPage);
         }
 
-        if (0 <= page - 1) {
-            ActionButton prevPage = ActionButton.create(Component.text("קודם"), null, 60, DialogAction.customClick((response, audience) -> {
-                if (!(audience instanceof Player player)) return;
-                player.showDialog(getPage(page - 1));
-            }, ClickCallback.Options.builder().build()));
-            actionButtons.add(prevPage);
-        }
+
 
         return DialogType.multiAction(actionButtons).columns(10).build();
     }
