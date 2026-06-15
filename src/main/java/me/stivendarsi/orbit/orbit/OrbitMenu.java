@@ -183,7 +183,7 @@ public class OrbitMenu {
         if (plus)
             type = ActionButton.create(Component.text("מתקדם +"), Component.text("מסלול שפתוח למנויים בלבד."), 60, DialogAction.customClick((response, audience) -> {
                 if (!(audience instanceof Player player)) return;
-                player.performCommand("/store");
+                player.performCommand("store");
             }, ClickCallback.Options.builder().build()));
         else type = ActionButton.create(Component.text("רגיל"), Component.text("מסלול שפתוח לכל השחקנים."), 60, null);
 
