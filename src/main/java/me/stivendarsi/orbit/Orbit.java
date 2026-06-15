@@ -1,6 +1,7 @@
 package me.stivendarsi.orbit;
 
 import me.stivendarsi.orbit.command.CommandHandler;
+import me.stivendarsi.orbit.events.DialogSoundHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Orbit extends JavaPlugin {
@@ -26,6 +27,7 @@ public final class Orbit extends JavaPlugin {
         mainHandler.load();
 
         CommandHandler.register(this.getLifecycleManager());
+       // getServer().getPluginManager().registerEvents(new DialogSoundHandler(), this);
     }
 
     @Override

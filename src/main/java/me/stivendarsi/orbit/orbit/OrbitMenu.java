@@ -2,12 +2,14 @@ package me.stivendarsi.orbit.orbit;
 
 import com.nexomc.nexo.glyphs.GlyphTag;
 import io.papermc.paper.dialog.Dialog;
+import io.papermc.paper.event.player.PlayerCustomClickEvent;
 import io.papermc.paper.registry.data.dialog.ActionButton;
 import io.papermc.paper.registry.data.dialog.DialogBase;
 import io.papermc.paper.registry.data.dialog.action.DialogAction;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.data.dialog.type.MultiActionType;
+import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -15,6 +17,8 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static me.stivendarsi.orbit.Constants.clickSound;
 
 public class OrbitMenu {
     private final int[] requiredExperience;
@@ -36,12 +40,12 @@ public class OrbitMenu {
 
     private Dialog getPage(int page) {
         Dialog dialog = Dialog.create(builder -> {
-            DialogType buttons = getPageButtons(page, false);
+            DialogType buttons = getPageType(page);
             List<DialogBody> bodies = new ArrayList<>();
             bodies.add(getDoneText());
             bodies.add(getProgressBar());
 
-            builder.empty().type(buttons).base(DialogBase.builder(Component.text("מסלול  התקדמות")).externalTitle(Component.text("מסלול התקדמות")).body(bodies).build());
+            builder.empty().type(buttons).base(DialogBase.builder(Component.text("מסלול  התקדמות")).pause(false).afterAction(DialogBase.DialogAfterAction.NONE).externalTitle(Component.text("מסלול התקדמות")).body(bodies).build());
         });
         return dialog;
     }
@@ -110,12 +114,47 @@ public class OrbitMenu {
         return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 500);
     }
 
-    private MultiActionType getPageButtons(int page, boolean plus) {
+    private MultiActionType getPageType(int page){
+        List<ActionButton> defaultButtons = getPageButtons(page, false);
+        List<ActionButton> plusButtons = getPageButtons(page, true);
+
+        defaultButtons.addAll(plusButtons);
+
+
+        if (0 <= page - 1) {
+            ActionButton prevPage = ActionButton.create(Component.text("קודם"), null, 90, DialogAction.customClick((response, audience) -> {
+                if (!(audience instanceof Player player)) return;
+                player.showDialog(getPage(page - 1));
+            }, ClickCallback.Options.builder().build()));
+            defaultButtons.add(prevPage);
+        }
+
+        if (page + 1 < this.requiredExperience.length / 10) {
+            ActionButton nextPage = ActionButton.create(Component.text("הבא"), null, 90, DialogAction.customClick((response, audience) -> {
+                if (!(audience instanceof Player player)) return;
+                player.showDialog(getPage(page + 1));
+            }, ClickCallback.Options.builder().build()));
+            defaultButtons.add(nextPage);
+        }
+
+        return DialogType.multiAction(defaultButtons).columns(11).build();
+    }
+
+    private List<ActionButton> getPageButtons(int page, boolean plus) {
         List<ActionButton> actionButtons = new ArrayList<>();
         int min = page * 10;
         int max = min + 10;
 
-        //    ActionButton  ActionButton.create(Component.text("רגיל"), Component.text("מסלול שפתוח לכל השחקנים"), 30, null);
+        ActionButton type;
+
+        if (plus) type =  ActionButton.create(Component.text("מתקדם"), Component.text("מסלול שפתוח למנויים בלבד."), 60, DialogAction.customClick((response, audience) -> {
+            if (!(audience instanceof Player player)) return;
+            player.performCommand("/store");
+        }, ClickCallback.Options.builder().build()));
+        else type = ActionButton.create(Component.text("רגיל"), Component.text("מסלול שפתוח לכל השחקנים."), 60, null);
+
+
+        actionButtons.add(type);
 
         for (int levelIndex = min; levelIndex < max; levelIndex++) {
             Component tierComponent;
@@ -130,26 +169,10 @@ public class OrbitMenu {
             actionButtons.add(actionButton);
         }
 
-        if (0 <= page - 1) {
-            ActionButton prevPage = ActionButton.create(Component.text("קודם"), null, 60, DialogAction.customClick((response, audience) -> {
-                if (!(audience instanceof Player player)) return;
-                player.showDialog(getPage(page - 1));
-            }, ClickCallback.Options.builder().build()));
-            actionButtons.add(prevPage);
-        }
-
-        if (page + 1 < this.requiredExperience.length / 10) {
-            ActionButton nextPage = ActionButton.create(Component.text("הבא"), null, 60, DialogAction.customClick((response, audience) -> {
-                if (!(audience instanceof Player player)) return;
-                player.showDialog(getPage(page + 1));
-            }, ClickCallback.Options.builder().build()));
-            actionButtons.add(nextPage);
-        }
-
-
-
-        return DialogType.multiAction(actionButtons).columns(10).build();
+        return actionButtons;
     }
+
+
 
     private int getUserPage() {
         return this.currentIndex / 10;
