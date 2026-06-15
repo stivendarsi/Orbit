@@ -2,14 +2,12 @@ package me.stivendarsi.orbit.orbit;
 
 import com.nexomc.nexo.glyphs.GlyphTag;
 import io.papermc.paper.dialog.Dialog;
-import io.papermc.paper.event.player.PlayerCustomClickEvent;
 import io.papermc.paper.registry.data.dialog.ActionButton;
 import io.papermc.paper.registry.data.dialog.DialogBase;
 import io.papermc.paper.registry.data.dialog.action.DialogAction;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.data.dialog.type.MultiActionType;
-import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -17,15 +15,16 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static me.stivendarsi.orbit.Constants.clickSound;
+import java.util.UUID;
 
 public class OrbitMenu {
     private final int[] requiredExperience;
     private final int currentExperience;
     private int currentIndex;
+    private UUID user;
 
-    public OrbitMenu(int userExperience) {
+    public OrbitMenu(int userExperience, UUID user) {
+        this.user = user;
         this.currentExperience = userExperience;
         this.requiredExperience = new int[100];
         for (int i = 0; i < this.requiredExperience.length; i++) {
@@ -45,7 +44,10 @@ public class OrbitMenu {
             bodies.add(getDoneText());
             bodies.add(getProgressBar());
 
-            builder.empty().type(buttons).base(DialogBase.builder(Component.text("מסלול  התקדמות")).pause(false).afterAction(DialogBase.DialogAfterAction.NONE).externalTitle(Component.text("מסלול התקדמות")).body(bodies).build());
+
+            Component title = MiniMessage.miniMessage().deserialize("מסלול התקדמות <head:%s>".formatted(this.user));
+
+            builder.empty().type(buttons).base(DialogBase.builder(title).pause(false).afterAction(DialogBase.DialogAfterAction.NONE).externalTitle(Component.text("מסלול התקדמות")).body(bodies).build());
         });
         return dialog;
     }
@@ -114,11 +116,17 @@ public class OrbitMenu {
         return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 500);
     }
 
-    private MultiActionType getPageType(int page){
-        List<ActionButton> defaultButtons = getPageButtons(page, false);
-        List<ActionButton> plusButtons = getPageButtons(page, true);
+    private MultiActionType getPageType(int page) {
 
-        defaultButtons.addAll(plusButtons);
+        List<ActionButton> buttons = new ArrayList<>();
+
+        ActionButton corn = ActionButton.builder(Component.text("רמה\\מסלול")).width(60).build();
+        buttons.add(corn);
+
+        buttons.addAll(getLevelNumbers(page));
+
+        buttons.addAll(getPageButtons(page, false));
+        buttons.addAll(getPageButtons(page, true));
 
 
         if (0 <= page - 1) {
@@ -126,7 +134,7 @@ public class OrbitMenu {
                 if (!(audience instanceof Player player)) return;
                 player.showDialog(getPage(page - 1));
             }, ClickCallback.Options.builder().build()));
-            defaultButtons.add(prevPage);
+            buttons.add(prevPage);
         }
 
         if (page + 1 < this.requiredExperience.length / 10) {
@@ -134,10 +142,35 @@ public class OrbitMenu {
                 if (!(audience instanceof Player player)) return;
                 player.showDialog(getPage(page + 1));
             }, ClickCallback.Options.builder().build()));
-            defaultButtons.add(nextPage);
+
+            buttons.add(nextPage);
         }
 
-        return DialogType.multiAction(defaultButtons).columns(11).build();
+        return DialogType.multiAction(buttons).columns(11).build();
+    }
+
+    private List<ActionButton> getLevelNumbers(int page) {
+        List<ActionButton> levels = new ArrayList<>();
+        int min = page * 10;
+        int max = min + 10;
+
+        for (int levelIndex = min; levelIndex < max; levelIndex++) {
+            Component tierComponent;
+            Component status = MiniMessage.miniMessage().deserialize("<gray>רמה: <white>" + levelIndex);
+
+            if (isLevelIndexUnLocked(levelIndex)) {
+                tierComponent = MiniMessage.miniMessage().deserialize(levelIndex + " <green>\uD83D\uDD13");
+                status = status.append(MiniMessage.miniMessage().deserialize("<newline><green>פתוח \uD83D\uDD13" ));
+            }
+            else {
+                tierComponent = MiniMessage.miniMessage().deserialize(levelIndex + " <red>\uD83D\uDD12");
+                status = status.append(MiniMessage.miniMessage().deserialize("<newline><red>נעול \uD83D\uDD12" ));
+            }
+
+            ActionButton actionButton = ActionButton.create(tierComponent, status, 30, null);
+            levels.add(actionButton);
+        }
+        return levels;
     }
 
     private List<ActionButton> getPageButtons(int page, boolean plus) {
@@ -147,31 +180,31 @@ public class OrbitMenu {
 
         ActionButton type;
 
-        if (plus) type =  ActionButton.create(Component.text("מתקדם"), Component.text("מסלול שפתוח למנויים בלבד."), 60, DialogAction.customClick((response, audience) -> {
-            if (!(audience instanceof Player player)) return;
-            player.performCommand("/store");
-        }, ClickCallback.Options.builder().build()));
+        if (plus)
+            type = ActionButton.create(Component.text("מתקדם +"), Component.text("מסלול שפתוח למנויים בלבד."), 60, DialogAction.customClick((response, audience) -> {
+                if (!(audience instanceof Player player)) return;
+                player.performCommand("/store");
+            }, ClickCallback.Options.builder().build()));
         else type = ActionButton.create(Component.text("רגיל"), Component.text("מסלול שפתוח לכל השחקנים."), 60, null);
 
 
         actionButtons.add(type);
 
         for (int levelIndex = min; levelIndex < max; levelIndex++) {
-            Component tierComponent;
+            Component tierComponent = MiniMessage.miniMessage().deserialize("<sprite:\"minecraft:items\":item/porkchop>");
 
             System.out.println("level index: " + levelIndex);
             System.out.println("page: " + page);
 
-            if (isLevelIndexUnLocked(levelIndex)) tierComponent = Component.text(levelIndex + "\uD83D\uDD13");
-            else tierComponent = Component.text(levelIndex + "\uD83D\uDD12");
+            //  if (isLevelIndexUnLocked(levelIndex)) tierComponent = Component.text("\uD83D\uDD13");
+            // else tierComponent = Component.text( "\uD83D\uDD12");
 
-            ActionButton actionButton = ActionButton.create(tierComponent, Component.text(levelIndex), 30, null);
+            ActionButton actionButton = ActionButton.create(tierComponent, null, 30, null);
             actionButtons.add(actionButton);
         }
 
         return actionButtons;
     }
-
 
 
     private int getUserPage() {

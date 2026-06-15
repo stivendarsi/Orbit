@@ -20,7 +20,7 @@ public class MainMenu {
 
     public void openMainMenu(Player player){
         Dialog dialog = Dialog.create(b -> {
-            OrbitMenu orbitMenu = new OrbitMenu(this.currentExperience);
+            OrbitMenu orbitMenu = new OrbitMenu(this.currentExperience, player.getUniqueId());
             QuestMenu questMenu = new QuestMenu();
 
             List<Dialog> dialogs = new ArrayList<>();
