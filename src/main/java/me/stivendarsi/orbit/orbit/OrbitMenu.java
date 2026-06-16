@@ -13,6 +13,9 @@ import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.entity.Player;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -22,8 +25,10 @@ public class OrbitMenu {
     private final int currentExperience;
     private int currentIndex;
     private UUID user;
+    private LocalDateTime end;
 
-    public OrbitMenu(int userExperience, UUID user) {
+    public OrbitMenu(int userExperience, UUID user, LocalDateTime end) {
+        this.end = end;
         this.user = user;
         this.currentExperience = userExperience;
         this.requiredExperience = new int[100];
@@ -41,6 +46,7 @@ public class OrbitMenu {
         Dialog dialog = Dialog.create(builder -> {
             DialogType buttons = getPageType(page);
             List<DialogBody> bodies = new ArrayList<>();
+            bodies.add(getOrbitEndText());
             bodies.add(getDoneText());
             bodies.add(getProgressBar());
 
@@ -52,6 +58,12 @@ public class OrbitMenu {
         return dialog;
     }
 
+    private DialogBody getOrbitEndText(){
+        String time = this.end.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        Component text = MiniMessage.miniMessage().deserialize("<gradient:#ff771c:#ffe4c7>המסלול יסתיים ב-</gradient><gradient:#ff771c:#ffe4c7>" + time + "</gradient>");
+        return DialogBody.plainMessage(text, 300);
+    }
+
     private DialogBody getDoneText() {
         int len = this.requiredExperience.length;
         int nextLvlXp = this.currentIndex + 1 >= len ? this.requiredExperience[len - 1] : this.requiredExperience[currentIndex + 1];
@@ -59,7 +71,7 @@ public class OrbitMenu {
         StringBuilder b = new StringBuilder();
         b.append("<gradient:#ff8cec:#ff54c3>").append(this.currentExperience).append("⭐ / ").append(nextLvlXp).append("⭐</gradient:#ff8cec:#ff54c3>");
 
-        return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 500);
+        return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 200);
     }
 
     private DialogBody getProgressBar() {

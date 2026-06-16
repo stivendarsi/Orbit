@@ -8,6 +8,9 @@ import io.papermc.paper.registry.set.RegistrySet;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class MainMenu {
 
     public void openMainMenu(Player player){
         Dialog dialog = Dialog.create(b -> {
-            OrbitMenu orbitMenu = new OrbitMenu(this.currentExperience, player.getUniqueId());
+            OrbitMenu orbitMenu = new OrbitMenu(this.currentExperience, player.getUniqueId(), LocalDate.of(2026, 8,5).atTime(LocalTime.now()));
             QuestMenu questMenu = new QuestMenu();
 
             List<Dialog> dialogs = new ArrayList<>();
