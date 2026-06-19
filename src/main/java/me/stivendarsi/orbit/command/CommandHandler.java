@@ -13,6 +13,11 @@ public class CommandHandler {
     public static void register(LifecycleEventManager<@NotNull Plugin> manager) {
         manager.registerEventHandler(LifecycleEvents.COMMANDS, (event) -> {
             Commands commands = event.registrar();
+            commands.register(Commands.literal("experience").requires(source -> source.getSender().hasPermission("orbit.admin"))
+                            .then(Commands.literal("modify")
+                                    .then(Commands.argument("amount", integer()).executes(OrbitCommands::experience))
+                            )
+                    .build());
             commands.register(Commands.literal("orbit").requires(source -> source.getSender().hasPermission("orbit.admin"))
                             .then(Commands.argument("experience", integer(1)).executes(OrbitCommands::open))
                     .build());
