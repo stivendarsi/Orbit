@@ -12,6 +12,7 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
     compileOnly("com.nexomc:nexo:1.24.0")
+    implementation("redis.clients:jedis:7.2.0")
 }
 
 java {
