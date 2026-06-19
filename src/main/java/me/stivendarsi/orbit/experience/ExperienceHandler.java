@@ -1,4 +1,4 @@
-package me.stivendarsi.orbit;
+package me.stivendarsi.orbit.experience;
 
 import org.bukkit.entity.Player;
 
@@ -23,7 +23,7 @@ public class ExperienceHandler {
 
     public void loadUserFromRedis(UUID userUUID) {
         int userExperience = getRedisExperience(userUUID);
-        if (userExperience == -1) registerNewUser(userUUID);
+        if (userExperience == -1) registerNewUser(userUUID); // Create new User if not exist.
         else this.cache.put(userUUID, userExperience);
     }
 
