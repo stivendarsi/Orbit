@@ -1,51 +1,57 @@
 package me.stivendarsi.orbit;
 
-import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
+import static me.stivendarsi.orbit.Orbit.plugin;
 
 public class ExperienceHandler {
-    private Map<UUID, Integer> cache = new HashMap<>();
+    private Map<UUID, Integer> cache;
 
-    public void load(){
-        
-    }
+    public void load() {
+        this.cache = new HashMap<>();
 
-    public void loadUser(UUID uuid){
-        String s = mainHandler().redisClient().getClient().get("orbit." + uuid);
-        int userExperience = 0;
-        if (s == null) {
-            updateUser(uuid, 0);
+        // Load All Online Players
+        for (Player onlinePlayer : plugin().getServer().getOnlinePlayers()) {
+            loadUserFromRedis(onlinePlayer.getUniqueId());
         }
-        if (s != null) userExperience = Integer.parseInt(s);
+    }
 
-        this.cache.put(uuid, userExperience);
+    public void loadUserFromRedis(UUID userUUID) {
+        int userExperience = getRedisExperience(userUUID);
+        if (userExperience == -1) registerNewUser(userUUID);
+        else this.cache.put(userUUID, userExperience);
     }
 
 
-    public void registerNewUser(UUID userUUID){
+    public void registerNewUser(UUID userUUID) {
+        this.cache.put(userUUID, 0);
         mainHandler().redisClient().getClient().set("orbit." + userUUID, String.valueOf(0));
     }
 
-    public void registerNewUser(UUID userUUID){
-        mainHandler().redisClient().getClient().set("orbit." + userUUID, String.valueOf(0));
+    public void modifyUserExperience(UUID userUUID, int experience) {
+        int userExperience = getRedisExperience(userUUID);
+        if (userExperience == -1) {
+            plugin().getLogger().warning("Not modifying this user, because user " + userUUID + " does not exist in this Redis database.");
+            return;
+        }
+
+        userExperience = Math.max(userExperience + experience, 0);
+
+        if (this.cache.containsKey(userUUID)) this.cache.put(userUUID, userExperience);
+        else mainHandler().redisClient().getClient().set("orbit." + userUUID, String.valueOf(userExperience));
     }
 
-    public void updateUser(UUID uuid, int amount){
-        int userExperience = this.cache.getOrDefault(uuid, 0);
-        userExperience = Math.max(0, userExperience + amount);
-        this.cache.put(uuid, userExperience);
-    }
 
-    public void saveCacheUser(UUID user){
-        mainHandler().redisClient().getClient().setbit("orbit." + user, String.valueOf(this.cache.getOrDefault(user, 0)));
-    }
+    public int getRedisExperience(UUID userUUID) {
+        if (this.cache.containsKey(userUUID)) return this.cache.get(userUUID);
 
-    public void modifyUser(UUID user, int userExperience){
-        mainHandler().redisClient().getClient().set("orbit." + user, String.valueOf(userExperience));
+        String stringAmount = mainHandler().redisClient().getClient().get("orbit." + userUUID);
+        if (stringAmount == null) return -1;
+        else return Integer.parseInt(stringAmount);
     }
 }
