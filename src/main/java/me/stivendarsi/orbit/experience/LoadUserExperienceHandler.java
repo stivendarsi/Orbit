@@ -3,6 +3,7 @@ package me.stivendarsi.orbit.experience;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.UUID;
 
@@ -13,5 +14,11 @@ public class LoadUserExperienceHandler implements Listener {
     public void loadUserExperience(PlayerJoinEvent event){
         UUID userUUID = event.getPlayer().getUniqueId();
         mainHandler().experienceHandler().loadUserFromRedis(userUUID);
+    }
+
+    @EventHandler
+    public void unloadUserExperience(PlayerQuitEvent event){
+        UUID userUUID = event.getPlayer().getUniqueId();
+        mainHandler().experienceHandler().saveUserInRedis(userUUID);
     }
 }

@@ -8,3 +8,4 @@ dependencies:
   server:
     Nexo:
       required: true
+

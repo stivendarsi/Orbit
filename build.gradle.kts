@@ -1,6 +1,7 @@
 plugins {
     id("java-library")
     id("xyz.jpenilla.run-paper") version "3.0.2"
+    id("com.gradleup.shadow") version "9.4.2"
 }
 
 repositories {
@@ -20,9 +21,17 @@ java {
 }
 
 tasks {
-    jar {
-        destinationDirectory.set(file("D:/Minecraft/servers/26.1.2/plugins"))
+
+    build {
+        dependsOn(shadowJar)
     }
+
+    shadowJar {
+        destinationDirectory.set(file("D:/Minecraft/servers/26.1.2/plugins"))
+        archiveClassifier.set("")
+        relocate("redis.clients.jedis", "me.stivendarsi.libs.jedis")
+    }
+
     runServer {
         // Configure the Minecraft version for our task.
         // This is the only required configuration besides applying the plugin.
