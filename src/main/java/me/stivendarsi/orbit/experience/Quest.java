@@ -1,4 +1,4 @@
-package me.stivendarsi.orbit;
+package me.stivendarsi.orbit.experience;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;

@@ -1,11 +1,8 @@
 package me.stivendarsi.orbit;
 
 import me.stivendarsi.orbit.command.CommandHandler;
-import me.stivendarsi.orbit.events.DialogSoundHandler;
-import me.stivendarsi.orbit.experience.LoadUserExperienceHandler;
+import me.stivendarsi.orbit.events.LoadUserExperienceHandler;
 import org.bukkit.plugin.java.JavaPlugin;
-import redis.clients.jedis.RedisClient;
-import redis.clients.jedis.RedisClusterClient;
 
 public final class Orbit extends JavaPlugin {
 

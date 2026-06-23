@@ -4,7 +4,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
-import me.stivendarsi.orbit.orbit.MainMenu;
+import me.stivendarsi.orbit.orbit.menus.MainMenu;
 import org.bukkit.entity.Player;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;

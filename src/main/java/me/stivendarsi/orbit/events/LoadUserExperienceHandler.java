@@ -1,4 +1,4 @@
-package me.stivendarsi.orbit.experience;
+package me.stivendarsi.orbit.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
