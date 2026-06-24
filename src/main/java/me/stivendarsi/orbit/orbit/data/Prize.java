@@ -1,7 +1,45 @@
 package me.stivendarsi.orbit.orbit.data;
 
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
+
+import java.util.List;
+
+import static me.stivendarsi.orbit.Orbit.plugin;
+
 public class Prize {
-    private String description;
-    private String iconReward;
-    private String rewardCommand;
+    private final int levelIndex;
+    private final boolean plus;
+    private final List<String> description;
+    private final String iconReward;
+    private final String rewardCommand;
+
+    public Prize(int levelIndex, boolean plus, ConfigurationSection section) {
+        this.levelIndex = levelIndex;
+        this.plus = plus;
+        this.description = section.getStringList("description");
+        this.iconReward = section.getString("icon-reward");
+        this.rewardCommand = section.getString("icon-command");
+    }
+
+    public int levelIndex() {
+        return levelIndex;
+    }
+
+    public boolean plus() {
+        return plus;
+    }
+
+    public List<String> description() {
+        return description;
+    }
+
+    public String iconReward() {
+        return iconReward;
+    }
+
+    public void claimReward(Player claimingUser) {
+        plugin().getServer().dispatchCommand(Bukkit.getConsoleSender(), this.rewardCommand.replace("<player_name>", claimingUser.getName()));
+    }
 }

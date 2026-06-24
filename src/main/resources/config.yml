@@ -11,7 +11,7 @@ orbits:
   season-1:
     start: "yyyy:MM:dd:HH:mm:ss"
     end: "yyyy:MM:dd:HH:mm:ss"
-    max-level: 100
+    tier-amount: 100
     level-multiplier: 100
     tiers:
       0:
