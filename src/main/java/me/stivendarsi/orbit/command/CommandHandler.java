@@ -30,6 +30,5 @@ public class CommandHandler {
                     .executes(OrbitCommands::open)
                     .build());
         });
-
     }
 }

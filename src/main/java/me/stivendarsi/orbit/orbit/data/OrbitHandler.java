@@ -1,11 +1,10 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import org.bukkit.configuration.ConfigurationSection;
+import org.jspecify.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
 import static me.stivendarsi.orbit.Orbit.plugin;
 
@@ -25,5 +24,16 @@ public class OrbitHandler {
         }
 
         Arrays.sort(orbits, Comparator.comparing(OrbitData::start));
+    }
+
+    public @Nullable OrbitData getCurrentOrbit() {
+        Optional<OrbitData> orbitData = Arrays.stream(orbits).filter(orbit -> orbit.end().isAfter(LocalDateTime.now()) && orbit.start().isBefore(LocalDateTime.now())).findFirst();
+        return orbitData.orElse(null);
+    }
+
+    public String[] getOrbitIdentifiers() {
+        return Arrays.stream(orbits)
+                .map(OrbitData::identifier)
+                .toArray(String[]::new);
     }
 }
