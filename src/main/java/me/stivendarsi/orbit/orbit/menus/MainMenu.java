@@ -14,17 +14,18 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class MainMenu {
-    private final int currentExperience;
+    private final UUID userUUID;
 
-    public MainMenu(int currentExperience) {
-        this.currentExperience = currentExperience;
+    public MainMenu(UUID userUUID) {
+        this.userUUID = userUUID;
     }
 
-    public void openMainMenu(Player player){
+    public void openMainMenu(Player player) {
         Dialog dialog = Dialog.create(b -> {
             OrbitData currentOrbit = mainHandler().orbitHandler().getCurrentOrbit();
             Preconditions.checkNotNull(currentOrbit, "No current Orbit");

@@ -12,7 +12,7 @@ import io.papermc.paper.registry.data.dialog.type.MultiActionType;
 import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.Prize;
-import me.stivendarsi.orbit.orbit.data.UserData;
+import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -74,18 +74,18 @@ public class OrbitMenu {
         int nextLvlXp = this.currentIndex + 1 >= len ? this.requiredExperience[len - 1] : this.requiredExperience[currentIndex + 1];
 
 
-        UserData userData = mainHandler().userHandler().getUser(this.user);
-        Preconditions.checkNotNull(userData, "Null user data");
+        LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
+        Preconditions.checkNotNull(localUserData, "Null user data");
 
         StringBuilder b = new StringBuilder();
-        b.append("<gradient:#ff8cec:#ff54c3>").append(userData.userExperience(this.orbitData.identifier())).append("⭐ / ").append(nextLvlXp).append("⭐</gradient:#ff8cec:#ff54c3>");
+        b.append("<gradient:#ff8cec:#ff54c3>").append(localUserData.getUserExperience(this.orbitData.identifier())).append("⭐ / ").append(nextLvlXp).append("⭐</gradient:#ff8cec:#ff54c3>");
 
         return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 200);
     }
 
     private DialogBody getProgressBar() {
-        UserData userData = mainHandler().userHandler().getUser(this.user);
-        Preconditions.checkNotNull(userData, "Null user data");
+        LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
+        Preconditions.checkNotNull(localUserData, "Null user data");
 
 
         StringBuilder b = new StringBuilder();
@@ -97,7 +97,7 @@ public class OrbitMenu {
                 : this.requiredExperience[currentIndex + 1];
 
         int levelXpRange = nextLvlXp - currentLvlXp;
-        int xpGainedInLevel = userData.userExperience(this.orbitData.identifier()) - currentLvlXp;
+        int xpGainedInLevel = localUserData.getUserExperience(this.orbitData.identifier()) - currentLvlXp;
 
         int percentDone;
 
@@ -243,10 +243,10 @@ public class OrbitMenu {
             ActionButton actionButton = ActionButton.create(tierText, toolTip, 30, DialogAction.customClick((dialogResponseView, audience) -> {
                 if (prize == null || !isPrizeUnlocked || isPrizeTaken) return;
 
-                UserData userData = mainHandler().userHandler().getUser(this.user);
-                Preconditions.checkNotNull(userData, "Null user data");
+                LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
+                Preconditions.checkNotNull(localUserData, "Null user data");
 
-                userData.takePrize(orbitData.identifier(), prize.prizeIndex(), plus);
+                localUserData.takePrize(orbitData.identifier(), prize.prizeIndex(), plus);
 
             }, ClickCallback.Options.builder().build()));
             actionButtons.add(actionButton);
@@ -261,10 +261,10 @@ public class OrbitMenu {
     }
 
     private boolean isPrizeAvailable(int prizeIndex, boolean plus) {
-        UserData userData = mainHandler().userHandler().getUser(this.user);
-        Preconditions.checkNotNull(userData, "Null user data");
+        LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
+        Preconditions.checkNotNull(localUserData, "Null user data");
 
-        Pair<boolean[], boolean[]> prizeData = userData.getTiersData(this.orbitData.identifier());
+        Pair<boolean[], boolean[]> prizeData = localUserData.getTiersData(this.orbitData.identifier());
         if (prizeData == null) return false;
 
         if (plus) return prizeData.getRight()[prizeIndex];
@@ -272,14 +272,14 @@ public class OrbitMenu {
     }
 
     private boolean isLevelIndexUnLocked(int levelIndex) {
-        UserData userData = mainHandler().userHandler().getUser(this.user);
-        Preconditions.checkNotNull(userData, "Null user data");
+        LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
+        Preconditions.checkNotNull(localUserData, "Null user data");
         int xp = this.requiredExperience[levelIndex];
 
         System.out.println("Requiered: " + xp);
         System.out.println("Has: " + this.currentIndex);
 
-        return xp <= userData.userExperience(this.orbitData.identifier());
+        return xp <= localUserData.getUserExperience(this.orbitData.identifier());
     }
 
     private void updateCurrentIndex() {

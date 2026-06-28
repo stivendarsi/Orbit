@@ -16,13 +16,13 @@ import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
-public class UserData {
+public class LocalUserData {
     private final Map<String, Integer> userOrbitExperience;
     private final UUID userUUID;
     private final Map<String, Pair<boolean[], boolean[]>> pairUnlocked;
 
 
-    public UserData(UUID userUUID) {
+    public LocalUserData(UUID userUUID) {
         this.pairUnlocked = new HashMap<>();
         this.userOrbitExperience = new HashMap<>();
         this.userUUID = userUUID;
@@ -38,11 +38,16 @@ public class UserData {
         }
     }
 
+    public void modifyUserExperience(String orbitIdentifier, int experience) {
+        int current = this.userOrbitExperience.getOrDefault(orbitIdentifier, 0);
+        setUserOrbitExperience(orbitIdentifier, current + experience);
+    }
+
     public void setUserOrbitExperience(String orbitIdentifier, int userOrbitExperience) {
         this.userOrbitExperience.put(orbitIdentifier, userOrbitExperience);
     }
 
-    public int userExperience(String orbitIdentifier) {
+    public int getUserExperience(String orbitIdentifier) {
         return userOrbitExperience.getOrDefault(orbitIdentifier, 0);
     }
 

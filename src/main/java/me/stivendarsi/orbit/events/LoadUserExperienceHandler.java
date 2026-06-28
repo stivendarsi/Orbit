@@ -13,12 +13,12 @@ public class LoadUserExperienceHandler implements Listener {
     @EventHandler
     public void loadUserExperience(PlayerJoinEvent event){
         UUID userUUID = event.getPlayer().getUniqueId();
-        mainHandler().experienceHandler().loadUserFromRedis(userUUID);
+        mainHandler().userHandler().loadUser(userUUID);
     }
 
     @EventHandler
     public void unloadUserExperience(PlayerQuitEvent event){
         UUID userUUID = event.getPlayer().getUniqueId();
-        mainHandler().experienceHandler().saveUserInRedis(userUUID);
+        mainHandler().userHandler().saveUser(userUUID);
     }
 }

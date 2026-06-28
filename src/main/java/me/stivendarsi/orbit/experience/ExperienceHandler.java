@@ -33,7 +33,7 @@ public class ExperienceHandler {
         mainHandler().redisClient().getClient().set("orbit:" + userUUID, String.valueOf(0));
     }
 
-    public void setUserExperience(UUID userUUID, int experience){
+    public void setUserExperience(UUID userUUID, int experience) {
         int userExperience = Math.max(experience, 0);
 
         if (this.cache.containsKey(userUUID)) this.cache.put(userUUID, userExperience);
