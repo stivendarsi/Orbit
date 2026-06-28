@@ -9,31 +9,30 @@ import java.util.*;
 import static me.stivendarsi.orbit.Orbit.plugin;
 
 public class OrbitHandler {
-    private OrbitData[] orbits;
+    private Map<String, OrbitData> orbits;
 
     public void load() {
         List<String> orbitIdentifiers = new ArrayList<>(plugin().getConfig().getConfigurationSection("orbits").getKeys(false));
-        this.orbits = new OrbitData[orbitIdentifiers.size()];
+        this.orbits = new HashMap<>();
 
-        int i = 0;
         while (!orbitIdentifiers.isEmpty()) {
             String orbitIdentifier = orbitIdentifiers.removeFirst();
             ConfigurationSection s = plugin().getConfig().getConfigurationSection("orbits." + orbitIdentifier);
-            if (s == null) continue;
-            this.orbits[i++] = new OrbitData(orbitIdentifier, s);
+            if (s != null) this.orbits.put(orbitIdentifier, new OrbitData(orbitIdentifier, s));
         }
+    }
 
-        Arrays.sort(orbits, Comparator.comparing(OrbitData::start));
+    public @Nullable OrbitData getOrbit(String orbitIdentifier) {
+        return this.orbits.values().stream().filter(orbitData -> orbitData.identifier().equals(orbitIdentifier)).findFirst().orElse(null);
     }
 
     public @Nullable OrbitData getCurrentOrbit() {
-        Optional<OrbitData> orbitData = Arrays.stream(orbits).filter(orbit -> orbit.end().isAfter(LocalDateTime.now()) && orbit.start().isBefore(LocalDateTime.now())).findFirst();
-        return orbitData.orElse(null);
+        return this.orbits.values().stream()
+                .filter(orbit -> orbit.start().isBefore(LocalDateTime.now()) && orbit.end().isAfter(LocalDateTime.now()))
+                .findFirst().orElse(null);
     }
 
     public String[] getOrbitIdentifiers() {
-        return Arrays.stream(orbits)
-                .map(OrbitData::identifier)
-                .toArray(String[]::new);
+        return this.orbits.keySet().toArray(new String[0]);
     }
 }

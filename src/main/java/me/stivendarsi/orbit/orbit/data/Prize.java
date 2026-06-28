@@ -15,15 +15,15 @@ public class Prize {
     private final String iconReward;
     private final String rewardCommand;
 
-    public Prize(int levelIndex, boolean plus, ConfigurationSection section) {
-        this.levelIndex = levelIndex;
+    public Prize(int prizeIndex, boolean plus, ConfigurationSection section) {
+        this.levelIndex = prizeIndex;
         this.plus = plus;
         this.description = section.getStringList("description");
         this.iconReward = section.getString("icon-reward");
         this.rewardCommand = section.getString("icon-command");
     }
 
-    public int levelIndex() {
+    public int prizeIndex() {
         return levelIndex;
     }
 

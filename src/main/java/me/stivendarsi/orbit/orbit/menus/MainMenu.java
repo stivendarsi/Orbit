@@ -1,10 +1,12 @@
 package me.stivendarsi.orbit.orbit.menus;
 
+import com.google.common.base.Preconditions;
 import io.papermc.paper.dialog.Dialog;
 import io.papermc.paper.registry.RegistryKey;
 import io.papermc.paper.registry.data.dialog.DialogBase;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.set.RegistrySet;
+import me.stivendarsi.orbit.orbit.data.OrbitData;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 
@@ -12,6 +14,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class MainMenu {
     private final int currentExperience;
@@ -22,7 +26,10 @@ public class MainMenu {
 
     public void openMainMenu(Player player){
         Dialog dialog = Dialog.create(b -> {
-            OrbitMenu orbitMenu = new OrbitMenu(this.currentExperience, player.getUniqueId(), LocalDate.of(2026, 8,5).atTime(LocalTime.now()));
+            OrbitData currentOrbit = mainHandler().orbitHandler().getCurrentOrbit();
+            Preconditions.checkNotNull(currentOrbit, "No current Orbit");
+
+            OrbitMenu orbitMenu = new OrbitMenu(currentOrbit, player.getUniqueId());
             QuestMenu questMenu = new QuestMenu();
 
             List<Dialog> dialogs = new ArrayList<>();
