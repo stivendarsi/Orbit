@@ -1,5 +1,6 @@
 package me.stivendarsi.orbit.orbit.data;
 
+import com.google.common.base.Preconditions;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jspecify.annotations.Nullable;
@@ -15,11 +16,14 @@ public class OrbitData {
     private final int levelMultiplier;
     private final Pair<Prize, Prize>[] tiers;
 
-    public OrbitData(String identifier, ConfigurationSection orbitSection) {
-        this.identifier = identifier;
+    public OrbitData(String orbitIdentifier, ConfigurationSection orbitSection) {
+        this.identifier = orbitIdentifier;
 
         String startString = orbitSection.getString("start");
         String endString = orbitSection.getString("end");
+
+        Preconditions.checkNotNull(startString, "Null start string: " + orbitIdentifier);
+        Preconditions.checkNotNull(endString, "Null end string: " + orbitIdentifier);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         this.start = LocalDateTime.parse(startString, formatter);
