@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
+import java.util.Collections;
 import java.util.List;
 
 import static me.stivendarsi.orbit.Orbit.plugin;
@@ -18,7 +19,9 @@ public class Prize {
     public Prize(int prizeIndex, boolean plus, ConfigurationSection section) {
         this.levelIndex = prizeIndex;
         this.plus = plus;
-        this.description = section.getStringList("description");
+        if (section.isList("description")) this.description = section.getStringList("description");
+        else this.description = Collections.singletonList(section.getString("description"));
+
         this.iconReward = section.getString("icon-sprite");
         this.rewardCommand = section.getString("icon-command");
     }

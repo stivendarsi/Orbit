@@ -10,12 +10,11 @@ import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.data.dialog.type.MultiActionType;
 import me.stivendarsi.orbit.Constants;
+import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.Prize;
-import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
-import net.kyori.adventure.text.format.Style;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.entity.Player;
@@ -109,8 +108,8 @@ public class OrbitMenu {
         percentDone = Math.max(0, Math.min(100, percentDone));
 
         int percentLeft = 100 - percentDone;
-        System.out.println("progress: " + percentDone);
-        System.out.println("left: " + percentLeft);
+      //  System.out.println("progress: " + percentDone);
+       // System.out.println("left: " + percentLeft);
 
         b.append("<white>").append(this.currentIndex).append(" ");
 
@@ -235,7 +234,7 @@ public class OrbitMenu {
                 if (isPrizeTaken)  tierText = MiniMessage.miniMessage().deserialize("<dark_gray><sprite:%s></dark_gray>".formatted(prize.iconReward()));
                 else  tierText = MiniMessage.miniMessage().deserialize("<sprite:%s>".formatted(prize.iconReward()));
 
-                toolTip = mm.deserialize(String.join("<newline>", prize.description()));
+                if (prize.description() != null) toolTip = mm.deserialize(String.join("<newline>", prize.description()) + "<newline>");
             }
 
 
@@ -280,8 +279,8 @@ public class OrbitMenu {
         Preconditions.checkNotNull(localUserData, "Null user data");
         int xp = this.requiredExperience[levelIndex];
 
-        System.out.println("Requiered: " + xp);
-        System.out.println("Has: " + this.currentIndex);
+      //  System.out.println("Requiered: " + xp);
+     //  System.out.println("Has: " + this.currentIndex);
 
         return xp <= localUserData.getUserExperience(this.orbitData.identifier());
     }
