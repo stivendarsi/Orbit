@@ -9,7 +9,7 @@ orbits:
     start: "2025:05:26:00:00:00"
     end: "2026:12:01:00:00:00"
     tier-amount: 100
-    level-multiplier: 20
+    level-multiplier: 100
     tiers:
       0:
         plus:
