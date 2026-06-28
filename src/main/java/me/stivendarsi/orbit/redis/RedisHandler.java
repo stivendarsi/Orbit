@@ -14,7 +14,7 @@ public class RedisHandler {
 
 
 
-    public String getUserDataPath(String orbitIdentifier,UUID userUUID, DataType dataType){
+    public static String getUserDataPath(String orbitIdentifier,UUID userUUID, DataType dataType){
         return "orbit:orbit_data:" + orbitIdentifier + ":" + userUUID + ":" + dataType.toString();
     }
 

@@ -15,6 +15,7 @@ import me.stivendarsi.orbit.orbit.data.Prize;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
+import net.kyori.adventure.text.format.Style;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.entity.Player;
@@ -231,7 +232,9 @@ public class OrbitMenu {
             Component tierText = Component.empty();
 
             if (prize != null) {
-                tierText = MiniMessage.miniMessage().deserialize("<sprite:%s>".formatted(prize.iconReward()));
+                if (isPrizeTaken)  tierText = MiniMessage.miniMessage().deserialize("<dark_gray><sprite:%s></dark_gray>".formatted(prize.iconReward()));
+                else  tierText = MiniMessage.miniMessage().deserialize("<sprite:%s>".formatted(prize.iconReward()));
+
                 toolTip = mm.deserialize(String.join("<newline>", prize.description()));
             }
 

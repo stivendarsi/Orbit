@@ -48,16 +48,16 @@ public class UserHandler {
             Preconditions.checkNotNull(t, "Null tier data: " + orbitIdentifier);
 
             String experience = String.valueOf(localUserData.getUserExperience(orbitIdentifier));
-            client.set(mainHandler().redisClient().getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.experience), experience);
+            client.set(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.experience), experience);
 
             boolean[] regular = t.getLeft();
             for (int i = 0; i < regular.length; i++) {
-                client.setbit(mainHandler().redisClient().getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.regular), i, regular[i]);
+                client.setbit(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.regular), i, regular[i]);
             }
 
             boolean[] plus = t.getRight();
             for (int i = 0; i < plus.length; i++) {
-                client.setbit(mainHandler().redisClient().getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.plus), i, plus[i]);
+                client.setbit(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.plus), i, plus[i]);
             }
         }
     }

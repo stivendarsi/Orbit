@@ -30,7 +30,7 @@ public class MainMenu {
             OrbitData currentOrbit = mainHandler().orbitHandler().getCurrentOrbit();
             Preconditions.checkNotNull(currentOrbit, "No current Orbit");
 
-            OrbitMenu orbitMenu = new OrbitMenu(currentOrbit, player.getUniqueId());
+            OrbitMenu orbitMenu = new OrbitMenu(currentOrbit, this.userUUID);
             QuestMenu questMenu = new QuestMenu();
 
             List<Dialog> dialogs = new ArrayList<>();

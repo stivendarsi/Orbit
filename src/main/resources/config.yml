@@ -1,5 +1,3 @@
-
-
 redis:
   host: "82.22.24.12"
   port: 25595
@@ -10,7 +8,7 @@ orbits:
   season-1:
     start: "2025:05:26:00:00:00"
     end: "2026:12:01:00:00:00"
-    tier-amount: 20
+    tier-amount: 100
     level-multiplier: 20
     tiers:
       0:
@@ -185,6 +183,726 @@ orbits:
           icon-sprite: "block/iron_block"
           reward-command: ""
       19:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      20:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      21:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      22:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      23:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      24:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      25:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      26:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      27:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      28:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      29:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      30:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      31:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      32:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      33:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      34:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      35:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      36:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      37:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      38:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      39:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      40:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      41:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      42:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      43:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      44:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      45:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      46:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      47:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      48:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      49:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      50:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      51:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      52:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      53:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      54:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      55:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      56:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      57:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      58:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      59:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      60:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      61:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      62:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      63:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      64:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      65:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      66:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      67:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      68:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      69:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      70:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      71:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      72:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      73:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      74:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      75:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      76:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      77:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      78:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      79:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      80:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      81:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      82:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      83:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      84:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      85:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      86:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      87:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      88:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      89:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      90:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      91:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      92:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      93:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      94:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      95:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      96:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      97:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      98:
+        plus:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "block/iron_block"
+          reward-command: ""
+      99:
         plus:
           description: "אייטם"
           icon-sprite: "block/iron_block"

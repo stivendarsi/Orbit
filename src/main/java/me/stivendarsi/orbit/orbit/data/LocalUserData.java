@@ -34,7 +34,8 @@ public class LocalUserData {
             boolean[] plus = loadUnlockList(true, orbitIdentifier);
             this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
 
-            String userExperienceString = mainHandler().redisClient().getUserDataPath(orbitIdentifier, userUUID, DataType.experience);
+            String userExperienceString = mainHandler().redisClient().getClient().get(RedisHandler.getUserDataPath(orbitIdentifier, userUUID, DataType.experience));
+         //   System.out.println("User string experience: " + userExperienceString);
             this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userExperienceString, 0));
         }
     }
