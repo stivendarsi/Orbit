@@ -25,7 +25,7 @@ public class OrbitData {
         Preconditions.checkNotNull(startString, "Null start string: " + orbitIdentifier);
         Preconditions.checkNotNull(endString, "Null end string: " + orbitIdentifier);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd:HH:mm:ss");
         this.start = LocalDateTime.parse(startString, formatter);
         this.end = LocalDateTime.parse(endString, formatter);
 

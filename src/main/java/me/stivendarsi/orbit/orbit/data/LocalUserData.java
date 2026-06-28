@@ -82,8 +82,9 @@ public class LocalUserData {
         boolean[] unlocked = new boolean[orbitData.tierAmount()];
         RedisClient client = mainHandler().redisClient().getClient();
         String key;
-        if (plus) key = "orbit:orbit_data:%s:%s:plus".formatted(orbitIdentifier, this.userUUID);
-        else key = "orbit:orbit_data:%s:%s:regular".formatted(orbitIdentifier, this.userUUID);
+
+        if (plus) key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, this.userUUID, RedisHandler.DataType.plus);
+        else key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, this.userUUID, RedisHandler.DataType.regular);
 
         for (int i = 0; i < unlocked.length; i++) {
             unlocked[i] = client.getbit(key, i);

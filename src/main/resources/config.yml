@@ -1,25 +1,195 @@
 
 
 redis:
-  host: ""
-  port: 00000
+  host: "82.22.24.12"
+  port: 25595
   user: "default"
-  password: ""
-
+  password: "A@pX#=sEk)x,luo5U5jx^G)Y&Vmi&oDGOr[&^Bly"
 
 orbits:
   season-1:
-    start: "yyyy:MM:dd:HH:mm:ss"
-    end: "yyyy:MM:dd:HH:mm:ss"
-    tier-amount: 100
-    level-multiplier: 100
+    start: "2025:5:26:00:00:00"
+    end: "2026:12:01:00:00:00"
+    tier-amount: 20
+    level-multiplier: 20
     tiers:
       0:
         plus:
-          description: ""
-          icon-sprite: ""
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
           reward-command: ""
         regular:
-          description: ""
-          icon-sprite: ""
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      1:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      2:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      3:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      4:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      5:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      6:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      7:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      8:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      9:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      10:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      11:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      12:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      13:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      14:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      15:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      16:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      17:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      18:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+      19:
+        plus:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
+          reward-command: ""
+        regular:
+          description: "אייטם"
+          icon-sprite: "item/iron_ingot"
           reward-command: ""
