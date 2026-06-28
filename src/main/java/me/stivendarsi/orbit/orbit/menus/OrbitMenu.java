@@ -213,7 +213,6 @@ public class OrbitMenu {
             }, ClickCallback.Options.builder().build()));
         else type = ActionButton.create(Component.text("רגיל"), Component.text("מסלול שפתוח לכל השחקנים."), 60, null);
 
-
         actionButtons.add(type);
         MiniMessage mm = MiniMessage.miniMessage();
 
@@ -236,7 +235,6 @@ public class OrbitMenu {
 
                 if (prize.description() != null) toolTip = mm.deserialize(String.join("<newline>", prize.description()) + "<newline>");
             }
-
 
             if (!isPrizeUnlocked) toolTip = toolTip.append(mm.deserialize("<red>אין אפשרת לקחת</red>"));
             else if (isPrizeTaken) toolTip = toolTip.append(mm.deserialize("<dark_gray>נלקח</dark_gray>"));
