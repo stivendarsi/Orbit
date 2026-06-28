@@ -1,6 +1,7 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
+import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
@@ -30,7 +31,12 @@ public class UserHandler {
         this.userDataMap.put(localUserData.userUUID(), localUserData);
     }
 
-    public void saveUser(UUID userUUID){
+    public void unloadUser(UUID userUUID){
+        saveUser(userUUID);
+        this.userDataMap.remove(userUUID);
+    }
+
+    private void saveUser(UUID userUUID){
         saveUser(this.userDataMap.getOrDefault(userUUID, null));
     }
 
@@ -42,16 +48,16 @@ public class UserHandler {
             Preconditions.checkNotNull(t, "Null tier data: " + orbitIdentifier);
 
             String experience = String.valueOf(localUserData.getUserExperience(orbitIdentifier));
-            client.set(mainHandler().redisClient().getUserDataPath(orbitIdentifier, localUserData.userUUID(), RedisHandler.DataType.experience), experience);
+            client.set(mainHandler().redisClient().getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.experience), experience);
 
             boolean[] regular = t.getLeft();
             for (int i = 0; i < regular.length; i++) {
-                client.setbit(mainHandler().redisClient().getUserDataPath(orbitIdentifier, localUserData.userUUID(), RedisHandler.DataType.regular), i, regular[i]);
+                client.setbit(mainHandler().redisClient().getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.regular), i, regular[i]);
             }
 
             boolean[] plus = t.getRight();
             for (int i = 0; i < plus.length; i++) {
-                client.setbit(mainHandler().redisClient().getUserDataPath(orbitIdentifier, localUserData.userUUID(), RedisHandler.DataType.plus), i, plus[i]);
+                client.setbit(mainHandler().redisClient().getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.plus), i, plus[i]);
             }
         }
     }

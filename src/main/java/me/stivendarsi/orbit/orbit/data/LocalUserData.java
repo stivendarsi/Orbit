@@ -1,6 +1,7 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
+import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.Pair;
@@ -33,7 +34,7 @@ public class LocalUserData {
             boolean[] plus = loadUnlockList(true, orbitIdentifier);
             this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
 
-            String userExperienceString = mainHandler().redisClient().getUserDataPath(orbitIdentifier, userUUID, RedisHandler.DataType.experience);
+            String userExperienceString = mainHandler().redisClient().getUserDataPath(orbitIdentifier, userUUID, DataType.experience);
             this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userExperienceString, 0));
         }
     }
@@ -60,7 +61,7 @@ public class LocalUserData {
         Preconditions.checkNotNull(data, "Null tier data");
 
         if (plus) data.getRight()[prizeIndex] = true;
-        else data.getLeft()[prizeIndex] = false;
+        else data.getLeft()[prizeIndex] = true;
 
         OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
         Preconditions.checkNotNull(orbitData, "Null orbit data");
@@ -83,8 +84,8 @@ public class LocalUserData {
         RedisClient client = mainHandler().redisClient().getClient();
         String key;
 
-        if (plus) key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, this.userUUID, RedisHandler.DataType.plus);
-        else key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, this.userUUID, RedisHandler.DataType.regular);
+        if (plus) key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, this.userUUID, DataType.plus);
+        else key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, this.userUUID, DataType.regular);
 
         for (int i = 0; i < unlocked.length; i++) {
             unlocked[i] = client.getbit(key, i);

@@ -12,11 +12,7 @@ public class RedisHandler {
         this.client = RedisClient.create("82.22.24.12", 25595, "default", "A@pX#=sEk)x,luo5U5jx^G)Y&Vmi&oDGOr[&^Bly");
     }
 
-    public enum DataType {
-        experience,
-        plus,
-        regular
-    }
+
 
     public String getUserDataPath(String orbitIdentifier,UUID userUUID, DataType dataType){
         return "orbit:orbit_data:" + orbitIdentifier + ":" + userUUID + ":" + dataType.toString();

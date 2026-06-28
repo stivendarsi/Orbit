@@ -19,6 +19,6 @@ public class LoadUserExperienceHandler implements Listener {
     @EventHandler
     public void unloadUserExperience(PlayerQuitEvent event){
         UUID userUUID = event.getPlayer().getUniqueId();
-        mainHandler().userHandler().saveUser(userUUID);
+        mainHandler().userHandler().unloadUser(userUUID);
     }
 }

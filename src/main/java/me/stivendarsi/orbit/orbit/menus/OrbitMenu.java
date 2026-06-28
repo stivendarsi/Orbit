@@ -231,7 +231,7 @@ public class OrbitMenu {
             Component tierText = Component.empty();
 
             if (prize != null) {
-                tierText = MiniMessage.miniMessage().deserialize("<sprite:%s".formatted(prize.iconReward()));
+                tierText = MiniMessage.miniMessage().deserialize("<sprite:%s>".formatted(prize.iconReward()));
                 toolTip = mm.deserialize(String.join("<newline>", prize.description()));
             }
 
@@ -247,6 +247,7 @@ public class OrbitMenu {
                 Preconditions.checkNotNull(localUserData, "Null user data");
 
                 localUserData.takePrize(orbitData.identifier(), prize.prizeIndex(), plus);
+                audience.showDialog(getPage(page));
 
             }, ClickCallback.Options.builder().build()));
             actionButtons.add(actionButton);

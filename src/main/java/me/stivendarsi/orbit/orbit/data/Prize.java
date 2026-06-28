@@ -19,7 +19,7 @@ public class Prize {
         this.levelIndex = prizeIndex;
         this.plus = plus;
         this.description = section.getStringList("description");
-        this.iconReward = section.getString("icon-reward");
+        this.iconReward = section.getString("icon-sprite");
         this.rewardCommand = section.getString("icon-command");
     }
 
@@ -40,6 +40,6 @@ public class Prize {
     }
 
     public void claimReward(Player claimingUser) {
-        plugin().getServer().dispatchCommand(Bukkit.getConsoleSender(), this.rewardCommand.replace("<player_name>", claimingUser.getName()));
+        if (this.rewardCommand != null) plugin().getServer().dispatchCommand(Bukkit.getConsoleSender(), this.rewardCommand.replace("<player_name>", claimingUser.getName()));
     }
 }
