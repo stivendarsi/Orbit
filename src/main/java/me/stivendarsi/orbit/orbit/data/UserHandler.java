@@ -1,12 +1,12 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
+import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.jetbrains.annotations.Nullable;
-import redis.clients.jedis.RedisClient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,18 +31,18 @@ public class UserHandler {
         this.userDataMap.put(localUserData.userUUID(), localUserData);
     }
 
-    public void unloadUser(UUID userUUID){
+    public void unloadUser(UUID userUUID) {
         saveUser(userUUID);
         this.userDataMap.remove(userUUID);
     }
 
-    private void saveUser(UUID userUUID){
+    private void saveUser(UUID userUUID) {
         saveUser(this.userDataMap.getOrDefault(userUUID, null));
     }
 
     private void saveUser(@Nullable LocalUserData localUserData) {
         if (localUserData == null) return;
-        RedisClient client = mainHandler().redisClient().getClient();
+        RedisCommands<String, String> client = mainHandler().redisClient().getSync();
         for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
             Pair<boolean[], boolean[]> t = localUserData.getTiersData(orbitIdentifier);
             Preconditions.checkNotNull(t, "Null tier data: " + orbitIdentifier);
@@ -52,12 +52,14 @@ public class UserHandler {
 
             boolean[] regular = t.getLeft();
             for (int i = 0; i < regular.length; i++) {
-                client.setbit(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.regular), i, regular[i]);
+                int value = regular[i] ? 1 : 0;
+                client.setbit(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.regular), i, value);
             }
 
             boolean[] plus = t.getRight();
             for (int i = 0; i < plus.length; i++) {
-                client.setbit(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.plus), i, plus[i]);
+                int value = plus[i] ? 1 : 0;
+                client.setbit(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.plus), i, value);
             }
         }
     }

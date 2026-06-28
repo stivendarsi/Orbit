@@ -1,6 +1,5 @@
 package me.stivendarsi.orbit;
 
-import me.stivendarsi.orbit.experience.ExperienceHandler;
 import me.stivendarsi.orbit.orbit.data.OrbitHandler;
 import me.stivendarsi.orbit.orbit.data.UserHandler;
 import me.stivendarsi.orbit.redis.RedisHandler;

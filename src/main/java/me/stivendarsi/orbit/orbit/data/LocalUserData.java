@@ -1,6 +1,8 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
+import io.lettuce.core.api.async.RedisAsyncCommands;
+import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -9,7 +11,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import redis.clients.jedis.RedisClient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class LocalUserData {
             boolean[] plus = loadUnlockList(true, orbitIdentifier);
             this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
 
-            String userExperienceString = mainHandler().redisClient().getClient().get(RedisHandler.getUserDataPath(orbitIdentifier, userUUID, DataType.experience));
+            String userExperienceString = mainHandler().redisClient().getSync().get(RedisHandler.getUserDataPath(orbitIdentifier, userUUID, DataType.experience));
          //   System.out.println("User string experience: " + userExperienceString);
             this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userExperienceString, 0));
         }
@@ -82,14 +83,14 @@ public class LocalUserData {
         Preconditions.checkNotNull(orbitData, "Null orbit data");
 
         boolean[] unlocked = new boolean[orbitData.tierAmount()];
-        RedisClient client = mainHandler().redisClient().getClient();
+        RedisCommands<String, String> client = mainHandler().redisClient().getSync();
         String key;
 
-        if (plus) key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, this.userUUID, DataType.plus);
-        else key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, this.userUUID, DataType.regular);
+        if (plus) key = RedisHandler.getUserDataPath(orbitIdentifier, this.userUUID, DataType.plus);
+        else key = RedisHandler.getUserDataPath(orbitIdentifier, this.userUUID, DataType.regular);
 
         for (int i = 0; i < unlocked.length; i++) {
-            unlocked[i] = client.getbit(key, i);
+            unlocked[i] = client.getbit(key, i) == 1;
         }
 
         return unlocked;
