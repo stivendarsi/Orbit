@@ -13,7 +13,7 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
     compileOnly("com.nexomc:nexo:1.24.0")
-    compileOnly("io.lettuce:lettuce-core:6.7.1.RELEASE")
+    implementation("io.lettuce:lettuce-core:7.6.0.RELEASE")
 }
 
 java {

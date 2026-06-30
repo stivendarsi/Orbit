@@ -13,9 +13,7 @@ public class RedisHandler {
 
     public void load() {
 
-        RedisURI uri = RedisURI.Builder
-                .redis("82.22.24.12", 25595)
-                .withAuthentication("default", "A@pX#=sEk)x,luo5U5jx^G)Y&Vmi&oDGOr[&^Bly").build();
+        RedisURI uri = RedisURI.builder().withHost("82.22.24.12").withPort(25595).withAuthentication("default","A@pX#=sEk)x,luo5U5jx^G)Y&Vmi&oDGOr[&^Bly").build();
 
         RedisClient client = RedisClient.create(uri);
         this.connection = client.connect();

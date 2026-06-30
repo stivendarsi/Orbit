@@ -8,6 +8,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -44,24 +45,31 @@ public class UserHandler {
         if (localUserData == null) return;
         RedisCommands<String, String> client = mainHandler().redisClient().getSync();
         for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
-            Pair<boolean[], boolean[]> t = localUserData.getTiersData(orbitIdentifier);
+            Pair<BitSet, BitSet> t = localUserData.getTiersData(orbitIdentifier);
             Preconditions.checkNotNull(t, "Null tier data: " + orbitIdentifier);
 
             String experience = String.valueOf(localUserData.getUserExperience(orbitIdentifier));
             client.set(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.experience), experience);
 
-            boolean[] regular = t.getLeft();
-            for (int i = 0; i < regular.length; i++) {
-                int value = regular[i] ? 1 : 0;
-                client.setbit(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.regular), i, value);
-            }
+            OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
+            Preconditions.checkNotNull(orbitData, "Null orbit");
 
-            boolean[] plus = t.getRight();
-            for (int i = 0; i < plus.length; i++) {
-                int value = plus[i] ? 1 : 0;
-                client.setbit(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.plus), i, value);
-            }
+
+            String key = RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.regular);
+            client.set(key, bitSetToString(t.getLeft(), orbitData.tierAmount()));
+
+            key = RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.plus);
+            client.set(key, bitSetToString(t.getRight(), orbitData.tierAmount()));
         }
+    }
+
+    private String bitSetToString(BitSet bitSet, int size) {
+        StringBuilder binaryStr = new StringBuilder(size);
+
+        for (int i = 0; i < size; i++) {
+            binaryStr.append(bitSet.get(i) ? "1" : "0");
+        }
+        return binaryStr.toString();
     }
 
     public @Nullable LocalUserData getUser(UUID uuid) {

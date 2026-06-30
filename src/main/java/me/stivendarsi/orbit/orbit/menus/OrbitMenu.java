@@ -21,6 +21,7 @@ import org.bukkit.entity.Player;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 import java.util.UUID;
 
@@ -265,11 +266,11 @@ public class OrbitMenu {
         LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
         Preconditions.checkNotNull(localUserData, "Null user data");
 
-        Pair<boolean[], boolean[]> prizeData = localUserData.getTiersData(this.orbitData.identifier());
+        Pair<BitSet, BitSet> prizeData = localUserData.getTiersData(this.orbitData.identifier());
         if (prizeData == null) return false;
 
-        if (plus) return prizeData.getRight()[prizeIndex];
-        else return prizeData.getLeft()[prizeIndex];
+        if (plus) return prizeData.getRight().get(prizeIndex);
+        else return prizeData.getLeft().get(prizeIndex);
     }
 
     private boolean isLevelIndexUnLocked(int levelIndex) {
