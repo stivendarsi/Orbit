@@ -8,7 +8,8 @@ orbits:
   season-1:
     quests:
       quest-id:
-        type: "quest type"
+        text:
+          - ""
         required-amount: 100
         reward-command: "experience <player_name> modify 100"
 
