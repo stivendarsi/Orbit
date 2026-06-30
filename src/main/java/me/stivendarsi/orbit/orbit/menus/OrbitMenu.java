@@ -109,10 +109,10 @@ public class OrbitMenu {
         percentDone = Math.max(0, Math.min(100, percentDone));
 
         int percentLeft = 100 - percentDone;
-      //  System.out.println("progress: " + percentDone);
-       // System.out.println("left: " + percentLeft);
+        //  System.out.println("progress: " + percentDone);
+        // System.out.println("left: " + percentLeft);
 
-        b.append("<white>").append(this.currentIndex).append(" ");
+        b.append("<white>").append(this.currentIndex + 1).append(" ");
 
         b.append("<gradient:#b2f7c1:#08ff3d>");
 
@@ -137,7 +137,7 @@ public class OrbitMenu {
 
         b.append("</dark_gray>");
         b.append("</gradient:#b2f7c1:#08ff3d>");
-        if (this.currentIndex + 1 < len) b.append(" ").append(this.currentIndex + 1);
+        if (this.currentIndex + 1 < len) b.append(" ").append(this.currentIndex + 1 + 1);
 
         return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 500);
     }
@@ -187,10 +187,10 @@ public class OrbitMenu {
             Component status = mm.deserialize("<gray>רמה: <white>" + levelIndex);
 
             if (isLevelIndexUnLocked(levelIndex)) {
-                tierComponent = mm.deserialize(levelIndex + " <green>" + Constants.unLocked);
-                status = status.append(mm.deserialize("<newline><green> פתוח" + Constants.unLocked));
+                tierComponent = mm.deserialize(levelIndex + 1 + " <green>" + Constants.unLocked);
+                status = status.append(mm.deserialize("<newline><green>פתוח " + Constants.unLocked));
             } else {
-                tierComponent = mm.deserialize(levelIndex + " <red>" + Constants.locked);
+                tierComponent = mm.deserialize(levelIndex + 1 + " <red>" + Constants.locked);
                 status = status.append(mm.deserialize("<newline><red>נעול " + Constants.locked));
             }
 
@@ -231,10 +231,12 @@ public class OrbitMenu {
             Component tierText = Component.empty();
 
             if (prize != null) {
-                if (isPrizeTaken)  tierText = MiniMessage.miniMessage().deserialize("<dark_gray><sprite:%s></dark_gray>".formatted(prize.iconReward()));
-                else  tierText = MiniMessage.miniMessage().deserialize("<sprite:%s>".formatted(prize.iconReward()));
+                if (isPrizeTaken)
+                    tierText = MiniMessage.miniMessage().deserialize("<dark_gray><sprite:%s></dark_gray>".formatted(prize.iconReward()));
+                else tierText = MiniMessage.miniMessage().deserialize("<sprite:%s>".formatted(prize.iconReward()));
 
-                if (prize.description() != null) toolTip = mm.deserialize(String.join("<newline>", prize.description()) + "<newline>");
+                if (prize.description() != null)
+                    toolTip = mm.deserialize(String.join("<newline>", prize.description()) + "<newline>");
             }
 
             if (!isPrizeUnlocked) toolTip = toolTip.append(mm.deserialize("<red>אין אפשרת לקחת</red>"));
@@ -278,8 +280,8 @@ public class OrbitMenu {
         Preconditions.checkNotNull(localUserData, "Null user data");
         int xp = this.requiredExperience[levelIndex];
 
-      //  System.out.println("Requiered: " + xp);
-     //  System.out.println("Has: " + this.currentIndex);
+        //  System.out.println("Requiered: " + xp);
+        //  System.out.println("Has: " + this.currentIndex);
 
         return xp <= localUserData.getUserExperience(this.orbitData.identifier());
     }
