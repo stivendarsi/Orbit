@@ -5,6 +5,7 @@ import io.lettuce.core.api.async.RedisAsyncCommands;
 import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
+import net.kyori.adventure.text.Component;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;

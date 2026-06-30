@@ -14,11 +14,11 @@ orbits:
       0:
         plus:
           description: "אייטם"
-          icon-sprite: "block/iron_block"
+          icon-sprite: "block/diamond_block"
           reward-command: ""
         regular:
           description: "אייטם"
-          icon-sprite: "block/iron_block"
+          icon-sprite: "block/dirt"
           reward-command: ""
       1:
         plus:
