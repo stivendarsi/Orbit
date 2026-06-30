@@ -1,14 +1,20 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
+import me.stivendarsi.orbit.experience.Quest;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jspecify.annotations.Nullable;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class OrbitData {
+    private final Map<String, Quest> orbitQuests;
     private final String identifier;
     private final LocalDateTime start;
     private final LocalDateTime end;
@@ -37,9 +43,26 @@ public class OrbitData {
         for (int levelIndex = 0; levelIndex < this.tierAmount; levelIndex++) {
             this.tiers[levelIndex] = loadTier(levelIndex, orbitSection);
         }
+
+        // Quests
+        this.orbitQuests = new HashMap<>();
+        ConfigurationSection questsSection = orbitSection.getConfigurationSection("quests");
+        if (questsSection == null) return;
+
+
+        for (String questIdentifier : questsSection.getKeys(false)) {
+            int requiredAmount = questsSection.getInt(questIdentifier + ".required-amount");
+            String commandReward = questsSection.getString(questIdentifier + ".command-reward");
+            List<String> description = questsSection.getStringList(questIdentifier + ".description");
+
+            Quest quest = new Quest(orbitIdentifier, commandReward, requiredAmount, questIdentifier, description);
+            this.orbitQuests.put(orbitIdentifier, quest);
+        }
+
+
     }
 
-    private Pair<Prize, Prize> loadTier(int levelIndex, ConfigurationSection orbitSection){
+    private Pair<Prize, Prize> loadTier(int levelIndex, ConfigurationSection orbitSection) {
         ConfigurationSection regularSection = orbitSection.getConfigurationSection("tiers.%s.regular".formatted(levelIndex));
         Prize regular = null;
         if (regularSection != null) regular = new Prize(levelIndex, false, regularSection);
@@ -52,7 +75,7 @@ public class OrbitData {
     }
 
 
-    public @Nullable Prize getPrize(int levelIndex, boolean plus){
+    public @Nullable Prize getPrize(int levelIndex, boolean plus) {
         Pair<Prize, Prize> tier = this.tiers[levelIndex];
         if (tier == null) return null;
         return plus ? tier.getRight() : tier.getLeft();

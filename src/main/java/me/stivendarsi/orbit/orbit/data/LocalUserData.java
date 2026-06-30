@@ -1,11 +1,9 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
-import io.lettuce.core.api.async.RedisAsyncCommands;
-import io.lettuce.core.api.sync.RedisCommands;
+import me.stivendarsi.orbit.experience.Quest;
 import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
-import net.kyori.adventure.text.Component;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
@@ -13,8 +11,10 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
@@ -22,6 +22,7 @@ public class LocalUserData {
     private final Map<String, Integer> userOrbitExperience;
     private final UUID userUUID;
     private final Map<String, Pair<BitSet, BitSet>> pairUnlocked;
+    private Map<String, Integer> map; // Quest id | completed
 
 
     public LocalUserData(UUID userUUID) {
@@ -113,5 +114,9 @@ public class LocalUserData {
 
     public UUID userUUID() {
         return userUUID;
+    }
+
+    public void countQuest(String questIdentifier){
+        Quest quest;
     }
 }

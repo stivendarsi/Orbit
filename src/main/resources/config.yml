@@ -6,6 +6,12 @@ redis:
 
 orbits:
   season-1:
+    quests:
+      quest-id:
+        type: "quest type"
+        required-amount: 100
+        reward-command: "experience <player_name> modify 100"
+
     start: "2025:05:26:00:00:00"
     end: "2026:12:01:00:00:00"
     tier-amount: 100
