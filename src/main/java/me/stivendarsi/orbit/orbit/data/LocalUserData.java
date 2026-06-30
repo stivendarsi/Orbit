@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
@@ -31,11 +32,18 @@ public class LocalUserData {
         for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
             BitSet regular = loadUnlockList(false, orbitIdentifier);
             BitSet plus = loadUnlockList(true, orbitIdentifier);
+
+            System.out.println(regular.toString());
+            System.out.println(plus.toString());
+
             this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
 
-            String userExperienceString = mainHandler().redisClient().getSync().get(RedisHandler.getUserDataPath(orbitIdentifier, userUUID, DataType.experience));
-         //   System.out.println("User string experience: " + userExperienceString);
-            this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userExperienceString, 0));
+
+            String experienceKey = RedisHandler.getUserDataPath(orbitIdentifier, userUUID, DataType.experience);
+            if (RedisHandler.pathExists(experienceKey)) {
+                String userExperienceString = mainHandler().redisClient().getSync().get(experienceKey);
+                this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userExperienceString, 0));
+            } else this.userOrbitExperience.put(orbitIdentifier, 0);
         }
     }
 
@@ -60,6 +68,7 @@ public class LocalUserData {
         Pair<BitSet, BitSet> data = this.pairUnlocked.getOrDefault(orbitIdentifier, null);
         Preconditions.checkNotNull(data, "Null tier data");
 
+        System.out.println(prizeIndex + ": prize index");
         if (plus) data.getRight().set(prizeIndex, true);
         else data.getLeft().set(prizeIndex, true);
 
@@ -75,20 +84,30 @@ public class LocalUserData {
 
     }
 
-    public  @NotNull BitSet loadUnlockList(boolean plus, String orbitIdentifier) {
+    public @NotNull BitSet loadUnlockList(boolean plus, String orbitIdentifier) {
         OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
 
         Preconditions.checkNotNull(orbitData, "Null orbit data");
 
-        String key;
-        if (plus) key = RedisHandler.getUserDataPath(orbitIdentifier, this.userUUID, DataType.plus);
-        else key = RedisHandler.getUserDataPath(orbitIdentifier, this.userUUID, DataType.regular);
+        String path;
+        if (plus) path = RedisHandler.getUserDataPath(orbitIdentifier, this.userUUID, DataType.plus);
+        else path = RedisHandler.getUserDataPath(orbitIdentifier, this.userUUID, DataType.regular);
 
 
-        byte[] unlocked = mainHandler().redisClient().getSync().get(key).getBytes();
-        if (unlocked.length != orbitData.tierAmount()) unlocked = Arrays.copyOf(unlocked, orbitData.tierAmount());
+        BitSet bitSet = new BitSet(orbitData.tierAmount());
 
-        return BitSet.valueOf(unlocked);
+        if (!RedisHandler.pathExists(path)) {
+            return bitSet;
+        }
+
+        String tierData = mainHandler().redisClient().getSync().get(path);
+        System.out.println("Tier Data: " + tierData);
+
+        for (int i = 0; i < orbitData.tierAmount(); i++) {
+            if (tierData.charAt(i) == '1') bitSet.set(i);
+        }
+
+        return bitSet;
     }
 
     public UUID userUUID() {

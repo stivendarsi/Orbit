@@ -8,6 +8,8 @@ import io.lettuce.core.api.sync.RedisCommands;
 
 import java.util.UUID;
 
+import static me.stivendarsi.orbit.Orbit.mainHandler;
+
 public class RedisHandler {
     private StatefulRedisConnection<String, String> connection;
 
@@ -23,6 +25,10 @@ public class RedisHandler {
 
     public static String getUserDataPath(String orbitIdentifier, UUID userUUID, DataType dataType) {
         return "orbit:orbit_data:" + orbitIdentifier + ":" + userUUID + ":" + dataType.toString();
+    }
+
+    public static boolean pathExists(String path){
+        return 0 < mainHandler().redisClient().getSync().exists(path);
     }
 
     public RedisCommands<String, String> getSync(){
