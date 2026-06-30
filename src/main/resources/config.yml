@@ -4,15 +4,21 @@ redis:
   user: "default"
   password: "A@pX#=sEk)x,luo5U5jx^G)Y&Vmi&oDGOr[&^Bly"
 
+quests:
+  quest-id:
+    appears: SEASON # SEASON / DAILY
+    description-width: 120
+    description: "להרוג 100 מפלצות"
+    required-amount: 100
+    reward-description: "50 כוכבים"
+    reward-command: "experience <player_name> modify 50"
+    itemstack:
+      type: "iron_sword"
+      enchanted: true;
+
 orbits:
   season-1:
-    quests:
-      quest-id:
-        text:
-          - ""
-        required-amount: 100
-        reward-command: "experience <player_name> modify 100"
-
+    season-quests: ["quest-1", "quest-2"]
     start: "2025:05:26:00:00:00"
     end: "2026:12:01:00:00:00"
     tier-amount: 100

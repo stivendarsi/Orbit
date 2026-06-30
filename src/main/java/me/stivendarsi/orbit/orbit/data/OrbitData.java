@@ -13,8 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static me.stivendarsi.orbit.Orbit.plugin;
+
 public class OrbitData {
-    private final Map<String, Quest> orbitQuests;
     private final String identifier;
     private final LocalDateTime start;
     private final LocalDateTime end;
@@ -43,23 +44,6 @@ public class OrbitData {
         for (int levelIndex = 0; levelIndex < this.tierAmount; levelIndex++) {
             this.tiers[levelIndex] = loadTier(levelIndex, orbitSection);
         }
-
-        // Quests
-        this.orbitQuests = new HashMap<>();
-        ConfigurationSection questsSection = orbitSection.getConfigurationSection("quests");
-        if (questsSection == null) return;
-
-
-        for (String questIdentifier : questsSection.getKeys(false)) {
-            int requiredAmount = questsSection.getInt(questIdentifier + ".required-amount");
-            String commandReward = questsSection.getString(questIdentifier + ".command-reward");
-            List<String> description = questsSection.getStringList(questIdentifier + ".description");
-
-            Quest quest = new Quest(orbitIdentifier, commandReward, requiredAmount, questIdentifier, description);
-            this.orbitQuests.put(orbitIdentifier, quest);
-        }
-
-
     }
 
     private Pair<Prize, Prize> loadTier(int levelIndex, ConfigurationSection orbitSection) {

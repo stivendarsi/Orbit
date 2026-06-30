@@ -1,49 +1,73 @@
 package me.stivendarsi.orbit.experience;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-
-import java.util.List;
-
-import static me.stivendarsi.orbit.Orbit.plugin;
+import io.papermc.paper.datacomponent.DataComponentTypes;
+import net.kyori.adventure.key.Key;
+import org.bukkit.Registry;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.inventory.ItemStack;
 
 public class Quest {
-    private final String orbitIdentifier;
-    private final String rewardCommand;
+    private final String identifier;
+    private final ItemStack questIcon;
+    private final APPEAR_TYPE appearType;
+    private final int descriptionWidth;
+    private final String description;
     private final int requiredAmount;
-    private final String questIdentifier;
-    private final List<String> description;
+    private final String rewardDescription;
+    private final String rewardCommand;
 
-    public Quest(String orbitIdentifier, String rewardCommand, int requiredAmount, String questIdentifier, List<String> description) {
-        this.orbitIdentifier = orbitIdentifier;
-        this.rewardCommand = rewardCommand;
-        this.requiredAmount = requiredAmount;
-        this.questIdentifier = questIdentifier;
-        this.description = description;
+    public Quest(String identifier, ConfigurationSection questSection) {
+        this.identifier = identifier;
+
+        String itemTypeString = questSection.getString("itemstack.type", "bedrock");
+        this.questIcon = Registry.ITEM.get(Key.key(itemTypeString)).createItemStack();
+
+        boolean enchanted = questSection.getBoolean("itemstack.enchanted");
+        this.questIcon.setData(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, enchanted);
+
+        this.appearType = APPEAR_TYPE.valueOf(questSection.getString("appears"));
+        this.descriptionWidth = questSection.getInt("description-width");
+        this.requiredAmount = questSection.getInt("required-amount");
+
+        this.description = questSection.getString("description");
+        this.rewardDescription = questSection.getString("reward-description");
+        this.rewardCommand = questSection.getString("reward-command");
     }
 
-    public void claimReward(Player claimingUser) {
-        if (this.rewardCommand == null) return;
-        plugin().getServer().dispatchCommand(Bukkit.getConsoleSender(), this.rewardCommand.replace("<player_name>", claimingUser.getName()));
+    public enum APPEAR_TYPE {
+        SEASON,
+        DAILY
+    }
+
+    public APPEAR_TYPE appearType() {
+        return appearType;
+    }
+
+    public String identifier() {
+        return identifier;
+    }
+
+    public int descriptionWidth() {
+        return descriptionWidth;
+    }
+
+    public String description() {
+        return description;
     }
 
     public int requiredAmount() {
         return requiredAmount;
     }
 
+    public String rewardDescription() {
+        return rewardDescription;
+    }
+
     public String rewardCommand() {
         return rewardCommand;
     }
 
-    public String questIdentifier() {
-        return questIdentifier;
-    }
-
-    public List<String> description() {
-        return description;
-    }
-
-    public String orbitIdentifier() {
-        return orbitIdentifier;
+    public ItemStack questIcon() {
+        return questIcon;
     }
 }
