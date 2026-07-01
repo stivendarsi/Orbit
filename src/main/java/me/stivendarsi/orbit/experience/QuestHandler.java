@@ -15,7 +15,7 @@ import static me.stivendarsi.orbit.Orbit.mainHandler;
 import static me.stivendarsi.orbit.Orbit.plugin;
 
 public class QuestHandler {
-    private Map<Quest.QUEST_TYPE, Quest> questMap;
+    private Map<String, Quest> questMap;
 
     private List<Quest> dailyQuests;
 
@@ -27,7 +27,7 @@ public class QuestHandler {
 
         for (String questIdentifier : questsSection.getKeys(false)) {
             Quest quest = new Quest(questIdentifier, questsSection.getConfigurationSection(questIdentifier));
-            this.questMap.put(quest.questType(), quest);
+            this.questMap.put(questIdentifier, quest);
         }
 
         this.dailyQuests = getQuestsOfTheDay(2); // load today's quests
@@ -37,6 +37,10 @@ public class QuestHandler {
         for (Quest value : this.questMap.values()) {
             value.loadUserQuestData(uuid);
         }
+    }
+
+    public @Nullable Quest getQuest(String questIdentifier){
+        return this.questMap.getOrDefault(questIdentifier, null);
     }
 
     public void saveUserQuestData(UUID uuid){
@@ -78,7 +82,7 @@ public class QuestHandler {
 
         List<Quest> copy = new ArrayList<>(this.questMap.values()
                 .stream()
-                .filter(q -> q.appearType() == Quest.APPEAR_TYPE.DAILY)
+                .filter(q -> q.appearType() == QuestAppearType.DAILY)
                 .toList());
 
         Collections.shuffle(copy, new Random(seed));

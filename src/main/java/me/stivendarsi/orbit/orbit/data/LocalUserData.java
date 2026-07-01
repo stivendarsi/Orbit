@@ -38,6 +38,7 @@ public class LocalUserData {
 
             this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
 
+            this.killedEntities = new HashMap<>();
 
             String experienceKey = RedisHandler.getUserDataPath(orbitIdentifier, userUUID, DataType.experience);
             if (RedisHandler.pathExists(experienceKey)) {
@@ -64,12 +65,16 @@ public class LocalUserData {
         return this.pairUnlocked.getOrDefault(orbitIdentifier, null);
     }
 
-    public void countKill(String questIdentifier, UUID killedUUID ){
-        Set<UUID> killedEntities = this.killedEntities.getOrDefault(questIdentifier, null);
-        if (killedEntities == null) killedEntities = new HashSet<>();
-
+    public void countKill(String questIdentifier, UUID killedUUID) {
+        Set<UUID> killedEntities = getKilledEntities(questIdentifier);
         killedEntities.add(killedUUID);
         this.killedEntities.put(questIdentifier, killedEntities);
+    }
+
+    public Set<UUID> getKilledEntities(String questIdentifier) {
+        Set<UUID> killedEntities = this.killedEntities.getOrDefault(questIdentifier, null);
+        if (killedEntities == null) killedEntities = new HashSet<>();
+        return killedEntities;
     }
 
     public Map<String, Set<UUID>> questEntityKilled() {
@@ -126,7 +131,7 @@ public class LocalUserData {
         return userUUID;
     }
 
-    public void countQuest(String questIdentifier){
+    public void countQuest(String questIdentifier) {
         Quest quest;
     }
 }

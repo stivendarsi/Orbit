@@ -2,13 +2,17 @@ package me.stivendarsi.orbit.command;
 
 import com.google.common.base.Preconditions;
 import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandExceptionType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
+import me.stivendarsi.orbit.experience.Quest;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.menus.MainMenu;
 import org.bukkit.entity.Player;
+
+import java.lang.reflect.Type;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
@@ -80,8 +84,16 @@ public class OrbitCommands {
         OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
         Preconditions.checkNotNull(orbitData, "Null orbit data");
 
-        int amount =  localUserData.getUserExperience(orbitData.identifier());
+        int amount = localUserData.getUserExperience(orbitData.identifier());
         ctx.getSource().getSender().sendRichMessage("Target experience: " + amount);
+        return 1;
+    }
+
+    public static int getQuestData(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        String questIdentifier = ctx.getArgument("quest-id", String.class);
+        Quest quest = mainHandler().questHandler().getQuest(questIdentifier);
+        if (quest == null) return 0;
+        ctx.getSource().getSender().sendRichMessage("הושלם: " + quest.getUserCount(ctx.getSource().getExecutor().getUniqueId()));
         return 1;
     }
 

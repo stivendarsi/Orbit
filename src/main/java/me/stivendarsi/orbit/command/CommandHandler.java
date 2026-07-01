@@ -3,11 +3,14 @@ package me.stivendarsi.orbit.command;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import me.stivendarsi.orbit.experience.Quest;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
 import static com.mojang.brigadier.arguments.IntegerArgumentType.integer;
+import static com.mojang.brigadier.arguments.StringArgumentType.word;
 import static io.papermc.paper.command.brigadier.argument.ArgumentTypes.player;
+import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 
 public class CommandHandler {
@@ -26,6 +29,17 @@ public class CommandHandler {
                             )
                     )
                     .build());
+
+            commands.register(Commands.literal("quests")
+                    .then(Commands.argument("quest-id", word()).executes(OrbitCommands::getQuestData)
+                            .suggests((context, builder) -> {
+                                        for (Quest quest : mainHandler().questHandler().dailyQuests()) {
+                                            builder.suggest(quest.questIdentifier());
+                                        }
+                                        return builder.buildFuture();
+                                    }
+                            )
+                    ).build());
             commands.register(Commands.literal("orbit").requires(source -> source.getSender().hasPermission("orbit.admin"))
                     .executes(OrbitCommands::open)
                     .build());

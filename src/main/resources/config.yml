@@ -39,7 +39,7 @@ quests:
     required-amount: 5000
     reward-description: "1000 כוכבים"
     reward-command: "experience <player_name> modify 1000"
-    itemstack:
+    icon:
       type: "diamond_pickaxe"
       enchanted: true;
 
@@ -52,7 +52,7 @@ quests:
     required-amount: 8000
     reward-description: "1000 כוכבים"
     reward-command: "experience <player_name> modify 1000"
-    itemstack:
+    icon:
       type: "diamond_pickaxe"
       enchanted: true;
 

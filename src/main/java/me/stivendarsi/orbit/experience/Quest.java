@@ -15,10 +15,10 @@ import java.util.*;
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class Quest {
-    private final QUEST_TYPE questType;
+    private final QuestType questType;
     private final String questIdentifier;
     private final ItemStack questIcon;
-    private final APPEAR_TYPE appearType;
+    private final QuestAppearType appearType;
     private final int descriptionWidth;
     private final String description;
     private final int requiredAmount;
@@ -39,8 +39,8 @@ public class Quest {
         boolean enchanted = questSection.getBoolean("icon.enchanted");
         this.questIcon.setData(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, enchanted);
 
-        this.appearType = APPEAR_TYPE.valueOf(questSection.getString("appears", "").toUpperCase());
-        this.questType = QUEST_TYPE.valueOf(questSection.getString("type", "").toUpperCase());
+        this.appearType = QuestAppearType.valueOf(questSection.getString("appears", "").toUpperCase());
+        this.questType = QuestType.valueOf(questSection.getString("type", "").toUpperCase());
 
         this.allowedBlocks = new ArrayList<>();
         this.allowedEntities = new ArrayList<>();
@@ -91,7 +91,7 @@ public class Quest {
         mainHandler().redisClient().getSync().hset(key, String.valueOf(uuid), String.valueOf(getUserCount(uuid)));
     }
 
-    public QUEST_TYPE questType() {
+    public QuestType questType() {
         return questType;
     }
 //
@@ -109,17 +109,9 @@ public class Quest {
 //        mainHandler().redisClient().getSync().hset(key, data);
 //    }
 
-    public enum APPEAR_TYPE {
-        SEASON,
-        DAILY
-    }
 
-    public enum QUEST_TYPE{
-        KILL_ENTITY,
-        BREAK_BLOCK
-    }
 
-    public APPEAR_TYPE appearType() {
+    public QuestAppearType appearType() {
         return appearType;
     }
 

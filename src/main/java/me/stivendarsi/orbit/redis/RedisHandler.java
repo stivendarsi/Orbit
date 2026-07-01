@@ -5,7 +5,7 @@ import io.lettuce.core.RedisURI;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.async.RedisAsyncCommands;
 import io.lettuce.core.api.sync.RedisCommands;
-import me.stivendarsi.orbit.experience.Quest;
+import me.stivendarsi.orbit.experience.QuestAppearType;
 
 import java.util.UUID;
 
@@ -28,9 +28,9 @@ public class RedisHandler {
         return "orbit:orbit_data:" + orbitIdentifier + ":" + userUUID + ":" + dataType.toString();
     }
 
-    public static String getQuestDataPath(String questIdentifier, Quest.APPEAR_TYPE appearType){
+    public static String getQuestDataPath(String questIdentifier, QuestAppearType appearType){
         String key;
-        if (appearType == Quest.APPEAR_TYPE.DAILY) key = "orbit:quest_data:daily:%s".formatted(questIdentifier);
+        if (appearType == QuestAppearType.DAILY) key = "orbit:quest_data:daily:%s".formatted(questIdentifier);
         else key = "orbit:quest_data:season:%s".formatted(questIdentifier);
         return key;
     }
