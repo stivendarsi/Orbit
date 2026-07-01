@@ -11,6 +11,7 @@ import java.time.ZoneId;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import static me.stivendarsi.orbit.Orbit.mainHandler;
 import static me.stivendarsi.orbit.Orbit.plugin;
 
 public class QuestHandler {
@@ -36,8 +37,16 @@ public class QuestHandler {
         return this.questMap.getOrDefault(questIdentifier, null);
     }
 
-    public Collection<Quest> getQuests() {
-        return this.questMap.values();
+    public void loadUserQuestData(UUID uuid){
+        for (Quest value : this.questMap.values()) {
+            value.loadUserQuestData(uuid);
+        }
+    }
+
+    public void saveUserQuestData(UUID uuid){
+        for (Quest value : this.questMap.values()) {
+            value.saveUserQuestData(uuid);
+        }
     }
 
     public List<Quest> dailyQuests() {
@@ -57,8 +66,13 @@ public class QuestHandler {
         long secondsLeftToMidnight = Duration.between(now, midnight).getSeconds();
 
         plugin().getServer().getAsyncScheduler().runAtFixedRate(plugin(), task -> {
+            resetDailyQuestData();
             this.dailyQuests = getQuestsOfTheDay(2);
         }, secondsLeftToMidnight, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
+    }
+
+    public void resetDailyQuestData(){
+        mainHandler().redisClient().getSync().del("orbit:quest_data:daily");
     }
 
     public List<Quest> getQuestsOfTheDay(int numberOfQuests) {
