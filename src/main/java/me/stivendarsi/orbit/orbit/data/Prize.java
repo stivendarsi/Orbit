@@ -42,8 +42,7 @@ public class Prize {
         return iconReward;
     }
 
-    public void claimReward(Player claimingUser) {
-        if (this.rewardCommand == null) return;
-        plugin().getServer().dispatchCommand(Bukkit.getConsoleSender(), this.rewardCommand.replace("<player_name>", claimingUser.getName()));
+    public String getRewardCommand() {
+        return rewardCommand;
     }
 }

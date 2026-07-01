@@ -24,7 +24,6 @@ public class QuestHandler {
         ConfigurationSection questsSection = plugin().getConfig().getConfigurationSection("quests");
         if (questsSection == null) return;
 
-
         for (String questIdentifier : questsSection.getKeys(false)) {
             Quest quest = new Quest(questIdentifier, questsSection.getConfigurationSection(questIdentifier));
             this.questMap.put(questIdentifier, quest);

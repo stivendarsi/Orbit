@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
+import static me.stivendarsi.orbit.Constants.runCommandInConsole;
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class LocalUserData {
@@ -97,7 +98,7 @@ public class LocalUserData {
         Player player = Bukkit.getPlayer(this.userUUID);
 
         Preconditions.checkNotNull(player, "Null player");
-        prize.claimReward(player);
+        runCommandInConsole(player, prize.getRewardCommand());
 
     }
 

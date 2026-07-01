@@ -1,6 +1,7 @@
 package me.stivendarsi.orbit.events;
 
 import com.google.common.base.Preconditions;
+import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.experience.QuestType;
 import me.stivendarsi.orbit.experience.Quest;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
@@ -25,12 +26,13 @@ public class EntityKillQuestHandler implements Listener {
 
 
         UUID killed = event.getEntity().getUniqueId();
-        EntityType entityType = event.getEntityType();
+        EntityType entityType = event.getEntity().getType();
+        System.out.println(entityType);
 
         for (Quest quest : mainHandler().questHandler().dailyQuests()) {
             if (quest == null || quest.questType() != QuestType.KILL_ENTITY) continue;
 
-            boolean entityTypeIsAllowedToKill = quest.entityKillType().contains(entityType);
+            boolean entityTypeIsAllowedToKill = quest.allowedEntities().contains(entityType);
             boolean entityKilledAlready = userData.getKilledEntities(quest.questIdentifier()).contains(killed);
 
             if (!entityTypeIsAllowedToKill || entityKilledAlready) {
@@ -39,8 +41,13 @@ public class EntityKillQuestHandler implements Listener {
             }
 
             quest.countUser(killer.getUniqueId(), 1);
-            userData.countKill(quest.questIdentifier(), killed);
+
+            boolean rewardPlayer = quest.getUserCount(killer.getUniqueId()) == quest.requiredAmount();
+
+            if (rewardPlayer) Constants.runCommandInConsole(killer, quest.rewardCommand());
+            if (quest.getUserCount(killer.getUniqueId()) <= quest.requiredAmount()) userData.countKill(quest.questIdentifier(), killed);
+
             killer.sendRichMessage("<green>מזל טוב על ההריגה!");
-        };
+        }
     }
 }

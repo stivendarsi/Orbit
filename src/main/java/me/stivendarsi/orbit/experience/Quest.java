@@ -139,7 +139,8 @@ public class Quest {
         return questIcon;
     }
 
-    public List<EntityType> entityKillType() {
+    public List<EntityType> allowedEntities() {
+        System.out.println(this.allowedEntities);
         return allowedEntities;
     }
 
