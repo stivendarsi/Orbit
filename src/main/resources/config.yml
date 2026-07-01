@@ -6,6 +6,8 @@ redis:
 
 quests:
   kill-monsters-1:
+    type: KILL_ENTITY
+    allowed-entities: []
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "להרוג 100 מפלצות"
@@ -16,6 +18,8 @@ quests:
       type: "netherite_sword"
       enchanted: true;
   mine-blocks-1:
+    type: BREAK_BLOCK
+    allowed-blocks: []
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "לחצוב 60 בלוקים"
@@ -27,6 +31,8 @@ quests:
       enchanted: false;
 
   mine-blocks-2:
+    type: BREAK_BLOCK
+    allowed-blocks: [ ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "לחצוב 5000 בלוקים"
@@ -38,6 +44,8 @@ quests:
       enchanted: true;
 
   mine-blocks-3:
+    type: BREAK_BLOCK
+    allowed-blocks: [ ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "לחצוב 8000 בלוקים"

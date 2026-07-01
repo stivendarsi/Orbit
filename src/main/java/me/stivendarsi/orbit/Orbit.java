@@ -2,6 +2,7 @@ package me.stivendarsi.orbit;
 
 import me.stivendarsi.orbit.command.CommandHandler;
 import me.stivendarsi.orbit.events.LoadUserExperienceHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Orbit extends JavaPlugin {

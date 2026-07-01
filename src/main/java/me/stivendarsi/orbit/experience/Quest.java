@@ -5,16 +5,17 @@ import me.stivendarsi.orbit.redis.RedisHandler;
 import net.kyori.adventure.key.Key;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.bukkit.Registry;
+import org.bukkit.block.BlockType;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class Quest {
+    private final QUEST_TYPE questType;
     private final String questIdentifier;
     private final ItemStack questIcon;
     private final APPEAR_TYPE appearType;
@@ -24,6 +25,9 @@ public class Quest {
     private final String rewardDescription;
     private final String rewardCommand;
     private final Map<UUID, Integer> completed;
+
+    private final List<BlockType> allowedBlocks;
+    private final List<EntityType> allowedEntities;
 
     public Quest(String identifier, ConfigurationSection questSection) {
         this.completed = new HashMap<>();
@@ -35,7 +39,26 @@ public class Quest {
         boolean enchanted = questSection.getBoolean("icon.enchanted");
         this.questIcon.setData(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, enchanted);
 
-        this.appearType = APPEAR_TYPE.valueOf(questSection.getString("appears"));
+        this.appearType = APPEAR_TYPE.valueOf(questSection.getString("appears", "").toUpperCase());
+        this.questType = QUEST_TYPE.valueOf(questSection.getString("type", "").toUpperCase());
+
+        this.allowedBlocks = new ArrayList<>();
+        this.allowedEntities = new ArrayList<>();
+
+        switch (this.questType) {
+            case KILL_ENTITY -> {
+                List<String> allowedEntities = questSection.getStringList("allowed-entities");
+                allowedEntities.forEach(s -> this.allowedEntities.add(EntityType.valueOf(s.toUpperCase())));
+            }
+            case BREAK_BLOCK -> {
+                List<String> allowedBlocks = questSection.getStringList("allowed-blocks");
+                allowedBlocks.forEach(s -> {
+                    BlockType blockType = Registry.BLOCK.get(Key.key(s));
+                    this.allowedBlocks.add(blockType);
+                });
+            }
+        }
+
         this.descriptionWidth = questSection.getInt("description-width");
         this.requiredAmount = questSection.getInt("required-amount");
 
@@ -46,10 +69,10 @@ public class Quest {
 
 
     public void countUser(UUID uuid, int amount) {
-        this.completed.put(uuid, getCount(uuid) + amount);
+        this.completed.put(uuid, getUserCount(uuid) + amount);
     }
 
-    public int getCount(UUID uuid) {
+    public int getUserCount(UUID uuid) {
         return this.completed.getOrDefault(uuid, 0);
     }
 
@@ -65,7 +88,11 @@ public class Quest {
         if (!this.completed.containsKey(uuid)) return;
         String key = RedisHandler.getQuestDataPath(questIdentifier, this.appearType);
 
-        mainHandler().redisClient().getSync().hset(key, String.valueOf(uuid), String.valueOf(getCount(uuid)));
+        mainHandler().redisClient().getSync().hset(key, String.valueOf(uuid), String.valueOf(getUserCount(uuid)));
+    }
+
+    public QUEST_TYPE questType() {
+        return questType;
     }
 
     public void saveAllQuestData() {
@@ -87,12 +114,13 @@ public class Quest {
         DAILY
     }
 
-    public APPEAR_TYPE appearType() {
-        return appearType;
+    public enum QUEST_TYPE{
+        KILL_ENTITY,
+        BREAK_BLOCK
     }
 
-    public String identifier() {
-        return questIdentifier;
+    public APPEAR_TYPE appearType() {
+        return appearType;
     }
 
     public int descriptionWidth() {
@@ -117,5 +145,17 @@ public class Quest {
 
     public ItemStack questIcon() {
         return questIcon;
+    }
+
+    public List<EntityType> entityKillType() {
+        return allowedEntities;
+    }
+
+    public List<BlockType> breakBlockType() {
+        return allowedBlocks;
+    }
+
+    public String questIdentifier() {
+        return questIdentifier;
     }
 }

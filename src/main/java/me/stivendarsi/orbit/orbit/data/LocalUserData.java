@@ -11,10 +11,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.BitSet;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
@@ -22,7 +19,8 @@ public class LocalUserData {
     private final Map<String, Integer> userOrbitExperience;
     private final UUID userUUID;
     private final Map<String, Pair<BitSet, BitSet>> pairUnlocked;
-    private Map<String, Integer> map; // Quest id | completed
+
+    private Map<String, Set<UUID>> killedEntities; // questID, uuid of the entity killed.
 
 
     public LocalUserData(UUID userUUID) {
@@ -64,6 +62,18 @@ public class LocalUserData {
 
     public @Nullable Pair<BitSet, BitSet> getTiersData(String orbitIdentifier) {
         return this.pairUnlocked.getOrDefault(orbitIdentifier, null);
+    }
+
+    public void countKill(String questIdentifier, UUID killedUUID ){
+        Set<UUID> killedEntities = this.killedEntities.getOrDefault(questIdentifier, null);
+        if (killedEntities == null) killedEntities = new HashSet<>();
+
+        killedEntities.add(killedUUID);
+        this.killedEntities.put(questIdentifier, killedEntities);
+    }
+
+    public Map<String, Set<UUID>> questEntityKilled() {
+        return killedEntities;
     }
 
     public void takePrize(String orbitIdentifier, int prizeIndex, boolean plus) {
