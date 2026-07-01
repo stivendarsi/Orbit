@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -44,7 +45,7 @@ public class QuestHandler {
     }
 
     public void startDailyQuestChanging() {
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Jerusalem"));
         LocalDateTime midnight = now
                 .withHour(0)
                 .withMinute(0)
@@ -62,8 +63,8 @@ public class QuestHandler {
 
     public List<Quest> getQuestsOfTheDay(int numberOfQuests) {
         Preconditions.checkState(numberOfQuests <= this.questMap.size());
-        LocalDate today = LocalDate.now();
-        long seed = today.getYear() * 10000L + today.getMonthValue() * 100L + today.getDayOfMonth();
+        LocalDate today = LocalDate.now(ZoneId.of("Asia/Jerusalem"));
+        long seed = today.getYear() * 10000L + today.getMonthValue() * 100L + today.getDayOfMonth(); // 20260101
 
         List<Quest> copy = new ArrayList<>(this.questMap.values()
                 .stream()

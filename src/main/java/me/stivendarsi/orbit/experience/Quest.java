@@ -19,10 +19,10 @@ public class Quest {
     public Quest(String identifier, ConfigurationSection questSection) {
         this.identifier = identifier;
 
-        String itemTypeString = questSection.getString("itemstack.type", "bedrock");
+        String itemTypeString = questSection.getString("icon.type", "bedrock");
         this.questIcon = Registry.ITEM.get(Key.key(itemTypeString)).createItemStack();
 
-        boolean enchanted = questSection.getBoolean("itemstack.enchanted");
+        boolean enchanted = questSection.getBoolean("icon.enchanted");
         this.questIcon.setData(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, enchanted);
 
         this.appearType = APPEAR_TYPE.valueOf(questSection.getString("appears"));

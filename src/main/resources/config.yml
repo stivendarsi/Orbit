@@ -5,15 +5,47 @@ redis:
   password: "A@pX#=sEk)x,luo5U5jx^G)Y&Vmi&oDGOr[&^Bly"
 
 quests:
-  quest-id:
+  kill-monsters-1:
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "להרוג 100 מפלצות"
     required-amount: 100
     reward-description: "50 כוכבים"
     reward-command: "experience <player_name> modify 50"
-    itemstack:
+    icon:
+      type: "netherite_sword"
+      enchanted: true;
+  mine-blocks-1:
+    appears: DAILY # SEASON / DAILY
+    description-width: 120
+    description: "לחצוב 60 בלוקים"
+    required-amount: 60
+    reward-description: "50 כוכבים"
+    reward-command: "experience <player_name> modify 50"
+    icon:
       type: "iron_sword"
+      enchanted: false;
+
+  mine-blocks-2:
+    appears: DAILY # SEASON / DAILY
+    description-width: 120
+    description: "לחצוב 5000 בלוקים"
+    required-amount: 5000
+    reward-description: "1000 כוכבים"
+    reward-command: "experience <player_name> modify 1000"
+    itemstack:
+      type: "diamond_pickaxe"
+      enchanted: true;
+
+  mine-blocks-3:
+    appears: DAILY # SEASON / DAILY
+    description-width: 120
+    description: "לחצוב 8000 בלוקים"
+    required-amount: 8000
+    reward-description: "1000 כוכבים"
+    reward-command: "experience <player_name> modify 1000"
+    itemstack:
+      type: "diamond_pickaxe"
       enchanted: true;
 
 orbits:
