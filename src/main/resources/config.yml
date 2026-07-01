@@ -7,7 +7,7 @@ redis:
 quests:
   kill-monsters-1:
     type: KILL_ENTITY
-    allowed-entities: []
+    allowed-entities: ["zombie", "skeleton"]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "להרוג 100 מפלצות"

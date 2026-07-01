@@ -31,7 +31,7 @@ public class MainMenu {
             Preconditions.checkNotNull(currentOrbit, "No current Orbit");
 
             OrbitMenu orbitMenu = new OrbitMenu(currentOrbit, this.userUUID);
-            QuestMenu questMenu = new QuestMenu();
+            QuestMenu questMenu = new QuestMenu(this.userUUID);
 
             List<Dialog> dialogs = new ArrayList<>();
 

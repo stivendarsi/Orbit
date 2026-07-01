@@ -6,6 +6,7 @@ import io.papermc.paper.registry.data.dialog.DialogBase;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import me.stivendarsi.orbit.experience.Quest;
+import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.inventory.ItemStack;
@@ -13,10 +14,17 @@ import org.bukkit.inventory.ItemType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class QuestMenu {
+    private final UUID userUUID;
+
+    public QuestMenu(UUID userUUID) {
+        this.userUUID = userUUID;
+    }
+
     public Dialog getQuestDialog() {
         Dialog questDialog = Dialog.create(b -> {
             b.empty()
@@ -38,9 +46,8 @@ public class QuestMenu {
         bodies.add(dailyQuestsTitle);
 
         mainHandler().questHandler().dailyQuests().forEach(quest -> {
-            bodies.add(getQuestBlock(quest, 50));
+            bodies.add(getQuestBlock(quest, quest.getUserCount(userUUID)));
         });
-
 
         bodies.add(seasonQuestsTitle);
         bodies.add(getQuestBlock(ItemType.IRON_PICKAXE.createItemStack(), "לחצוב 50000 בלוקים", 200, 43, "1000 כוכבים", 120));
