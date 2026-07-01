@@ -29,7 +29,6 @@ public class QuestHandler {
         }
 
         this.dailyQuests = getQuestsOfTheDay(2); // load today's quests
-
     }
 
     public @Nullable Quest getQuest(String questIdentifier) {

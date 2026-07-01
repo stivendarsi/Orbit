@@ -5,6 +5,7 @@ import io.papermc.paper.dialog.Dialog;
 import io.papermc.paper.registry.data.dialog.DialogBase;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
+import me.stivendarsi.orbit.experience.Quest;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.inventory.ItemStack;
@@ -12,6 +13,8 @@ import org.bukkit.inventory.ItemType;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class QuestMenu {
     public Dialog getQuestDialog() {
@@ -28,14 +31,18 @@ public class QuestMenu {
 
     private List<DialogBody> getBody() {
         MiniMessage mm = MiniMessage.miniMessage();
-        DialogBody dailyQuests = DialogBody.plainMessage(mm.deserialize("<u><gradient:#2a94f7:#63cbff:#2a94f7>משימות יומיות</gradient:#2a94f7:#63cbff:#2a94f7></u>"));
-        DialogBody seasonQuests = DialogBody.plainMessage(mm.deserialize("<u><gradient:#e37602:#ffd500:#e37602>משימות עונתיות</gradient:#e37602:#ffd500:#e37602></u>"));
+        DialogBody dailyQuestsTitle = DialogBody.plainMessage(mm.deserialize("<u><gradient:#2a94f7:#63cbff:#2a94f7>משימות יומיות</gradient:#2a94f7:#63cbff:#2a94f7></u>"));
+        DialogBody seasonQuestsTitle = DialogBody.plainMessage(mm.deserialize("<u><gradient:#e37602:#ffd500:#e37602>משימות עונתיות</gradient:#e37602:#ffd500:#e37602></u>"));
 
         List<DialogBody> bodies = new ArrayList<>();
-        bodies.add(dailyQuests);
-        bodies.add(getQuestBlock(ItemType.IRON_PICKAXE.createItemStack(), "לחצוב 200 בלוקים", 200, 43, "20 כוכבים", 120));
-        bodies.add(getQuestBlock(ItemType.NETHERITE_SWORD.createItemStack(), "להרוג 500 מפלצות", 500, 500, "500 כוכבים", 120));
-        bodies.add(seasonQuests);
+        bodies.add(dailyQuestsTitle);
+
+        mainHandler().questHandler().dailyQuests().forEach(quest -> {
+            bodies.add(getQuestBlock(quest, 50));
+        });
+
+
+        bodies.add(seasonQuestsTitle);
         bodies.add(getQuestBlock(ItemType.IRON_PICKAXE.createItemStack(), "לחצוב 50000 בלוקים", 200, 43, "1000 כוכבים", 120));
 
         ItemStack enchanted = ItemType.NETHERITE_SWORD.createItemStack();
@@ -43,6 +50,25 @@ public class QuestMenu {
 
         bodies.add(getQuestBlock(enchanted, "להרוג 100 שחקנים", 100, 100, "1000 כוכבים", 120));
         return bodies;
+    }
+
+    private DialogBody getQuestBlock(Quest quest, int completed) {
+        List<String> builder = new ArrayList<>();
+
+        boolean questCompleted = quest.requiredAmount() <= completed;
+
+        builder.add("<gray>⏵ <gradient:#fabf1b:#faea3c:#fabf1b>" + quest.description() + "</gradient:#fabf1b:#faea3c:#fabf1b> ⏴</gray>");
+
+        builder.add("<#fffb00>" + completed + "/" + quest.requiredAmount() + "</#fffb00>");
+
+        if (questCompleted)
+            builder.add("<gradient:#07ba55:#32f02b:#07ba55>☑ הושלם</gradient:#07ba55:#32f02b:#07ba55>");
+        else builder.add("<gradient:#e32a05:#ff4000:#e32a05>☐ עדיין לא הושלם</gradient:#e32a05:#ff4000:#e32a05>");
+
+        builder.add("<gradient:#d56cf5:#f59cff:#d56cf5>◆ " + quest.rewardDescription() + " ◆</gradient:#d56cf5:#f59cff:#d56cf5>");
+
+        Component text = MiniMessage.miniMessage().deserialize(String.join("<newline>", builder));
+        return DialogBody.item(quest.questIcon()).description(DialogBody.plainMessage(text, quest.descriptionWidth())).showTooltip(false).build();
     }
 
     private DialogBody getQuestBlock(ItemStack itemStack, String questText, int required, int completed, String rewardText, int width) {

@@ -6,7 +6,7 @@ redis:
 
 quests:
   quest-id:
-    appears: SEASON # SEASON / DAILY
+    appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "להרוג 100 מפלצות"
     required-amount: 100
@@ -18,7 +18,7 @@ quests:
 
 orbits:
   season-1:
-    season-quests: ["quest-1", "quest-2"]
+  #  season-quests: ["quest-1", "quest-2"]
     start: "2025:05:26:00:00:00"
     end: "2026:12:01:00:00:00"
     tier-amount: 100
