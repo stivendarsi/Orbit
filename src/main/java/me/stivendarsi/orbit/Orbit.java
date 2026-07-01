@@ -1,6 +1,7 @@
 package me.stivendarsi.orbit;
 
 import me.stivendarsi.orbit.command.CommandHandler;
+import me.stivendarsi.orbit.events.EntityKillQuestHandler;
 import me.stivendarsi.orbit.events.LoadUserExperienceHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,6 +30,7 @@ public final class Orbit extends JavaPlugin {
 
         CommandHandler.register(this.getLifecycleManager());
         getServer().getPluginManager().registerEvents(new LoadUserExperienceHandler(), this);
+        getServer().getPluginManager().registerEvents(new EntityKillQuestHandler(), this);
 
         mainHandler().questHandler().startDailyQuestChanging(); // start the task for changing quests.
     }

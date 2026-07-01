@@ -33,7 +33,7 @@ public class QuestHandler {
         this.dailyQuests = getQuestsOfTheDay(2); // load today's quests
     }
 
-    public void loadUserQuestData(UUID uuid){
+    public void loadUserQuestData(UUID uuid) {
         for (Quest value : this.questMap.values()) {
             value.loadUserQuestData(uuid);
         }
