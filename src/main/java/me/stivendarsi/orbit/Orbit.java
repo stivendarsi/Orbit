@@ -28,6 +28,8 @@ public final class Orbit extends JavaPlugin {
 
         CommandHandler.register(this.getLifecycleManager());
         getServer().getPluginManager().registerEvents(new LoadUserExperienceHandler(), this);
+
+        mainHandler().questHandler().startDailyQuestChanging(); // start the task for changing quests.
     }
 
     @Override

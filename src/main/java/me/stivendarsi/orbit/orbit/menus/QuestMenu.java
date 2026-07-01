@@ -28,9 +28,8 @@ public class QuestMenu {
 
     private List<DialogBody> getBody() {
         MiniMessage mm = MiniMessage.miniMessage();
-        DialogBody dailyQuests = DialogBody.plainMessage(mm.deserialize("<u><gradient:#2a94f7:#63cbff:#2a94f7>משימות יומיות</gradient:#2a94f7:#63cbff:#2a94f7></u>"), 400);
-        DialogBody seasonQuests = DialogBody.plainMessage(mm.deserialize("<u><gradient:#e37602:#ffd500:#e37602>משימות עונתיות</gradient:#e37602:#ffd500:#e37602></u>"), 400);
-
+        DialogBody dailyQuests = DialogBody.plainMessage(mm.deserialize("<u><gradient:#2a94f7:#63cbff:#2a94f7>משימות יומיות</gradient:#2a94f7:#63cbff:#2a94f7></u>"));
+        DialogBody seasonQuests = DialogBody.plainMessage(mm.deserialize("<u><gradient:#e37602:#ffd500:#e37602>משימות עונתיות</gradient:#e37602:#ffd500:#e37602></u>"));
 
         List<DialogBody> bodies = new ArrayList<>();
         bodies.add(dailyQuests);
@@ -62,6 +61,6 @@ public class QuestMenu {
         builder.add("<gradient:#d56cf5:#f59cff:#d56cf5>◆ " + rewardText + " ◆</gradient:#d56cf5:#f59cff:#d56cf5>");
 
         Component text = MiniMessage.miniMessage().deserialize(String.join("<newline>", builder));
-        return DialogBody.item(itemStack).description(DialogBody.plainMessage(text, width)).build();
+        return DialogBody.item(itemStack).description(DialogBody.plainMessage(text, width)).showTooltip(false).build();
     }
 }
