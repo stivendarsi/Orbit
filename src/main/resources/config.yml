@@ -7,6 +7,7 @@ redis:
 quests:
   kill-monsters-1:
     type: KILL_ENTITY
+    mode: WHITE_LIST # WHITE_LIST / BLACK_LIST
     allowed-entities: ["zombie", "skeleton"]
     appears: DAILY # SEASON / DAILY
     description-width: 120

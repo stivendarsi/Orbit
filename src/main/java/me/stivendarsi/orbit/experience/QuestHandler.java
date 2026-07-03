@@ -55,7 +55,7 @@ public class QuestHandler {
     public void startDailyQuestChanging() {
         LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Jerusalem"));
         LocalDateTime midnight = now
-                .withHour(0)
+                .withHour(15)
                 .withMinute(0)
                 .withSecond(0)
                 .withNano(0)
