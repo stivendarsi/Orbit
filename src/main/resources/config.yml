@@ -20,6 +20,7 @@ quests:
       enchanted: true;
   mine-blocks-1:
     type: BREAK_BLOCK
+    mode: WHITE_LIST
     allowed-blocks: []
     appears: DAILY # SEASON / DAILY
     description-width: 120
@@ -33,6 +34,7 @@ quests:
 
   mine-blocks-2:
     type: BREAK_BLOCK
+    mode: WHITE_LIST
     allowed-blocks: [ ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
@@ -46,6 +48,7 @@ quests:
 
   mine-blocks-3:
     type: BREAK_BLOCK
+    mode: WHITE_LIST
     allowed-blocks: [ ]
     appears: DAILY # SEASON / DAILY
     description-width: 120

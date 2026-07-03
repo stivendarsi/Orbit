@@ -2,7 +2,7 @@ package me.stivendarsi.orbit.events;
 
 import com.google.common.base.Preconditions;
 import me.stivendarsi.orbit.Constants;
-import me.stivendarsi.orbit.experience.QuestType;
+import me.stivendarsi.orbit.experience.enums.QuestType;
 import me.stivendarsi.orbit.experience.Quest;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import org.bukkit.entity.EntityType;

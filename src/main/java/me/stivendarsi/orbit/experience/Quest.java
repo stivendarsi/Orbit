@@ -1,6 +1,9 @@
 package me.stivendarsi.orbit.experience;
 
 import io.papermc.paper.datacomponent.DataComponentTypes;
+import me.stivendarsi.orbit.experience.enums.QuestAppearType;
+import me.stivendarsi.orbit.experience.enums.QuestListMode;
+import me.stivendarsi.orbit.experience.enums.QuestType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import net.kyori.adventure.key.Key;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -19,6 +22,7 @@ public class Quest {
     private final String questIdentifier;
     private final ItemStack questIcon;
     private final QuestAppearType appearType;
+    private final QuestListMode questListMod;
     private final int descriptionWidth;
     private final String description;
     private final int requiredAmount;
@@ -41,6 +45,7 @@ public class Quest {
 
         this.appearType = QuestAppearType.valueOf(questSection.getString("appears", "").toUpperCase());
         this.questType = QuestType.valueOf(questSection.getString("type", "").toUpperCase());
+        this.questListMod = QuestListMode.valueOf(questSection.getString("mode", "").toUpperCase());
 
         this.allowedBlocks = new ArrayList<>();
         this.allowedEntities = new ArrayList<>();
