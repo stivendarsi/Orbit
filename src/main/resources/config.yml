@@ -29,7 +29,7 @@ quests:
     reward-description: "50 כוכבים"
     reward-command: "experience <player_name> modify 50"
     icon:
-      type: "iron_sword" rare.png
+      type: "iron_sword"
       enchanted: false;
 
   mine-blocks-2:
@@ -62,7 +62,7 @@ quests:
 
 orbits:
   season-1:
-  #  season-quests: ["quest-1", "quest-2"]
+    #  season-quests: ["quest-1", "quest-2"]
     start: "2025:05:26:00:00:00"
     end: "2026:12:01:00:00:00"
     tier-amount: 100
@@ -70,901 +70,901 @@ orbits:
     tiers:
       0:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/diamond_block"
-          reward-command: ""
+          description: "<aqua>מפתח נדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          reward-command: "crate givekey <player_name> rare 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/dirt"
-          reward-command: ""
+          description: "<green>מפתח רגיל"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/normal'"
+          reward-command: "crate givekey <player_name> normal 1"
       1:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 200"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 200"
       2:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 200"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 200"
       3:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 200"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 200"
       4:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>225₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 225"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "<gradient:#ffc800:#db930d>/sell 1.1X</gradient>"
+          icon-sprite: "block/gold_block"
           reward-command: ""
       5:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>225₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 225"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>225₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 225"
       6:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>225₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 225"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>225₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 225"
       7:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<aqua>מפתח נדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          reward-command: "crate givekey <player_name> rare 1"
       8:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>250₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 250"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>250₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 250"
       9:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>250₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 250"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>250₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 250"
       10:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<aqua>מפתח נדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          reward-command: "crate givekey <player_name> rare 1"
       11:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 300"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 300"
       12:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 300"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 300"
       13:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 300"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 300"
       14:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>325₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 325"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "<gradient:#ffc800:#db930d>/sell 1.2X</gradient>"
+          icon-sprite: "block/gold_block"
           reward-command: ""
       15:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>325₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 325"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>325₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 325"
       16:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>325₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 325"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>325₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 325"
       17:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
       18:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>350₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 350"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>350₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 350"
       19:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>350₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 350"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>350₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 350"
       20:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
       21:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 400"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 400"
       22:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 400"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 400"
       23:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 400"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 400"
       24:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>425₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 425"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "<gradient:#ffc800:#db930d>/sell 1.3X</gradient>"
+          icon-sprite: "block/gold_block"
           reward-command: ""
       25:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>425₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 425"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>425₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 425"
       26:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>425₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 425"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>425₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 425"
       27:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gold>מפתח נמר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          reward-command: "crate givekey <player_name> tiger 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
       28:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>450₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 450"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>450₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 450"
       29:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>450₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 450"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>450₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 450"
       30:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gold>מפתח נמר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          reward-command: "crate givekey <player_name> tiger 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
       31:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 500"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 500"
       32:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 500"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 500"
       33:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 500"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 500"
       34:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>525₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 525"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "<gradient:#ffc800:#db930d>/sell 1.4X</gradient>"
+          icon-sprite: "block/gold_block"
           reward-command: ""
       35:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>525₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 525"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>525₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 525"
       36:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>525₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 525"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>525₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 525"
       37:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gold>מפתח נמר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          reward-command: "crate givekey <player_name> tiger 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gold>מפתח נמר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          reward-command: "crate givekey <player_name> tiger 1"
       38:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>550₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 550"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>550₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 550"
       39:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>550₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 550"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>550₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 550"
       40:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<aqua>מפתח נדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          reward-command: "crate givekey <player_name> rare 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<green>מפתח רגיל"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/normal'"
+          reward-command: "crate givekey <player_name> normal 1"
       41:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 600"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 600"
       42:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 600"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 600"
       43:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 600"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 600"
       44:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>625₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 625"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "<gradient:#ffc800:#db930d>/sell 1.5X</gradient>"
+          icon-sprite: "block/gold_block"
           reward-command: ""
       45:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>625₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 625"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>625₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 625"
       46:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>625₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 625"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>625₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 625"
       47:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<aqua>מפתח נדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          reward-command: "crate givekey <player_name> rare 1"
       48:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>650₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 650"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>650₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 650"
       49:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>650₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 650"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>650₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 650"
       50:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<aqua>מפתח נדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          reward-command: "crate givekey <player_name> rare 1"
       51:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 700"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 700"
       52:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 700"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 700"
       53:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 700"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 700"
       54:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>725₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 725"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "<gradient:#ffc800:#db930d>/sell 1.6X</gradient>"
+          icon-sprite: "block/gold_block"
           reward-command: ""
       55:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>725₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 725"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>725₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 725"
       56:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>725₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 725"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>725₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 725"
       57:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
       58:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>750₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 750"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>750₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 750"
       59:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>750₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 750"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>750₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 750"
       60:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
       61:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 800"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 800"
       62:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 800"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 800"
       63:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 800"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 800"
       64:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>825₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 825"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "<gradient:#ffc800:#db930d>/sell 1.7X</gradient>"
+          icon-sprite: "block/gold_block"
           reward-command: ""
       65:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>825₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 825"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>825₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 825"
       66:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>825₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 825"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>825₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 825"
       67:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gold>מפתח נמר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          reward-command: "crate givekey <player_name> tiger 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
       68:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>850₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 850"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>850₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 850"
       69:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>850₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 850"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>850₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 850"
       70:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gold>מפתח נמר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          reward-command: "crate givekey <player_name> tiger 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
       71:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 900"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 900"
       72:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 900"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 900"
       73:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 900"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 900"
       74:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>925₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 925"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "<gradient:#ffc800:#db930d>/sell 1.8X</gradient>"
+          icon-sprite: "block/gold_block"
           reward-command: ""
       75:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>925₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 925"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>925₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 925"
       76:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>925₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 925"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>925₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 925"
       77:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gold>מפתח נמר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          reward-command: "crate givekey <player_name> tiger 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gold>מפתח נמר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          reward-command: "crate givekey <player_name> tiger 1"
       78:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>950₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 950"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>950₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 950"
       79:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>950₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 950"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#9a18d6:#e757f7:#9a18d6>מכוש 3 על 3</gradient>"
+          icon-sprite: "'minecraft:items':item/netherite_pickaxe"
+          reward-command: "givegodpickaxe <player_name>"
       80:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<aqua>מפתח נדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          reward-command: "crate givekey <player_name> rare 1"
       81:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1000"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1000"
       82:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1000"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1000"
       83:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1000"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1000"
       84:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,025₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1025"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "<gradient:#ffc800:#db930d>/sell 1.9X</gradient>"
+          icon-sprite: "block/gold_block"
           reward-command: ""
       85:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,025₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1025"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,025₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1025"
       86:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,025₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1025"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,025₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1025"
       87:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
       88:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,050₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1050"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,050₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1050"
       89:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "כלי עם טקסטורה שקשור לעונה"
+          icon-sprite: "'minecraft:items':item/diamond_spear"
           reward-command: ""
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "כלי עם טקסטורה שקשור לעונה"
+          icon-sprite: "'minecraft:items':item/golden_spear"
           reward-command: ""
       90:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<dark_purple>מפתח אדיר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          reward-command: "crate givekey <player_name> epic 1"
       91:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1100"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1100"
       92:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1100"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1100"
       93:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1100"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1100"
       94:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,125₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1125"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "<gradient:#ffc800:#db930d>/sell 2X</gradient>"
+          icon-sprite: "block/gold_block"
           reward-command: ""
       95:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,125₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1125"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,125₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1125"
       96:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,125₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1125"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>1,125₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 1125"
       97:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gold>מפתח נמר"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          reward-command: "crate givekey <player_name> tiger 1"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<yellow>מפתח אגדי"
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          reward-command: "crate givekey <player_name> legendary 1"
       98:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>5,000₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 5000"
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
-          reward-command: ""
+          description: "<gradient:#a1ff85:#2bff1c>2,000₪</gradient>"
+          icon-sprite: "'minecraft:items':item/lime_bundle"
+          reward-command: "eco give <player_name> 2000"
       99:
         plus:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "כלי עם טקסטורה שקשור לעונה"
+          icon-sprite: "'minecraft:items':item/netherite_spear"
           reward-command: ""
         regular:
-          description: "אייטם"
-          icon-sprite: "block/iron_block"
+          description: "גישה למסלול מתקדם של עונה 2"
+          icon-sprite: "'minecraft:items':item/paper"
           reward-command: ""
