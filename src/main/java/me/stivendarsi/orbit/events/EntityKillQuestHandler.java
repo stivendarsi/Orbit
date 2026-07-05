@@ -46,9 +46,10 @@ public class EntityKillQuestHandler implements Listener {
             boolean rewardPlayer = quest.getUserCount(killer.getUniqueId()) == quest.requiredAmount();
 
             if (rewardPlayer) Constants.runCommandInConsole(killer, quest.rewardCommand()); // Reward the user if he is currently at the reached amount
-            if (quest.getUserCount(killer.getUniqueId()) <= quest.requiredAmount()) userData.countKill(quest.questIdentifier(), killed);
-
-            killer.sendRichMessage("<green>מזל טוב על ההריגה!");
+            if (quest.getUserCount(killer.getUniqueId()) <= quest.requiredAmount()) {
+                userData.countKill(quest.questIdentifier(), killed);
+                killer.sendRichMessage("<green>");
+            }
         }
     }
 }

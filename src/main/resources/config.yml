@@ -29,7 +29,7 @@ quests:
     reward-description: "50 כוכבים"
     reward-command: "experience <player_name> modify 50"
     icon:
-      type: "iron_sword"
+      type: "iron_sword" rare.png
       enchanted: false;
 
   mine-blocks-2:

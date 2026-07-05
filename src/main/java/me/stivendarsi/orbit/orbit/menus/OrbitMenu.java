@@ -233,7 +233,7 @@ public class OrbitMenu {
             if (prize != null) {
                 if (isPrizeTaken)
                     tierText = MiniMessage.miniMessage().deserialize("<dark_gray><sprite:%s></dark_gray>".formatted(prize.iconReward()));
-                else tierText = MiniMessage.miniMessage().deserialize("<sprite:%s>".formatted(prize.iconReward()));
+                else tierText = MiniMessage.miniMessage().deserialize("<!shadow><sprite:%s>".formatted(prize.iconReward()));
 
                 if (prize.description() != null)
                     toolTip = mm.deserialize(String.join("<newline>", prize.description()) + "<newline>");
