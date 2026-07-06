@@ -8,12 +8,13 @@ repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.nexomc.com/releases")
+    maven("https://repo.nexomc.com/releases")
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
-    compileOnly("com.nexomc:nexo:1.24.0")
     implementation("io.lettuce:lettuce-core:7.6.0.RELEASE")
+    compileOnly("com.nexomc:nexo:1.25.0")
 }
 
 java {

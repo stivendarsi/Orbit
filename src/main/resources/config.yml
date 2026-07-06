@@ -70,901 +70,1199 @@ orbits:
     tiers:
       0:
         plus:
-          description: "<aqua>מפתח נדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/rare'"
           reward-command: "crate givekey <player_name> rare 1"
+          nexo-id: "rare_key"
         regular:
-          description: "<green>מפתח רגיל"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/normal'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/normal'"
           reward-command: "crate givekey <player_name> normal 1"
+          nexo-id: "normal_key"
+
       1:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 200"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 200"
+          nexo-id: ""
+
       2:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 200"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 200"
+          nexo-id: ""
+
       3:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 200"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>200₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 200"
+          nexo-id: ""
+
       4:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>225₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 225"
+          nexo-id: ""
         regular:
           description: "<gradient:#ffc800:#db930d>/sell 1.1X</gradient>"
           icon-sprite: "block/gold_block"
           reward-command: ""
+          nexo-id: ""
+
       5:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>225₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 225"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>225₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 225"
+          nexo-id: ""
+
       6:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>225₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 225"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>225₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 225"
+          nexo-id: ""
+
       7:
         plus:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
         regular:
-          description: "<aqua>מפתח נדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/rare'"
           reward-command: "crate givekey <player_name> rare 1"
+          nexo-id: "rare_key"
+
       8:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>250₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 250"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>250₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 250"
+          nexo-id: ""
+
       9:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>250₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 250"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>250₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 250"
+          nexo-id: ""
+
       10:
         plus:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
         regular:
-          description: "<aqua>מפתח נדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/rare'"
           reward-command: "crate givekey <player_name> rare 1"
+          nexo-id: "rare_key"
+
       11:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 300"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 300"
+          nexo-id: ""
+
       12:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 300"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 300"
+          nexo-id: ""
+
       13:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 300"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>300₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 300"
+          nexo-id: ""
+
       14:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>325₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 325"
+          nexo-id: ""
         regular:
           description: "<gradient:#ffc800:#db930d>/sell 1.2X</gradient>"
           icon-sprite: "block/gold_block"
           reward-command: ""
+          nexo-id: ""
+
       15:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>325₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 325"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>325₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 325"
+          nexo-id: ""
+
       16:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>325₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 325"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>325₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 325"
+          nexo-id: ""
+
       17:
         plus:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
         regular:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
+
       18:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>350₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 350"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>350₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 350"
+          nexo-id: ""
+
       19:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>350₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 350"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>350₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 350"
+          nexo-id: ""
+
       20:
         plus:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
         regular:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
+
       21:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 400"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 400"
+          nexo-id: ""
+
       22:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 400"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 400"
+          nexo-id: ""
+
       23:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 400"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>400₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 400"
+          nexo-id: ""
+
       24:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>425₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 425"
+          nexo-id: ""
         regular:
           description: "<gradient:#ffc800:#db930d>/sell 1.3X</gradient>"
           icon-sprite: "block/gold_block"
           reward-command: ""
+          nexo-id: ""
+
       25:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>425₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 425"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>425₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 425"
+          nexo-id: ""
+
       26:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>425₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 425"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>425₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 425"
+          nexo-id: ""
+
       27:
         plus:
-          description: "<gold>מפתח נמר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/tiger'"
           reward-command: "crate givekey <player_name> tiger 1"
+          nexo-id: "tiger_key"
         regular:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
+
       28:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>450₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 450"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>450₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 450"
+          nexo-id: ""
+
       29:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>450₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 450"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>450₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 450"
+          nexo-id: ""
+
       30:
         plus:
-          description: "<gold>מפתח נמר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/tiger'"
           reward-command: "crate givekey <player_name> tiger 1"
+          nexo-id: "tiger_key"
         regular:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
+
       31:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 500"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 500"
+          nexo-id: ""
+
       32:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 500"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 500"
+          nexo-id: ""
+
       33:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 500"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>500₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 500"
+          nexo-id: ""
+
       34:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>525₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 525"
+          nexo-id: ""
         regular:
           description: "<gradient:#ffc800:#db930d>/sell 1.4X</gradient>"
           icon-sprite: "block/gold_block"
           reward-command: ""
+          nexo-id: ""
+
       35:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>525₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 525"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>525₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 525"
+          nexo-id: ""
+
       36:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>525₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 525"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>525₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 525"
+          nexo-id: ""
+
       37:
         plus:
-          description: "<gold>מפתח נמר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/tiger'"
           reward-command: "crate givekey <player_name> tiger 1"
+          nexo-id: "tiger_key"
         regular:
-          description: "<gold>מפתח נמר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/tiger'"
           reward-command: "crate givekey <player_name> tiger 1"
+          nexo-id: "tiger_key"
+
       38:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>550₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 550"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>550₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 550"
+          nexo-id: ""
+
       39:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>550₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 550"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>550₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 550"
+          nexo-id: ""
+
       40:
         plus:
-          description: "<aqua>מפתח נדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/rare'"
           reward-command: "crate givekey <player_name> rare 1"
+          nexo-id: "rare_key"
         regular:
-          description: "<green>מפתח רגיל"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/normal'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/normal'"
           reward-command: "crate givekey <player_name> normal 1"
+          nexo-id: "normal_key"
       41:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 600"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 600"
+          nexo-id: ""
+
       42:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 600"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 600"
+          nexo-id: ""
+
       43:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 600"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>600₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 600"
+          nexo-id: ""
+
       44:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>625₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 625"
+          nexo-id: ""
         regular:
           description: "<gradient:#ffc800:#db930d>/sell 1.5X</gradient>"
           icon-sprite: "block/gold_block"
           reward-command: ""
+          nexo-id: ""
+
       45:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>625₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 625"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>625₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 625"
+          nexo-id: ""
+
       46:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>625₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 625"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>625₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 625"
+          nexo-id: ""
+
       47:
         plus:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
         regular:
-          description: "<aqua>מפתח נדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/rare'"
           reward-command: "crate givekey <player_name> rare 1"
+          nexo-id: "rare_key"
+
       48:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>650₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 650"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>650₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 650"
+          nexo-id: ""
+
       49:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>650₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 650"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>650₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 650"
+          nexo-id: ""
+
       50:
         plus:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
         regular:
-          description: "<aqua>מפתח נדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/rare'"
           reward-command: "crate givekey <player_name> rare 1"
+          nexo-id: "rare_key"
+
       51:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 700"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 700"
+          nexo-id: ""
+
       52:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 700"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 700"
+          nexo-id: ""
+
       53:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 700"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>700₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 700"
+          nexo-id: ""
+
       54:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>725₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 725"
+          nexo-id: ""
         regular:
           description: "<gradient:#ffc800:#db930d>/sell 1.6X</gradient>"
           icon-sprite: "block/gold_block"
           reward-command: ""
+          nexo-id: ""
+
       55:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>725₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 725"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>725₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 725"
+          nexo-id: ""
+
       56:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>725₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 725"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>725₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 725"
+          nexo-id: ""
+
       57:
         plus:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
         regular:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
+
       58:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>750₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 750"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>750₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 750"
+          nexo-id: ""
+
       59:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>750₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 750"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>750₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 750"
+          nexo-id: ""
+
       60:
         plus:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
         regular:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
+
       61:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 800"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 800"
+          nexo-id: ""
+
       62:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 800"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 800"
+          nexo-id: ""
+
       63:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 800"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>800₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 800"
+          nexo-id: ""
+
       64:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>825₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 825"
+          nexo-id: ""
         regular:
           description: "<gradient:#ffc800:#db930d>/sell 1.7X</gradient>"
           icon-sprite: "block/gold_block"
           reward-command: ""
+          nexo-id: ""
+
       65:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>825₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 825"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>825₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 825"
+          nexo-id: ""
+
       66:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>825₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 825"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>825₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 825"
+          nexo-id: ""
+
       67:
         plus:
-          description: "<gold>מפתח נמר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/tiger'"
           reward-command: "crate givekey <player_name> tiger 1"
+          nexo-id: "tiger_key"
         regular:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
+
       68:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>850₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 850"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>850₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 850"
+          nexo-id: ""
+
       69:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>850₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 850"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>850₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 850"
+          nexo-id: ""
+
       70:
         plus:
-          description: "<gold>מפתח נמר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/tiger'"
           reward-command: "crate givekey <player_name> tiger 1"
+          nexo-id: "tiger_key"
         regular:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
+
       71:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 900"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 900"
+          nexo-id: ""
+
       72:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 900"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 900"
+          nexo-id: ""
+
       73:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 900"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>900₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 900"
+          nexo-id: ""
+
       74:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>925₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 925"
+          nexo-id: ""
         regular:
           description: "<gradient:#ffc800:#db930d>/sell 1.8X</gradient>"
           icon-sprite: "block/gold_block"
           reward-command: ""
+          nexo-id: ""
+
       75:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>925₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 925"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>925₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 925"
+          nexo-id: ""
+
       76:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>925₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 925"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>925₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 925"
+          nexo-id: ""
+
       77:
         plus:
-          description: "<gold>מפתח נמר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/tiger'"
           reward-command: "crate givekey <player_name> tiger 1"
+          nexo-id: "tiger_key"
         regular:
-          description: "<gold>מפתח נמר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/tiger'"
           reward-command: "crate givekey <player_name> tiger 1"
+          nexo-id: "tiger_key"
+
       78:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>950₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 950"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>950₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 950"
+          nexo-id: ""
+
       79:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>950₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 950"
+          nexo-id: ""
         regular:
           description: "<gradient:#9a18d6:#e757f7:#9a18d6>מכוש 3 על 3</gradient>"
           icon-sprite: "'minecraft:items':item/netherite_pickaxe"
           reward-command: "givegodpickaxe <player_name>"
+          nexo-id: ""
+
       80:
         plus:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
         regular:
-          description: "<aqua>מפתח נדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/rare'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/rare'"
           reward-command: "crate givekey <player_name> rare 1"
+          nexo-id: "rare_key"
+
       81:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1000"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1000"
+          nexo-id: ""
+
       82:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1000"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1000"
+          nexo-id: ""
+
       83:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1000"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,000₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1000"
+          nexo-id: ""
+
       84:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,025₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1025"
+          nexo-id: ""
         regular:
           description: "<gradient:#ffc800:#db930d>/sell 1.9X</gradient>"
           icon-sprite: "block/gold_block"
           reward-command: ""
+          nexo-id: ""
+
       85:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,025₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1025"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,025₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1025"
+          nexo-id: ""
+
       86:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,025₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1025"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,025₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1025"
+          nexo-id: ""
+
       87:
         plus:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
         regular:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
+
       88:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,050₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1050"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,050₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1050"
+          nexo-id: ""
+
       89:
         plus:
           description: "כלי עם טקסטורה שקשור לעונה"
           icon-sprite: "'minecraft:items':item/diamond_spear"
           reward-command: ""
+          nexo-id: ""
         regular:
           description: "כלי עם טקסטורה שקשור לעונה"
           icon-sprite: "'minecraft:items':item/golden_spear"
           reward-command: ""
+          nexo-id: ""
+
       90:
         plus:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
         regular:
-          description: "<dark_purple>מפתח אדיר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/epic'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/epic'"
           reward-command: "crate givekey <player_name> epic 1"
+          nexo-id: "epic_key"
+
       91:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1100"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1100"
+          nexo-id: ""
+
       92:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1100"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1100"
+          nexo-id: ""
+
       93:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1100"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,100₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1100"
+          nexo-id: ""
+
       94:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,125₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1125"
+          nexo-id: ""
         regular:
           description: "<gradient:#ffc800:#db930d>/sell 2X</gradient>"
           icon-sprite: "block/gold_block"
           reward-command: ""
+          nexo-id: ""
+
       95:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,125₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1125"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,125₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1125"
+          nexo-id: ""
+
       96:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>1,125₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1125"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>1,125₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 1125"
+          nexo-id: ""
+
       97:
         plus:
-          description: "<gold>מפתח נמר"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/tiger'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/tiger'"
           reward-command: "crate givekey <player_name> tiger 1"
+          nexo-id: "tiger_key"
         regular:
-          description: "<yellow>מפתח אגדי"
-          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/legendary'"
+          description: ""
+          icon-sprite: "'minecraft:items':'tigeril:item/crate_key/sprite/legendary'"
           reward-command: "crate givekey <player_name> legendary 1"
+          nexo-id: "legendary_key"
+
       98:
         plus:
           description: "<gradient:#a1ff85:#2bff1c>5,000₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 5000"
+          nexo-id: ""
         regular:
           description: "<gradient:#a1ff85:#2bff1c>2,000₪</gradient>"
           icon-sprite: "'minecraft:items':item/lime_bundle"
           reward-command: "eco give <player_name> 2000"
+          nexo-id: ""
+
       99:
         plus:
           description: "כלי עם טקסטורה שקשור לעונה"
           icon-sprite: "'minecraft:items':item/netherite_spear"
           reward-command: ""
+          nexo-id: ""
         regular:
           description: "גישה למסלול מתקדם של עונה 2"
           icon-sprite: "'minecraft:items':item/paper"
           reward-command: ""
+          nexo-id: ""

@@ -184,7 +184,7 @@ public class OrbitMenu {
 
         for (int levelIndex = min; levelIndex < max; levelIndex++) {
             Component tierComponent;
-            Component status = mm.deserialize("<gray>רמה: <white>" + levelIndex);
+            Component status = mm.deserialize("<gray>רמה: <white>" + (levelIndex + 1));
 
             if (isLevelIndexUnLocked(levelIndex)) {
                 tierComponent = mm.deserialize(levelIndex + 1 + " <green>" + Constants.unLocked);
@@ -221,8 +221,8 @@ public class OrbitMenu {
             Prize prize = orbitData.getPrize(prizeIndex, plus);
 
 
-            System.out.println("level index: " + prizeIndex);
-            System.out.println("page: " + page);
+//            System.out.println("level index: " + prizeIndex);
+//            System.out.println("page: " + page);
 
             boolean isPrizeUnlocked = isLevelIndexUnLocked(prizeIndex);
             boolean isPrizeTaken = isPrizeAvailable(prizeIndex, plus);
@@ -233,10 +233,10 @@ public class OrbitMenu {
             if (prize != null) {
                 if (isPrizeTaken)
                     tierText = MiniMessage.miniMessage().deserialize("<dark_gray><sprite:%s></dark_gray>".formatted(prize.iconReward()));
-                else tierText = MiniMessage.miniMessage().deserialize("<!shadow><sprite:%s>".formatted(prize.iconReward()));
+                else
+                    tierText = MiniMessage.miniMessage().deserialize("<!shadow><sprite:%s>".formatted(prize.iconReward()));
 
-                if (prize.description() != null)
-                    toolTip = mm.deserialize(String.join("<newline>", prize.description()) + "<newline>");
+                toolTip = prize.description();
             }
 
             if (!isPrizeUnlocked) toolTip = toolTip.append(mm.deserialize("<red>אין אפשרת לקחת</red>"));
