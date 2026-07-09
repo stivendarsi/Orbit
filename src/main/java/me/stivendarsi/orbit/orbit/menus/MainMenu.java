@@ -8,6 +8,7 @@ import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.set.RegistrySet;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.time.LocalDate;
@@ -19,19 +20,15 @@ import java.util.UUID;
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class MainMenu {
-    private final UUID userUUID;
 
-    public MainMenu(UUID userUUID) {
-        this.userUUID = userUUID;
-    }
 
-    public void openMainMenu(Player player) {
+    public static void openMainMenu(UUID userUUID) {
         Dialog dialog = Dialog.create(b -> {
             OrbitData currentOrbit = mainHandler().orbitHandler().getCurrentOrbit();
             Preconditions.checkNotNull(currentOrbit, "No current Orbit");
 
-            OrbitMenu orbitMenu = new OrbitMenu(currentOrbit, this.userUUID);
-            QuestMenu questMenu = new QuestMenu(this.userUUID);
+            OrbitMenu orbitMenu = new OrbitMenu(currentOrbit, userUUID);
+            QuestMenu questMenu = new QuestMenu(userUUID);
 
             List<Dialog> dialogs = new ArrayList<>();
 
@@ -43,6 +40,7 @@ public class MainMenu {
             DialogType type = DialogType.dialogList(set).build();
             b.empty().type(type).base(DialogBase.builder(Component.text("תפריט ראשי")).build());
         });
-        player.showDialog(dialog);
+        Player player = Bukkit.getPlayer(userUUID);
+        if (player != null) player.showDialog(dialog);
     }
 }

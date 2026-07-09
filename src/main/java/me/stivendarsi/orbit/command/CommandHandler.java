@@ -11,6 +11,7 @@ import static com.mojang.brigadier.arguments.IntegerArgumentType.integer;
 import static com.mojang.brigadier.arguments.StringArgumentType.word;
 import static io.papermc.paper.command.brigadier.argument.ArgumentTypes.player;
 import static me.stivendarsi.orbit.Orbit.mainHandler;
+import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 
 public class CommandHandler {
@@ -42,6 +43,12 @@ public class CommandHandler {
                     ).build());
             commands.register(Commands.literal("orbit").requires(source -> source.getSender().hasPermission("orbit.admin"))
                     .executes(OrbitCommands::open)
+                            .then(Commands.literal("reload").executes(context -> {
+                                orbitInstance().reloadConfig();
+                                mainHandler().load();
+                                context.getSource().getSender().sendRichMessage("<green>נטען מחדש");
+                                return 1;
+                            }))
                     .build());
         });
     }

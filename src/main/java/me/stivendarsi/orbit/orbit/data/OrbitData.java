@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 public class OrbitData {
     private final String identifier;
+    private final String title;
     private final LocalDateTime start;
     private final LocalDateTime end;
     private final int tierAmount;
@@ -18,6 +19,8 @@ public class OrbitData {
 
     public OrbitData(String orbitIdentifier, ConfigurationSection orbitSection) {
         this.identifier = orbitIdentifier;
+
+       this.title = orbitSection.getString("title");
 
         String startString = orbitSection.getString("start");
         String endString = orbitSection.getString("end");
@@ -72,6 +75,10 @@ public class OrbitData {
 
     public int levelMultiplier() {
         return levelMultiplier;
+    }
+
+    public String title() {
+        return title;
     }
 
     public LocalDateTime start() {

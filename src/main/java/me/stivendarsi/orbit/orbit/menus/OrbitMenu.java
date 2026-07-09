@@ -11,14 +11,16 @@ import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.data.dialog.type.MultiActionType;
 import me.stivendarsi.orbit.Constants;
+import me.stivendarsi.orbit.message.MessagesHandler;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.Prize;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -60,10 +62,13 @@ public class OrbitMenu {
             bodies.add(getDoneText());
             bodies.add(getProgressBar());
 
+            TagResolver tagResolver = TagResolver.builder().tag("player_uuid",Tag.preProcessParsed(String.valueOf(this.user))).build();
 
-            Component title = MiniMessage.miniMessage().deserialize("מסלול התקדמות <head:%s>".formatted(this.user));
+            Component title = MiniMessage.miniMessage().deserialize(this.orbitData.title(), tagResolver);
 
-            builder.empty().type(buttons).base(DialogBase.builder(title).pause(false).afterAction(DialogBase.DialogAfterAction.NONE).externalTitle(Component.text("מסלול התקדמות")).body(bodies).build());
+            builder.empty()
+                    .type(buttons)
+                    .base(DialogBase.builder(title).pause(false).afterAction(DialogBase.DialogAfterAction.NONE).externalTitle(Component.text("מסלול התקדמות")).body(bodies).build());
         });
         return dialog;
     }
@@ -148,6 +153,9 @@ public class OrbitMenu {
 
     private MultiActionType getPageType(int page) {
 
+        MiniMessage mm = MiniMessage.miniMessage();
+        MessagesHandler mh = mainHandler().messagesHandler();
+
         List<ActionButton> buttons = new ArrayList<>();
 
         ActionButton corn = ActionButton.builder(Component.text("רמה\\מסלול")).width(60).build();
@@ -167,6 +175,7 @@ public class OrbitMenu {
             buttons.add(prevPage);
         }
 
+
         if (page + 1 < this.requiredExperience.length / 10) {
             ActionButton nextPage = ActionButton.create(Component.text("הבא"), null, 90, DialogAction.customClick((response, audience) -> {
                 if (!(audience instanceof Player player)) return;
@@ -176,7 +185,11 @@ public class OrbitMenu {
             buttons.add(nextPage);
         }
 
-        return DialogType.multiAction(buttons).columns(11).build();
+        ActionButton exist = ActionButton.create(mm.deserialize(mh.getExistDialog()), null, 50, DialogAction.customClick((response, audience) -> {
+            MainMenu.openMainMenu(this.user);
+        }, ClickCallback.Options.builder().build()));
+
+        return DialogType.multiAction(buttons).exitAction(exist).columns(11).build();
     }
 
     private List<ActionButton> getLevelNumbers(int page) {
@@ -185,18 +198,26 @@ public class OrbitMenu {
         int max = min + 10;
 
         MiniMessage mm = MiniMessage.miniMessage();
+        MessagesHandler mh = mainHandler().messagesHandler();
 
         for (int levelIndex = min; levelIndex < max; levelIndex++) {
-            Component tierComponent;
-            Component status = mm.deserialize("<gray>רמה: <white>" + (levelIndex + 1));
 
-            if (isLevelIndexUnLocked(levelIndex)) {
-                tierComponent = mm.deserialize(levelIndex + 1 + " <green>" + Constants.unLocked);
-                status = status.append(mm.deserialize("<newline><green>פתוח " + Constants.unLocked));
-            } else {
-                tierComponent = mm.deserialize(levelIndex + 1 + " <red>" + Constants.locked);
-                status = status.append(mm.deserialize("<newline><red>נעול " + Constants.locked));
-            }
+            String levelLockedStatus;
+            if (isLevelIndexUnLocked(levelIndex)) levelLockedStatus = mh.getTierUnlocked();
+            else levelLockedStatus = mh.getTierLocked();
+
+            TagResolver levelResolver = TagResolver.builder()
+                    .tag("level", Tag.preProcessParsed(String.valueOf(levelIndex + 1)))
+                    .tag("level_status", Tag.preProcessParsed(levelLockedStatus))
+                    .build();
+
+            Component tierComponent = mm.deserialize(mh.getLevelTitle(), levelResolver);
+            Component status = mm.deserialize(mh.getLevelDescription(), levelResolver).appendNewline();
+
+            if (isLevelIndexUnLocked(levelIndex))
+                status = status.append(mm.deserialize(mh.getTierLevelUnlocked(), levelResolver));
+            else status = status.append(mm.deserialize(mh.getTierLevelLocked(), levelResolver));
+
 
             ActionButton actionButton = ActionButton.create(tierComponent, status, 35, null);
             levels.add(actionButton);
@@ -211,15 +232,18 @@ public class OrbitMenu {
 
         ActionButton type;
 
+        MiniMessage mm = MiniMessage.miniMessage();
+        MessagesHandler mh = mainHandler().messagesHandler();
+
         if (plus)
-            type = ActionButton.create(Component.text("מתקדם +"), Component.text("מסלול שפתוח למנויים בלבד."), 60, DialogAction.customClick((response, audience) -> {
+            type = ActionButton.create(mm.deserialize(mh.getOrbitPlusName()), mm.deserialize(mh.getOrbitPlusDescription()), 60, DialogAction.customClick((response, audience) -> {
                 if (!(audience instanceof Player player)) return;
                 player.performCommand("store");
             }, ClickCallback.Options.builder().build()));
-        else type = ActionButton.create(Component.text("רגיל"), Component.text("מסלול שפתוח לכל השחקנים."), 60, null);
+        else type = ActionButton.create(mm.deserialize(mh.getRegularName()), mm.deserialize(mh.getOrbitRegularDescription()), 60, null);
 
         actionButtons.add(type);
-        MiniMessage mm = MiniMessage.miniMessage();
+
 
         for (int prizeIndex = min; prizeIndex < max; prizeIndex++) {
             Prize prize = orbitData.getPrize(prizeIndex, plus);
@@ -236,18 +260,18 @@ public class OrbitMenu {
 
             if (prize != null) {
                 Player player = Bukkit.getPlayer(user);
-                if (player != null) tierText = MiniMessage.miniMessage().deserialize(prize.name(),player, MiniPlaceholders.audienceGlobalPlaceholders());
-                if (isPrizeTaken) tierText = tierText.color(NamedTextColor.DARK_GRAY);
-//                 //   tierText = MiniMessage.miniMessage().deserialize("<dark_gray><sprite:%s></dark_gray>".formatted(prize.name()));
-//                else
-//                    tierText = MiniMessage.miniMessage().deserialize("<!shadow><sprite:%s>".formatted(prize.name()));
+                if (player != null) {
+                    tierText = MiniMessage.miniMessage().deserialize(prize.name(), player, MiniPlaceholders.audienceGlobalPlaceholders());
+                    toolTip = prize.description(player);
+                }
 
-                toolTip = prize.description();
+                if (isPrizeTaken) tierText = tierText.color(NamedTextColor.DARK_GRAY);
+
             }
 
-            if (!isPrizeUnlocked) toolTip = toolTip.append(mm.deserialize("<red>אין אפשרת לקחת</red>"));
-            else if (isPrizeTaken) toolTip = toolTip.append(mm.deserialize("<dark_gray>נלקח</dark_gray>"));
-            else toolTip = toolTip.append(mm.deserialize("<green>ניתן לקחת</green>"));
+            if (!isPrizeUnlocked) toolTip = toolTip.append(mm.deserialize(mh.getCannotRedeem()));
+            else if (isPrizeTaken) toolTip = toolTip.append(mm.deserialize(mh.getRedeemed()));
+            else toolTip = toolTip.append(mm.deserialize(mh.getCanRedeem()));
 
             ActionButton actionButton = ActionButton.create(tierText, toolTip, 35, DialogAction.customClick((dialogResponseView, audience) -> {
                 if (prize == null || !isPrizeUnlocked || isPrizeTaken) return;

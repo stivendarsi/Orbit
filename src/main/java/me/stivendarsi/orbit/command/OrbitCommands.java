@@ -20,8 +20,7 @@ public class OrbitCommands {
     public static int open(CommandContext<CommandSourceStack> context) {
         if (!(context.getSource().getExecutor() instanceof Player player)) return 0;
 
-        MainMenu mainMenu = new MainMenu(player.getUniqueId());
-        mainMenu.openMainMenu(player);
+        MainMenu.openMainMenu(player.getUniqueId());
         return 1;
     }
 

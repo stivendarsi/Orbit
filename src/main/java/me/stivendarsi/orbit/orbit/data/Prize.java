@@ -7,6 +7,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.JoinConfiguration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -41,11 +42,11 @@ public class Prize {
         return plus;
     }
 
-    public @NotNull Component description() {
+    public @NotNull Component description(Player viewer) {
         Component text;
         if (description == null || description.isEmpty()) text = Component.empty();
         else
-            text = MiniMessage.miniMessage().deserialize(String.join("<newline>", this.description), MiniPlaceholders.audienceGlobalPlaceholders());
+            text = MiniMessage.miniMessage().deserialize(String.join("<newline>", this.description), viewer, MiniPlaceholders.audienceGlobalPlaceholders());
 
         ItemBuilder itemBuilder = NexoItems.itemFromId(this.nexoItemId);
         if (itemBuilder == null) {
