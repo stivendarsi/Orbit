@@ -2,6 +2,7 @@ package me.stivendarsi.orbit.orbit.menus;
 
 import com.google.common.base.Preconditions;
 import com.nexomc.nexo.glyphs.GlyphTag;
+import io.github.miniplaceholders.api.MiniPlaceholders;
 import io.papermc.paper.dialog.Dialog;
 import io.papermc.paper.registry.data.dialog.ActionButton;
 import io.papermc.paper.registry.data.dialog.DialogBase;
@@ -15,6 +16,8 @@ import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.Prize;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.entity.Player;
@@ -194,7 +197,7 @@ public class OrbitMenu {
                 status = status.append(mm.deserialize("<newline><red>נעול " + Constants.locked));
             }
 
-            ActionButton actionButton = ActionButton.create(tierComponent, status, 30, null);
+            ActionButton actionButton = ActionButton.create(tierComponent, status, 35, null);
             levels.add(actionButton);
         }
         return levels;
@@ -231,10 +234,11 @@ public class OrbitMenu {
             Component tierText = Component.empty();
 
             if (prize != null) {
-                if (isPrizeTaken)
-                    tierText = MiniMessage.miniMessage().deserialize("<dark_gray><sprite:%s></dark_gray>".formatted(prize.iconReward()));
-                else
-                    tierText = MiniMessage.miniMessage().deserialize("<!shadow><sprite:%s>".formatted(prize.iconReward()));
+                tierText = MiniMessage.miniMessage().deserialize(prize.name(), MiniPlaceholders.audienceGlobalPlaceholders());
+                if (!isPrizeTaken) tierText = tierText.color(NamedTextColor.DARK_GRAY);
+//                 //   tierText = MiniMessage.miniMessage().deserialize("<dark_gray><sprite:%s></dark_gray>".formatted(prize.name()));
+//                else
+//                    tierText = MiniMessage.miniMessage().deserialize("<!shadow><sprite:%s>".formatted(prize.name()));
 
                 toolTip = prize.description();
             }
@@ -243,7 +247,7 @@ public class OrbitMenu {
             else if (isPrizeTaken) toolTip = toolTip.append(mm.deserialize("<dark_gray>נלקח</dark_gray>"));
             else toolTip = toolTip.append(mm.deserialize("<green>ניתן לקחת</green>"));
 
-            ActionButton actionButton = ActionButton.create(tierText, toolTip, 30, DialogAction.customClick((dialogResponseView, audience) -> {
+            ActionButton actionButton = ActionButton.create(tierText, toolTip, 35, DialogAction.customClick((dialogResponseView, audience) -> {
                 if (prize == null || !isPrizeUnlocked || isPrizeTaken) return;
 
                 LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
