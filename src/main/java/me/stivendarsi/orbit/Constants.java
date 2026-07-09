@@ -5,7 +5,7 @@ import net.kyori.adventure.sound.Sound;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import static me.stivendarsi.orbit.Orbit.plugin;
+import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class Constants {
     public static final Sound clickSound = Sound.sound(Key.key("minecraft:ui.button.click"), Sound.Source.UI, 1,1);
@@ -13,6 +13,6 @@ public class Constants {
     public static final String locked = "\uD83D\uDD12";
     public static void runCommandInConsole(Player claimingUser, String rewardCommand) {
         if (rewardCommand == null) return;
-        plugin().getServer().dispatchCommand(Bukkit.getConsoleSender(), rewardCommand.replace("<player_name>", claimingUser.getName()));
+        orbitInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), rewardCommand.replace("<player_name>", claimingUser.getName()));
     }
 }

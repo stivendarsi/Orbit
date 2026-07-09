@@ -20,6 +20,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.commons.lang3.tuple.Pair;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.time.format.DateTimeFormatter;
@@ -234,8 +235,9 @@ public class OrbitMenu {
             Component tierText = Component.empty();
 
             if (prize != null) {
-                tierText = MiniMessage.miniMessage().deserialize(prize.name(), MiniPlaceholders.audienceGlobalPlaceholders());
-                if (!isPrizeTaken) tierText = tierText.color(NamedTextColor.DARK_GRAY);
+                Player player = Bukkit.getPlayer(user);
+                if (player != null) tierText = MiniMessage.miniMessage().deserialize(prize.name(),player, MiniPlaceholders.audienceGlobalPlaceholders());
+                if (isPrizeTaken) tierText = tierText.color(NamedTextColor.DARK_GRAY);
 //                 //   tierText = MiniMessage.miniMessage().deserialize("<dark_gray><sprite:%s></dark_gray>".formatted(prize.name()));
 //                else
 //                    tierText = MiniMessage.miniMessage().deserialize("<!shadow><sprite:%s>".formatted(prize.name()));

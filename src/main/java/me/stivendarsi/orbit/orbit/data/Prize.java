@@ -2,6 +2,7 @@ package me.stivendarsi.orbit.orbit.data;
 
 import com.nexomc.nexo.api.NexoItems;
 import com.nexomc.nexo.items.ItemBuilder;
+import io.github.miniplaceholders.api.MiniPlaceholders;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.JoinConfiguration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -43,22 +44,25 @@ public class Prize {
     public @NotNull Component description() {
         Component text;
         if (description == null || description.isEmpty()) text = Component.empty();
-        else text = MiniMessage.miniMessage().deserialize(String.join("<newline>", this.description));
+        else
+            text = MiniMessage.miniMessage().deserialize(String.join("<newline>", this.description), MiniPlaceholders.audienceGlobalPlaceholders());
 
         ItemBuilder itemBuilder = NexoItems.itemFromId(this.nexoItemId);
-        if (itemBuilder == null) return text;
+        if (itemBuilder == null) {
+            if (text == Component.empty()) return text;
+            else return text.appendNewline();
+        }
 
         List<Component> lore = new ArrayList<>();
 
         lore.add(itemBuilder.getItemName());
 
-        List<Component> currentLore = itemBuilder.getLore();
-        if (currentLore != null && !currentLore.isEmpty()) lore.addAll(currentLore);
-        if (text != Component.empty()) {
-            lore.add(text);
+        List<Component> itemLore = itemBuilder.getLore();
+        if (itemLore != null && !itemLore.isEmpty()) {
+            lore.addAll(itemLore);
         }
 
-        return Component.join(JoinConfiguration.newlines(), lore).append(Component.newline());
+        return Component.join(JoinConfiguration.newlines(), lore).appendNewline();
     }
 
     public String name() {

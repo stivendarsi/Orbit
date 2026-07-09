@@ -5,7 +5,10 @@ main: me.stivendarsi.orbit.Orbit
 api-version: '26.1.2'
 load: POSTWORLD
 dependencies:
-  server: 
+  server:
+    MiniPlaceholders:
+      required: true
+      load: BEFORE
     Nexo:
       required: true
-
+      load: BEFORE

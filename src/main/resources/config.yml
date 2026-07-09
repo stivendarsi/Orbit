@@ -124,7 +124,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.1x'>"
-          name: "block/gold_block"
+          name: "<sprite:block/gold_block>"
           reward-command: ""
           nexo-id: ""
 
@@ -244,7 +244,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.2x'>"
-          name: "block/gold_block"
+          name: "<sprite:block/gold_block>"
           reward-command: ""
           nexo-id: ""
 
@@ -364,7 +364,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.3x'>"
-          name: "block/gold_block"
+          name: "<sprite:block/gold_block>"
           reward-command: ""
           nexo-id: ""
 
@@ -484,7 +484,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.4x'>"
-          name: "block/gold_block"
+          name: "<sprite:block/gold_block>"
           reward-command: ""
           nexo-id: ""
 
@@ -603,7 +603,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.5x'>"
-          name: "block/gold_block"
+          name: "<sprite:block/gold_block>"
           reward-command: ""
           nexo-id: ""
 
@@ -723,7 +723,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.6x'>"
-          name: "block/gold_block"
+          name: "<sprite:block/gold_block>"
           reward-command: ""
           nexo-id: ""
 
@@ -843,7 +843,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.7x'>"
-          name: "block/gold_block"
+          name: "<sprite:block/gold_block>"
           reward-command: ""
           nexo-id: ""
 
@@ -963,7 +963,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.8x'>"
-          name: "block/gold_block"
+          name: "<sprite:block/gold_block>"
           reward-command: ""
           nexo-id: ""
 
@@ -1083,7 +1083,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.9x'>"
-          name: "block/gold_block"
+          name: "<sprite:block/gold_block>"
           reward-command: ""
           nexo-id: ""
 
@@ -1138,12 +1138,12 @@ orbits:
       89:
         plus:
           description: "כלי עם טקסטורה שקשור לעונה"
-          name: "'minecraft:items':item/diamond_spear"
+          name: "<sprite:'minecraft:items':item/diamond_spear>"
           reward-command: ""
           nexo-id: ""
         regular:
           description: "כלי עם טקסטורה שקשור לעונה"
-          name: "'minecraft:items':item/golden_spear"
+          name: "<sprite:'minecraft:items':item/golden_spear>"
           reward-command: ""
           nexo-id: ""
 
@@ -1203,7 +1203,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 2x'>"
-          name: "block/gold_block"
+          name: "<sprite:block/gold_block>"
           reward-command: ""
           nexo-id: ""
 
@@ -1258,11 +1258,11 @@ orbits:
       99:
         plus:
           description: "כלי עם טקסטורה שקשור לעונה"
-          name: "'minecraft:items':item/netherite_spear"
+          name: "<sprite:'minecraft:items':item/netherite_spear>"
           reward-command: ""
           nexo-id: ""
         regular:
           description: "גישה למסלול מתקדם של עונה 2"
-          name: "'minecraft:items':item/paper"
+          name: "<sprite:'minecraft:items':item/paper>"
           reward-command: ""
           nexo-id: ""

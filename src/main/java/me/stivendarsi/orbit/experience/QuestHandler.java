@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
-import static me.stivendarsi.orbit.Orbit.plugin;
+import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class QuestHandler {
     private Map<String, Quest> questMap;
@@ -22,7 +22,7 @@ public class QuestHandler {
 
     public void load() {
         this.questMap = new HashMap<>();
-        ConfigurationSection questsSection = plugin().getConfig().getConfigurationSection("quests");
+        ConfigurationSection questsSection = orbitInstance().getConfig().getConfigurationSection("quests");
         if (questsSection == null) return;
 
         for (String questIdentifier : questsSection.getKeys(false)) {
@@ -65,7 +65,7 @@ public class QuestHandler {
 
         long secondsLeftToMidnight = Duration.between(now, midnight).getSeconds();
 
-        plugin().getServer().getAsyncScheduler().runAtFixedRate(plugin(), task -> {
+        orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
             resetDailyQuestData();
             this.dailyQuests = getQuestsOfTheDay(2);
         }, secondsLeftToMidnight, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);

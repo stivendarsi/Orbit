@@ -6,18 +6,18 @@ import org.jspecify.annotations.Nullable;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import static me.stivendarsi.orbit.Orbit.plugin;
+import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class OrbitHandler {
     private Map<String, OrbitData> orbits;
 
     public void load() {
-        List<String> orbitIdentifiers = new ArrayList<>(plugin().getConfig().getConfigurationSection("orbits").getKeys(false));
+        List<String> orbitIdentifiers = new ArrayList<>(orbitInstance().getConfig().getConfigurationSection("orbits").getKeys(false));
         this.orbits = new HashMap<>();
 
         while (!orbitIdentifiers.isEmpty()) {
             String orbitIdentifier = orbitIdentifiers.removeFirst();
-            ConfigurationSection s = plugin().getConfig().getConfigurationSection("orbits." + orbitIdentifier);
+            ConfigurationSection s = orbitInstance().getConfig().getConfigurationSection("orbits." + orbitIdentifier);
             if (s != null) this.orbits.put(orbitIdentifier, new OrbitData(orbitIdentifier, s));
         }
     }

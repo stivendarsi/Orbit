@@ -3,18 +3,17 @@ package me.stivendarsi.orbit;
 import me.stivendarsi.orbit.command.CommandHandler;
 import me.stivendarsi.orbit.events.EntityKillQuestHandler;
 import me.stivendarsi.orbit.events.LoadUserExperienceHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Orbit extends JavaPlugin {
 
     private static Orbit orbit;
-    public static Orbit plugin(){
+    public static Orbit orbitInstance(){
         return orbit;
     }
 
     private static MainHandler mainHandler;
-    public static MainHandler mainHandler(){
+    public static MainHandler mainHandler() {
         return mainHandler;
     }
 
