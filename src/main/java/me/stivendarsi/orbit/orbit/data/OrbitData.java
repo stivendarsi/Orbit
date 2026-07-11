@@ -15,7 +15,7 @@ public class OrbitData {
     private final LocalDateTime end;
     private final int tierAmount;
     private final int levelMultiplier;
-    private final Pair<Prize, Prize>[] tiers;
+    private final Pair<PrizeData, PrizeData>[] tiers;
 
     public OrbitData(String orbitIdentifier, ConfigurationSection orbitSection) {
         this.identifier = orbitIdentifier;
@@ -42,26 +42,26 @@ public class OrbitData {
         }
     }
 
-    private Pair<Prize, Prize> loadTier(int levelIndex, ConfigurationSection orbitSection) {
+    private Pair<PrizeData, PrizeData> loadTier(int levelIndex, ConfigurationSection orbitSection) {
         ConfigurationSection regularSection = orbitSection.getConfigurationSection("tiers.%s.regular".formatted(levelIndex));
-        Prize regular = null;
-        if (regularSection != null) regular = new Prize(levelIndex, false, regularSection);
+        PrizeData regular = null;
+        if (regularSection != null) regular = new PrizeData(levelIndex, false, regularSection);
 
         ConfigurationSection plusSection = orbitSection.getConfigurationSection("tiers.%s.plus".formatted(levelIndex));
-        Prize plus = null;
-        if (plusSection != null) plus = new Prize(levelIndex, true, plusSection);
+        PrizeData plus = null;
+        if (plusSection != null) plus = new PrizeData(levelIndex, true, plusSection);
 
         return Pair.of(regular, plus);
     }
 
 
-    public @Nullable Prize getPrize(int levelIndex, boolean plus) {
-        Pair<Prize, Prize> tier = this.tiers[levelIndex];
+    public @Nullable PrizeData getPrize(int levelIndex, boolean plus) {
+        Pair<PrizeData, PrizeData> tier = this.tiers[levelIndex];
         if (tier == null) return null;
         return plus ? tier.getRight() : tier.getLeft();
     }
 
-    public Pair<Prize, Prize>[] tiers() {
+    public Pair<PrizeData, PrizeData>[] tiers() {
         return tiers;
     }
 

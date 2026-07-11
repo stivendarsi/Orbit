@@ -1,7 +1,9 @@
-package me.stivendarsi.orbit.orbit.data;
+package me.stivendarsi.orbit.orbit;
 
 import com.google.common.base.Preconditions;
 import io.lettuce.core.api.sync.RedisCommands;
+import me.stivendarsi.orbit.orbit.data.LocalUserData;
+import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.tuple.Pair;

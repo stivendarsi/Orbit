@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Prize {
+public class PrizeData {
     private final int levelIndex;
     private final boolean plus;
     private final List<String> description;
@@ -22,7 +22,7 @@ public class Prize {
     private final String rewardCommand;
     private String nexoItemId;
 
-    public Prize(int prizeIndex, boolean plus, ConfigurationSection section) {
+    public PrizeData(int prizeIndex, boolean plus, ConfigurationSection section) {
         this.levelIndex = prizeIndex;
         this.plus = plus;
         if (section.isList("description")) this.description = section.getStringList("description");

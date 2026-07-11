@@ -4,6 +4,7 @@ version: '${version}'
 main: me.stivendarsi.orbit.Orbit
 api-version: '26.1.2'
 load: POSTWORLD
+folia-supported: true
 dependencies:
   server:
     MiniPlaceholders:

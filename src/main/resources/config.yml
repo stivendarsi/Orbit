@@ -19,7 +19,7 @@ messages:
     level-title: "<white><level></white> <level_status>"
     level-description: "<gray>רמה: <white><level>"
     level-locked: "<red>נעול \uD83D\uDD12</red>"
-    level-unlocked: "<green>פתוח \uD83D\uDD13M</green>"
+    level-unlocked: "<green>פתוח \uD83D\uDD13</green>"
 
 quests:
   kill-monsters-1:
@@ -142,7 +142,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.1x'>"
-          name: "<sprite:block/gold_block>"
+          name: "<cut_tigeril_gold:'1.1x'>"
           reward-command: ""
           nexo-id: ""
 
@@ -262,7 +262,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.2x'>"
-          name: "<sprite:block/gold_block>"
+          name: "<cut_tigeril_gold:'1.2x'>"
           reward-command: ""
           nexo-id: ""
 
@@ -382,7 +382,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.3x'>"
-          name: "<sprite:block/gold_block>"
+          name: "<cut_tigeril_gold:'1.3x'>"
           reward-command: ""
           nexo-id: ""
 
@@ -502,7 +502,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.4x'>"
-          name: "<sprite:block/gold_block>"
+          name: "<cut_tigeril_gold:'1.4x'>"
           reward-command: ""
           nexo-id: ""
 
@@ -621,7 +621,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.5x'>"
-          name: "<sprite:block/gold_block>"
+          name: "<cut_tigeril_gold:'1.5x'>"
           reward-command: ""
       45:
         plus:
@@ -739,7 +739,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.6x'>"
-          name: "<sprite:block/gold_block>"
+          name: "<cut_tigeril_gold:'1.6x'>"
           reward-command: ""
           nexo-id: ""
 
@@ -859,7 +859,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.7x'>"
-          name: "<sprite:block/gold_block>"
+          name: "<cut_tigeril_gold:'1.7x'>"
           reward-command: ""
           nexo-id: ""
 
@@ -979,7 +979,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.8x'>"
-          name: "<sprite:block/gold_block>"
+          name: "<cut_tigeril_gold:'1.8x'>"
           reward-command: ""
           nexo-id: ""
 
@@ -1099,7 +1099,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.9x'>"
-          name: "<sprite:block/gold_block>"
+          name: "<cut_tigeril_gold:'1.9x'>"
           reward-command: ""
           nexo-id: ""
 
@@ -1219,7 +1219,7 @@ orbits:
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 2x'>"
-          name: "<sprite:block/gold_block>"
+          name: "<cut_tigeril_gold:'2x'>"
           reward-command: ""
           nexo-id: ""
 

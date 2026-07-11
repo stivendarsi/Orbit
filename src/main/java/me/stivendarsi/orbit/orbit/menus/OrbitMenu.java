@@ -10,11 +10,10 @@ import io.papermc.paper.registry.data.dialog.action.DialogAction;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.data.dialog.type.MultiActionType;
-import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.message.MessagesHandler;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
-import me.stivendarsi.orbit.orbit.data.Prize;
+import me.stivendarsi.orbit.orbit.data.PrizeData;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -74,8 +73,9 @@ public class OrbitMenu {
     }
 
     private DialogBody getOrbitEndText() {
-        String time = this.orbitData.end().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        Component text = MiniMessage.miniMessage().deserialize("<gradient:#ff771c:#ffe4c7>המסלול יסתיים ב-</gradient><gradient:#ff771c:#ffe4c7>" + time + "</gradient>");
+        String date = this.orbitData.end().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String time = this.orbitData.end().format(DateTimeFormatter.ofPattern("HH:mm"));
+        Component text = MiniMessage.miniMessage().deserialize("<gradient:#ff771c:#ffe4c7>המסלול יסתיים ב-</gradient><gradient:#ff771c:#ffe4c7>" + date + " בשעה " + time + "</gradient>");
         return DialogBody.plainMessage(text, 300);
     }
 
@@ -246,7 +246,7 @@ public class OrbitMenu {
 
 
         for (int prizeIndex = min; prizeIndex < max; prizeIndex++) {
-            Prize prize = orbitData.getPrize(prizeIndex, plus);
+            PrizeData prizeData = orbitData.getPrize(prizeIndex, plus);
 
 
 //            System.out.println("level index: " + prizeIndex);
@@ -258,11 +258,11 @@ public class OrbitMenu {
             Component toolTip = Component.empty();
             Component tierText = Component.empty();
 
-            if (prize != null) {
+            if (prizeData != null) {
                 Player player = Bukkit.getPlayer(user);
                 if (player != null) {
-                    tierText = MiniMessage.miniMessage().deserialize(prize.name(), player, MiniPlaceholders.audienceGlobalPlaceholders());
-                    toolTip = prize.description(player);
+                    tierText = MiniMessage.miniMessage().deserialize(prizeData.name(), player, MiniPlaceholders.audienceGlobalPlaceholders());
+                    toolTip = prizeData.description(player);
                 }
 
                 if (isPrizeTaken) tierText = tierText.color(NamedTextColor.DARK_GRAY);
@@ -274,12 +274,12 @@ public class OrbitMenu {
             else toolTip = toolTip.append(mm.deserialize(mh.getCanRedeem()));
 
             ActionButton actionButton = ActionButton.create(tierText, toolTip, 35, DialogAction.customClick((dialogResponseView, audience) -> {
-                if (prize == null || !isPrizeUnlocked || isPrizeTaken) return;
+                if (prizeData == null || !isPrizeUnlocked || isPrizeTaken) return;
 
                 LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
                 Preconditions.checkNotNull(localUserData, "Null user data");
 
-                localUserData.takePrize(orbitData.identifier(), prize.prizeIndex(), plus);
+                localUserData.takePrize(orbitData.identifier(), prizeData.prizeIndex(), plus);
                 audience.showDialog(getPage(page));
 
             }, ClickCallback.Options.builder().build()));

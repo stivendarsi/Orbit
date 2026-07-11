@@ -2,8 +2,8 @@ package me.stivendarsi.orbit;
 
 import me.stivendarsi.orbit.experience.QuestHandler;
 import me.stivendarsi.orbit.message.MessagesHandler;
-import me.stivendarsi.orbit.orbit.data.OrbitHandler;
-import me.stivendarsi.orbit.orbit.data.UserHandler;
+import me.stivendarsi.orbit.orbit.OrbitHandler;
+import me.stivendarsi.orbit.orbit.UserHandler;
 import me.stivendarsi.orbit.redis.RedisHandler;
 
 public class MainHandler {

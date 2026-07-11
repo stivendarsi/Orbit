@@ -92,13 +92,13 @@ public class LocalUserData {
 
         OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
         Preconditions.checkNotNull(orbitData, "Null orbit data");
-        Prize prize = orbitData.getPrize(prizeIndex, plus);
+        PrizeData prizeData = orbitData.getPrize(prizeIndex, plus);
 
-        if (prize == null) return;
+        if (prizeData == null) return;
         Player player = Bukkit.getPlayer(this.userUUID);
 
         Preconditions.checkNotNull(player, "Null player");
-        runCommandInConsole(player, prize.getRewardCommand());
+        runCommandInConsole(player, prizeData.getRewardCommand());
 
     }
 

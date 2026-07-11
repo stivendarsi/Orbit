@@ -1,5 +1,6 @@
-package me.stivendarsi.orbit.orbit.data;
+package me.stivendarsi.orbit.orbit;
 
+import me.stivendarsi.orbit.orbit.data.OrbitData;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jspecify.annotations.Nullable;
 
