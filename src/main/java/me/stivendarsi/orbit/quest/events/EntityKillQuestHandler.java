@@ -1,4 +1,4 @@
-package me.stivendarsi.orbit.events;
+package me.stivendarsi.orbit.quest.events;
 
 import com.google.common.base.Preconditions;
 import me.stivendarsi.orbit.Constants;

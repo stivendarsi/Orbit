@@ -134,7 +134,7 @@ public class Quest {
         return allowedEntities;
     }
 
-    public List<BlockType> breakBlockType() {
+    public List<BlockType> allowedBlockes() {
         return allowedBlocks;
     }
 
