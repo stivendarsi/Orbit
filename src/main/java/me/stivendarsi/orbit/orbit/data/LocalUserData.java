@@ -1,7 +1,7 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
-import me.stivendarsi.orbit.experience.Quest;
+import me.stivendarsi.orbit.quest.Quest;
 import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -94,7 +94,10 @@ public class LocalUserData {
         Preconditions.checkNotNull(orbitData, "Null orbit data");
         PrizeData prizeData = orbitData.getPrize(prizeIndex, plus);
 
-        if (prizeData == null) return;
+        if (prizeData == null) {
+            System.out.println("Null prize data");
+            return;
+        }
         Player player = Bukkit.getPlayer(this.userUUID);
 
         Preconditions.checkNotNull(player, "Null player");

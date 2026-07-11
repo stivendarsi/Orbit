@@ -5,7 +5,7 @@ import io.lettuce.core.RedisURI;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.async.RedisAsyncCommands;
 import io.lettuce.core.api.sync.RedisCommands;
-import me.stivendarsi.orbit.experience.enums.QuestAppearType;
+import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 
 import java.util.UUID;
 

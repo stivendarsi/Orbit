@@ -1,4 +1,4 @@
-package me.stivendarsi.orbit.experience.enums;
+package me.stivendarsi.orbit.quest.enums;
 
 public enum QuestListMode {
     WHITE_LIST,

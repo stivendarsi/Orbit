@@ -1,9 +1,9 @@
-package me.stivendarsi.orbit.experience;
+package me.stivendarsi.orbit.quest;
 
 import io.papermc.paper.datacomponent.DataComponentTypes;
-import me.stivendarsi.orbit.experience.enums.QuestAppearType;
-import me.stivendarsi.orbit.experience.enums.QuestListMode;
-import me.stivendarsi.orbit.experience.enums.QuestType;
+import me.stivendarsi.orbit.quest.enums.QuestAppearType;
+import me.stivendarsi.orbit.quest.enums.QuestListMode;
+import me.stivendarsi.orbit.quest.enums.QuestType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import net.kyori.adventure.key.Key;
 import org.apache.commons.lang3.math.NumberUtils;

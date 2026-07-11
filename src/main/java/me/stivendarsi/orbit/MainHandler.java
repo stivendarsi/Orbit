@@ -1,6 +1,6 @@
 package me.stivendarsi.orbit;
 
-import me.stivendarsi.orbit.experience.QuestHandler;
+import me.stivendarsi.orbit.quest.QuestHandler;
 import me.stivendarsi.orbit.message.MessagesHandler;
 import me.stivendarsi.orbit.orbit.OrbitHandler;
 import me.stivendarsi.orbit.orbit.UserHandler;

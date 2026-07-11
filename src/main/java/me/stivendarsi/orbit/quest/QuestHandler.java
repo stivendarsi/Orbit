@@ -1,7 +1,7 @@
-package me.stivendarsi.orbit.experience;
+package me.stivendarsi.orbit.quest;
 
 import com.google.common.base.Preconditions;
-import me.stivendarsi.orbit.experience.enums.QuestAppearType;
+import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jetbrains.annotations.Nullable;
 

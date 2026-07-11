@@ -2,17 +2,14 @@ package me.stivendarsi.orbit.command;
 
 import com.google.common.base.Preconditions;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandExceptionType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
-import me.stivendarsi.orbit.experience.Quest;
+import me.stivendarsi.orbit.quest.Quest;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.menus.MainMenu;
 import org.bukkit.entity.Player;
-
-import java.lang.reflect.Type;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 

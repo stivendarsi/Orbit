@@ -30,7 +30,7 @@ public class PrizeData {
 
         this.prizeName = section.getString("name");
         this.nexoItemId = section.getString("nexo-id", null);
-        this.rewardCommand = section.getString("icon-command");
+        this.rewardCommand = section.getString("reward-command");
     }
 
 

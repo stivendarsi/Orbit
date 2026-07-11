@@ -281,6 +281,7 @@ public class OrbitMenu {
 
                 localUserData.takePrize(orbitData.identifier(), prizeData.prizeIndex(), plus);
                 audience.showDialog(getPage(page));
+                audience.sendMessage(MiniMessage.miniMessage().deserialize("<green>קיבלת את הפרס"));
 
             }, ClickCallback.Options.builder().build()));
             actionButtons.add(actionButton);
