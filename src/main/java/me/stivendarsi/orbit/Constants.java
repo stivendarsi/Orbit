@@ -11,15 +11,11 @@ import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class Constants {
     public static final Sound clickSound = Sound.sound(Key.key("minecraft:ui.button.click"), Sound.Source.UI, 1,1);
-    public static final String unLocked = "\uD83D\uDD13";
-    public static final String locked = "\uD83D\uDD12";
+    public static final Sound pingSound = Sound.sound(Key.key("minecraft:entity.experience_orb.pickup"), Sound.Source.UI, 1,1);
     public static void runCommandInConsole(Player claimingUser,@Nullable String rewardCommand) {
-        if (rewardCommand == null) {
-            System.out.println("Null command");
-            return;
-        }
+        if (rewardCommand == null) return;
         rewardCommand = rewardCommand.replace("<player_name>", claimingUser.getName());
-        System.out.println("Command: " + rewardCommand);
         orbitInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), rewardCommand);
+        claimingUser.playSound(pingSound);
     }
 }
