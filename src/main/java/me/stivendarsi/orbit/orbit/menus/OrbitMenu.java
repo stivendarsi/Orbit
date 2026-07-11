@@ -61,7 +61,7 @@ public class OrbitMenu {
             bodies.add(getDoneText());
             bodies.add(getProgressBar());
 
-            TagResolver tagResolver = TagResolver.builder().tag("player_uuid",Tag.preProcessParsed(String.valueOf(this.user))).build();
+            TagResolver tagResolver = TagResolver.builder().tag("player_uuid", Tag.preProcessParsed(String.valueOf(this.user))).build();
 
             Component title = MiniMessage.miniMessage().deserialize(this.orbitData.title(), tagResolver);
 
@@ -81,16 +81,28 @@ public class OrbitMenu {
 
     private DialogBody getDoneText() {
         int len = this.requiredExperience.length;
-        int nextLvlXp = this.currentIndex + 1 >= len ? this.requiredExperience[len - 1] : this.requiredExperience[currentIndex + 1];
+        int requiredExperience = this.currentIndex + 1 >= len ? this.requiredExperience[len - 1] : this.requiredExperience[currentIndex + 1];
 
 
         LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
         Preconditions.checkNotNull(localUserData, "Null user data");
 
-        StringBuilder b = new StringBuilder();
-        b.append("<gradient:#ff8cec:#ff54c3>").append(localUserData.getUserExperience(this.orbitData.identifier())).append("⭐ / ").append(nextLvlXp).append("⭐</gradient:#ff8cec:#ff54c3>");
 
-        return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 200);
+        String msg = "<cut_progress_pink:'⭐<current_experience> / ⭐<required_experience>'>";
+
+        TagResolver experienceResolver = TagResolver.builder()
+                .tag("current_experience", Tag.preProcessParsed(String.valueOf(localUserData.getUserExperience(this.orbitData.identifier()))))
+                .tag("required_experience", Tag.preProcessParsed(String.valueOf(requiredExperience)))
+                .build();
+
+        Player player = Bukkit.getPlayer(this.user);
+        Component msgComponent;
+        if (player != null) msgComponent = MiniMessage.miniMessage().deserialize(msg, player, GlyphTag.INSTANCE.getRESOLVER(), experienceResolver ,MiniPlaceholders.audienceGlobalPlaceholders());
+        else msgComponent = MiniMessage.miniMessage().deserialize(msg, GlyphTag.INSTANCE.getRESOLVER(), experienceResolver, MiniPlaceholders.audienceGlobalPlaceholders());
+        //StringBuilder b = new StringBuilder();
+        // b.append("<gradient:#ff8cec:#ff54c3>").append(localUserData.getUserExperience(this.orbitData.identifier())).append("⭐ / ").append(nextLvlXp).append("⭐</gradient:#ff8cec:#ff54c3>");
+
+        return DialogBody.plainMessage(msgComponent, 200);
     }
 
     private DialogBody getProgressBar() {
@@ -148,7 +160,9 @@ public class OrbitMenu {
         b.append("</gradient:#b2f7c1:#08ff3d>");
         if (this.currentIndex + 1 < len) b.append(" ").append(this.currentIndex + 1 + 1);
 
-        return DialogBody.plainMessage(MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString()), 500);
+        Component progressBarComponent = MiniMessage.miniMessage().deserialize(b.toString(), GlyphTag.INSTANCE.getRESOLVER());
+
+        return DialogBody.plainMessage(progressBarComponent, 450);
     }
 
     private MultiActionType getPageType(int page) {
@@ -240,7 +254,8 @@ public class OrbitMenu {
                 if (!(audience instanceof Player player)) return;
                 player.performCommand("store");
             }, ClickCallback.Options.builder().build()));
-        else type = ActionButton.create(mm.deserialize(mh.getRegularName()), mm.deserialize(mh.getOrbitRegularDescription()), 60, null);
+        else
+            type = ActionButton.create(mm.deserialize(mh.getRegularName()), mm.deserialize(mh.getOrbitRegularDescription()), 60, null);
 
         actionButtons.add(type);
 

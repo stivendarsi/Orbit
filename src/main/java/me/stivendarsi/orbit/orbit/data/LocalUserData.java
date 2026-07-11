@@ -1,6 +1,8 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
+import com.nexomc.nexo.glyphs.GlyphTag;
+import io.github.miniplaceholders.api.MiniPlaceholders;
 import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.quest.Quest;
 import me.stivendarsi.orbit.redis.DataType;
@@ -110,7 +112,7 @@ public class LocalUserData {
         String msg = prizeData.rewardMessage();
         if (msg == null) return;
 
-        player.sendRichMessage(msg);
+        player.sendRichMessage(msg, GlyphTag.INSTANCE.getRESOLVER(), MiniPlaceholders.audienceGlobalPlaceholders());
     }
 
     public @NotNull BitSet loadUnlockList(boolean plus, String orbitIdentifier) {

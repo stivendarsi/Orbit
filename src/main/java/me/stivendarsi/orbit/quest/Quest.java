@@ -99,21 +99,6 @@ public class Quest {
     public QuestType questType() {
         return questType;
     }
-//
-//    public void saveAllQuestData() {
-//        String key;
-//        if (this.appearType == APPEAR_TYPE.DAILY) key = "orbit:quest_data:daily:%s".formatted(this.questIdentifier);
-//        else key = "orbit:quest_data:season:%s".formatted(questIdentifier);
-//
-//        Map<String, String> data = new HashMap<>();
-//
-//        this.completed.forEach((uuid, amount) -> {
-//            data.put(String.valueOf(uuid), String.valueOf(amount));
-//        });
-//
-//        mainHandler().redisClient().getSync().hset(key, data);
-//    }
-
 
 
     public QuestAppearType appearType() {
