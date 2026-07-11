@@ -164,6 +164,21 @@ quests:
       type: "iron_ore"
       enchanted: false;
 
+  caught-20-fish:
+    type: FISHING
+    mode: WHITE_LIST
+    allowed-entities: ["cod", "salmon", "tropical_fish", "pufferfish"]
+    appears: DAILY # SEASON / DAILY
+    description-width: 120
+    description: "לדוג 20 דגים"
+    required-amount: 20
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
+    icon:
+      type: "cod"
+      enchanted: false;
+
+
 orbits:
   season-1:
     title: "מסלול התקדמות <head:<player_uuid>> | עונה 1 - החוף של טייגר "

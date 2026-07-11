@@ -22,7 +22,7 @@ public class PrizeData {
     private final String prizeName;
     private final String rewardCommand;
     private final String rewardMessage;
-    private String nexoItemId;
+    private final String nexoItemId;
 
     public PrizeData(int prizeIndex, boolean plus, ConfigurationSection section) {
         this.levelIndex = prizeIndex;

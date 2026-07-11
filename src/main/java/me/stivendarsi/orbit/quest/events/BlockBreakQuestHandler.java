@@ -25,14 +25,15 @@ public class BlockBreakQuestHandler implements Listener {
 
         BlockType blockType = event.getBlock().getType().asBlockType();
 
+
         for (Quest quest : mainHandler().questHandler().dailyQuests()) {
             if (quest == null || quest.questType() != QuestType.BREAK_BLOCK) continue;
 
-            boolean blockTypeIsAllowedToBreak = quest.allowedBlockes().contains(blockType);
+            boolean blockTypeIsAllowedToBreak = quest.allowedBlocks().contains(blockType);
 
             if (!blockTypeIsAllowedToBreak) {
-                System.out.println("BlockType: " + blockType);
-                return;
+                System.out.println("BlockType: " + blockType.getKey());
+                continue;
             }
 
             quest.countUser(cause.getUniqueId(), 1);

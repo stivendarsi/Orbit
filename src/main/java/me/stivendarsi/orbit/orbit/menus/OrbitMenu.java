@@ -97,10 +97,14 @@ public class OrbitMenu {
 
         Player player = Bukkit.getPlayer(this.user);
         Component msgComponent;
-        if (player != null) msgComponent = MiniMessage.miniMessage().deserialize(msg, player, GlyphTag.INSTANCE.getRESOLVER(), experienceResolver ,MiniPlaceholders.audienceGlobalPlaceholders());
-        else msgComponent = MiniMessage.miniMessage().deserialize(msg, GlyphTag.INSTANCE.getRESOLVER(), experienceResolver, MiniPlaceholders.audienceGlobalPlaceholders());
-        //StringBuilder b = new StringBuilder();
-        // b.append("<gradient:#ff8cec:#ff54c3>").append(localUserData.getUserExperience(this.orbitData.identifier())).append("⭐ / ").append(nextLvlXp).append("⭐</gradient:#ff8cec:#ff54c3>");
+
+        MiniMessage mm = MiniMessage.builder()
+                .tags(GlyphTag.INSTANCE.getRESOLVER())
+                .build();
+
+        if (player != null)
+            msgComponent = mm.deserialize(msg, player, experienceResolver, MiniPlaceholders.audienceGlobalPlaceholders());
+        else msgComponent = mm.deserialize(msg, experienceResolver, MiniPlaceholders.audienceGlobalPlaceholders());
 
         return DialogBody.plainMessage(msgComponent, 200);
     }
@@ -160,9 +164,9 @@ public class OrbitMenu {
         b.append("</gradient:#b2f7c1:#08ff3d>");
         if (this.currentIndex + 1 < len) b.append(" ").append(this.currentIndex + 1 + 1);
 
-        Component progressBarComponent = MiniMessage.miniMessage().deserialize(b.toString(), GlyphTag.INSTANCE.getRESOLVER());
+        Component progressBarComponent = MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(b.toString());
 
-        return DialogBody.plainMessage(progressBarComponent, 450);
+        return DialogBody.plainMessage(progressBarComponent, 400);
     }
 
     private MultiActionType getPageType(int page) {

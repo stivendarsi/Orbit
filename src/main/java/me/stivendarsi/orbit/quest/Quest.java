@@ -51,14 +51,14 @@ public class Quest {
         this.allowedEntities = new ArrayList<>();
 
         switch (this.questType) {
-            case KILL_ENTITY -> {
+            case KILL_ENTITY, FISHING -> {
                 List<String> allowedEntities = questSection.getStringList("allowed-entities");
                 allowedEntities.forEach(s -> this.allowedEntities.add(EntityType.valueOf(s.toUpperCase())));
             }
             case BREAK_BLOCK -> {
                 List<String> allowedBlocks = questSection.getStringList("allowed-blocks");
                 allowedBlocks.forEach(s -> {
-                    BlockType blockType = Registry.BLOCK.get(Key.key(s));
+                    BlockType blockType = Registry.BLOCK.get(Key.key(s.toLowerCase(Locale.ROOT)));
                     this.allowedBlocks.add(blockType);
                 });
             }
@@ -134,7 +134,8 @@ public class Quest {
         return allowedEntities;
     }
 
-    public List<BlockType> allowedBlockes() {
+    public List<BlockType> allowedBlocks() {
+        System.out.println("blocks:" + this.allowedBlocks);
         return allowedBlocks;
     }
 
