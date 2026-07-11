@@ -9,6 +9,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,6 +21,7 @@ public class PrizeData {
     private final List<String> description;
     private final String prizeName;
     private final String rewardCommand;
+    private final String rewardMessage;
     private String nexoItemId;
 
     public PrizeData(int prizeIndex, boolean plus, ConfigurationSection section) {
@@ -31,6 +33,7 @@ public class PrizeData {
         this.prizeName = section.getString("name");
         this.nexoItemId = section.getString("nexo-id", null);
         this.rewardCommand = section.getString("reward-command");
+        this.rewardMessage = section.getString("reward-message", "");
     }
 
 
@@ -40,6 +43,11 @@ public class PrizeData {
 
     public boolean plus() {
         return plus;
+    }
+
+    public @Nullable String rewardMessage() {
+        if (this.rewardCommand == null || this.rewardCommand.isBlank()) return null;
+        return rewardCommand;
     }
 
     public @NotNull Component description(Player viewer) {

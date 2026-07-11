@@ -1,9 +1,11 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
+import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.quest.Quest;
 import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
@@ -101,8 +103,14 @@ public class LocalUserData {
         Player player = Bukkit.getPlayer(this.userUUID);
 
         Preconditions.checkNotNull(player, "Null player");
-        runCommandInConsole(player, prizeData.getRewardCommand());
+        boolean commandRan = runCommandInConsole(player, prizeData.getRewardCommand());
+        if (!commandRan) return;
 
+        player.playSound(Constants.pingSound);
+        String msg = prizeData.rewardMessage();
+        if (msg == null) return;
+
+        player.sendRichMessage(msg);
     }
 
     public @NotNull BitSet loadUnlockList(boolean plus, String orbitIdentifier) {
