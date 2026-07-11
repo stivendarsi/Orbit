@@ -1,15 +1,12 @@
 package me.stivendarsi.orbit.orbit.menus;
 
-import io.papermc.paper.datacomponent.DataComponentTypes;
 import io.papermc.paper.dialog.Dialog;
 import io.papermc.paper.registry.data.dialog.DialogBase;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
-import me.stivendarsi.orbit.quest.Quest;
+import me.stivendarsi.orbit.quest.QuestData;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ItemType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,50 +46,36 @@ public class QuestMenu {
         });
 
         bodies.add(seasonQuestsTitle);
-        bodies.add(getQuestBlock(ItemType.IRON_PICKAXE.createItemStack(), "לחצוב 50000 בלוקים", 200, 43, "1000 כוכבים", 120));
 
-        ItemStack enchanted = ItemType.NETHERITE_SWORD.createItemStack();
-        enchanted.setData(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, Boolean.TRUE);
-
-        bodies.add(getQuestBlock(enchanted, "להרוג 100 שחקנים", 100, 100, "1000 כוכבים", 120));
+        mainHandler().questHandler().seasonQuests().forEach(quest -> {
+            bodies.add(getQuestBlock(quest, quest.getUserCount(userUUID)));
+        });
         return bodies;
+//        bodies.add(getQuestBlock(ItemType.IRON_PICKAXE.createItemStack(), "לחצוב 50000 בלוקים", 200, 43, "1000 כוכבים", 120));
+//
+//        ItemStack enchanted = ItemType.NETHERITE_SWORD.createItemStack();
+//        enchanted.setData(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, Boolean.TRUE);
+
+      //  bodies.add(getQuestBlock(enchanted, "להרוג 100 שחקנים", 100, 100, "1000 כוכבים", 120));
+
     }
 
-    private DialogBody getQuestBlock(Quest quest, int completed) {
+    private DialogBody getQuestBlock(QuestData questData, int completed) {
         List<String> builder = new ArrayList<>();
 
-        boolean questCompleted = quest.requiredAmount() <= completed;
+        boolean questCompleted = questData.requiredAmount() <= completed;
 
-        builder.add("<gray>⏵ <gradient:#fabf1b:#faea3c:#fabf1b>" + quest.description() + "</gradient:#fabf1b:#faea3c:#fabf1b> ⏴</gray>");
+        builder.add("<gray>⏵ <gradient:#fabf1b:#faea3c:#fabf1b>" + questData.description() + "</gradient:#fabf1b:#faea3c:#fabf1b> ⏴</gray>");
 
-        builder.add("<#fffb00>" + completed + "/" + quest.requiredAmount() + "</#fffb00>");
+        builder.add("<#fffb00>" + completed + "/" + questData.requiredAmount() + "</#fffb00>");
 
         if (questCompleted)
             builder.add("<gradient:#07ba55:#32f02b:#07ba55>☑ הושלם</gradient:#07ba55:#32f02b:#07ba55>");
         else builder.add("<gradient:#e32a05:#ff4000:#e32a05>☐ עדיין לא הושלם</gradient:#e32a05:#ff4000:#e32a05>");
 
-        builder.add("<gradient:#d56cf5:#f59cff:#d56cf5>◆ " + quest.rewardDescription() + " ◆</gradient:#d56cf5:#f59cff:#d56cf5>");
+        builder.add("<gradient:#d56cf5:#f59cff:#d56cf5>◆ " + questData.rewardDescription() + " ◆</gradient:#d56cf5:#f59cff:#d56cf5>");
 
         Component text = MiniMessage.miniMessage().deserialize(String.join("<newline>", builder));
-        return DialogBody.item(quest.questIcon()).description(DialogBody.plainMessage(text, quest.descriptionWidth())).showTooltip(false).build();
-    }
-
-    private DialogBody getQuestBlock(ItemStack itemStack, String questText, int required, int completed, String rewardText, int width) {
-        List<String> builder = new ArrayList<>();
-
-        boolean questCompleted = required <= completed;
-
-        builder.add("<gray>⏵ <gradient:#fabf1b:#faea3c:#fabf1b>" + questText + "</gradient:#fabf1b:#faea3c:#fabf1b> ⏴</gray>");
-
-        builder.add("<#fffb00>" + completed + "/" + required + "</#fffb00>");
-
-        if (questCompleted)
-            builder.add("<gradient:#07ba55:#32f02b:#07ba55>☑ הושלם</gradient:#07ba55:#32f02b:#07ba55>");
-        else builder.add("<gradient:#e32a05:#ff4000:#e32a05>☐ עדיין לא הושלם</gradient:#e32a05:#ff4000:#e32a05>");
-
-        builder.add("<gradient:#d56cf5:#f59cff:#d56cf5>◆ " + rewardText + " ◆</gradient:#d56cf5:#f59cff:#d56cf5>");
-
-        Component text = MiniMessage.miniMessage().deserialize(String.join("<newline>", builder));
-        return DialogBody.item(itemStack).description(DialogBody.plainMessage(text, width)).showTooltip(false).build();
+        return DialogBody.item(questData.questIcon()).description(DialogBody.plainMessage(text, questData.descriptionWidth())).showTooltip(false).build();
     }
 }

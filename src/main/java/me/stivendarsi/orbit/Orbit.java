@@ -37,6 +37,7 @@ public final class Orbit extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockBreakQuestHandler(), this);
 
         mainHandler().questHandler().startDailyQuestChanging(); // start the task for changing quests.
+        mainHandler().questHandler().startSeasonQuestChanging();
     }
 
     @Override

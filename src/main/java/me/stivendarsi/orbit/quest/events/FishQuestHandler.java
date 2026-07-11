@@ -1,9 +1,7 @@
 package me.stivendarsi.orbit.quest.events;
 
-import com.google.common.base.Preconditions;
 import me.stivendarsi.orbit.Constants;
-import me.stivendarsi.orbit.orbit.data.LocalUserData;
-import me.stivendarsi.orbit.quest.Quest;
+import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.quest.enums.QuestType;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -22,22 +20,22 @@ public class FishQuestHandler implements Listener {
         if (fish == null) return;
         EntityType entityType = fish.getType();
 
-        for (Quest quest : mainHandler().questHandler().dailyQuests()) {
-            if (quest == null || quest.questType() != QuestType.FISHING) continue;
+        for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
+            if (questData == null || questData.questType() != QuestType.FISHING) continue;
 
-            boolean entityTypeIsAllowedToFish = quest.allowedEntities().contains(entityType);
+            boolean entityTypeIsAllowedToFish = questData.allowedEntities().contains(entityType);
 
             if (!entityTypeIsAllowedToFish) {
                 System.out.println("EntityType: " + entityType);
                 return;
             }
 
-            quest.countUser(cause.getUniqueId(), 1);
+            questData.countUser(cause.getUniqueId(), 1);
 
-            boolean rewardPlayer = quest.getUserCount(cause.getUniqueId()) == quest.requiredAmount();
+            boolean rewardPlayer = questData.getUserCount(cause.getUniqueId()) == questData.requiredAmount();
 
             if (rewardPlayer) {
-                Constants.runCommandInConsole(cause, quest.rewardCommand()); // Reward the user if he is currently at the reached amount
+                Constants.runCommandInConsole(cause, questData.rewardCommand()); // Reward the user if he is currently at the reached amount
                 cause.sendRichMessage("<green>קיבלת כוכבים");
             }
         }

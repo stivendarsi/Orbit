@@ -5,7 +5,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
-import me.stivendarsi.orbit.quest.Quest;
+import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.menus.MainMenu;
@@ -87,9 +87,9 @@ public class OrbitCommands {
 
     public static int getQuestData(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         String questIdentifier = ctx.getArgument("quest-id", String.class);
-        Quest quest = mainHandler().questHandler().getQuest(questIdentifier);
-        if (quest == null) return 0;
-        ctx.getSource().getSender().sendRichMessage("הושלם: " + quest.getUserCount(ctx.getSource().getExecutor().getUniqueId()));
+        QuestData questData = mainHandler().questHandler().getQuestData(questIdentifier);
+        if (questData == null) return 0;
+        ctx.getSource().getSender().sendRichMessage("הושלם: " + questData.getUserCount(ctx.getSource().getExecutor().getUniqueId()));
         return 1;
     }
 

@@ -1,6 +1,7 @@
 package me.stivendarsi.orbit.quest;
 
 import com.google.common.base.Preconditions;
+import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jetbrains.annotations.Nullable;
@@ -16,9 +17,9 @@ import static me.stivendarsi.orbit.Orbit.mainHandler;
 import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class QuestHandler {
-    private Map<String, Quest> questMap;
+    private Map<String, QuestData> questMap;
 
-    private List<Quest> dailyQuests;
+    private List<QuestData> dailyQuestData;
 
     public void load() {
         this.questMap = new HashMap<>();
@@ -26,32 +27,29 @@ public class QuestHandler {
         if (questsSection == null) return;
 
         for (String questIdentifier : questsSection.getKeys(false)) {
-            Quest quest = new Quest(questIdentifier, questsSection.getConfigurationSection(questIdentifier));
-            this.questMap.put(questIdentifier, quest);
+            QuestData questData = new QuestData(questIdentifier, questsSection.getConfigurationSection(questIdentifier));
+            this.questMap.put(questIdentifier, questData);
         }
 
-        this.dailyQuests = getQuestsOfTheDay(2); // load today's quests
+        this.dailyQuestData = getQuestsOfTheDay(2); // load today's quests
     }
 
     public void loadUserQuestData(UUID uuid) {
-        for (Quest value : this.questMap.values()) {
+        for (QuestData value : this.questMap.values()) {
             value.loadUserQuestData(uuid);
         }
     }
 
-    public @Nullable Quest getQuest(String questIdentifier){
+    public @Nullable QuestData getQuestData(String questIdentifier) {
         return this.questMap.getOrDefault(questIdentifier, null);
     }
 
-    public void saveUserQuestData(UUID uuid){
-        for (Quest value : this.questMap.values()) {
+    public void saveUserQuestData(UUID uuid) {
+        for (QuestData value : this.questMap.values()) {
             value.saveUserQuestData(uuid);
         }
     }
 
-    public List<Quest> dailyQuests() {
-        return dailyQuests;
-    }
 
     public void startDailyQuestChanging() {
         LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Jerusalem"));
@@ -62,30 +60,61 @@ public class QuestHandler {
                 .withNano(0)
                 .plusDays(1);
 
-
-        long secondsLeftToMidnight = Duration.between(now, midnight).getSeconds();
+        long secondsLeftToMidnight = calculateSecondsLeft(midnight);
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
             resetDailyQuestData();
-            this.dailyQuests = getQuestsOfTheDay(2);
+            this.dailyQuestData = getQuestsOfTheDay(2);
         }, secondsLeftToMidnight, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
     }
 
-    public void resetDailyQuestData(){
+    public void startSeasonQuestChanging() {
+        OrbitData currentOrbit = mainHandler().orbitHandler().getCurrentOrbit();
+        if (currentOrbit == null) return;
+
+        long secondsLeftToEndOfSeason = calculateSecondsLeft(currentOrbit.end());
+
+        orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
+            resetSeasonQuestData();
+        }, secondsLeftToEndOfSeason, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
+    }
+
+
+    private long calculateSecondsLeft(LocalDateTime end) {
+        LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Jerusalem"));
+        return Duration.between(now, end).getSeconds();
+    }
+
+    private void resetDailyQuestData() {
         mainHandler().redisClient().getSync().del("orbit:quest_data:daily");
     }
 
-    public List<Quest> getQuestsOfTheDay(int numberOfQuests) {
-        Preconditions.checkState(numberOfQuests <= this.questMap.size());
-        LocalDate today = LocalDate.now(ZoneId.of("Asia/Jerusalem"));
-        long seed = today.getYear() * 10000L + today.getMonthValue() * 100L + today.getDayOfMonth(); // 20260101
+    private void resetSeasonQuestData() {
+        mainHandler().redisClient().getSync().del("orbit:quest_data:season");
+    }
 
-        List<Quest> copy = new ArrayList<>(this.questMap.values()
+
+    public List<QuestData> getQuestsOfTheDay(int numberOfQuests) {
+        return getAppearTypeBasedQuests(LocalDate.now(ZoneId.of("Asia/Jerusalem")), QuestAppearType.DAILY, numberOfQuests);
+    }
+
+    private List<QuestData> getAppearTypeBasedQuests(LocalDate localDate, QuestAppearType appearType, int numberOfQuests) {
+        Preconditions.checkState(numberOfQuests <= this.questMap.size());
+        long seed = getSeedBasedOnDate(localDate);
+        List<QuestData> copy = new ArrayList<>(this.questMap.values()
                 .stream()
-                .filter(q -> q.appearType() == QuestAppearType.DAILY)
+                .filter(q -> q.appearType() == appearType)
                 .toList());
 
         Collections.shuffle(copy, new Random(seed));
         return copy.subList(0, numberOfQuests);
+    }
+
+    private long getSeedBasedOnDate(LocalDate date) {
+        return date.getYear() * 10000L + date.getMonthValue() * 100L + date.getDayOfMonth();
+    }
+
+    public List<QuestData> dailyQuests() {
+        return dailyQuestData;
     }
 }

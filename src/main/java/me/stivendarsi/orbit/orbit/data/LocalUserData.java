@@ -4,10 +4,9 @@ import com.google.common.base.Preconditions;
 import com.nexomc.nexo.glyphs.GlyphTag;
 import io.github.miniplaceholders.api.MiniPlaceholders;
 import me.stivendarsi.orbit.Constants;
-import me.stivendarsi.orbit.quest.Quest;
+import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
-import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
@@ -146,6 +145,6 @@ public class LocalUserData {
     }
 
     public void countQuest(String questIdentifier) {
-        Quest quest;
+        QuestData questData;
     }
 }

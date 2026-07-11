@@ -17,7 +17,7 @@ import java.util.*;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
-public class Quest {
+public class QuestData {
     private final QuestType questType;
     private final String questIdentifier;
     private final ItemStack questIcon;
@@ -33,7 +33,7 @@ public class Quest {
     private final List<BlockType> allowedBlocks;
     private final List<EntityType> allowedEntities;
 
-    public Quest(String identifier, ConfigurationSection questSection) {
+    public QuestData(String identifier, ConfigurationSection questSection) {
         this.completed = new HashMap<>();
         this.questIdentifier = identifier;
 

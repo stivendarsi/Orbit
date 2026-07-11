@@ -182,7 +182,7 @@ quests:
 orbits:
   season-1:
     title: "מסלול התקדמות <head:<player_uuid>> | עונה 1 - החוף של טייגר "
-    #  season-quests: ["quest-1", "quest-2"]
+    season-quests: ["quest-1", "quest-2"]
     start: "2025:05:26:00:00:00"
     end: "2026:08:21:15:00:00"
     tier-amount: 100

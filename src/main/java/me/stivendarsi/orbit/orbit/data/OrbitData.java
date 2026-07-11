@@ -1,12 +1,17 @@
 package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
+import me.stivendarsi.orbit.quest.QuestData;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Objects;
+
+import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class OrbitData {
     private final String identifier;
@@ -16,6 +21,7 @@ public class OrbitData {
     private final int tierAmount;
     private final int levelMultiplier;
     private final Pair<PrizeData, PrizeData>[] tiers;
+    private final List<QuestData> seasonQuests;
 
     public OrbitData(String orbitIdentifier, ConfigurationSection orbitSection) {
         this.identifier = orbitIdentifier;
@@ -34,6 +40,10 @@ public class OrbitData {
 
         this.tierAmount = orbitSection.getInt("tier-amount");
         this.levelMultiplier = orbitSection.getInt("level-multiplier");
+
+        List<String> seasonQuestsIdentifiers = orbitSection.getStringList("season-quests");
+
+        this.seasonQuests = seasonQuestsIdentifiers.stream().map(s -> mainHandler().questHandler().getQuestData(s)).filter(Objects::nonNull).toList();
 
         this.tiers = new Pair[tierAmount];
 
@@ -67,6 +77,10 @@ public class OrbitData {
 
     public String identifier() {
         return identifier;
+    }
+
+    public List<QuestData> seasonQuests() {
+        return seasonQuests;
     }
 
     public int tierAmount() {

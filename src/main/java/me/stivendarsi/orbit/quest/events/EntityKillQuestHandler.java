@@ -3,7 +3,7 @@ package me.stivendarsi.orbit.quest.events;
 import com.google.common.base.Preconditions;
 import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.quest.enums.QuestType;
-import me.stivendarsi.orbit.quest.Quest;
+import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -29,11 +29,11 @@ public class EntityKillQuestHandler implements Listener {
         EntityType entityType = event.getEntity().getType();
         System.out.println(entityType);
 
-        for (Quest quest : mainHandler().questHandler().dailyQuests()) {
-            if (quest == null || quest.questType() != QuestType.KILL_ENTITY) continue;
+        for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
+            if (questData == null || questData.questType() != QuestType.KILL_ENTITY) continue;
 
-            boolean entityTypeIsAllowedToKill = quest.allowedEntities().contains(entityType);
-            boolean entityKilledAlready = userData.getKilledEntities(quest.questIdentifier()).contains(killed);
+            boolean entityTypeIsAllowedToKill = questData.allowedEntities().contains(entityType);
+            boolean entityKilledAlready = userData.getKilledEntities(questData.questIdentifier()).contains(killed);
 
             if (!entityTypeIsAllowedToKill || entityKilledAlready) {
                 System.out.println("Entity allowed: " + entityType);
@@ -41,16 +41,16 @@ public class EntityKillQuestHandler implements Listener {
                 return;
             }
 
-            quest.countUser(killer.getUniqueId(), 1);
+            questData.countUser(killer.getUniqueId(), 1);
 
-            boolean rewardPlayer = quest.getUserCount(killer.getUniqueId()) == quest.requiredAmount();
+            boolean rewardPlayer = questData.getUserCount(killer.getUniqueId()) == questData.requiredAmount();
 
             if (rewardPlayer) {
-                Constants.runCommandInConsole(killer, quest.rewardCommand()); // Reward the user if he is currently at the reached amount
+                Constants.runCommandInConsole(killer, questData.rewardCommand()); // Reward the user if he is currently at the reached amount
                 killer.sendRichMessage("<green>קיבלת כוכבים");
             }
-            if (quest.getUserCount(killer.getUniqueId()) <= quest.requiredAmount()) {
-                userData.countKill(quest.questIdentifier(), killed);
+            if (questData.getUserCount(killer.getUniqueId()) <= questData.requiredAmount()) {
+                userData.countKill(questData.questIdentifier(), killed);
                 killer.sendRichMessage("<green>נחשב הריגה");
             }
         }

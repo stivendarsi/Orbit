@@ -1,9 +1,7 @@
 package me.stivendarsi.orbit.quest.events;
 
-import com.google.common.base.Preconditions;
 import me.stivendarsi.orbit.Constants;
-import me.stivendarsi.orbit.orbit.data.LocalUserData;
-import me.stivendarsi.orbit.quest.Quest;
+import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.quest.enums.QuestType;
 import org.bukkit.block.BlockType;
 import org.bukkit.entity.Player;
@@ -22,22 +20,22 @@ public class BlockBreakQuestHandler implements Listener {
         BlockType blockType = event.getBlock().getType().asBlockType();
 
 
-        for (Quest quest : mainHandler().questHandler().dailyQuests()) {
-            if (quest == null || quest.questType() != QuestType.BREAK_BLOCK) continue;
+        for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
+            if (questData == null || questData.questType() != QuestType.BREAK_BLOCK) continue;
 
-            boolean blockTypeIsAllowedToBreak = quest.allowedBlocks().contains(blockType);
+            boolean blockTypeIsAllowedToBreak = questData.allowedBlocks().contains(blockType);
 
             if (!blockTypeIsAllowedToBreak) {
                 System.out.println("BlockType: " + blockType.getKey());
                 continue;
             }
 
-            quest.countUser(cause.getUniqueId(), 1);
+            questData.countUser(cause.getUniqueId(), 1);
 
-            boolean rewardPlayer = quest.getUserCount(cause.getUniqueId()) == quest.requiredAmount();
+            boolean rewardPlayer = questData.getUserCount(cause.getUniqueId()) == questData.requiredAmount();
 
             if (rewardPlayer) {
-                Constants.runCommandInConsole(cause, quest.rewardCommand()); // Reward the user if he is currently at the reached amount
+                Constants.runCommandInConsole(cause, questData.rewardCommand()); // Reward the user if he is currently at the reached amount
                 cause.sendRichMessage("<green>קיבלת כוכבים");
             }
         }
