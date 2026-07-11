@@ -22,60 +22,147 @@ messages:
     level-unlocked: "<green>פתוח \uD83D\uDD13</green>"
 
 quests:
-  kill-monsters-1:
+  kill-50-players:
     type: KILL_ENTITY
     mode: WHITE_LIST # WHITE_LIST / BLACK_LIST
-    allowed-entities: ["zombie", "skeleton"]
+    allowed-entities: ["player"]
     appears: DAILY # SEASON / DAILY
     description-width: 120
-    description: "להרוג 100 מפלצות"
-    required-amount: 100
-    reward-description: "50 כוכבים"
-    reward-command: "experience <player_name> modify 50"
+    description: "להרוג 50 מפלצות"
+    required-amount: 50
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
     icon:
       type: "netherite_sword"
       enchanted: true;
-  mine-blocks-1:
-    type: BREAK_BLOCK
+  kill-20-zombies:
+    type: KILL_ENTITY
     mode: WHITE_LIST
-    allowed-blocks: []
+    allowed-entities: ["zombie"]
     appears: DAILY # SEASON / DAILY
     description-width: 120
-    description: "לחצוב 60 בלוקים"
-    required-amount: 60
-    reward-description: "50 כוכבים"
-    reward-command: "experience <player_name> modify 50"
+    description: "להרוג 20 זומבים"
+    required-amount: 20
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
+    icon:
+      type: "iron_sword"
+      enchanted: false;
+  kill-20-skeletons:
+    type: KILL_ENTITY
+    mode: WHITE_LIST
+    allowed-entities: ["skeleton"]
+    appears: DAILY # SEASON / DAILY
+    description-width: 120
+    description: "להרוג 20 סקלטונים"
+    required-amount: 20
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
     icon:
       type: "iron_sword"
       enchanted: false;
 
-  mine-blocks-2:
-    type: BREAK_BLOCK
+  kill-20-spider:
+    type: KILL_ENTITY
     mode: WHITE_LIST
-    allowed-blocks: [ ]
+    allowed-entities: ["spider"]
     appears: DAILY # SEASON / DAILY
     description-width: 120
-    description: "לחצוב 5000 בלוקים"
-    required-amount: 5000
-    reward-description: "1000 כוכבים"
-    reward-command: "experience <player_name> modify 1000"
+    description: "להרוג 20 עכבישים רגילים"
+    required-amount: 20
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
     icon:
-      type: "diamond_pickaxe"
-      enchanted: true;
+      type: "iron_sword"
+      enchanted: false;
 
-  mine-blocks-3:
-    type: BREAK_BLOCK
+  kill-20-creepers:
+    type: KILL_ENTITY
     mode: WHITE_LIST
-    allowed-blocks: [ ]
+    allowed-entities: ["creeper"]
     appears: DAILY # SEASON / DAILY
     description-width: 120
-    description: "לחצוב 8000 בלוקים"
-    required-amount: 8000
-    reward-description: "1000 כוכבים"
-    reward-command: "experience <player_name> modify 1000"
+    description: "להרוג 20 קריפרים"
+    required-amount: 20
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
     icon:
-      type: "diamond_pickaxe"
-      enchanted: true;
+      type: "iron_sword"
+      enchanted: false;
+
+
+  kill-10-endermans:
+    type: KILL_ENTITY
+    mode: WHITE_LIST
+    allowed-entities: ["enderman"]
+    appears: DAILY # SEASON / DAILY
+    description-width: 120
+    description: "להרוג 10 אנדרמנים"
+    required-amount: 10
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
+    icon:
+      type: "iron_sword"
+      enchanted: false;
+
+  kill-wither:
+    type: KILL_ENTITY
+    mode: WHITE_LIST
+    allowed-entities: ["wither"]
+    appears: DAILY # SEASON / DAILY
+    description-width: 120
+    description: "להרוג ווידר"
+    required-amount: 1
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
+    icon:
+      type: "iron_sword"
+      enchanted: false;
+
+
+  mine-1000-stone-blocks:
+    type: BREAK_BLOCK
+    mode: WHITE_LIST
+    allowed-blocks: ["stone"]
+    appears: DAILY # SEASON / DAILY
+    description-width: 120
+    description: "לחצוב 1000 אבנים"
+    required-amount: 1000
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
+    icon:
+      type: "stone"
+      enchanted: false;
+
+
+  mine-2000-netherrack-blocks:
+    type: BREAK_BLOCK
+    mode: WHITE_LIST
+    allowed-blocks: ["netherrack"]
+    appears: DAILY # SEASON / DAILY
+    description-width: 120
+    description: "לחצוב 2000 נד'רראק"
+    required-amount: 2000
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
+    icon:
+      type: "netherrack"
+      enchanted: false;
+
+
+  mine-50-iron-ore-blocks:
+    type: BREAK_BLOCK
+    mode: WHITE_LIST
+    allowed-blocks: ["iron_ore"]
+    appears: DAILY # SEASON / DAILY
+    description-width: 120
+    description: "לחצוב 50 עפרת ברזל"
+    required-amount: 50
+    reward-description: "150 כוכבים"
+    reward-command: "experience <player_name> modify 150"
+    icon:
+      type: "iron_ore"
+      enchanted: false;
 
 orbits:
   season-1:

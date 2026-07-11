@@ -52,13 +52,6 @@ public class CommandHandler {
                                 return 1;
                             }))
                     .build());
-            commands.register(Commands.literal("runcommad").then(Commands.argument("cmd", greedyString()).executes(context -> {
-
-                String command = context.getArgument("cmd", String.class);
-                orbitInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
-                return 1;
-
-            })).build());
         });
     }
 }

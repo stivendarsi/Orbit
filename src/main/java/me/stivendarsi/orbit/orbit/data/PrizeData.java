@@ -46,8 +46,8 @@ public class PrizeData {
     }
 
     public @Nullable String rewardMessage() {
-        if (this.rewardCommand == null || this.rewardCommand.isBlank()) return null;
-        return rewardCommand;
+        if (this.rewardMessage == null || this.rewardMessage.isBlank()) return null;
+        return rewardMessage;
     }
 
     public @NotNull Component description(Player viewer) {
