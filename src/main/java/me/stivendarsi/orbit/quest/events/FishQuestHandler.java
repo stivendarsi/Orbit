@@ -18,9 +18,6 @@ public class FishQuestHandler implements Listener {
         if (event.isCancelled()) return;
         Player cause = event.getPlayer();
 
-        LocalUserData userData = mainHandler().userHandler().getUser(cause.getUniqueId());
-        Preconditions.checkNotNull(userData);
-
         Entity fish = event.getCaught();
         if (fish == null) return;
         EntityType entityType = fish.getType();
