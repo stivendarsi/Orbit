@@ -45,8 +45,7 @@ public class QuestMenu {
         mainHandler().questHandler().dailyQuests().forEach(quest -> {
             bodies.add(getQuestBlock(quest, quest.getUserCount(userUUID)));
         });
-
-        bodies.add(seasonQuestsTitle);
+        
 
         OrbitData currentOrbitData = mainHandler().orbitHandler().getCurrentOrbit();
         if (currentOrbitData == null) return bodies;

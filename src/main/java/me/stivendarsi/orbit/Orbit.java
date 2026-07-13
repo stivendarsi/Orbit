@@ -1,10 +1,8 @@
 package me.stivendarsi.orbit;
 
 import me.stivendarsi.orbit.command.CommandHandler;
-import me.stivendarsi.orbit.quest.events.BlockBreakQuestHandler;
-import me.stivendarsi.orbit.quest.events.EntityKillQuestHandler;
+import me.stivendarsi.orbit.quest.events.*;
 import me.stivendarsi.orbit.events.LoadUserExperienceHandler;
-import me.stivendarsi.orbit.quest.events.FishQuestHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Orbit extends JavaPlugin {
@@ -35,6 +33,8 @@ public final class Orbit extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EntityKillQuestHandler(), this);
         getServer().getPluginManager().registerEvents(new FishQuestHandler(), this);
         getServer().getPluginManager().registerEvents(new BlockBreakQuestHandler(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeathQuestHandler(), this);
+        getServer().getPluginManager().registerEvents(new PlayTimeQuestHandler(), this);
 
         mainHandler().questHandler().startDailyQuestChanging(); // start the task for changing quests.
         mainHandler().questHandler().startSeasonQuestChanging();

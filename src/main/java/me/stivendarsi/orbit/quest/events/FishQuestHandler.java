@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
+import org.bukkit.inventory.ItemType;
 
 import java.util.UUID;
 
@@ -22,27 +23,27 @@ public class FishQuestHandler implements Listener {
 
         Entity fish = event.getCaught();
         if (fish == null) return;
-        EntityType entityType = fish.getType();
+        ItemType itemType = fish.getPickItemStack().getType().asItemType();
 
         for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
-            update(questData, cause.getUniqueId(), entityType);
+            update(questData, cause.getUniqueId(), itemType);
         }
 
         OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
         if (orbitData == null) return;
 
         for (QuestData questData : orbitData.seasonQuests()) {
-            update(questData, cause.getUniqueId(), entityType);
+            update(questData, cause.getUniqueId(), itemType);
         }
     }
 
-    private void update(QuestData questData, UUID uuid, EntityType entityType) {
+    private void update(QuestData questData, UUID uuid, ItemType itemType) {
         if (questData == null || questData.questType() != QuestType.FISHING) return;
 
-        boolean entityTypeIsAllowedToFish = questData.allowedEntities().contains(entityType);
+        boolean entityTypeIsAllowedToFish = questData.allowedEntities().contains(itemType);
 
         if (!entityTypeIsAllowedToFish) {
-            System.out.println("EntityType: " + entityType);
+            System.out.println("EntityType: " + itemType);
             return;
         }
         questData.updateAndCheck(uuid, 1);
