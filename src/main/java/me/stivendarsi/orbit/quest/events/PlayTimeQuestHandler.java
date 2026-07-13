@@ -1,39 +1,44 @@
 package me.stivendarsi.orbit.quest.events;
 
+import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.quest.enums.QuestType;
+import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerStatisticIncrementEvent;
 
 import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
-public class PlayerDeathQuestHandler implements Listener {
+public class PlayTimeQuestHandler implements Listener {
     @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent event) {
+    public void savePlayTime(PlayerStatisticIncrementEvent event) {
         if (event.isCancelled()) return;
-        Player died = event.getPlayer();
+        if (event.getStatistic() != Statistic.PLAY_ONE_MINUTE) return;
+        Player player = event.getPlayer();
+
+
+        UUID uuid = player.getUniqueId();
 
         for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
-            update(questData, died.getUniqueId());
+            update(questData, uuid);
         }
 
         OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
         if (orbitData == null) return;
 
         for (QuestData questData : orbitData.seasonQuests()) {
-            update(questData, died.getUniqueId());
+            update(questData, uuid);
         }
-
     }
 
-    private void update(QuestData questData, UUID uuid) {
-        if (questData == null || questData.questType() != QuestType.PLAYER_DEATH) return;
+    private void update(QuestData questData, UUID uuid){
+        if (questData == null || questData.questType() != QuestType.PLAY_TIME) return;
         questData.updateAndCheck(uuid, 1);
-
     }
 }

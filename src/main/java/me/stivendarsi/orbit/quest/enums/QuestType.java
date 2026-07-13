@@ -4,5 +4,6 @@ public enum QuestType {
     KILL_ENTITY,
     BREAK_BLOCK,
     FISHING,
-    PLAYER_DEATH
+    PLAYER_DEATH,
+    PLAY_TIME;
 }

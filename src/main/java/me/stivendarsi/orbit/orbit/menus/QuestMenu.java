@@ -4,6 +4,7 @@ import io.papermc.paper.dialog.Dialog;
 import io.papermc.paper.registry.data.dialog.DialogBase;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
+import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -47,17 +48,15 @@ public class QuestMenu {
 
         bodies.add(seasonQuestsTitle);
 
-        mainHandler().questHandler().seasonQuests().forEach(quest -> {
+        OrbitData currentOrbitData = mainHandler().orbitHandler().getCurrentOrbit();
+        if (currentOrbitData == null) return bodies;
+
+        bodies.add(seasonQuestsTitle);
+
+        currentOrbitData.seasonQuests().forEach(quest -> {
             bodies.add(getQuestBlock(quest, quest.getUserCount(userUUID)));
         });
         return bodies;
-//        bodies.add(getQuestBlock(ItemType.IRON_PICKAXE.createItemStack(), "לחצוב 50000 בלוקים", 200, 43, "1000 כוכבים", 120));
-//
-//        ItemStack enchanted = ItemType.NETHERITE_SWORD.createItemStack();
-//        enchanted.setData(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, Boolean.TRUE);
-
-      //  bodies.add(getQuestBlock(enchanted, "להרוג 100 שחקנים", 100, 100, "1000 כוכבים", 120));
-
     }
 
     private DialogBody getQuestBlock(QuestData questData, int completed) {

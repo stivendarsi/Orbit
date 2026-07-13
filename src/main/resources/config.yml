@@ -149,6 +149,20 @@ quests:
       type: "netherrack"
       enchanted: false;
 
+  kill-75-players:
+    type: KILL_ENTITY
+    mode: WHITE_LIST
+    allowed-entities: ["player"]
+    appears: SEASON # SEASON / DAILY
+    description-width: 120
+    description: "להרוג 75 שחקנים"
+    required-amount: 1
+    reward-description: "1000 כוכבים"
+    reward-command: "experience <player_name> modify 1000"
+    icon:
+      type: "iron_sword"
+      enchanted: false;
+
 
   mine-50-iron-ore-blocks:
     type: BREAK_BLOCK

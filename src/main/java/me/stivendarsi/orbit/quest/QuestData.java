@@ -1,16 +1,19 @@
 package me.stivendarsi.orbit.quest;
 
 import io.papermc.paper.datacomponent.DataComponentTypes;
+import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import me.stivendarsi.orbit.quest.enums.QuestListMode;
 import me.stivendarsi.orbit.quest.enums.QuestType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import net.kyori.adventure.key.Key;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.Registry;
 import org.bukkit.block.BlockType;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
@@ -72,6 +75,19 @@ public class QuestData {
         this.rewardCommand = questSection.getString("reward-command");
     }
 
+
+    public void updateAndCheck(UUID uuid, int requiredAmount) {
+        countUser(uuid, requiredAmount);
+
+        boolean rewardPlayer = getUserCount(uuid) == this.requiredAmount;
+
+        if (rewardPlayer) {
+            Player player = Bukkit.getPlayer(uuid);
+            if (player == null) return;
+            Constants.runCommandInConsole(player, this.rewardCommand); // Reward the user if he is currently at the reached amount
+            player.sendRichMessage("<green>קיבלת כוכבים");
+        }
+    }
 
     public void countUser(UUID uuid, int amount) {
         this.completed.put(uuid, getUserCount(uuid) + amount);
