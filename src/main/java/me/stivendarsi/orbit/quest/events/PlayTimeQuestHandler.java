@@ -1,6 +1,5 @@
 package me.stivendarsi.orbit.quest.events;
 
-import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.quest.enums.QuestType;
@@ -8,7 +7,6 @@ import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerStatisticIncrementEvent;
 
 import java.util.UUID;
