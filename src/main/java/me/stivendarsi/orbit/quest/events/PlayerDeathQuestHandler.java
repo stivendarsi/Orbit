@@ -34,6 +34,5 @@ public class PlayerDeathQuestHandler implements Listener {
     private void update(QuestData questData, UUID uuid) {
         if (questData == null || questData.questType() != QuestType.PLAYER_DEATH) return;
         questData.updateAndCheck(uuid, 1);
-
     }
 }
