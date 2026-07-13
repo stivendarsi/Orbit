@@ -156,12 +156,26 @@ quests:
     appears: SEASON # SEASON / DAILY
     description-width: 120
     description: "להרוג 75 שחקנים"
-    required-amount: 1
+    required-amount: 75
     reward-description: "1000 כוכבים"
     reward-command: "experience <player_name> modify 1000"
     icon:
-      type: "iron_sword"
-      enchanted: false;
+      type: "netherite_spear"
+      enchanted: true;
+
+  play-5-days:
+    type: PLAY_TIME
+    mode: WHITE_LIST
+    allowed-entities: ["player"]
+    appears: SEASON # SEASON / DAILY
+    description-width: 120
+    description: "לשחק 5 ימים (נספר בדקות)"
+    required-amount: 7200
+    reward-description: "1000 כוכבים"
+    reward-command: "experience <player_name> modify 1000"
+    icon:
+      type: "clock"
+      enchanted: true;
 
 
   mine-50-iron-ore-blocks:
@@ -196,7 +210,7 @@ quests:
 orbits:
   season-1:
     title: "מסלול התקדמות <head:<player_uuid>> | עונה 1 - החוף של טייגר "
-    season-quests: ["quest-1", "quest-2"]
+    season-quests: ["play-5-days", "kill-75-players"]
     start: "2025:05:26:00:00:00"
     end: "2026:08:21:15:00:00"
     tier-amount: 100

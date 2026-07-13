@@ -46,6 +46,5 @@ public class FishQuestHandler implements Listener {
             return;
         }
         questData.updateAndCheck(uuid, 1);
-
     }
 }
