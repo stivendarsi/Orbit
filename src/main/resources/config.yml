@@ -195,7 +195,7 @@ quests:
   caught-20-fish:
     type: FISHING
     mode: WHITE_LIST
-    allowed-entities: ["cod", "salmon", "tropical_fish", "pufferfish"]
+    allowed-items: ["cod", "salmon", "tropical_fish", "pufferfish"]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "לדוג 20 דגים"

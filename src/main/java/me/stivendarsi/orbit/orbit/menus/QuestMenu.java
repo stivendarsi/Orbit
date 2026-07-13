@@ -6,9 +6,14 @@ import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
+import me.stivendarsi.orbit.quest.enums.QuestType;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.apache.commons.lang3.time.DurationFormatUtils;
 
+import java.text.NumberFormat;
+import java.time.Duration;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -45,7 +50,7 @@ public class QuestMenu {
         mainHandler().questHandler().dailyQuests().forEach(quest -> {
             bodies.add(getQuestBlock(quest, quest.getUserCount(userUUID)));
         });
-        
+
 
         OrbitData currentOrbitData = mainHandler().orbitHandler().getCurrentOrbit();
         if (currentOrbitData == null) return bodies;
@@ -65,7 +70,12 @@ public class QuestMenu {
 
         builder.add("<gray>⏵ <gradient:#fabf1b:#faea3c:#fabf1b>" + questData.description() + "</gradient:#fabf1b:#faea3c:#fabf1b> ⏴</gray>");
 
-        builder.add("<#fffb00>" + completed + "/" + questData.requiredAmount() + "</#fffb00>");
+        if (questData.questType() == QuestType.PLAY_TIME) {
+            String completedTime = DurationFormatUtils.formatDuration(Duration.ofMinutes(completed).toMillis(), "dd:HH:mm");
+            builder.add("<#fffb00>" + completedTime + "</#fffb00>");
+        }
+
+        else builder.add("<#fffb00>" + completed + "/" + questData.requiredAmount() + "</#fffb00>");
 
         if (questCompleted)
             builder.add("<gradient:#07ba55:#32f02b:#07ba55>☑ הושלם</gradient:#07ba55:#32f02b:#07ba55>");

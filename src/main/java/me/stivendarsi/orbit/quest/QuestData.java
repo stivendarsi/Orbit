@@ -15,6 +15,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ItemType;
 
 import java.util.*;
 
@@ -35,6 +36,7 @@ public class QuestData {
 
     private final List<BlockType> allowedBlocks;
     private final List<EntityType> allowedEntities;
+    private final List<ItemType> allowedItems;
 
     public QuestData(String identifier, ConfigurationSection questSection) {
         this.completed = new HashMap<>();
@@ -52,9 +54,10 @@ public class QuestData {
 
         this.allowedBlocks = new ArrayList<>();
         this.allowedEntities = new ArrayList<>();
+        this.allowedItems = new ArrayList<>();
 
         switch (this.questType) {
-            case KILL_ENTITY, FISHING -> {
+            case KILL_ENTITY -> {
                 List<String> allowedEntities = questSection.getStringList("allowed-entities");
                 allowedEntities.forEach(s -> this.allowedEntities.add(EntityType.valueOf(s.toUpperCase())));
             }
@@ -63,6 +66,13 @@ public class QuestData {
                 allowedBlocks.forEach(s -> {
                     BlockType blockType = Registry.BLOCK.get(Key.key(s.toLowerCase(Locale.ROOT)));
                     this.allowedBlocks.add(blockType);
+                });
+            }
+            case FISHING -> {
+                List<String> allowedItems = questSection.getStringList("allowed-items");
+                allowedItems.forEach(s -> {
+                    ItemType itemType = Registry.ITEM.get(Key.key(s.toLowerCase(Locale.ROOT)));
+                    this.allowedItems.add(itemType);
                 });
             }
         }
@@ -75,6 +85,9 @@ public class QuestData {
         this.rewardCommand = questSection.getString("reward-command");
     }
 
+    public List<ItemType> allowedItems() {
+        return allowedItems;
+    }
 
     public void updateAndCheck(UUID uuid, int requiredAmount) {
         countUser(uuid, requiredAmount);

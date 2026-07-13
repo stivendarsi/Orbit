@@ -44,7 +44,6 @@ public class EntityKillQuestHandler implements Listener {
     private void update(QuestData questData, LocalUserData userData, Entity killedEntity) {
         if (questData == null || questData.questType() != QuestType.KILL_ENTITY) return;
 
-
         boolean entityTypeIsAllowedToKill = questData.allowedEntities().contains(killedEntity.getType());
         boolean entityKilledAlready = userData.getKilledEntities(questData.questIdentifier()).contains(killedEntity.getUniqueId());
 
@@ -53,8 +52,7 @@ public class EntityKillQuestHandler implements Listener {
             System.out.println("Entity killed already: " + entityKilledAlready);
             return;
         }
-
-
+        
         questData.updateAndCheck(userData.userUUID(), 1);
 
         if (questData.getUserCount(userData.userUUID()) <= questData.requiredAmount()) {

@@ -5,6 +5,7 @@ import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.quest.enums.QuestType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,7 +24,8 @@ public class FishQuestHandler implements Listener {
 
         Entity fish = event.getCaught();
         if (fish == null) return;
-        ItemType itemType = fish.getPickItemStack().getType().asItemType();
+        Item itemStack = (Item) fish;
+        ItemType itemType = itemStack.getItemStack().getType().asItemType();
 
         for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
             update(questData, cause.getUniqueId(), itemType);
@@ -40,10 +42,10 @@ public class FishQuestHandler implements Listener {
     private void update(QuestData questData, UUID uuid, ItemType itemType) {
         if (questData == null || questData.questType() != QuestType.FISHING) return;
 
-        boolean entityTypeIsAllowedToFish = questData.allowedEntities().contains(itemType);
+        boolean itemTypeIsAllowedToFish = questData.allowedItems().contains(itemType);
 
-        if (!entityTypeIsAllowedToFish) {
-            System.out.println("EntityType: " + itemType);
+        if (!itemTypeIsAllowedToFish) {
+            System.out.println("ItemType: " + itemType.getKey().asString());
             return;
         }
         questData.updateAndCheck(uuid, 1);
