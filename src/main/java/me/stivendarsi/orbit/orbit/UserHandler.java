@@ -72,7 +72,7 @@ public class UserHandler {
         StringBuilder binaryStr = new StringBuilder(size);
 
         for (int i = 0; i < size; i++) {
-            System.out.println(i + ": " + bitSet.get(i));
+            //System.out.println(i + ": " + bitSet.get(i));
             binaryStr.append(bitSet.get(i) ? "1" : "0");
         }
         return binaryStr.toString();

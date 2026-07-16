@@ -7,6 +7,9 @@ load: POSTWORLD
 folia-supported: true
 dependencies:
   server:
+    PlaceholderAPI:
+      load: BEFORE
+      required: true
     MiniPlaceholders:
       required: true
       load: BEFORE

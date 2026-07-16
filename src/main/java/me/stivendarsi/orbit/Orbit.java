@@ -1,8 +1,10 @@
 package me.stivendarsi.orbit;
 
 import me.stivendarsi.orbit.command.CommandHandler;
+import me.stivendarsi.orbit.placeholders.OrbitPlaceholders;
 import me.stivendarsi.orbit.quest.events.*;
 import me.stivendarsi.orbit.events.LoadUserExperienceHandler;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Orbit extends JavaPlugin {
@@ -38,6 +40,10 @@ public final class Orbit extends JavaPlugin {
 
         mainHandler().questHandler().startDailyQuestChanging(); // start the task for changing quests.
         mainHandler().questHandler().startSeasonQuestChanging();
+
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) { //
+            new OrbitPlaceholders().register();
+        }
     }
 
     @Override

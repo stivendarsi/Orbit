@@ -8,6 +8,7 @@ repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.nexomc.com/releases")
+    maven("https://repo.extendedclip.com/releases/")
 }
 
 dependencies {
@@ -15,6 +16,7 @@ dependencies {
     implementation("io.lettuce:lettuce-core:7.6.0.RELEASE")
     compileOnly("com.nexomc:nexo:1.25.0")
     compileOnly("io.github.miniplaceholders:miniplaceholders-api:3.2.0")
+    compileOnly("me.clip:placeholderapi:2.12.3")
 }
 
 java {

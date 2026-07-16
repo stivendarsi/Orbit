@@ -9,11 +9,11 @@ import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.quest.enums.QuestType;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
+import org.apache.commons.lang3.time.DurationUtils;
 
-import java.text.NumberFormat;
 import java.time.Duration;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -71,11 +71,17 @@ public class QuestMenu {
         builder.add("<gray>⏵ <gradient:#fabf1b:#faea3c:#fabf1b>" + questData.description() + "</gradient:#fabf1b:#faea3c:#fabf1b> ⏴</gray>");
 
         if (questData.questType() == QuestType.PLAY_TIME) {
-            String completedTime = DurationFormatUtils.formatDuration(Duration.ofMinutes(completed).toMillis(), "dd:HH:mm");
-            builder.add("<#fffb00>" + completedTime + "</#fffb00>");
-        }
+            Duration completedDuration = Duration.ofMinutes(questData.getUserCount(userUUID)).plus(questData.currentSessionTimePlayed(userUUID));
+            // String completedTimeString = DurationFormatUtils.formatDuration(Duration.ofMinutes(questData.getUserCount(userUUID)).toMillis() + questData.currentSessionTimePlayed(userUUID).toMillis(), "dd:HH:mm");
+            String a = DurationFormatUtils.formatDurationWords(completedDuration.toMillis(), true, true);
 
-        else builder.add("<#fffb00>" + completed + "/" + questData.requiredAmount() + "</#fffb00>");
+            a = a.replace("days", "ימים");
+            a = a.replace("hours", "שעות");
+            a = a.replace("minutes", "דקות");
+            a = a.replace("seconds", "דקות");
+
+            builder.add("<#fffb00>" + a + "</#fffb00>");
+        } else builder.add("<#fffb00>" + completed + "/" + questData.requiredAmount() + "</#fffb00>");
 
         if (questCompleted)
             builder.add("<gradient:#07ba55:#32f02b:#07ba55>☑ הושלם</gradient:#07ba55:#32f02b:#07ba55>");

@@ -1,5 +1,6 @@
 package me.stivendarsi.orbit;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import org.bukkit.Bukkit;
@@ -16,7 +17,7 @@ public class Constants {
     public static boolean runCommandInConsole(Player claimingUser, @Nullable String rewardCommand) {
         if (rewardCommand == null) return false;
         rewardCommand = rewardCommand.replace("<player_name>", claimingUser.getName());
-        orbitInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), rewardCommand);
+        orbitInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), PlaceholderAPI.setPlaceholders(claimingUser, rewardCommand));
         return true;
     }
 }

@@ -5,9 +5,11 @@ import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import me.stivendarsi.orbit.quest.enums.QuestListMode;
 import me.stivendarsi.orbit.quest.enums.QuestType;
+import me.stivendarsi.orbit.quest.events.PlayTimeQuestHandler;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import net.kyori.adventure.key.Key;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Registry;
 import org.bukkit.block.BlockType;
@@ -17,6 +19,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ItemType;
 
+import java.time.Duration;
 import java.util.*;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
@@ -170,5 +173,13 @@ public class QuestData {
 
     public String questIdentifier() {
         return questIdentifier;
+    }
+
+
+    public Duration currentSessionTimePlayed(UUID userUUID) {
+        Duration played = Duration.ofMillis(System.currentTimeMillis() - PlayTimeQuestHandler.playTime().getOrDefault(userUUID, System.currentTimeMillis()));
+        return Duration.ofDays(played.toDays())
+                .plusHours(played.toHoursPart())
+                .plusMinutes(played.toMinutesPart());
     }
 }
