@@ -39,10 +39,7 @@ public class BlockBreakQuestHandler implements Listener {
 
         boolean blockTypeIsAllowedToBreak = questData.allowedBlocks().contains(blockType);
 
-        if (!blockTypeIsAllowedToBreak) {
-            System.out.println("BlockType: " + blockType.getKey());
-            return;
-        }
+        if (!blockTypeIsAllowedToBreak) return;
 
         questData.updateAndCheck(breaker, 1);
     }

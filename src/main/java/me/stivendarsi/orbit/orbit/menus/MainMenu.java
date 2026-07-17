@@ -22,13 +22,13 @@ import static me.stivendarsi.orbit.Orbit.mainHandler;
 public class MainMenu {
 
 
-    public static void openMainMenu(UUID userUUID) {
+    public static void openMainMenu(Player viewer) {
         Dialog dialog = Dialog.create(b -> {
             OrbitData currentOrbit = mainHandler().orbitHandler().getCurrentOrbit();
             Preconditions.checkNotNull(currentOrbit, "No current Orbit");
 
-            OrbitMenu orbitMenu = new OrbitMenu(currentOrbit, userUUID);
-            QuestMenu questMenu = new QuestMenu(userUUID);
+            OrbitMenu orbitMenu = new OrbitMenu(currentOrbit, viewer);
+            QuestMenu questMenu = new QuestMenu(viewer);
 
             List<Dialog> dialogs = new ArrayList<>();
 
@@ -40,7 +40,6 @@ public class MainMenu {
             DialogType type = DialogType.dialogList(set).build();
             b.empty().type(type).base(DialogBase.builder(Component.text("תפריט ראשי")).build());
         });
-        Player player = Bukkit.getPlayer(userUUID);
-        if (player != null) player.showDialog(dialog);
+        if (viewer != null) viewer.showDialog(dialog);
     }
 }

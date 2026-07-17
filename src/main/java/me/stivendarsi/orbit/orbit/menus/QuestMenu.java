@@ -1,20 +1,26 @@
 package me.stivendarsi.orbit.orbit.menus;
 
 import io.papermc.paper.dialog.Dialog;
+import io.papermc.paper.registry.data.dialog.ActionButton;
 import io.papermc.paper.registry.data.dialog.DialogBase;
+import io.papermc.paper.registry.data.dialog.action.DialogAction;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
+import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.quest.enums.QuestType;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.apache.commons.lang3.time.DurationUtils;
+import org.bukkit.entity.Player;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,17 +28,32 @@ import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class QuestMenu {
     private final UUID userUUID;
+    private final Player viewer;
 
-    public QuestMenu(UUID userUUID) {
-        this.userUUID = userUUID;
+    public QuestMenu(Player viewer) {
+        this.userUUID = viewer.getUniqueId();
+        this.viewer = viewer;
     }
 
     public Dialog getQuestDialog() {
+
+        ActionButton backButton = ActionButton.builder(Constants.color(viewer, "<red>חזרה"))
+                .action(DialogAction.staticAction(ClickEvent.callback(audience -> {
+                    if (!(audience instanceof Player player)) return;
+                    MainMenu.openMainMenu(player);
+                })))
+                .build();
+
         Dialog questDialog = Dialog.create(b -> {
             b.empty()
-                    .type(DialogType.notice())
-                    .base(DialogBase.builder(Component.text("משימות")).body(getBody())
-                            .externalTitle(Component.text("משימות")).build());
+                    .type(DialogType.notice(backButton))
+                    .base(DialogBase.builder(Component.text("משימות"))
+                            .body(getBody())
+                            .externalTitle(Component.text("משימות"))
+                            .pause(false)
+                            .afterAction(DialogBase.DialogAfterAction.NONE)
+                            .build()
+                    );
         });
 
         return questDialog;

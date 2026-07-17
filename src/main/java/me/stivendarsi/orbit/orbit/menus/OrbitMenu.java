@@ -10,6 +10,7 @@ import io.papermc.paper.registry.data.dialog.action.DialogAction;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.data.dialog.type.MultiActionType;
+import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.message.MessagesHandler;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
@@ -31,16 +32,19 @@ import java.util.List;
 import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
+import static net.kyori.adventure.text.minimessage.tag.standard.StandardTags.color;
 
 @SuppressWarnings("UnstableApiUsage")
 public class OrbitMenu {
     private final int[] requiredExperience;
     private int currentIndex;
+    private final Player viewer;
     private final UUID user;
     private final OrbitData orbitData;
 
-    public OrbitMenu(OrbitData orbitData, UUID user) {
-        this.user = user;
+    public OrbitMenu(OrbitData orbitData, Player viewer) {
+        this.user = viewer.getUniqueId();
+        this.viewer = viewer;
         this.orbitData = orbitData;
         this.requiredExperience = new int[orbitData.tierAmount()];
         for (int i = 0; i < this.requiredExperience.length; i++) {
@@ -67,7 +71,10 @@ public class OrbitMenu {
 
             builder.empty()
                     .type(buttons)
-                    .base(DialogBase.builder(title).pause(false).afterAction(DialogBase.DialogAfterAction.NONE).externalTitle(Component.text("מסלול התקדמות")).body(bodies).build());
+                    .base(DialogBase.builder(title)
+                            .pause(false)
+                            .afterAction(DialogBase.DialogAfterAction.NONE)
+                            .externalTitle(Component.text("מסלול התקדמות")).body(bodies).build());
         });
         return dialog;
     }
@@ -88,10 +95,9 @@ public class OrbitMenu {
         Preconditions.checkNotNull(localUserData, "Null user data");
 
 
-        String msg = "<cut_progress_pink:'⭐<current_experience> / ⭐<required_experience>'>";
+        String msg = "<cut_progress_pink:'⭐<orbit_stars> / ⭐<required_experience>'>";
 
         TagResolver experienceResolver = TagResolver.builder()
-                .tag("current_experience", Tag.preProcessParsed(String.valueOf(localUserData.getUserExperience(this.orbitData.identifier()))))
                 .tag("required_experience", Tag.preProcessParsed(String.valueOf(requiredExperience)))
                 .build();
 
@@ -102,9 +108,8 @@ public class OrbitMenu {
                 .tags(GlyphTag.INSTANCE.getRESOLVER())
                 .build();
 
-        if (player != null)
-            msgComponent = mm.deserialize(msg, player, experienceResolver, MiniPlaceholders.audienceGlobalPlaceholders());
-        else msgComponent = mm.deserialize(msg, experienceResolver, MiniPlaceholders.audienceGlobalPlaceholders());
+
+        msgComponent = mm.deserialize(msg, this.viewer, experienceResolver, MiniPlaceholders.audienceGlobalPlaceholders());
 
         return DialogBody.plainMessage(msgComponent, 200);
     }
@@ -134,8 +139,6 @@ public class OrbitMenu {
         percentDone = Math.max(0, Math.min(100, percentDone));
 
         int percentLeft = 100 - percentDone;
-        //  System.out.println("progress: " + percentDone);
-        // System.out.println("left: " + percentLeft);
 
         b.append("<white>").append(this.currentIndex + 1).append(" ");
 
@@ -203,8 +206,8 @@ public class OrbitMenu {
             buttons.add(nextPage);
         }
 
-        ActionButton exist = ActionButton.create(mm.deserialize(mh.getExistDialog()), null, 50, DialogAction.customClick((response, audience) -> {
-            MainMenu.openMainMenu(this.user);
+        ActionButton exist = ActionButton.create(Constants.color(this.viewer, mh.getExistDialog()), null, 200, DialogAction.customClick((response, audience) -> {
+            MainMenu.openMainMenu(this.viewer);
         }, ClickCallback.Options.builder().build()));
 
         return DialogType.multiAction(buttons).exitAction(exist).columns(11).build();
@@ -229,12 +232,13 @@ public class OrbitMenu {
                     .tag("level_status", Tag.preProcessParsed(levelLockedStatus))
                     .build();
 
-            Component tierComponent = mm.deserialize(mh.getLevelTitle(), levelResolver);
-            Component status = mm.deserialize(mh.getLevelDescription(), levelResolver).appendNewline();
+
+            Component tierComponent = mm.deserialize(mh.getLevelTitle(), this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders());
+            Component status = mm.deserialize(mh.getLevelDescription(),this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()).appendNewline();
 
             if (isLevelIndexUnLocked(levelIndex))
-                status = status.append(mm.deserialize(mh.getTierLevelUnlocked(), levelResolver));
-            else status = status.append(mm.deserialize(mh.getTierLevelLocked(), levelResolver));
+                status = status.append(mm.deserialize(mh.getTierLevelUnlocked(),this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()));
+            else status = status.append(mm.deserialize(mh.getTierLevelLocked(),this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()));
 
 
             ActionButton actionButton = ActionButton.create(tierComponent, status, 35, null);
@@ -254,22 +258,17 @@ public class OrbitMenu {
         MessagesHandler mh = mainHandler().messagesHandler();
 
         if (plus)
-            type = ActionButton.create(mm.deserialize(mh.getOrbitPlusName()), mm.deserialize(mh.getOrbitPlusDescription()), 60, DialogAction.customClick((response, audience) -> {
+            type = ActionButton.create(mm.deserialize(mh.getOrbitPlusName()), mm.deserialize(mh.getOrbitPlusDescription(), this.viewer, MiniPlaceholders.audienceGlobalPlaceholders()), 60, DialogAction.customClick((response, audience) -> {
                 if (!(audience instanceof Player player)) return;
                 player.performCommand("store");
             }, ClickCallback.Options.builder().build()));
         else
-            type = ActionButton.create(mm.deserialize(mh.getRegularName()), mm.deserialize(mh.getOrbitRegularDescription()), 60, null);
+            type = ActionButton.create(mm.deserialize(mh.getRegularName()), mm.deserialize(mh.getOrbitRegularDescription(), this.viewer, MiniPlaceholders.audienceGlobalPlaceholders()), 60, null);
 
         actionButtons.add(type);
 
-
         for (int prizeIndex = min; prizeIndex < max; prizeIndex++) {
             PrizeData prizeData = orbitData.getPrize(prizeIndex, plus);
-
-
-//            System.out.println("level index: " + prizeIndex);
-//            System.out.println("page: " + page);
 
             boolean isPrizeUnlocked = isLevelIndexUnLocked(prizeIndex);
             boolean isPrizeTaken = isPrizeAvailable(prizeIndex, plus);
@@ -278,19 +277,16 @@ public class OrbitMenu {
             Component tierText = Component.empty();
 
             if (prizeData != null) {
-                Player player = Bukkit.getPlayer(user);
-                if (player != null) {
-                    tierText = MiniMessage.miniMessage().deserialize(prizeData.name(), player, MiniPlaceholders.audienceGlobalPlaceholders());
-                    toolTip = prizeData.description(player);
-                }
+                tierText = MiniMessage.miniMessage().deserialize(prizeData.name(), viewer, MiniPlaceholders.audienceGlobalPlaceholders());
+                toolTip = prizeData.description(viewer);
 
                 if (isPrizeTaken) tierText = tierText.color(NamedTextColor.DARK_GRAY);
-
             }
 
-            if (!isPrizeUnlocked) toolTip = toolTip.append(mm.deserialize(mh.getCannotRedeem()));
-            else if (isPrizeTaken) toolTip = toolTip.append(mm.deserialize(mh.getRedeemed()));
-            else toolTip = toolTip.append(mm.deserialize(mh.getCanRedeem()));
+
+            if (!isPrizeUnlocked) toolTip = toolTip.append(Constants.color(this.viewer, mh.getCannotRedeem()));
+            else if (isPrizeTaken) toolTip = toolTip.append(Constants.color(this.viewer, mh.getRedeemed()));
+            else toolTip = toolTip.append(Constants.color(this.viewer, mh.getCanRedeem()));
 
             ActionButton actionButton = ActionButton.create(tierText, toolTip, 35, DialogAction.customClick((dialogResponseView, audience) -> {
                 if (prizeData == null || !isPrizeUnlocked || isPrizeTaken) return;
@@ -329,8 +325,6 @@ public class OrbitMenu {
         Preconditions.checkNotNull(localUserData, "Null user data");
         int xp = this.requiredExperience[levelIndex];
 
-        //  System.out.println("Requiered: " + xp);
-        //  System.out.println("Has: " + this.currentIndex);
 
         return xp <= localUserData.getUserExperience(this.orbitData.identifier());
     }

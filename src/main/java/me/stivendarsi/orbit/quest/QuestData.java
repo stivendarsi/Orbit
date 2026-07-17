@@ -1,5 +1,6 @@
 package me.stivendarsi.orbit.quest;
 
+import io.github.miniplaceholders.api.MiniPlaceholders;
 import io.papermc.paper.datacomponent.DataComponentTypes;
 import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
@@ -101,7 +102,6 @@ public class QuestData {
             Player player = Bukkit.getPlayer(uuid);
             if (player == null) return;
             Constants.runCommandInConsole(player, this.rewardCommand); // Reward the user if he is currently at the reached amount
-            player.sendRichMessage("<green>קיבלת כוכבים");
         }
     }
 
@@ -162,12 +162,10 @@ public class QuestData {
     }
 
     public List<EntityType> allowedEntities() {
-        System.out.println(this.allowedEntities);
         return allowedEntities;
     }
 
     public List<BlockType> allowedBlocks() {
-        System.out.println("blocks:" + this.allowedBlocks);
         return allowedBlocks;
     }
 

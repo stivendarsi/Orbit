@@ -3,6 +3,7 @@ package me.stivendarsi.orbit.command;
 import com.google.common.base.Preconditions;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import io.github.miniplaceholders.api.MiniPlaceholders;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import me.stivendarsi.orbit.quest.QuestData;
@@ -17,7 +18,7 @@ public class OrbitCommands {
     public static int open(CommandContext<CommandSourceStack> context) {
         if (!(context.getSource().getExecutor() instanceof Player player)) return 0;
 
-        MainMenu.openMainMenu(player.getUniqueId());
+        MainMenu.openMainMenu(player);
         return 1;
     }
 
@@ -53,6 +54,7 @@ public class OrbitCommands {
         Preconditions.checkNotNull(orbitData, "Null orbit data");
 
         localUserData.modifyUserExperience(orbitData.identifier(), amount);
+        target.sendRichMessage("<cut_progress_pink:'קיבלת %s⭐ כוכבים!'>".formatted(amount), MiniPlaceholders.audienceGlobalPlaceholders());
         return 1;
     }
 
