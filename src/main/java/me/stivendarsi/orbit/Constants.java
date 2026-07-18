@@ -34,12 +34,18 @@ public class Constants {
         return true;
     }
 
-    public static Component color(Player viewer, String msg) {
+    public static Component color(String msg){
+        return color(null, msg);
+    }
+
+    public static Component color(@Nullable Player viewer, String msg) {
         return color(viewer, msg, null);
     }
 
-    public static Component color(Player viewer, String msg, @Nullable TagResolver resolver) {
+    public static Component color(@Nullable Player viewer, String msg, @Nullable TagResolver resolver) {
         if (resolver == null) resolver = TagResolver.empty();
-        return MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build().deserialize(msg, viewer, MiniPlaceholders.audienceGlobalPlaceholders(), resolver);
+        MiniMessage mm = MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build();
+        if (viewer == null) return mm.deserialize(msg, MiniPlaceholders.audienceGlobalPlaceholders());
+        return mm.deserialize(msg, viewer, MiniPlaceholders.audienceGlobalPlaceholders(), resolver);
     }
 }

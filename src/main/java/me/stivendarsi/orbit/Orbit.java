@@ -9,8 +9,10 @@ import me.stivendarsi.orbit.quest.events.*;
 import me.stivendarsi.orbit.events.LoadUserExperienceHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.text.NumberFormat;
@@ -25,14 +27,24 @@ public final class Orbit extends JavaPlugin {
     }
 
     private static MainHandler mainHandler;
-
     public static MainHandler mainHandler() {
         return mainHandler;
+    }
+
+    private static LuckPerms luckPerms;
+    public static LuckPerms luckPerms() {
+        return luckPerms;
     }
 
     @Override
     public void onEnable() {
         orbit = this;
+
+        RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
+        if (provider != null) {
+            luckPerms = provider.getProvider();
+        }
+
         mainHandler = new MainHandler();
 
         saveDefaultConfig();

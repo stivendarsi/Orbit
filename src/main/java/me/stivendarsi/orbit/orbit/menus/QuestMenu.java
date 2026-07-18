@@ -96,10 +96,17 @@ public class QuestMenu {
             // String completedTimeString = DurationFormatUtils.formatDuration(Duration.ofMinutes(questData.getUserCount(userUUID)).toMillis() + questData.currentSessionTimePlayed(userUUID).toMillis(), "dd:HH:mm");
             String a = DurationFormatUtils.formatDurationWords(completedDuration.toMillis(), true, true);
 
-            a = a.replace("day", "ימים");
-            a = a.replace("hours", "שעות");
-            a = a.replace("minutes", "דקות");
-            a = a.replace("seconds", "דקות");
+            a = a.replace(" day ", "ימים");
+            a = a.replace(" days ", "ימים");
+
+            a = a.replace(" hour ", "שעות");
+            a = a.replace(" hours ", "שעות");
+
+            a = a.replace(" minute ", "דקות");
+            a = a.replace(" minutes ", "דקות");
+
+            a = a.replace(" second ", "דקות");
+            a = a.replace(" seconds ", "דקות");
 
             builder.add("<#fffb00>" + a + "</#fffb00>");
         } else builder.add("<#fffb00>" + completed + "/" + questData.requiredAmount() + "</#fffb00>");

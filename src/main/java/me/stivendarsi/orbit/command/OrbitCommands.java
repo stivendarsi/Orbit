@@ -6,15 +6,24 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.miniplaceholders.api.MiniPlaceholders;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
+import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.menus.MainMenu;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import net.luckperms.api.model.user.User;
+import net.luckperms.api.node.Node;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
 
 import java.util.UUID;
 
+import static me.stivendarsi.orbit.Orbit.luckPerms;
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class OrbitCommands {
@@ -99,10 +108,50 @@ public class OrbitCommands {
     }
 
     public static int giveOrbit(CommandContext<CommandSourceStack> ctx){
-        String questIdentifier = ctx.getArgument("orbit_identifier", String.class);
+        String orbitIdentifier = ctx.getArgument("orbit_identifier", String.class);
         String playerName = ctx.getArgument("player_name", String.class);
 
+        CommandSender sender = ctx.getSource().getSender();
+
+        OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
+        if (orbitData == null) {
+            sender.sendRichMessage("<red>מסלול התקדמות זה לא קיים.</red>");
+            return 0;
+        }
+
+        Component playerNotFound = Constants.color("<red>משתמש לא נמצא.</red>");
+        Component orbitDoesntHavePermission = Constants.color("<red>אין גישה למסלול התקדמות זה.</red>");
+
         UUID userUuid = Bukkit.getPlayerUniqueId(playerName);
+        if (userUuid == null) {
+            sender.sendMessage(playerNotFound);
+            return 0;
+        }
+
+        User user = luckPerms().getUserManager().getUser(userUuid);
+
+        if (user == null) {
+            sender.sendMessage(playerNotFound);
+            return 0;
+        }
+
+        Permission orbitPermission = mainHandler().orbitHandler().getOrbitPermission(orbitIdentifier);
+
+        if (orbitPermission == null) {
+            sender.sendMessage(orbitDoesntHavePermission);
+            return 0;
+        }
+
+        Node node = Node.builder(orbitPermission.getName()).build();
+        user.data().add(node);
+        luckPerms().getUserManager().saveUser(user);
+
+        Player player = Bukkit.getPlayer(userUuid);
+        if (player != null) {
+            TagResolver resolver = TagResolver.builder().tag("orbit_title", Tag.preProcessParsed(orbitData.title())).build();
+            Component receivedOrbitPermissionMessage = Constants.color(player, "<cut_progress_pink:'קיבלת גישה למסלול התקדמות: <orbit_title>'>", resolver);
+            player.sendMessage(receivedOrbitPermissionMessage);
+        }
         return 1;
     }
 }

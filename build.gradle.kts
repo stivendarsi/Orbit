@@ -17,6 +17,7 @@ dependencies {
     compileOnly("com.nexomc:nexo:1.25.0")
     compileOnly("io.github.miniplaceholders:miniplaceholders-api:3.2.0")
     compileOnly("me.clip:placeholderapi:2.12.3")
+    compileOnly("net.luckperms:api:5.5")
 }
 
 java {

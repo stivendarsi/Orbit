@@ -5,11 +5,12 @@ redis:
   password: "A@pX#=sEk)x,luo5U5jx^G)Y&Vmi&oDGOr[&^Bly"
 
 messages:
+  orbit-title-prefix: "מסלול התקדמות <head:<player_uuid>> | "
   exist-dialog: "<red>חזרה</red>"
   regular-name: "רגיל"
   orbit-regular-description: "מסלול שפתוח לכל השחקנים."
   orbit-plus-name: "מתקדם+"
-  orbit-plus-description: "<cut_tigeril_gold:'ניתן לקנות גישה למסלול הזה בעזרת'><newline><cut_tigeril_gold:או store/ לקבל גישה מכרטיס הזהב>"
+  orbit-plus-description: "<cut_tigeril_gold:'ניתן לקנות גישה למסלול הזה בעזרת<newline>'> <cut_tigeril_gold:'לקבל גישה מכרטיס הזהב או store/'>"
   can-redeem: "<green>ניתן לקחת</green>"
   cannot-redeem: "<red>אתה לא ברמה המתאימה</red>"
   no-orbit-permission: "<red>אין לך גישה למסלול ההתקדמות+</red>"
@@ -210,7 +211,7 @@ quests:
 
 orbits:
   season-1:
-    title: "מסלול התקדמות <head:<player_uuid>> | עונה 1 - <gradient:#78a7ff:#78d9ff:#78a7ff>החוף של טייגר</gradient>"
+    title: "עונה 1 - <gradient:#78a7ff:#78d9ff:#78a7ff>החוף של טייגר</gradient>"
     season-quests: ["play-5-days", "kill-75-players"]
     start: "2025:05:26:00:00:00"
     end: "2026:08:21:15:00:00"

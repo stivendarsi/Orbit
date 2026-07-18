@@ -33,7 +33,6 @@ import java.util.List;
 import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
-import static net.kyori.adventure.text.minimessage.tag.standard.StandardTags.color;
 
 @SuppressWarnings("UnstableApiUsage")
 public class OrbitMenu {
@@ -290,13 +289,16 @@ public class OrbitMenu {
                 if (isPrizeTaken) tierText = tierText.color(NamedTextColor.DARK_GRAY);
             }
 
+            if (!userHasAccess) {
+                toolTip = toolTip.append(Constants.color(this.viewer, mh.getNoOrbitPermission()));
+            } else if (!isLevelUnlocked) {
+                toolTip = toolTip.append(Constants.color(this.viewer, mh.getCannotRedeem()));
+            } else if (!isPrizeTaken) {
+                toolTip = toolTip.append(Constants.color(this.viewer, mh.getCanRedeem()));
+            } else {
+                toolTip = toolTip.append(Constants.color(this.viewer, mh.getRedeemed()));
+            }
 
-
-            if (!isLevelUnlocked) toolTip = toolTip.append(Constants.color(this.viewer, mh.getCannotRedeem()));
-            else if (isPrizeTaken) toolTip = toolTip.append(Constants.color(this.viewer, mh.getRedeemed()));
-            else toolTip = toolTip.append(Constants.color(this.viewer, mh.getCanRedeem()));
-
-            if (!userHasAccess) toolTip = toolTip.appendNewline().append(Constants.color(this.viewer, mh.getNoOrbitPermission()));
 
             ActionButton actionButton = ActionButton.create(tierText, toolTip, 35, DialogAction.customClick((dialogResponseView, audience) -> {
                 if (prizeData == null || !isLevelUnlocked || isPrizeTaken || !userHasAccess) return;

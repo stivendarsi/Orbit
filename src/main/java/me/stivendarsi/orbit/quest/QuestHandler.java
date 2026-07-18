@@ -97,7 +97,7 @@ public class QuestHandler {
 
     private long calculateSecondsLeft(LocalDateTime end) {
         LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Jerusalem"));
-        return Duration.between(now, end).getSeconds();
+        return Duration.between(now, end).toSeconds();
     }
 
 

@@ -7,6 +7,9 @@ load: POSTWORLD
 folia-supported: true
 dependencies:
   server:
+    LuckPerms:
+      load: BEFORE
+      required: true
     PlaceholderAPI:
       load: BEFORE
       required: true
