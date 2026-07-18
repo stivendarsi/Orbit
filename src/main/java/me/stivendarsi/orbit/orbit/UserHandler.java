@@ -8,6 +8,7 @@ import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.BitSet;
@@ -32,6 +33,18 @@ public class UserHandler {
     public void loadUser(UUID userUUID) {
         LocalUserData localUserData = new LocalUserData(userUUID);
         this.userDataMap.put(localUserData.userUUID(), localUserData);
+    }
+
+    public void saveAllData(){
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            unloadUser(onlinePlayer.getUniqueId());
+        }
+    }
+
+    public void loadAllData(){
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            loadUser(onlinePlayer.getUniqueId());
+        }
     }
 
     public void unloadUser(UUID userUUID) {

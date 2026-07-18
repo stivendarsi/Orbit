@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.text.NumberFormat;
+import java.util.UUID;
 
 public final class Orbit extends JavaPlugin {
 
@@ -70,5 +71,6 @@ public final class Orbit extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        mainHandler().unLoad();
     }
 }

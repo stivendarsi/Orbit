@@ -24,6 +24,7 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -206,7 +207,7 @@ public class OrbitMenu {
             buttons.add(nextPage);
         }
 
-        ActionButton exist = ActionButton.create(Constants.color(this.viewer, mh.getExistDialog()), null, 200, DialogAction.customClick((response, audience) -> {
+        ActionButton exist = ActionButton.create(Constants.color(this.viewer, mh.getExistDialog()), null, 100, DialogAction.customClick((response, audience) -> {
             MainMenu.openMainMenu(this.viewer);
         }, ClickCallback.Options.builder().build()));
 
@@ -234,11 +235,12 @@ public class OrbitMenu {
 
 
             Component tierComponent = mm.deserialize(mh.getLevelTitle(), this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders());
-            Component status = mm.deserialize(mh.getLevelDescription(),this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()).appendNewline();
+            Component status = mm.deserialize(mh.getLevelDescription(), this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()).appendNewline();
 
             if (isLevelIndexUnLocked(levelIndex))
-                status = status.append(mm.deserialize(mh.getTierLevelUnlocked(),this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()));
-            else status = status.append(mm.deserialize(mh.getTierLevelLocked(),this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()));
+                status = status.append(mm.deserialize(mh.getTierLevelUnlocked(), this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()));
+            else
+                status = status.append(mm.deserialize(mh.getTierLevelLocked(), this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()));
 
 
             ActionButton actionButton = ActionButton.create(tierComponent, status, 35, null);
@@ -268,10 +270,15 @@ public class OrbitMenu {
         actionButtons.add(type);
 
         for (int prizeIndex = min; prizeIndex < max; prizeIndex++) {
-            PrizeData prizeData = orbitData.getPrize(prizeIndex, plus);
 
-            boolean isPrizeUnlocked = isLevelIndexUnLocked(prizeIndex);
+            PrizeData prizeData = orbitData.getPrize(prizeIndex, plus);
+            Permission orbitPermission = mainHandler().orbitHandler().getOrbitPermission(this.orbitData.identifier());
+            Preconditions.checkNotNull(orbitPermission, "Null orbit permission");
+
+            boolean isLevelUnlocked = isLevelIndexUnLocked(prizeIndex);
             boolean isPrizeTaken = isPrizeAvailable(prizeIndex, plus);
+
+            boolean userHasAccess = plus ? this.viewer.hasPermission(orbitPermission) : true;
 
             Component toolTip = Component.empty();
             Component tierText = Component.empty();
@@ -284,12 +291,15 @@ public class OrbitMenu {
             }
 
 
-            if (!isPrizeUnlocked) toolTip = toolTip.append(Constants.color(this.viewer, mh.getCannotRedeem()));
+
+            if (!isLevelUnlocked) toolTip = toolTip.append(Constants.color(this.viewer, mh.getCannotRedeem()));
             else if (isPrizeTaken) toolTip = toolTip.append(Constants.color(this.viewer, mh.getRedeemed()));
             else toolTip = toolTip.append(Constants.color(this.viewer, mh.getCanRedeem()));
 
+            if (!userHasAccess) toolTip = toolTip.appendNewline().append(Constants.color(this.viewer, mh.getNoOrbitPermission()));
+
             ActionButton actionButton = ActionButton.create(tierText, toolTip, 35, DialogAction.customClick((dialogResponseView, audience) -> {
-                if (prizeData == null || !isPrizeUnlocked || isPrizeTaken) return;
+                if (prizeData == null || !isLevelUnlocked || isPrizeTaken || !userHasAccess) return;
 
                 LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
                 Preconditions.checkNotNull(localUserData, "Null user data");

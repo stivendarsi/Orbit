@@ -4,7 +4,9 @@ import com.google.common.base.Preconditions;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import me.stivendarsi.orbit.quest.enums.QuestType;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
@@ -33,6 +35,18 @@ public class QuestHandler {
         }
 
         this.dailyQuestData = getQuestsOfTheDay(2); // load today's quests
+    }
+
+    public void saveAllData(){
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            saveUserQuestData(onlinePlayer.getUniqueId());
+        }
+    }
+
+    public void loadAllData(){
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            loadUserQuestData(onlinePlayer.getUniqueId());
+        }
     }
 
     public void loadUserQuestData(UUID uuid) {

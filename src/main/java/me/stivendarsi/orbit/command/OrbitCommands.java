@@ -10,7 +10,10 @@ import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.menus.MainMenu;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
@@ -95,4 +98,11 @@ public class OrbitCommands {
         return 1;
     }
 
+    public static int giveOrbit(CommandContext<CommandSourceStack> ctx){
+        String questIdentifier = ctx.getArgument("orbit_identifier", String.class);
+        String playerName = ctx.getArgument("player_name", String.class);
+
+        UUID userUuid = Bukkit.getPlayerUniqueId(playerName);
+        return 1;
+    }
 }

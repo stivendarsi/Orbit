@@ -11,7 +11,8 @@ messages:
   orbit-plus-name: "מתקדם+"
   orbit-plus-description: "<cut_tigeril_gold:'ניתן לקנות גישה למסלול הזה בעזרת'><newline><cut_tigeril_gold:או store/ לקבל גישה מכרטיס הזהב>"
   can-redeem: "<green>ניתן לקחת</green>"
-  cannot-redeem: "<red>אין אפשרת לקחת</red>"
+  cannot-redeem: "<red>אתה לא ברמה המתאימה</red>"
+  no-orbit-permission: "<red>אין לך גישה למסלול ההתקדמות+</red>"
   redeemed: "<dark_gray>נלקח</dark_gray>"
   tiers:
     locked: "<red>\uD83D\uDD12</red>"
@@ -97,8 +98,8 @@ quests:
     allowed-entities: ["enderman"]
     appears: DAILY # SEASON / DAILY
     description-width: 120
-    description: "להרוג 2 אנדרמנים"
-    required-amount: 2
+    description: "להרוג 10 אנדרמנים"
+    required-amount: 10
     reward-description: "150 כוכבים"
     reward-command: "experience <player_name> modify 150"
     icon:
@@ -209,7 +210,7 @@ quests:
 
 orbits:
   season-1:
-    title: "מסלול התקדמות <head:<player_uuid>> | עונה 1 - החוף של טייגר "
+    title: "מסלול התקדמות <head:<player_uuid>> | עונה 1 - <gradient:#78a7ff:#78d9ff:#78a7ff>החוף של טייגר</gradient>"
     season-quests: ["play-5-days", "kill-75-players"]
     start: "2025:05:26:00:00:00"
     end: "2026:08:21:15:00:00"

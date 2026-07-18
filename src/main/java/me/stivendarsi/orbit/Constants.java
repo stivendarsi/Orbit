@@ -22,7 +22,15 @@ public class Constants {
     public static boolean runCommandInConsole(Player claimingUser, @Nullable String rewardCommand) {
         if (rewardCommand == null) return false;
         rewardCommand = rewardCommand.replace("<player_name>", claimingUser.getName());
-        orbitInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), PlaceholderAPI.setPlaceholders(claimingUser, rewardCommand));
+
+        rewardCommand = PlaceholderAPI.setPlaceholders(claimingUser, rewardCommand);
+
+        String finalRewardCommand = rewardCommand;
+
+        Bukkit.getGlobalRegionScheduler().execute(Orbit.orbitInstance(), () -> {
+            orbitInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), finalRewardCommand);
+        });
+
         return true;
     }
 

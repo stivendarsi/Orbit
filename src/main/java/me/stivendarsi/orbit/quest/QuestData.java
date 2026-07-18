@@ -3,6 +3,7 @@ package me.stivendarsi.orbit.quest;
 import io.github.miniplaceholders.api.MiniPlaceholders;
 import io.papermc.paper.datacomponent.DataComponentTypes;
 import me.stivendarsi.orbit.Constants;
+import me.stivendarsi.orbit.Orbit;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import me.stivendarsi.orbit.quest.enums.QuestListMode;
 import me.stivendarsi.orbit.quest.enums.QuestType;
@@ -100,7 +101,7 @@ public class QuestData {
 
         if (rewardPlayer) {
             Player player = Bukkit.getPlayer(uuid);
-            if (player == null) return;
+            if (player == null) System.out.println("Null player");
             Constants.runCommandInConsole(player, this.rewardCommand); // Reward the user if he is currently at the reached amount
         }
     }

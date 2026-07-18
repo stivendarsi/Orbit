@@ -41,7 +41,7 @@ public class QuestMenu {
                 .action(DialogAction.staticAction(ClickEvent.callback(audience -> {
                     if (!(audience instanceof Player player)) return;
                     MainMenu.openMainMenu(player);
-                })))
+                }))).width(100)
                 .build();
 
         Dialog questDialog = Dialog.create(b -> {
@@ -96,7 +96,7 @@ public class QuestMenu {
             // String completedTimeString = DurationFormatUtils.formatDuration(Duration.ofMinutes(questData.getUserCount(userUUID)).toMillis() + questData.currentSessionTimePlayed(userUUID).toMillis(), "dd:HH:mm");
             String a = DurationFormatUtils.formatDurationWords(completedDuration.toMillis(), true, true);
 
-            a = a.replace("days", "ימים");
+            a = a.replace("day", "ימים");
             a = a.replace("hours", "שעות");
             a = a.replace("minutes", "דקות");
             a = a.replace("seconds", "דקות");

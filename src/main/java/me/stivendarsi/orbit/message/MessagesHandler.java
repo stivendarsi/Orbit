@@ -13,6 +13,7 @@ public class MessagesHandler {
     private String canRedeem;
     private String cannotRedeem;
     private String redeemed;
+    private String noOrbitPermission;
 
     private String tierLocked;
     private String tierUnlocked;
@@ -32,6 +33,7 @@ public class MessagesHandler {
         canRedeem = config.getString("messages.can-redeem", "");
         cannotRedeem = config.getString("messages.cannot-redeem", "");
         redeemed = config.getString("messages.redeemed", "");
+        noOrbitPermission = config.getString("messages.no-orbit-permission", "");
 
         tierLocked = config.getString("messages.tiers.locked", "");
         tierUnlocked = config.getString("messages.tiers.unlocked", "");
@@ -59,6 +61,10 @@ public class MessagesHandler {
 
     public String getOrbitPlusName() {
         return orbitPlusName;
+    }
+
+    public String getNoOrbitPermission() {
+        return noOrbitPermission;
     }
 
     public String getOrbitPlusDescription() {

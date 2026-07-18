@@ -5,6 +5,14 @@ import me.stivendarsi.orbit.message.MessagesHandler;
 import me.stivendarsi.orbit.orbit.OrbitHandler;
 import me.stivendarsi.orbit.orbit.UserHandler;
 import me.stivendarsi.orbit.redis.RedisHandler;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static me.stivendarsi.orbit.Orbit.mainHandler;
+import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class MainHandler {
 
@@ -23,12 +31,25 @@ public class MainHandler {
     }
 
 
+    public void unLoad() {
+        this.questHandler.saveAllData();
+        this.userHandler.saveAllData();
+
+        mainHandler().orbitHandler.unLoadPermissions();
+    }
+
+
     public void load(){
         this.messagesHandler.load();
         this.redisClient.load();
         this.questHandler.load();
         this.orbitHandler.load();
         this.userHandler.load();
+
+        this.questHandler.loadAllData();
+        this.userHandler.loadAllData();
+
+        this.orbitHandler.loadPermissions();
     }
 
 
