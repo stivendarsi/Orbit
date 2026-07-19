@@ -1329,7 +1329,7 @@ orbits:
           reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:950₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<gradient:#9a18d6:#e757f7:#9a18d6>מכוש 3 על 3</gradient>"
+          description: "<cut_epic_key:'מכוש 3 על 3'>"
           name: "<sprite:'minecraft:items':item/netherite_pickaxe>"
           reward-command: "givegodpickaxe <player_name>"
           reward-message: "<cut_tigeril_gold:קיבלת> <gradient:#9a18d6:#e757f7:#9a18d6>מכוש 3 על 3</gradient> <cut_tigeril_gold:ממסלול ההתקדמות!>"
@@ -1609,8 +1609,8 @@ orbits:
           reward-message: "<cut_tigeril_gold:קיבלת כלי עם טקסטורה שקשור לעונה!>"
           nexo-id: ""
         regular:
-          description: "גישה למסלול מתקדם של עונה 2"
-          name: "<sprite:'minecraft:items':item/paper>"
+          description: ""
+          name: "<sprite:'minecraft:items':survival:item/orbit/sprite/golden_card>"
           reward-command: "nexo give golden_card 1 <player_name>"
           reward-message: "<cut_tigeril_gold:קיבלת כרטיס זהב ממסלול ההתקדמות!>"
           nexo-id: "golden_card"
