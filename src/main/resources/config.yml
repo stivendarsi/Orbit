@@ -234,52 +234,52 @@ orbits:
 
       1:
         plus:
-          description: "<cut_money_green:'200₪'>"
+          description: "<cut_money_green:'1,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 200"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'200₪'>"
+          description: "<cut_money_green:'500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 200"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       2:
         plus:
-          description: "<cut_money_green:'200₪'>"
+          description: "<cut_money_green:'1,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 200"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'200₪'>"
+          description: "<cut_money_green:'500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 200"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       3:
         plus:
-          description: "<cut_money_green:'200₪'>"
+          description: "<cut_money_green:'1,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 200"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'200₪'>"
+          description: "<cut_money_green:'500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 200"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       4:
         plus:
-          description: "<cut_money_green:'225₪'>"
+          description: "<cut_money_green:'2300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 225"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:225₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.1x'>"
@@ -290,30 +290,30 @@ orbits:
 
       5:
         plus:
-          description: "<cut_money_green:'225₪'>"
+          description: "<cut_money_green:'1,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 225"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:225₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'225₪'>"
+          description: "<cut_money_green:'500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 225"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:225₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       6:
         plus:
-          description: "<cut_money_green:'225₪'>"
+          description: "<cut_money_green:'1,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 225"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:225₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'225₪'>"
+          description: "<cut_money_green:'500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 225"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:225₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       7:
@@ -332,30 +332,30 @@ orbits:
 
       8:
         plus:
-          description: "<cut_money_green:'250₪'>"
+          description: "<cut_money_green:'1,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 250"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:250₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'250₪'>"
+          description: "<cut_money_green:'500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 250"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:250₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       9:
         plus:
-          description: "<cut_money_green:'250₪'>"
+          description: "<cut_money_green:'1,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 250"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:250₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'250₪'>"
+          description: "<cut_money_green:'500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 250"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:250₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       10:
@@ -374,52 +374,52 @@ orbits:
 
       11:
         plus:
-          description: "<cut_money_green:'300₪'>"
+          description: "<cut_money_green:'1,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 300"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'300₪'>"
+          description: "<cut_money_green:'700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 300"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       12:
         plus:
-          description: "<cut_money_green:'300₪'>"
+          description: "<cut_money_green:'1,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 300"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'300₪'>"
+          description: "<cut_money_green:'700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 300"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       13:
         plus:
-          description: "<cut_money_green:'300₪'>"
+          description: "<cut_money_green:'1,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 300"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'300₪'>"
+          description: "<cut_money_green:'700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 300"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       14:
         plus:
-          description: "<cut_money_green:'325₪'>"
+          description: "<cut_money_green:'1,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 325"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:325₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.2x'>"
@@ -430,30 +430,30 @@ orbits:
 
       15:
         plus:
-          description: "<cut_money_green:'325₪'>"
+          description: "<cut_money_green:'1,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 325"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:325₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'325₪'>"
+          description: "<cut_money_green:'700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 325"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:325₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       16:
         plus:
-          description: "<cut_money_green:'325₪'>"
+          description: "<cut_money_green:'1,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 325"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:325₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'325₪'>"
+          description: "<cut_money_green:'700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 325"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:325₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       17:
@@ -472,30 +472,30 @@ orbits:
 
       18:
         plus:
-          description: "<cut_money_green:'350₪'>"
+          description: "<cut_money_green:'1,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 350"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:350₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'350₪'>"
+          description: "<cut_money_green:'700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 350"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:350₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       19:
         plus:
-          description: "<cut_money_green:'350₪'>"
+          description: "<cut_money_green:'1,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 350"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:350₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'350₪'>"
+          description: "<cut_money_green:'700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 350"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:350₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       20:
@@ -514,52 +514,52 @@ orbits:
 
       21:
         plus:
-          description: "<cut_money_green:'400₪'>"
+          description: "<cut_money_green:'1,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 400"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'400₪'>"
+          description: "<cut_money_green:'900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 400"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       22:
         plus:
-          description: "<cut_money_green:'400₪'>"
+          description: "<cut_money_green:'1,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 400"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'400₪'>"
+          description: "<cut_money_green:'900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 400"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       23:
         plus:
-          description: "<cut_money_green:'400₪'>"
+          description: "<cut_money_green:'1,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 400"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'400₪'>"
+          description: "<cut_money_green:'900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 400"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       24:
         plus:
-          description: "<cut_money_green:'425₪'>"
+          description: "<cut_money_green:'1,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 425"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:425₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.3x'>"
@@ -570,30 +570,30 @@ orbits:
 
       25:
         plus:
-          description: "<cut_money_green:'425₪'>"
+          description: "<cut_money_green:'1,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 425"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:425₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'425₪'>"
+          description: "<cut_money_green:'900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 425"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:425₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       26:
         plus:
-          description: "<cut_money_green:'425₪'>"
+          description: "<cut_money_green:'1,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 425"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:425₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'425₪'>"
+          description: "<cut_money_green:'900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 425"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:425₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       27:
@@ -612,30 +612,30 @@ orbits:
 
       28:
         plus:
-          description: "<cut_money_green:'450₪'>"
+          description: "<cut_money_green:'1,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 450"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:450₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'450₪'>"
+          description: "<cut_money_green:'900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 450"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:450₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       29:
         plus:
-          description: "<cut_money_green:'450₪'>"
+          description: "<cut_money_green:'1,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 450"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:450₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'450₪'>"
+          description: "<cut_money_green:'900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 450"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:450₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       30:
@@ -654,52 +654,52 @@ orbits:
 
       31:
         plus:
-          description: "<cut_money_green:'500₪'>"
+          description: "<cut_money_green:'2,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 500"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'500₪'>"
+          description: "<cut_money_green:'1,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 500"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       32:
         plus:
-          description: "<cut_money_green:'500₪'>"
+          description: "<cut_money_green:'1,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 500"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'500₪'>"
+          description: "<cut_money_green:'2,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 500"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       33:
         plus:
-          description: "<cut_money_green:'500₪'>"
+          description: "<cut_money_green:'2,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 500"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'500₪'>"
+          description: "<cut_money_green:'1,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 500"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       34:
         plus:
-          description: "<cut_money_green:'525₪'>"
+          description: "<cut_money_green:'2,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 525"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:525₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.4x'>"
@@ -710,30 +710,30 @@ orbits:
 
       35:
         plus:
-          description: "<cut_money_green:'525₪'>"
+          description: "<cut_money_green:'2,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 525"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:525₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'525₪'>"
+          description: "<cut_money_green:'1,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 525"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:525₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       36:
         plus:
-          description: "<cut_money_green:'525₪'>"
+          description: "<cut_money_green:'2,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 525"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:525₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'525₪'>"
+          description: "<cut_money_green:'1,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 525"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:525₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       37:
@@ -752,30 +752,30 @@ orbits:
 
       38:
         plus:
-          description: "<cut_money_green:'550₪'>"
+          description: "<cut_money_green:'2,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 550"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:550₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'550₪'>"
+          description: "<cut_money_green:'1,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 550"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:550₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       39:
         plus:
-          description: "<cut_money_green:'550₪'>"
+          description: "<cut_money_green:'2,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 550"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:550₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'550₪'>"
+          description: "<cut_money_green:'1,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 550"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:550₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       40:
@@ -793,52 +793,52 @@ orbits:
           nexo-id: "normal_key"
       41:
         plus:
-          description: "<cut_money_green:'600₪'>"
+          description: "<cut_money_green:'2,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 600"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'600₪'>"
+          description: "<cut_money_green:'1,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 600"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       42:
         plus:
-          description: "<cut_money_green:'600₪'>"
+          description: "<cut_money_green:'2,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 600"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'600₪'>"
+          description: "<cut_money_green:'1,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 600"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       43:
         plus:
-          description: "<cut_money_green:'600₪'>"
+          description: "<cut_money_green:'2,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 600"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'600₪'>"
+          description: "<cut_money_green:'1,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 600"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       44:
         plus:
-          description: "<cut_money_green:'625₪'>"
+          description: "<cut_money_green:'2,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 625"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:625₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.5x'>"
@@ -847,30 +847,30 @@ orbits:
           reward-message: "<cut_tigeril_gold:קיבלת 1.5x במכירות של sell/ ממסלול ההתקדמות!>"
       45:
         plus:
-          description: "<cut_money_green:'625₪'>"
+          description: "<cut_money_green:'2,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 625"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:625₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'625₪'>"
+          description: "<cut_money_green:'1,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 625"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:625₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       46:
         plus:
-          description: "<cut_money_green:'625₪'>"
+          description: "<cut_money_green:'2,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 625"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:625₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'625₪'>"
+          description: "<cut_money_green:'1,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 625"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:625₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       47:
@@ -889,30 +889,30 @@ orbits:
 
       48:
         plus:
-          description: "<cut_money_green:'650₪'>"
+          description: "<cut_money_green:'2,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 650"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:650₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'650₪'>"
+          description: "<cut_money_green:'1,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 650"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:650₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       49:
         plus:
-          description: "<cut_money_green:'650₪'>"
+          description: "<cut_money_green:'2,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 650"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:650₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'650₪'>"
+          description: "<cut_money_green:'1,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 650"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:650₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       50:
@@ -931,52 +931,52 @@ orbits:
 
       51:
         plus:
-          description: "<cut_money_green:'700₪'>"
+          description: "<cut_money_green:'3,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 700"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'700₪'>"
+          description: "<cut_money_green:'1,500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 700"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       52:
         plus:
-          description: "<cut_money_green:'700₪'>"
+          description: "<cut_money_green:'3,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 700"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'700₪'>"
+          description: "<cut_money_green:'1,500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 700"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       53:
         plus:
-          description: "<cut_money_green:'700₪'>"
+          description: "<cut_money_green:'3,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 700"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'700₪'>"
+          description: "<cut_money_green:'1,500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 700"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       54:
         plus:
-          description: "<cut_money_green:'725₪'>"
+          description: "<cut_money_green:'3,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 725"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:725₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.6x'>"
@@ -987,30 +987,30 @@ orbits:
 
       55:
         plus:
-          description: "<cut_money_green:'725₪'>"
+          description: "<cut_money_green:'3,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 725"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:725₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'725₪'>"
+          description: "<cut_money_green:'1,500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 725"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:725₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       56:
         plus:
-          description: "<cut_money_green:'725₪'>"
+          description: "<cut_money_green:'3,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 725"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:725₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'725₪'>"
+          description: "<cut_money_green:'1,500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 725"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:725₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       57:
@@ -1029,30 +1029,30 @@ orbits:
 
       58:
         plus:
-          description: "<cut_money_green:'750₪'>"
+          description: "<cut_money_green:'3,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 750"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:750₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'750₪'>"
+          description: "<cut_money_green:'1,500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 750"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:750₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       59:
         plus:
-          description: "<cut_money_green:'750₪'>"
+          description: "<cut_money_green:'3,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 750"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:750₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'750₪'>"
+          description: "<cut_money_green:'1,500₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 750"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:750₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       60:
@@ -1071,52 +1071,52 @@ orbits:
 
       61:
         plus:
-          description: "<cut_money_green:'800₪'>"
+          description: "<cut_money_green:'3,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 800"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'800₪'>"
+          description: "<cut_money_green:'1,700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 800"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       62:
         plus:
-          description: "<cut_money_green:'800₪'>"
+          description: "<cut_money_green:'3,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 800"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'800₪'>"
+          description: "<cut_money_green:'1,700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 800"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       63:
         plus:
-          description: "<cut_money_green:'800₪'>"
+          description: "<cut_money_green:'3,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 800"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'800₪'>"
+          description: "<cut_money_green:'1,700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 800"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       64:
         plus:
-          description: "<cut_money_green:'825₪'>"
+          description: "<cut_money_green:'3,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 825"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:825₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.7x'>"
@@ -1127,30 +1127,30 @@ orbits:
 
       65:
         plus:
-          description: "<cut_money_green:'825₪'>"
+          description: "<cut_money_green:'3,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 825"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:825₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'825₪'>"
+          description: "<cut_money_green:'1,700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 825"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:825₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       66:
         plus:
-          description: "<cut_money_green:'825₪'>"
+          description: "<cut_money_green:'3,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 825"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:825₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'825₪'>"
+          description: "<cut_money_green:'1,700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 825"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:825₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       67:
@@ -1169,30 +1169,30 @@ orbits:
 
       68:
         plus:
-          description: "<cut_money_green:'850₪'>"
+          description: "<cut_money_green:'3,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 850"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:850₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'850₪'>"
+          description: "<cut_money_green:'1,700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 850"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:850₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       69:
         plus:
-          description: "<cut_money_green:'850₪'>"
+          description: "<cut_money_green:'3,400₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 850"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:850₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'850₪'>"
+          description: "<cut_money_green:'1,700₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 850"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:850₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1700"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       70:
@@ -1211,52 +1211,52 @@ orbits:
 
       71:
         plus:
-          description: "<cut_money_green:'900₪'>"
+          description: "<cut_money_green:'3,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 900"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'900₪'>"
+          description: "<cut_money_green:'1,900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 900"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       72:
         plus:
-          description: "<cut_money_green:'900₪'>"
+          description: "<cut_money_green:'3,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 900"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'900₪'>"
+          description: "<cut_money_green:'1,900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 900"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       73:
         plus:
-          description: "<cut_money_green:'900₪'>"
+          description: "<cut_money_green:'3,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 900"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'900₪'>"
+          description: "<cut_money_green:'1,900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 900"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       74:
         plus:
-          description: "<cut_money_green:'925₪'>"
+          description: "<cut_money_green:'3,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 925"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:925₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.8x'>"
@@ -1267,30 +1267,30 @@ orbits:
 
       75:
         plus:
-          description: "<cut_money_green:'925₪'>"
+          description: "<cut_money_green:'3,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 925"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:925₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'925₪'>"
+          description: "<cut_money_green:'1,900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 925"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:925₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       76:
         plus:
-          description: "<cut_money_green:'925₪'>"
+          description: "<cut_money_green:'3,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 925"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:925₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'925₪'>"
+          description: "<cut_money_green:'1,900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 925"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:925₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       77:
@@ -1309,24 +1309,24 @@ orbits:
 
       78:
         plus:
-          description: "<cut_money_green:'950₪'>"
+          description: "<cut_money_green:'3,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 950"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:950₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'950₪'>"
+          description: "<cut_money_green:'1,900₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 950"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:950₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 1900"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,900₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       79:
         plus:
-          description: "<cut_money_green:'950₪'>"
+          description: "<cut_money_green:'3,800₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 950"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:950₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 3800"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_epic_key:'מכוש 3 על 3'>"
@@ -1351,52 +1351,52 @@ orbits:
 
       81:
         plus:
-          description: "<cut_money_green:'1,000₪'>"
+          description: "<cut_money_green:'4,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1000"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,000₪'>"
+          description: "<cut_money_green:'2,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1000"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       82:
         plus:
-          description: "<cut_money_green:'1,000₪'>"
+          description: "<cut_money_green:'4,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1000"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,000₪'>"
+          description: "<cut_money_green:'2,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1000"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       83:
         plus:
-          description: "<cut_money_green:'1,000₪'>"
+          description: "<cut_money_green:'4,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1000"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,000₪'>"
+          description: "<cut_money_green:'2,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1000"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       84:
         plus:
-          description: "<cut_money_green:'1,025₪'>"
+          description: "<cut_money_green:'4,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1025"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,025₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 1.9x'>"
@@ -1407,30 +1407,30 @@ orbits:
 
       85:
         plus:
-          description: "<cut_money_green:'1,025₪'>"
+          description: "<cut_money_green:'4,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1025"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,025₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,025₪'>"
+          description: "<cut_money_green:'4,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1025"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,025₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       86:
         plus:
-          description: "<cut_money_green:'1,025₪'>"
+          description: "<cut_money_green:'4,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1025"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,025₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,025₪'>"
+          description: "<cut_money_green:'2,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1025"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,025₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       87:
@@ -1449,16 +1449,16 @@ orbits:
 
       88:
         plus:
-          description: "<cut_money_green:'1,050₪'>"
+          description: "<cut_money_green:'4,200₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1050"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,050₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,050₪'>"
+          description: "<cut_money_green:'2,100₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1050"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,050₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2100"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       89:
@@ -1491,52 +1491,52 @@ orbits:
 
       91:
         plus:
-          description: "<cut_money_green:'1,100₪'>"
+          description: "<cut_money_green:'4,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1100"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,100₪'>"
+          description: "<cut_money_green:'2,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1100"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       92:
         plus:
-          description: "<cut_money_green:'1,100₪'>"
+          description: "<cut_money_green:'4,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1100"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,100₪'>"
+          description: "<cut_money_green:'2,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1100"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       93:
         plus:
-          description: "<cut_money_green:'1,100₪'>"
+          description: "<cut_money_green:'4,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1100"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,100₪'>"
+          description: "<cut_money_green:'2,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1100"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,100₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       94:
         plus:
-          description: "<cut_money_green:'1,125₪'>"
+          description: "<cut_money_green:'4,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1125"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,125₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4500"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
           description: "<cut_tigeril_gold:'/sell 2x'>"
@@ -1547,30 +1547,30 @@ orbits:
 
       95:
         plus:
-          description: "<cut_money_green:'1,125₪'>"
+          description: "<cut_money_green:'4,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1125"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,125₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,125₪'>"
+          description: "<cut_money_green:'2,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1125"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,125₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       96:
         plus:
-          description: "<cut_money_green:'1,125₪'>"
+          description: "<cut_money_green:'4,600₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1125"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,125₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 4600"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,600₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,125₪'>"
+          description: "<cut_money_green:'2,300₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1125"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,125₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 2300"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,300₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       97:
@@ -1589,16 +1589,16 @@ orbits:
 
       98:
         plus:
-          description: "<cut_money_green:'5,000₪'>"
+          description: "<cut_money_green:'15,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 5000"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:5,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 15000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:15,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'2,000₪'>"
+          description: "<cut_money_green:'20,000₪'>"
           name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 2000"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          reward-command: "eco give <player_name> 20000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:20,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       99:
