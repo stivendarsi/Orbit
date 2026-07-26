@@ -89,7 +89,7 @@ public class LocalUserData {
         Pair<BitSet, BitSet> data = this.pairUnlocked.getOrDefault(orbitIdentifier, null);
         Preconditions.checkNotNull(data, "Null tier data");
 
-        System.out.println(prizeIndex + ": prize index");
+     //   System.out.println(prizeIndex + ": prize index");
         if (plus) data.getRight().set(prizeIndex, true);
         else data.getLeft().set(prizeIndex, true);
 
@@ -98,7 +98,7 @@ public class LocalUserData {
         PrizeData prizeData = orbitData.getPrize(prizeIndex, plus);
 
         if (prizeData == null) {
-            System.out.println("Null prize data");
+            // System.out.println("Null prize data");
             return;
         }
         Player player = Bukkit.getPlayer(this.userUUID);
@@ -131,7 +131,7 @@ public class LocalUserData {
         }
 
         String tierData = mainHandler().redisClient().getSync().get(path);
-        System.out.println("Tier Data: " + tierData);
+        // System.out.println("Tier Data: " + tierData);
 
         for (int i = 0; i < orbitData.tierAmount(); i++) {
             if (tierData.charAt(i) == '1') bitSet.set(i);

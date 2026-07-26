@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
+import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class UserHandler {
     private final Map<UUID, LocalUserData> userDataMap = new HashMap<>();
@@ -58,7 +59,7 @@ public class UserHandler {
 
     private void saveUser(@Nullable LocalUserData localUserData) {
         if (localUserData == null) {
-            System.out.println("Null user... returning");
+            orbitInstance().getLogger().warning("Null user... returning");
             return;
         }
         RedisCommands<String, String> client = mainHandler().redisClient().getSync();

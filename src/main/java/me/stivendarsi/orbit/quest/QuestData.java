@@ -25,6 +25,7 @@ import java.time.Duration;
 import java.util.*;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
+import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class QuestData {
     private final QuestType questType;
@@ -101,7 +102,7 @@ public class QuestData {
 
         if (rewardPlayer) {
             Player player = Bukkit.getPlayer(uuid);
-            if (player == null) System.out.println("Null player");
+            if (player == null) orbitInstance().getLogger().warning("Null player");
             Constants.runCommandInConsole(player, this.rewardCommand); // Reward the user if he is currently at the reached amount
         }
     }

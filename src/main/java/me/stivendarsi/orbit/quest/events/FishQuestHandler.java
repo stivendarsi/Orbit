@@ -45,7 +45,7 @@ public class FishQuestHandler implements Listener {
         boolean itemTypeIsAllowedToFish = questData.allowedItems().contains(itemType);
 
         if (!itemTypeIsAllowedToFish) {
-            System.out.println("ItemType: " + itemType.getKey().asString());
+            //System.out.println("ItemType: " + itemType.getKey().asString());
             return;
         }
         questData.updateAndCheck(uuid, 1);
