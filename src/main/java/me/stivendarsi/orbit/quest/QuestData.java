@@ -91,6 +91,10 @@ public class QuestData {
         this.rewardCommand = questSection.getString("reward-command");
     }
 
+    public QuestListMode questListMod() {
+        return questListMod;
+    }
+
     public List<ItemType> allowedItems() {
         return allowedItems;
     }

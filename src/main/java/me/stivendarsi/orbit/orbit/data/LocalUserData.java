@@ -143,8 +143,4 @@ public class LocalUserData {
     public UUID userUUID() {
         return userUUID;
     }
-
-    public void countQuest(String questIdentifier) {
-        QuestData questData;
-    }
 }

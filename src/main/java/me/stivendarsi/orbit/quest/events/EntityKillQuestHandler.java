@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
+import me.stivendarsi.orbit.quest.enums.QuestListMode;
 import me.stivendarsi.orbit.quest.enums.QuestType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -42,14 +43,17 @@ public class EntityKillQuestHandler implements Listener {
 
 
     private void update(QuestData questData, LocalUserData userData, Entity killedEntity) {
+
         if (questData == null || questData.questType() != QuestType.KILL_ENTITY) return;
 
-        boolean entityTypeIsAllowedToKill = questData.allowedEntities().contains(killedEntity.getType());
+        boolean entityTypeIsAllowedToKill;
+
+        if (questData.questListMod() == QuestListMode.WHITE_LIST) entityTypeIsAllowedToKill = questData.allowedEntities().contains(killedEntity.getType());
+        else entityTypeIsAllowedToKill = !questData.allowedEntities().contains(killedEntity.getType());
+
         boolean entityKilledAlready = userData.getKilledEntities(questData.questIdentifier()).contains(killedEntity.getUniqueId());
 
         if (!entityTypeIsAllowedToKill || entityKilledAlready) {
-         //   System.out.println("Entity allowed: " + killedEntity.getType());
-         //   System.out.println("Entity killed already: " + entityKilledAlready);
             return;
         }
         

@@ -166,6 +166,20 @@ quests:
       type: "clock"
       enchanted: true;
 
+  mine-50000-blocks:
+    type: BREAK_BLOCK
+    mode: BLACK_LIST
+    allowed-entities: []
+    appears: SEASON # SEASON / DAILY
+    description-width: 120
+    description: "לחצוב 50,0000 בלוקים"
+    required-amount: 50000
+    reward-description: "1,000 כוכבים"
+    reward-command: "experience <player_name> modify 1000"
+    icon:
+      type: "netherite_pickaxe"
+      enchanted: true;
+
 
   mine-50-iron-ore-blocks:
     type: BREAK_BLOCK
@@ -199,7 +213,7 @@ quests:
 orbits:
   season-1:
     title: "עונה 1 - <gradient:#78a7ff:#78d9ff:#78a7ff>החוף של טייגר</gradient>"
-    season-quests: ["play-5-days", "kill-50-players"]
+    season-quests: ["mine-50000-blocks", "kill-50-players"]
     start: "2025:05:26:00:00:00"
     end: "2026:09:02:15:00:00"
     tier-amount: 100
@@ -1597,7 +1611,7 @@ orbits:
           nexo-id: ""
         regular:
           description: ""
-          name: "<sprite:'minecraft:items':survival:item/orbit/sprite/golden_card>"
+          name: "<sprite:'minecraft:items':'survival:item/orbit/sprite/golden_card'>"
           reward-command: "nexo give golden_card 1 <player_name>"
           reward-message: "<cut_tigeril_gold:קיבלת כרטיס זהב ממסלול ההתקדמות!>"
           nexo-id: "golden_card"

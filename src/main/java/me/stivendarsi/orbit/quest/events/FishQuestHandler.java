@@ -2,6 +2,7 @@ package me.stivendarsi.orbit.quest.events;
 
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
+import me.stivendarsi.orbit.quest.enums.QuestListMode;
 import me.stivendarsi.orbit.quest.enums.QuestType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -42,10 +43,13 @@ public class FishQuestHandler implements Listener {
     private void update(QuestData questData, UUID uuid, ItemType itemType) {
         if (questData == null || questData.questType() != QuestType.FISHING) return;
 
-        boolean itemTypeIsAllowedToFish = questData.allowedItems().contains(itemType);
+        boolean itemTypeIsAllowedToFish;
+
+        if (questData.questListMod() == QuestListMode.WHITE_LIST)  itemTypeIsAllowedToFish = questData.allowedItems().contains(itemType);
+        else itemTypeIsAllowedToFish = !questData.allowedItems().contains(itemType);
+
 
         if (!itemTypeIsAllowedToFish) {
-            //System.out.println("ItemType: " + itemType.getKey().asString());
             return;
         }
         questData.updateAndCheck(uuid, 1);

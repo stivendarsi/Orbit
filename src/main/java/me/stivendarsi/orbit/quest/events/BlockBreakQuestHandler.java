@@ -2,6 +2,7 @@ package me.stivendarsi.orbit.quest.events;
 
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
+import me.stivendarsi.orbit.quest.enums.QuestListMode;
 import me.stivendarsi.orbit.quest.enums.QuestType;
 import org.bukkit.block.BlockType;
 import org.bukkit.entity.Player;
@@ -37,7 +38,10 @@ public class BlockBreakQuestHandler implements Listener {
     private void update(QuestData questData, BlockType blockType, UUID breaker){
         if (questData == null || questData.questType() != QuestType.BREAK_BLOCK) return;
 
-        boolean blockTypeIsAllowedToBreak = questData.allowedBlocks().contains(blockType);
+        boolean blockTypeIsAllowedToBreak;
+
+        if (questData.questListMod() == QuestListMode.WHITE_LIST) blockTypeIsAllowedToBreak = questData.allowedBlocks().contains(blockType);
+        else blockTypeIsAllowedToBreak = !questData.allowedBlocks().contains(blockType);
 
         if (!blockTypeIsAllowedToBreak) return;
 
