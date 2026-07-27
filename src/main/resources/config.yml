@@ -172,7 +172,7 @@ quests:
     allowed-entities: []
     appears: SEASON # SEASON / DAILY
     description-width: 125
-    description: "לחצוב 50,0000 בלוקים"
+    description: "לחצוב 50,000 בלוקים"
     required-amount: 50000
     reward-description: "1,000 כוכבים"
     reward-command: "experience <player_name> modify 1000"
