@@ -1,6 +1,7 @@
 package me.stivendarsi.orbit.orbit.menus;
 
 import com.google.common.base.Preconditions;
+import com.nexomc.nexo.glyphs.Glyph;
 import com.nexomc.nexo.glyphs.GlyphTag;
 import io.github.miniplaceholders.api.MiniPlaceholders;
 import io.papermc.paper.dialog.Dialog;

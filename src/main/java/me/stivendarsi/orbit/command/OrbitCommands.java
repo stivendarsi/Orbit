@@ -12,6 +12,7 @@ import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.menus.MainMenu;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.Tag;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.luckperms.api.model.user.User;
@@ -20,6 +21,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 
 import java.util.UUID;
 
@@ -107,7 +109,7 @@ public class OrbitCommands {
         return 1;
     }
 
-    public static int giveOrbit(CommandContext<CommandSourceStack> ctx){
+    public static int giveOrbit(CommandContext<CommandSourceStack> ctx) {
         String orbitIdentifier = ctx.getArgument("orbit_identifier", String.class);
         String playerName = ctx.getArgument("player_name", String.class);
 
@@ -115,12 +117,11 @@ public class OrbitCommands {
 
         OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
         if (orbitData == null) {
-            sender.sendRichMessage("<red>מסלול התקדמות זה לא קיים.</red>");
-            return 0;
+            sender.sendRichMessage("<red>מסלול התקדמות זה לא קיים!, תנתן גישה מיותרת!</red>");
         }
 
         Component playerNotFound = Constants.color("<red>משתמש לא נמצא.</red>");
-        Component orbitDoesntHavePermission = Constants.color("<red>אין גישה למסלול התקדמות זה.</red>");
+        //  Component orbitDoesntHavePermission = Constants.color("<red>אין גישה למסלול התקדמות זה.</red>");
 
         UUID userUuid = Bukkit.getPlayerUniqueId(playerName);
         if (userUuid == null) {
@@ -135,12 +136,12 @@ public class OrbitCommands {
             return 0;
         }
 
-        Permission orbitPermission = mainHandler().orbitHandler().getOrbitPermission(orbitIdentifier);
+        Permission orbitPermission = new Permission("orbit.access." + orbitIdentifier, PermissionDefault.FALSE);
 
-        if (orbitPermission == null) {
-            sender.sendMessage(orbitDoesntHavePermission);
-            return 0;
-        }
+//        if (orbitPermission == null) {
+//            sender.sendMessage(orbitDoesntHavePermission);
+//            return 0;
+//        }
 
         Node node = Node.builder(orbitPermission.getName()).build();
         user.data().add(node);
@@ -148,8 +149,10 @@ public class OrbitCommands {
 
         Player player = Bukkit.getPlayer(userUuid);
         if (player != null) {
-            TagResolver resolver = TagResolver.builder().tag("orbit_title", Tag.preProcessParsed(orbitData.title())).build();
-            Component receivedOrbitPermissionMessage = Constants.color(player, "<cut_progress_pink:'קיבלת גישה למסלול התקדמות: <orbit_title>'>", resolver);
+            String title = "<gold>ייצא בעתיד</gold>";
+            if (orbitData != null) title = orbitData.title();
+            TagResolver resolver = TagResolver.builder().tag("orbit_title", Tag.preProcessParsed(title)).build();
+            Component receivedOrbitPermissionMessage = MiniMessage.miniMessage().deserialize("<cut_progress_pink:'קיבלת גישה למסלול התקדמות: <orbit_title>'>", player, resolver, MiniPlaceholders.audienceGlobalPlaceholders());
             player.sendMessage(receivedOrbitPermissionMessage);
         }
         return 1;

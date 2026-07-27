@@ -14,10 +14,12 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.apache.commons.lang3.time.DurationUtils;
 import org.bukkit.entity.Player;
 
+import java.text.NumberFormat;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -109,7 +111,7 @@ public class QuestMenu {
             a = a.replace(" seconds ", "דקות");
 
             builder.add("<#fffb00>" + a + "</#fffb00>");
-        } else builder.add("<#fffb00>" + completed + "/" + questData.requiredAmount() + "</#fffb00>");
+        } else builder.add("<#fffb00>" + NumberFormat.getNumberInstance().format(completed) + "/" + NumberFormat.getNumberInstance().format(questData.requiredAmount()) + "</#fffb00>");
 
         if (questCompleted)
             builder.add("<gradient:#07ba55:#32f02b:#07ba55>☑ הושלם</gradient:#07ba55:#32f02b:#07ba55>");

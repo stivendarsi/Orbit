@@ -171,7 +171,7 @@ quests:
     mode: BLACK_LIST
     allowed-entities: []
     appears: SEASON # SEASON / DAILY
-    description-width: 120
+    description-width: 125
     description: "לחצוב 50,0000 בלוקים"
     required-amount: 50000
     reward-description: "1,000 כוכבים"
@@ -1612,6 +1612,6 @@ orbits:
         regular:
           description: ""
           name: "<sprite:'minecraft:items':'survival:item/orbit/sprite/golden_card'>"
-          reward-command: "nexo give golden_card 1 <player_name>"
+          reward-command: "nexo give season_2_golden_card 1 <player_name>"
           reward-message: "<cut_tigeril_gold:קיבלת כרטיס זהב ממסלול ההתקדמות!>"
-          nexo-id: "golden_card"
+          nexo-id: "season_2_golden_card"

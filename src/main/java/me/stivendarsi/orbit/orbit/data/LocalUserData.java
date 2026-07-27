@@ -37,9 +37,6 @@ public class LocalUserData {
             BitSet regular = loadUnlockList(false, orbitIdentifier);
             BitSet plus = loadUnlockList(true, orbitIdentifier);
 
-         //   System.out.println(regular.toString());
-            //System.out.println(plus.toString());
-
             this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
 
             this.killedEntities = new HashMap<>();

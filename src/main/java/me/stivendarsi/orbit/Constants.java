@@ -46,6 +46,6 @@ public class Constants {
         if (resolver == null) resolver = TagResolver.empty();
         MiniMessage mm = MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build();
         if (viewer == null) return mm.deserialize(msg, MiniPlaceholders.audienceGlobalPlaceholders());
-        return mm.deserialize(msg, viewer, MiniPlaceholders.audienceGlobalPlaceholders(), resolver);
+        return mm.deserialize(msg, viewer,resolver, MiniPlaceholders.audienceGlobalPlaceholders());
     }
 }
