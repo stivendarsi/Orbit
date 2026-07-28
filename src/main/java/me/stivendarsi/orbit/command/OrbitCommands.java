@@ -152,7 +152,7 @@ public class OrbitCommands {
             String title = "<gold>ייצא בעתיד</gold>";
             if (orbitData != null) title = orbitData.title();
             TagResolver resolver = TagResolver.builder().tag("orbit_title", Tag.preProcessParsed(title)).build();
-            Component receivedOrbitPermissionMessage = MiniMessage.miniMessage().deserialize("<cut_progress_pink:'קיבלת גישה למסלול התקדמות: <orbit_title>'>", player, resolver, MiniPlaceholders.audienceGlobalPlaceholders());
+            Component receivedOrbitPermissionMessage = MiniMessage.miniMessage().deserialize("<cut_progress_pink:'קיבלת גישה למסלול התקדמות:'> <orbit_title>", player, resolver, MiniPlaceholders.audienceGlobalPlaceholders());
             player.sendMessage(receivedOrbitPermissionMessage);
         }
         return 1;
