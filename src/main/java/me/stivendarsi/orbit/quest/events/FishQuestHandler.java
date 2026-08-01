@@ -23,6 +23,8 @@ public class FishQuestHandler implements Listener {
         if (event.isCancelled()) return;
         Player cause = event.getPlayer();
 
+        if (event.getState() != PlayerFishEvent.State.CAUGHT_FISH) return;
+
         Entity fish = event.getCaught();
         if (fish == null) return;
         Item itemStack = (Item) fish;

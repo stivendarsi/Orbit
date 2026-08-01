@@ -138,10 +138,7 @@ public class OrbitCommands {
 
         Permission orbitPermission = new Permission("orbit.access." + orbitIdentifier, PermissionDefault.FALSE);
 
-//        if (orbitPermission == null) {
-//            sender.sendMessage(orbitDoesntHavePermission);
-//            return 0;
-//        }
+
 
         Node node = Node.builder(orbitPermission.getName()).build();
         user.data().add(node);

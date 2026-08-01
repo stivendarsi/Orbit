@@ -68,14 +68,17 @@ public class QuestHandler {
 
     public void startDailyQuestChanging() {
         LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Jerusalem"));
-        LocalDateTime midnight = now
-                .withHour(15)
+
+        LocalDateTime nextRun = now.withHour(15)
                 .withMinute(0)
                 .withSecond(0)
-                .withNano(0)
-                .plusDays(1);
+                .withNano(0);
 
-        long secondsLeftToMidnight = calculateSecondsLeft(midnight);
+        if (!now.isBefore(nextRun)) {
+            nextRun = nextRun.plusDays(1);
+        }
+
+        long secondsLeftToMidnight = calculateSecondsLeft(nextRun);
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
             resetDailyQuestData();

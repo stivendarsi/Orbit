@@ -99,8 +99,8 @@ public class QuestData {
         return allowedItems;
     }
 
-    public void updateAndCheck(UUID uuid, int requiredAmount) {
-        countUser(uuid, requiredAmount);
+    public void updateAndCheck(UUID uuid, int amountToCount) {
+        countUser(uuid, amountToCount);
 
         boolean rewardPlayer = getUserCount(uuid) == this.requiredAmount;
 
