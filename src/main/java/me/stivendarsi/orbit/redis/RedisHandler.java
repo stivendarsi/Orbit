@@ -21,7 +21,6 @@ public class RedisHandler {
         RedisClient client = RedisClient.create(uri);
         this.connection = client.connect();
 
-//        this.client = RedisClient.create("82.22.24.12", 25595, "default", "A@pX#=sEk)x,luo5U5jx^G)Y&Vmi&oDGOr[&^Bly");
     }
 
     public static String getUserDataPath(String orbitIdentifier, UUID userUUID, DataType dataType) {

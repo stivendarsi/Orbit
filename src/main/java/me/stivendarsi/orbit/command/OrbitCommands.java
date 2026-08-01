@@ -25,14 +25,15 @@ import org.bukkit.permissions.PermissionDefault;
 
 import java.util.UUID;
 
-import static me.stivendarsi.orbit.Orbit.luckPerms;
-import static me.stivendarsi.orbit.Orbit.mainHandler;
+import static me.stivendarsi.orbit.Orbit.*;
 
 public class OrbitCommands {
     public static int open(CommandContext<CommandSourceStack> context) {
         if (!(context.getSource().getExecutor() instanceof Player player)) return 0;
 
-        MainMenu.openMainMenu(player);
+        Bukkit.getAsyncScheduler().runNow(orbitInstance(), scheduledTask -> {
+            MainMenu.openMainMenu(player);
+        });
         return 1;
     }
 

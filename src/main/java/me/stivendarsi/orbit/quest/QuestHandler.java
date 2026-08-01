@@ -1,6 +1,10 @@
 package me.stivendarsi.orbit.quest;
 
 import com.google.common.base.Preconditions;
+import io.lettuce.core.KeyScanCursor;
+import io.lettuce.core.ScanArgs;
+import io.lettuce.core.ScanCursor;
+import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import me.stivendarsi.orbit.quest.enums.QuestType;
@@ -105,11 +109,43 @@ public class QuestHandler {
 
 
     private void resetDailyQuestData() {
-        mainHandler().redisClient().getSync().del("orbit:quest_data:daily");
+        RedisCommands<String, String> redis = mainHandler().redisClient().getSync();
+
+        ScanCursor cursor = ScanCursor.INITIAL;
+
+        do {
+            KeyScanCursor<String> scan = redis.scan(
+                    cursor,
+                    ScanArgs.Builder.matches("orbit:quest_data:daily:*")
+            );
+
+            cursor = scan;
+
+            if (!scan.getKeys().isEmpty()) {
+                redis.del(scan.getKeys().toArray(new String[0]));
+            }
+
+        } while (!cursor.isFinished());
     }
 
     private void resetSeasonQuestData() {
-        mainHandler().redisClient().getSync().del("orbit:quest_data:season");
+        RedisCommands<String, String> redis = mainHandler().redisClient().getSync();
+
+        ScanCursor cursor = ScanCursor.INITIAL;
+
+        do {
+            KeyScanCursor<String> scan = redis.scan(
+                    cursor,
+                    ScanArgs.Builder.matches("orbit:quest_data:season:*")
+            );
+
+            cursor = scan;
+
+            if (!scan.getKeys().isEmpty()) {
+                redis.del(scan.getKeys().toArray(new String[0]));
+            }
+
+        } while (!cursor.isFinished());
     }
 
 
