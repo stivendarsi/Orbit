@@ -32,8 +32,8 @@ quests:
     description-width: 120
     description: "להרוג 20 זומבים"
     required-amount: 20
-    reward-description: "150 כוכבים"
-    reward-command: "experience <player_name> modify 150"
+    reward-description: "200 כוכבים"
+    reward-command: "experience <player_name> modify 200"
     icon:
       type: "iron_sword"
       enchanted: false;
@@ -45,8 +45,8 @@ quests:
     description-width: 120
     description: "להרוג 20 סקלטונים"
     required-amount: 20
-    reward-description: "150 כוכבים"
-    reward-command: "experience <player_name> modify 150"
+    reward-description: "200 כוכבים"
+    reward-command: "experience <player_name> modify 200"
     icon:
       type: "iron_sword"
       enchanted: false;
@@ -59,8 +59,8 @@ quests:
     description-width: 120
     description: "להרוג 20 עכבישים רגילים"
     required-amount: 20
-    reward-description: "150 כוכבים"
-    reward-command: "experience <player_name> modify 150"
+    reward-description: "200 כוכבים"
+    reward-command: "experience <player_name> modify 200"
     icon:
       type: "iron_sword"
       enchanted: false;
@@ -73,8 +73,8 @@ quests:
     description-width: 120
     description: "להרוג ווידר"
     required-amount: 1
-    reward-description: "150 כוכבים"
-    reward-command: "experience <player_name> modify 150"
+    reward-description: "200 כוכבים"
+    reward-command: "experience <player_name> modify 200"
     icon:
       type: "iron_sword"
       enchanted: false;
@@ -87,8 +87,8 @@ quests:
     description-width: 120
     description: "להרוג 20 קריפרים"
     required-amount: 20
-    reward-description: "150 כוכבים"
-    reward-command: "experience <player_name> modify 150"
+    reward-description: "200 כוכבים"
+    reward-command: "experience <player_name> modify 200"
     icon:
       type: "iron_sword"
       enchanted: false;
@@ -102,8 +102,8 @@ quests:
     description-width: 120
     description: "להרוג 10 אנדרמנים"
     required-amount: 10
-    reward-description: "150 כוכבים"
-    reward-command: "experience <player_name> modify 150"
+    reward-description: "200 כוכבים"
+    reward-command: "experience <player_name> modify 200"
     icon:
       type: "iron_sword"
       enchanted: false;
@@ -117,8 +117,8 @@ quests:
     description-width: 120
     description: "לחצוב 1,000 אבנים"
     required-amount: 1000
-    reward-description: "150 כוכבים"
-    reward-command: "experience <player_name> modify 150"
+    reward-description: "200 כוכבים"
+    reward-command: "experience <player_name> modify 200"
     icon:
       type: "stone"
       enchanted: false;
@@ -132,8 +132,8 @@ quests:
     description-width: 120
     description: "לחצוב 2000 נד'רראק"
     required-amount: 2000
-    reward-description: "150 כוכבים"
-    reward-command: "experience <player_name> modify 150"
+    reward-description: "200 כוכבים"
+    reward-command: "experience <player_name> modify 200"
     icon:
       type: "netherrack"
       enchanted: false;
@@ -189,8 +189,8 @@ quests:
     description-width: 120
     description: "לחצוב 50 עפרת ברזל"
     required-amount: 50
-    reward-description: "150 כוכבים"
-    reward-command: "experience <player_name> modify 150"
+    reward-description: "200 כוכבים"
+    reward-command: "experience <player_name> modify 200"
     icon:
       type: "iron_ore"
       enchanted: false;
@@ -203,8 +203,8 @@ quests:
     description-width: 120
     description: "לדוג 20 דגים"
     required-amount: 20
-    reward-description: "150 כוכבים"
-    reward-command: "experience <player_name> modify 150"
+    reward-description: "200 כוכבים"
+    reward-command: "experience <player_name> modify 200"
     icon:
       type: "cod"
       enchanted: false;
