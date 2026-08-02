@@ -112,19 +112,17 @@ public class QuestHandler {
         RedisCommands<String, String> redis = mainHandler().redisClient().getSync();
 
         ScanCursor cursor = ScanCursor.INITIAL;
+        ScanArgs scanArgs = ScanArgs.Builder
+                .matches("orbit:quest_data:daily:*")
+                .limit(100);
 
         do {
-            KeyScanCursor<String> scan = redis.scan(
-                    cursor,
-                    ScanArgs.Builder.matches("orbit:quest_data:daily:*")
-            );
-
+            KeyScanCursor<String> scan = redis.scan(cursor, scanArgs);
             cursor = scan;
 
             if (!scan.getKeys().isEmpty()) {
-                redis.del(scan.getKeys().toArray(new String[0]));
+                redis.unlink(scan.getKeys().toArray(String[]::new));
             }
-
         } while (!cursor.isFinished());
     }
 
@@ -132,19 +130,17 @@ public class QuestHandler {
         RedisCommands<String, String> redis = mainHandler().redisClient().getSync();
 
         ScanCursor cursor = ScanCursor.INITIAL;
+        ScanArgs scanArgs = ScanArgs.Builder
+                .matches("orbit:quest_data:season:*")
+                .limit(100);
 
         do {
-            KeyScanCursor<String> scan = redis.scan(
-                    cursor,
-                    ScanArgs.Builder.matches("orbit:quest_data:season:*")
-            );
-
+            KeyScanCursor<String> scan = redis.scan(cursor, scanArgs);
             cursor = scan;
 
             if (!scan.getKeys().isEmpty()) {
-                redis.del(scan.getKeys().toArray(new String[0]));
+                redis.unlink(scan.getKeys().toArray(String[]::new));
             }
-
         } while (!cursor.isFinished());
     }
 
