@@ -27,11 +27,13 @@ public final class Orbit extends JavaPlugin {
     }
 
     private static MainHandler mainHandler;
+
     public static MainHandler mainHandler() {
         return mainHandler;
     }
 
     private static LuckPerms luckPerms;
+
     public static LuckPerms luckPerms() {
         return luckPerms;
     }
@@ -67,14 +69,16 @@ public final class Orbit extends JavaPlugin {
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) { //
             new OrbitPlaceholders().register();
         }
-        Expansion expansion = Expansion.builder("orbit").audiencePlaceholder("stars", (audience, queue, ctx) -> {
-            if (!(audience instanceof Player player)) return Tag.inserting(Component.empty());
-            LocalUserData localUserData = mainHandler.userHandler().getUser(player.getUniqueId());
-            OrbitData currentOrbit = mainHandler().orbitHandler().getCurrentOrbit();
-            if (currentOrbit == null || localUserData == null) return Tag.inserting(Component.empty());
-            int stars = localUserData.getUserExperience(currentOrbit.identifier());
-            return Tag.preProcessParsed(NumberFormat.getNumberInstance().format(stars));
-        }).build();
+        Expansion expansion = Expansion.builder("orbit")
+                .globalPlaceholder("daily_quests_reset", (_, _) -> Tag.preProcessParsed(mainHandler().questHandler().timeLeftAsString()))
+                .audiencePlaceholder("stars", (audience, queue, ctx) -> {
+                    if (!(audience instanceof Player player)) return Tag.inserting(Component.empty());
+                    LocalUserData localUserData = mainHandler.userHandler().getUser(player.getUniqueId());
+                    OrbitData currentOrbit = mainHandler().orbitHandler().getCurrentOrbit();
+                    if (currentOrbit == null || localUserData == null) return Tag.inserting(Component.empty());
+                    int stars = localUserData.getUserExperience(currentOrbit.identifier());
+                    return Tag.preProcessParsed(NumberFormat.getNumberInstance().format(stars));
+                }).build();
 
         expansion.register();
 

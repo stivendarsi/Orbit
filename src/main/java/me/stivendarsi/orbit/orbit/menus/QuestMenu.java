@@ -38,7 +38,6 @@ public class QuestMenu {
     }
 
     public Dialog getQuestDialog() {
-
         ActionButton backButton = ActionButton.builder(Constants.color(viewer, "<red>חזרה"))
                 .action(DialogAction.staticAction(ClickEvent.callback(audience -> {
                     if (!(audience instanceof Player player)) return;
@@ -76,7 +75,7 @@ public class QuestMenu {
 
         List<DialogBody> bodies = new ArrayList<>();
 
-bodies.add(questInfo);
+        bodies.add(questInfo);
 
         bodies.add(dailyQuestsTitle);
 
@@ -121,7 +120,8 @@ bodies.add(questInfo);
             a = a.replace(" seconds ", "דקות");
 
             builder.add("<#fffb00>" + a + "</#fffb00>");
-        } else builder.add("<#fffb00>" + NumberFormat.getNumberInstance().format(completed) + "/" + NumberFormat.getNumberInstance().format(questData.requiredAmount()) + "</#fffb00>");
+        } else
+            builder.add("<#fffb00>" + NumberFormat.getNumberInstance().format(completed) + "/" + NumberFormat.getNumberInstance().format(questData.requiredAmount()) + "</#fffb00>");
 
         if (questCompleted)
             builder.add("<gradient:#07ba55:#32f02b:#07ba55>☑ הושלם</gradient:#07ba55:#32f02b:#07ba55>");

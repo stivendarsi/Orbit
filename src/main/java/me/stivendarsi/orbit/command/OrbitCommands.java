@@ -22,6 +22,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
@@ -132,18 +133,22 @@ public class OrbitCommands {
 
         User user = luckPerms().getUserManager().getUser(userUuid);
 
-        if (user == null) {
-            sender.sendMessage(playerNotFound);
-            return 0;
-        }
+        if (user != null) return handleUser(user, orbitIdentifier, playerName, userUuid, orbitData);
+        luckPerms().getUserManager().loadUser(userUuid).thenAccept(loadedUser -> {
+            handleUser(loadedUser, orbitIdentifier, playerName, userUuid, orbitData);
+        });
 
+        return 1;
+    }
+
+    private static int handleUser(@NotNull User user, String orbitIdentifier, String playerName, UUID userUuid, OrbitData orbitData) {
         Permission orbitPermission = new Permission("orbit.access." + orbitIdentifier, PermissionDefault.FALSE);
-
-
 
         Node node = Node.builder(orbitPermission.getName()).build();
         user.data().add(node);
         luckPerms().getUserManager().saveUser(user);
+
+        orbitInstance().getLogger().warning("Gave orbit permission to " + playerName + ": " + orbitPermission.getName());
 
         Player player = Bukkit.getPlayer(userUuid);
         if (player != null) {

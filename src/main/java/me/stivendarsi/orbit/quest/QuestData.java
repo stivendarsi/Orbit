@@ -20,6 +20,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ItemType;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
 import java.util.*;
@@ -44,7 +45,7 @@ public class QuestData {
     private final List<EntityType> allowedEntities;
     private final List<ItemType> allowedItems;
 
-    public QuestData(String identifier, ConfigurationSection questSection) {
+    public QuestData(@NotNull String identifier, @NotNull ConfigurationSection questSection) {
         this.completed = new HashMap<>();
         this.questIdentifier = identifier;
 

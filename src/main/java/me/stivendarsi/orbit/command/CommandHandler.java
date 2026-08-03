@@ -8,6 +8,8 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
+import java.time.format.DateTimeFormatter;
+
 import static com.mojang.brigadier.arguments.IntegerArgumentType.integer;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
 import static com.mojang.brigadier.arguments.StringArgumentType.word;
@@ -36,8 +38,6 @@ public class CommandHandler {
                     )
                     .build());
 
-
-
             commands.register(Commands.literal("quest-debug").requires(source -> source.getSender().hasPermission(orbitAdmin))
                     .then(Commands.argument("quest-id", word()).executes(OrbitCommands::getQuestData)
                             .suggests((context, builder) -> {
@@ -47,7 +47,27 @@ public class CommandHandler {
                                         return builder.buildFuture();
                                     }
                             )
-                    ).build());
+                    ).then(Commands.literal("timer")
+                            .then(Commands.literal("now").executes(context -> {
+                                        context.getSource().getSender().sendRichMessage(mainHandler().questHandler().getCurrentTime().format(DateTimeFormatter.ISO_DATE_TIME));
+                                        return 1;
+                                    }
+                            ))
+                            .then(Commands.literal("time-left").executes(context -> {
+                                        context.getSource().getSender().sendRichMessage(mainHandler().questHandler().timeLeftAsString());
+                                        return 1;
+                                    }
+                            ))
+                            .then(Commands.literal("next").executes(context -> {
+                                        context.getSource().getSender().sendRichMessage(mainHandler().questHandler().getNextQuestTime().format(DateTimeFormatter.ISO_DATE_TIME));
+                                        return 1;
+                                    }
+                            ))
+                    )
+
+                    .build()
+            );
+
             commands.register(Commands.literal("orbit")
                     .then(Commands.literal("give").requires(source -> source.getSender().hasPermission(orbitAdmin))
                             .then(Commands.argument("player_name", word())

@@ -46,7 +46,6 @@ public class OrbitHandler {
         }
     }
 
-
     public @Nullable Permission getOrbitPermission(String orbitIdentifier){
         return this.orbitPermission.getOrDefault(orbitIdentifier, null);
     }
