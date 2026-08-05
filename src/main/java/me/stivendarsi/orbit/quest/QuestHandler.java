@@ -1,11 +1,8 @@
 package me.stivendarsi.orbit.quest;
 
 import com.google.common.base.Preconditions;
-import io.lettuce.core.KeyScanCursor;
 import io.lettuce.core.ScanArgs;
-import io.lettuce.core.ScanCursor;
 import io.lettuce.core.api.async.RedisAsyncCommands;
-import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import org.apache.commons.lang3.time.DurationFormatUtils;
@@ -78,7 +75,7 @@ public class QuestHandler {
         orbitInstance().getLogger().warning("Resting Daily Quests in: " + timeLeftAsString());
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
-            resetQuestData("orbit:quest_data:daily:*", QuestAppearType.DAILY);
+            resetQuestData("orbit:quest_data:daily:*", QuestAppearType.daily);
             this.dailyQuestData = getQuestsOfTheDay(2);
             orbitInstance().getLogger().warning("Restarted Daily Quests");
             orbitInstance().getLogger().warning("Next Daily Quests Reset in: " + timeLeftAsString());
@@ -92,7 +89,7 @@ public class QuestHandler {
         long secondsLeftToEndOfSeason = calculateSecondsLeft(currentOrbit.end());
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
-            resetQuestData("orbit:quest_data:season:*", QuestAppearType.SEASON);
+            resetQuestData("orbit:quest_data:season:*", QuestAppearType.season);
         }, secondsLeftToEndOfSeason, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
     }
 
@@ -127,7 +124,7 @@ public class QuestHandler {
     }
 
     private void resetQuestData(String key, QuestAppearType appearType) {
-        if (Objects.requireNonNull(appearType) == QuestAppearType.DAILY) {
+        if (Objects.requireNonNull(appearType) == QuestAppearType.daily) {
             mainHandler().questHandler().dailyQuests().clear();
         }
         RedisAsyncCommands<String, String> async = mainHandler().redisClient().getAsync();
@@ -140,7 +137,7 @@ public class QuestHandler {
 
 
     public List<QuestData> getQuestsOfTheDay(int numberOfQuests) {
-        return getAppearTypeBasedQuests(getCurrentTime(), QuestAppearType.DAILY, numberOfQuests);
+        return getAppearTypeBasedQuests(getCurrentTime(), QuestAppearType.daily, numberOfQuests);
     }
 
     private List<QuestData> getAppearTypeBasedQuests(ZonedDateTime now, QuestAppearType appearType, int numberOfQuests) {

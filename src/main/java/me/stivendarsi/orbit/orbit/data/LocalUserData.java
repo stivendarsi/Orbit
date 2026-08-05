@@ -3,8 +3,8 @@ package me.stivendarsi.orbit.orbit.data;
 import com.google.common.base.Preconditions;
 import com.nexomc.nexo.glyphs.GlyphTag;
 import io.github.miniplaceholders.api.MiniPlaceholders;
+import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.Constants;
-import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -21,9 +21,9 @@ import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class LocalUserData {
     private final Map<String, Integer> userOrbitExperience;
-    private final UUID userUUID;
-    private final Map<String, Pair<BitSet, BitSet>> pairUnlocked;
+    private final Map<String, Pair<BitSet, BitSet>> pairUnlocked; // orbitId, regular | plus
 
+    private final UUID userUUID;
     private Map<String, Set<UUID>> killedEntities; // questID, uuid of the entity killed.
 
 
@@ -32,20 +32,25 @@ public class LocalUserData {
         this.userOrbitExperience = new HashMap<>();
         this.userUUID = userUUID;
 
+        RedisCommands<String, String> client = mainHandler().redisClient().getSync();
 
         for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
-            BitSet regular = loadUnlockList(false, orbitIdentifier);
-            BitSet plus = loadUnlockList(true, orbitIdentifier);
+
+            String key = RedisHandler.getUserDataPath(orbitIdentifier, userUUID);
+
+            Map<String, String> data = client.hgetall(key);
+
+            OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
+            Preconditions.checkNotNull(orbitData, "Null orbit data");
+
+            BitSet regular = RedisHandler.decodeUnlockedTiersStringToBitSet(orbitData, data.getOrDefault(DataType.regular.name(), null));
+            BitSet plus =  RedisHandler.decodeUnlockedTiersStringToBitSet(orbitData, data.getOrDefault(DataType.plus.name(), null));
 
             this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
 
             this.killedEntities = new HashMap<>();
 
-            String experienceKey = RedisHandler.getUserDataPath(orbitIdentifier, userUUID, DataType.experience);
-            if (RedisHandler.pathExists(experienceKey)) {
-                String userExperienceString = mainHandler().redisClient().getSync().get(experienceKey);
-                this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userExperienceString, 0));
-            } else this.userOrbitExperience.put(orbitIdentifier, 0);
+            this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(data.getOrDefault(DataType.experience.name(), ""), 0));
         }
     }
 
@@ -86,7 +91,7 @@ public class LocalUserData {
         Pair<BitSet, BitSet> data = this.pairUnlocked.getOrDefault(orbitIdentifier, null);
         Preconditions.checkNotNull(data, "Null tier data");
 
-     //   System.out.println(prizeIndex + ": prize index");
+        //   System.out.println(prizeIndex + ": prize index");
         if (plus) data.getRight().set(prizeIndex, true);
         else data.getLeft().set(prizeIndex, true);
 
@@ -111,31 +116,43 @@ public class LocalUserData {
         player.sendRichMessage(msg, GlyphTag.INSTANCE.getRESOLVER(), MiniPlaceholders.audienceGlobalPlaceholders());
     }
 
-    public @NotNull BitSet loadUnlockList(boolean plus, String orbitIdentifier) {
-        OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
+//    public @NotNull BitSet phraseUnlockedTierBitSet(@NotNull OrbitData orbitData, @Nullable String bitSetAsString) {
+//        BitSet bitSet = new BitSet(orbitData.tierAmount());
+//
+//        if (bitSetAsString == null || bitSetAsString.isBlank()) return bitSet;
+//
+//        for (int i = 0; i < orbitData.tierAmount(); i++) {
+//            if (bitSetAsString.charAt(i) == '1') bitSet.set(i);
+//        }
+//
+//        return bitSet;
+//    }
 
-        Preconditions.checkNotNull(orbitData, "Null orbit data");
-
-        String path;
-        if (plus) path = RedisHandler.getUserDataPath(orbitIdentifier, this.userUUID, DataType.plus);
-        else path = RedisHandler.getUserDataPath(orbitIdentifier, this.userUUID, DataType.regular);
-
-
-        BitSet bitSet = new BitSet(orbitData.tierAmount());
-
-        if (!RedisHandler.pathExists(path)) {
-            return bitSet;
-        }
-
-        String tierData = mainHandler().redisClient().getSync().get(path);
-        // System.out.println("Tier Data: " + tierData);
-
-        for (int i = 0; i < orbitData.tierAmount(); i++) {
-            if (tierData.charAt(i) == '1') bitSet.set(i);
-        }
-
-        return bitSet;
-    }
+//    public @NotNull BitSet loadUnlockList(boolean plus, String orbitIdentifier) {
+//        OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
+//
+//        Preconditions.checkNotNull(orbitData, "Null orbit data");
+//
+//        String path;
+//        if (plus) path = RedisHandler.getUserDataPath(orbitIdentifier, this.userUUID, DataType.plus);
+//        else path = RedisHandler.getUserDataPath(orbitIdentifier, this.userUUID, DataType.regular);
+//
+//
+//        BitSet bitSet = new BitSet(orbitData.tierAmount());
+//
+//        if (!RedisHandler.pathExists(path)) {
+//            return bitSet;
+//        }
+//
+//        String tierData = mainHandler().redisClient().getSync().get(path);
+//        // System.out.println("Tier Data: " + tierData);
+//
+//        for (int i = 0; i < orbitData.tierAmount(); i++) {
+//            if (tierData.charAt(i) == '1') bitSet.set(i);
+//        }
+//
+//        return bitSet;
+//    }
 
     public UUID userUUID() {
         return userUUID;

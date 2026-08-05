@@ -55,7 +55,7 @@ public class QuestData {
         boolean enchanted = questSection.getBoolean("icon.enchanted");
         this.questIcon.setData(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, enchanted);
 
-        this.appearType = QuestAppearType.valueOf(questSection.getString("appears", "").toUpperCase());
+        this.appearType = QuestAppearType.valueOf(questSection.getString("appears", "").toLowerCase());
         this.questType = QuestType.valueOf(questSection.getString("type", "").toUpperCase());
         this.questListMod = QuestListMode.valueOf(questSection.getString("mode", "").toUpperCase());
 

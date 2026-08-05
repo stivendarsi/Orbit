@@ -68,29 +68,27 @@ public class UserHandler {
             Preconditions.checkNotNull(t, "Null tier data: " + orbitIdentifier);
 
             String experience = String.valueOf(localUserData.getUserExperience(orbitIdentifier));
-            client.set(RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.experience), experience);
 
             OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
             Preconditions.checkNotNull(orbitData, "Null orbit");
 
 
-            String key = RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.regular);
-            client.set(key, bitSetToString(t.getLeft(), orbitData.tierAmount()));
+            String regularBitSet = RedisHandler.encodeUnlockedTiersBitSetToString(t.getLeft(), orbitData.tierAmount());
+            String plusBitSet = RedisHandler.encodeUnlockedTiersBitSetToString(t.getRight(), orbitData.tierAmount());
 
-            key = RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID(), DataType.plus);
-            client.set(key, bitSetToString(t.getRight(), orbitData.tierAmount()));
+            String userDataKey = RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID());
+
+            Map<String, String> data = new HashMap<>();
+
+            data.put(DataType.experience.name(), experience);
+            data.put(DataType.plus.name(), plusBitSet);
+            data.put(DataType.regular.name(), regularBitSet);
+
+            client.hset(userDataKey, data);
+
         }
     }
 
-    private String bitSetToString(BitSet bitSet, int size) {
-        StringBuilder binaryStr = new StringBuilder(size);
-
-        for (int i = 0; i < size; i++) {
-            //System.out.println(i + ": " + bitSet.get(i));
-            binaryStr.append(bitSet.get(i) ? "1" : "0");
-        }
-        return binaryStr.toString();
-    }
 
     public @Nullable LocalUserData getUser(UUID uuid) {
         return this.userDataMap.getOrDefault(uuid, null);
