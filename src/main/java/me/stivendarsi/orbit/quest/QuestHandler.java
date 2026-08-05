@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import io.lettuce.core.KeyScanCursor;
 import io.lettuce.core.ScanArgs;
 import io.lettuce.core.ScanCursor;
+import io.lettuce.core.api.async.RedisAsyncCommands;
 import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
@@ -77,8 +78,10 @@ public class QuestHandler {
         orbitInstance().getLogger().warning("Resting Daily Quests in: " + timeLeftAsString());
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
-            resetQuestData("orbit:quest_data:daily:*");
+            resetQuestData("orbit:quest_data:daily:*", QuestAppearType.DAILY);
             this.dailyQuestData = getQuestsOfTheDay(2);
+            orbitInstance().getLogger().warning("Restarted Daily Quests");
+            orbitInstance().getLogger().warning("Next Daily Quests Reset in: " + timeLeftAsString());
         }, seconds, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
     }
 
@@ -89,7 +92,7 @@ public class QuestHandler {
         long secondsLeftToEndOfSeason = calculateSecondsLeft(currentOrbit.end());
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
-            resetQuestData("orbit:quest_data:season:*");
+            resetQuestData("orbit:quest_data:season:*", QuestAppearType.SEASON);
         }, secondsLeftToEndOfSeason, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
     }
 
@@ -123,22 +126,16 @@ public class QuestHandler {
         return Duration.between(now, end).toSeconds();
     }
 
-    private void resetQuestData(String key) {
-        RedisCommands<String, String> redis = mainHandler().redisClient().getSync();
+    private void resetQuestData(String key, QuestAppearType appearType) {
+        if (Objects.requireNonNull(appearType) == QuestAppearType.DAILY) {
+            mainHandler().questHandler().dailyQuests().clear();
+        }
+        RedisAsyncCommands<String, String> async = mainHandler().redisClient().getAsync();
 
-        ScanCursor cursor = ScanCursor.INITIAL;
-        ScanArgs scanArgs = ScanArgs.Builder
-                .matches(key)
-                .limit(100);
-
-        do {
-            KeyScanCursor<String> scan = redis.scan(cursor, scanArgs);
-            cursor = scan;
-
-            if (!scan.getKeys().isEmpty()) {
-                redis.unlink(scan.getKeys().toArray(String[]::new));
-            }
-        } while (!cursor.isFinished());
+        async.scan(ScanArgs.Builder.matches(key)).thenAccept(cursor -> {
+            List<String> keys = cursor.getKeys();
+            if (!keys.isEmpty()) async.del(keys.toArray(new String[0]));
+        });
     }
 
 
@@ -159,7 +156,7 @@ public class QuestHandler {
     }
 
     private long getSeedBasedOnDate(ZonedDateTime date) {
-        if (DAILY_QUESTS_RESET_HOUR < date.getHour()) date = date.plusDays(1); // Offset the day to handle same-date-defferent-quests.
+        if (DAILY_QUESTS_RESET_HOUR <= date.getHour()) date = date.plusDays(1); // Offset the day to handle same-date-defferent-quests. if the time is after 15:00
         return date.getYear() * 10000L + date.getMonthValue() * 100L + date.getDayOfMonth();
     }
 
