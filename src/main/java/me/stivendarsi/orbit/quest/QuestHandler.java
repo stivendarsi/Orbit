@@ -168,7 +168,6 @@ public class QuestHandler {
 
         Preconditions.checkState(numberOfQuests <= copy.size());
 
-
         orbitInstance().getLogger().warning("Quest Seed: " + seed);
 
         Collections.shuffle(copy, new Random(seed));
