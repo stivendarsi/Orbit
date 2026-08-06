@@ -1,7 +1,6 @@
 package me.stivendarsi.orbit.redis;
 
-import io.lettuce.core.RedisClient;
-import io.lettuce.core.RedisURI;
+import io.lettuce.core.*;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.async.RedisAsyncCommands;
 import io.lettuce.core.api.sync.RedisCommands;
@@ -10,8 +9,10 @@ import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.BitSet;
-import java.util.UUID;
+import java.util.*;
+
+import static me.stivendarsi.orbit.Orbit.mainHandler;
+import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class RedisHandler {
     private StatefulRedisConnection<String, String> connection;
@@ -24,11 +25,11 @@ public class RedisHandler {
     }
 
     public static String getUserDataPath(String orbitIdentifier, UUID userUUID) {
-        return "orbit_test:user_data:" + orbitIdentifier + ":" + userUUID;
+        return "orbit:user_data:" + orbitIdentifier + ":" + userUUID;
     }
 
     public static String getQuestDataPath(String questIdentifier, QuestAppearType appearType) {
-        return "orbit_test:quest_data:" + appearType.name() + ":" + questIdentifier;
+        return "orbit:quest_data:" + appearType.name() + ":" + questIdentifier;
     }
 
     public static String encodeUnlockedTiersBitSetToString(BitSet bitSet, int size) {
@@ -50,6 +51,79 @@ public class RedisHandler {
         }
 
         return bitSet;
+    }
+
+    private String getOldUserDataKey(String orbitIdentifier, UUID userUUID, DataType dataType) {
+        return "orbit:orbit_data:" + orbitIdentifier + ":" + userUUID + ":" + dataType.name();
+    }
+
+
+    public void migrateAllUsers() {
+        RedisCommands<String, String> client = mainHandler().redisClient().getSync();
+        orbitInstance().getLogger().warning("Migrating all users...");
+        long start = System.currentTimeMillis();
+        migrateAllUsers(client);
+        long end = System.currentTimeMillis();
+        orbitInstance().getLogger().warning("Finished migrating all users" + " in " + (end - start) + " milliseconds.");
+    }
+
+    public void migrateUser(UUID userUUID) {
+        RedisCommands<String, String> client = mainHandler().redisClient().getSync();
+
+        for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
+            migrateUserToNewDataBase(client, orbitIdentifier, userUUID);
+        }
+
+        orbitInstance().getLogger().warning("Done migrating user!");
+    }
+
+    private void migrateAllUsers(RedisCommands<String, String> client) {
+        for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
+            orbitInstance().getLogger().warning("Migrating all users under: " + orbitIdentifier);
+            long start = System.currentTimeMillis();
+            ScanCursor cursor = ScanCursor.INITIAL;
+            List<String> keys = new ArrayList<>();
+
+            do {
+                KeyScanCursor<String> scan = client.scan(
+                        cursor,
+                        ScanArgs.Builder.matches("orbit:orbit_data:" + orbitIdentifier + ":*")
+                );
+
+                cursor = scan;
+                keys.addAll(scan.getKeys());
+
+            } while (!cursor.isFinished());
+
+            for (String uuidString : keys) {
+                UUID userUUID = UUID.fromString(uuidString);
+                migrateUserToNewDataBase(client, orbitIdentifier, userUUID);
+            }
+            long end = System.currentTimeMillis();
+            orbitInstance().getLogger().warning("Finished migrating all users under: " + orbitIdentifier + " in " + (end - start) + " milliseconds.");
+        }
+    }
+
+    private void migrateUserToNewDataBase(RedisCommands<String, String> client, String orbitIdentifier, UUID userUUID) {
+        orbitInstance().getLogger().warning("Migrating user: " + userUUID + ".");
+        long start = System.currentTimeMillis();
+        String experienceKey = getOldUserDataKey(orbitIdentifier, userUUID, DataType.experience);
+        String regularKey = getOldUserDataKey(orbitIdentifier, userUUID, DataType.regular);
+        String plusKey = getOldUserDataKey(orbitIdentifier, userUUID, DataType.plus);
+
+        String experienceString = client.get(experienceKey);
+        String regularString = client.get(regularKey);
+        String plusString = client.get(plusKey);
+
+        Map<String, String> data = new HashMap<>();
+        data.put(DataType.experience.name(), experienceString);
+        data.put(DataType.regular.name(), regularString);
+        data.put(DataType.plus.name(), plusString);
+
+        client.hset(getUserDataPath(orbitIdentifier, userUUID), data);
+
+        long end = System.currentTimeMillis();
+        orbitInstance().getLogger().warning("Finished migrating user: " + userUUID + " in " + (end - start) + " milliseconds.");
     }
 
 

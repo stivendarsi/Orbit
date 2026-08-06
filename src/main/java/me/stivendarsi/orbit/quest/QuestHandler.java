@@ -1,10 +1,14 @@
 package me.stivendarsi.orbit.quest;
 
 import com.google.common.base.Preconditions;
+import io.lettuce.core.KeyScanCursor;
 import io.lettuce.core.ScanArgs;
+import io.lettuce.core.ScanCursor;
 import io.lettuce.core.api.async.RedisAsyncCommands;
+import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
+import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
@@ -75,7 +79,9 @@ public class QuestHandler {
         orbitInstance().getLogger().warning("Resting Daily Quests in: " + timeLeftAsString());
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
-            resetQuestData("orbit:quest_data:daily:*", QuestAppearType.daily);
+            String key = RedisHandler.getQuestDataPath("*", QuestAppearType.daily);
+
+            resetQuestData(key, QuestAppearType.daily);
             this.dailyQuestData = getQuestsOfTheDay(2);
             orbitInstance().getLogger().warning("Restarted Daily Quests");
             orbitInstance().getLogger().warning("Next Daily Quests Reset in: " + timeLeftAsString());
@@ -89,16 +95,17 @@ public class QuestHandler {
         long secondsLeftToEndOfSeason = calculateSecondsLeft(currentOrbit.end());
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
-            resetQuestData("orbit:quest_data:season:*", QuestAppearType.season);
+            String key = RedisHandler.getQuestDataPath("*", QuestAppearType.season);
+            resetQuestData(key, QuestAppearType.season);
         }, secondsLeftToEndOfSeason, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
     }
 
 
-    public String timeLeftAsString(){
+    public String timeLeftAsString() {
         return DurationFormatUtils.formatDuration(timeLeft().toMillis(), "yyyy-MM-dd HH:mm:ss");
     }
 
-    private Duration timeLeft(){
+    private Duration timeLeft() {
         ZonedDateTime nextQuestTime = getNextQuestTime();
 
         ZonedDateTime now = getCurrentTime();
@@ -112,7 +119,7 @@ public class QuestHandler {
 
     public ZonedDateTime getNextQuestTime() {
         ZonedDateTime now = getCurrentTime();
-        ZonedDateTime next = now.withHour(DAILY_QUESTS_RESET_HOUR).withMinute(0).withSecond(0).withNano(0);
+        ZonedDateTime next = now.withHour(DAILY_QUESTS_RESET_HOUR).withMinute(0).withSecond(3).withNano(0);
         if (next.isBefore(now)) next = next.plusDays(1);
         return next;
     }
@@ -127,12 +134,22 @@ public class QuestHandler {
         if (Objects.requireNonNull(appearType) == QuestAppearType.daily) {
             mainHandler().questHandler().dailyQuests().clear();
         }
-        RedisAsyncCommands<String, String> async = mainHandler().redisClient().getAsync();
 
-        async.scan(ScanArgs.Builder.matches(key)).thenAccept(cursor -> {
-            List<String> keys = cursor.getKeys();
-            if (!keys.isEmpty()) async.del(keys.toArray(new String[0]));
-        });
+
+        RedisCommands<String, String> client = mainHandler().redisClient().getSync();
+        ScanCursor cursor = ScanCursor.INITIAL;
+        do {
+            KeyScanCursor<String> scan = client.scan(
+                    cursor,
+                    ScanArgs.Builder.matches("orbit:quest_data:daily:*")
+            );
+
+            cursor = scan;
+
+            if (!scan.getKeys().isEmpty()) {
+                client.unlink(scan.getKeys().toArray(new String[0]));
+            }
+        } while (!cursor.isFinished());
     }
 
 
@@ -143,17 +160,24 @@ public class QuestHandler {
     private List<QuestData> getAppearTypeBasedQuests(ZonedDateTime now, QuestAppearType appearType, int numberOfQuests) {
         Preconditions.checkState(numberOfQuests <= this.questMap.size());
         long seed = getSeedBasedOnDate(now);
-        List<QuestData> copy = new ArrayList<>(this.questMap.values()
-                .stream()
-                .filter(q -> q.appearType() == appearType)
-                .toList());
+        List<QuestData> copy = new ArrayList<>(
+                this.questMap.values().stream()
+                        .filter(q -> q.appearType() == appearType)
+                        .toList()
+        );
+
+        Preconditions.checkState(numberOfQuests <= copy.size());
+
+
+        orbitInstance().getLogger().warning("Quest Seed: " + seed);
 
         Collections.shuffle(copy, new Random(seed));
         return copy.subList(0, numberOfQuests);
     }
 
     private long getSeedBasedOnDate(ZonedDateTime date) {
-        if (DAILY_QUESTS_RESET_HOUR <= date.getHour()) date = date.plusDays(1); // Offset the day to handle same-date-defferent-quests. if the time is after 15:00
+        if (DAILY_QUESTS_RESET_HOUR <= date.getHour())
+            date = date.plusDays(1); // Offset the day to handle same-date-defferent-quests. if the time is after 15:00
         return date.getYear() * 10000L + date.getMonthValue() * 100L + date.getDayOfMonth();
     }
 
