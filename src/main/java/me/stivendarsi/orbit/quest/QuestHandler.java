@@ -1,14 +1,15 @@
 package me.stivendarsi.orbit.quest;
 
 import com.google.common.base.Preconditions;
+import io.lettuce.core.HSetExArgs;
 import io.lettuce.core.KeyScanCursor;
 import io.lettuce.core.ScanArgs;
 import io.lettuce.core.ScanCursor;
-import io.lettuce.core.api.async.RedisAsyncCommands;
 import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import me.stivendarsi.orbit.redis.RedisHandler;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
@@ -45,37 +46,67 @@ public class QuestHandler {
         this.dailyQuestData = getQuestsOfTheDay(2); // load today's quests
     }
 
-    public void saveAllData() {
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            saveUserQuestData(onlinePlayer.getUniqueId());
+//    public void saveAllData() {
+//        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+//            saveUserQuestData(onlinePlayer.getUniqueId());
+//        }
+//    }
+//
+//    public void loadAllData() {
+//        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+//            loadUserQuestData(onlinePlayer.getUniqueId());
+//        }
+//    }
+
+//    public void loadUserQuestData(UUID uuid) {
+//        for (QuestData value : this.questMap.values()) {
+//            value.loadUserQuestData(uuid);
+//        }
+//    }
+
+
+    public void loadUserQuestData(UUID user, Map<String, String> userData){
+        for (QuestData dailyQuestDatum : dailyQuestData) {
+            int amount = NumberUtils.toInt(userData.getOrDefault(dailyQuestDatum.questIdentifier(), null), 0);
+            dailyQuestDatum.countUser(user, amount);
         }
     }
 
-    public void loadAllData() {
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            loadUserQuestData(onlinePlayer.getUniqueId());
-        }
-    }
-
-    public void loadUserQuestData(UUID uuid) {
-        for (QuestData value : this.questMap.values()) {
-            value.loadUserQuestData(uuid);
-        }
-    }
+//    public void loadUserQuestData(UUID uuid) {
+//        OrbitData currentOrbitData = mainHandler().orbitHandler().getCurrentOrbit();
+//        if (currentOrbitData == null) throw new RuntimeException("Null");
+//
+//        String key = RedisHandler.getUserDataPath(currentOrbitData.identifier(), uuid);
+//
+//        mainHandler().redisClient().getSync().hget(key, dailyQuests().stream().map(QuestData::questIdentifier).toList().toArray(new String[0]));
+//
+//
+//        String amountString = mainHandler().redisClient().getSync().hget(key, String.valueOf(uuid));
+//
+//        int amount = NumberUtils.toInt(amountString, 0);
+//        //this.completedCounter.put(uuid, amount);
+//    }
 
     public @Nullable QuestData getQuestData(String questIdentifier) {
         return this.questMap.getOrDefault(questIdentifier, null);
     }
-
-    public void saveUserQuestData(UUID uuid) {
-        for (QuestData value : this.questMap.values()) {
-            value.saveUserQuestData(uuid);
-        }
-    }
+//
+//    public void saveUserQuestData(UUID uuid) {
+//        Map<String, String> dailyQuestData = new HashMap<>();
+//        for (QuestData value : this.dailyQuestData) {
+//            dailyQuestData.put(value.questIdentifier(), String.valueOf(value.getUserCount(uuid)));
+//        }
+//        OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
+//        if (orbitData == null) return;
+//        String key = RedisHandler.getUserDataPath(orbitData.identifier(), uuid);
+//
+//        HSetExArgs args = new HSetExArgs().ex(dailyQuestTimeLeft());
+//        mainHandler().redisClient().getSync().hsetex(key, args, dailyQuestData);
+//    }
 
 
     public void startDailyQuestChanging() {
-        long seconds = timeLeft().toSeconds();
+        long seconds = dailyQuestTimeLeft().toSeconds();
         orbitInstance().getLogger().warning("Resting Daily Quests in: " + timeLeftAsString());
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
@@ -102,11 +133,11 @@ public class QuestHandler {
 
 
     public String timeLeftAsString() {
-        return DurationFormatUtils.formatDuration(timeLeft().toMillis(), "yyyy-MM-dd HH:mm:ss");
+        return DurationFormatUtils.formatDuration(dailyQuestTimeLeft().toMillis(), "yyyy-MM-dd HH:mm:ss");
     }
 
-    private Duration timeLeft() {
-        ZonedDateTime nextQuestTime = getNextQuestTime();
+    public Duration dailyQuestTimeLeft() {
+        ZonedDateTime nextQuestTime = getNextDailyQuestTime();
 
         ZonedDateTime now = getCurrentTime();
 
@@ -117,7 +148,7 @@ public class QuestHandler {
         return ZonedDateTime.now(ZoneId.of("Asia/Jerusalem"));
     }
 
-    public ZonedDateTime getNextQuestTime() {
+    public ZonedDateTime getNextDailyQuestTime() {
         ZonedDateTime now = getCurrentTime();
         ZonedDateTime next = now.withHour(DAILY_QUESTS_RESET_HOUR).withMinute(0).withSecond(3).withNano(0);
         if (next.isBefore(now)) next = next.plusDays(1);
@@ -132,6 +163,11 @@ public class QuestHandler {
 
     private void resetQuestData(String key, QuestAppearType appearType) {
         if (Objects.requireNonNull(appearType) == QuestAppearType.daily) {
+
+            for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
+                questData.resetCounter(); // Reset the counter.
+            }
+
             mainHandler().questHandler().dailyQuests().clear();
         }
 

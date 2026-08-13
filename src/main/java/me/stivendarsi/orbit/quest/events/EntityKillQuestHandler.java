@@ -51,17 +51,15 @@ public class EntityKillQuestHandler implements Listener {
         if (questData.questListMod() == QuestListMode.WHITE_LIST) entityTypeIsAllowedToKill = questData.allowedEntities().contains(killedEntity.getType());
         else entityTypeIsAllowedToKill = !questData.allowedEntities().contains(killedEntity.getType());
 
-        boolean entityKilledAlready = userData.getKilledEntities(questData.questIdentifier()).contains(killedEntity.getUniqueId());
+        // boolean entityKilledAlready = userData.getKilledEntities(questData.questIdentifier()).contains(killedEntity.getUniqueId());
 
-        if (!entityTypeIsAllowedToKill || entityKilledAlready) {
-            return;
-        }
+        if (!entityTypeIsAllowedToKill) return;
         
         questData.updateAndCheck(userData.userUUID(), 1);
 
-        if (questData.getUserCount(userData.userUUID()) <= questData.requiredAmount()) {
-            userData.countKill(questData.questIdentifier(), killedEntity.getUniqueId());
-        }
+//        if (questData.getUserCount(userData.userUUID()) <= questData.requiredAmount()) {
+//            userData.countKill(questData.questIdentifier(), killedEntity.getUniqueId());
+//        }
 
     }
 }

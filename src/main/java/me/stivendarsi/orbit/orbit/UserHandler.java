@@ -1,9 +1,11 @@
 package me.stivendarsi.orbit.orbit;
 
 import com.google.common.base.Preconditions;
+import io.lettuce.core.HSetExArgs;
 import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
+import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.redis.DataType;
 import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.tuple.Pair;
@@ -36,13 +38,13 @@ public class UserHandler {
         this.userDataMap.put(localUserData.userUUID(), localUserData);
     }
 
-    public void saveAllData(){
+    public void saveAllData() {
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             unloadUser(onlinePlayer.getUniqueId());
         }
     }
 
-    public void loadAllData(){
+    public void loadAllData() {
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             loadUser(onlinePlayer.getUniqueId());
         }
@@ -63,6 +65,10 @@ public class UserHandler {
             return;
         }
         RedisCommands<String, String> client = mainHandler().redisClient().getSync();
+
+        OrbitData currentData = mainHandler().orbitHandler().getCurrentOrbit();
+        if (currentData == null) throw new RuntimeException("Null orbit");
+
         for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
             Pair<BitSet, BitSet> t = localUserData.getTiersData(orbitIdentifier);
             Preconditions.checkNotNull(t, "Null tier data: " + orbitIdentifier);
@@ -85,8 +91,18 @@ public class UserHandler {
             data.put(DataType.regular.name(), regularBitSet);
 
             client.hset(userDataKey, data);
-
         }
+
+        Map<String, String> dailyQuestData = new HashMap<>();
+        for (QuestData value : mainHandler().questHandler().dailyQuests()) {
+            dailyQuestData.put(value.questIdentifier(), String.valueOf(value.getUserCount(localUserData.userUUID())));
+        }
+        OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
+        if (orbitData == null) return;
+        String key = RedisHandler.getUserDataPath(orbitData.identifier(), localUserData.userUUID());
+
+        HSetExArgs args = new HSetExArgs().ex(mainHandler().questHandler().dailyQuestTimeLeft().plusMinutes(1));
+        mainHandler().redisClient().getSync().hsetex(key, args, dailyQuestData);
     }
 
 

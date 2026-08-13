@@ -32,7 +32,7 @@ public class MainHandler {
 
 
     public void unLoad() {
-        this.questHandler.saveAllData();
+        //this.questHandler.saveAllData();
         this.userHandler.saveAllData();
 
         mainHandler().orbitHandler.unLoadPermissions();
@@ -46,7 +46,7 @@ public class MainHandler {
         this.orbitHandler.load();
         this.userHandler.load();
 
-        this.questHandler.loadAllData();
+      //  this.questHandler.loadAllData();
         this.userHandler.loadAllData();
 
         this.orbitHandler.loadPermissions();

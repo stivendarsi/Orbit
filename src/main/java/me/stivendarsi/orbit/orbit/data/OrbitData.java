@@ -26,7 +26,7 @@ public class OrbitData {
     public OrbitData(String orbitIdentifier, ConfigurationSection orbitSection) {
         this.identifier = orbitIdentifier;
 
-       this.title = orbitSection.getString("title");
+        this.title = orbitSection.getString("title");
 
         String startString = orbitSection.getString("start");
         String endString = orbitSection.getString("end");
@@ -63,7 +63,6 @@ public class OrbitData {
 
         return Pair.of(regular, plus);
     }
-
 
     public @Nullable PrizeData getPrize(int levelIndex, boolean plus) {
         Pair<PrizeData, PrizeData> tier = this.tiers[levelIndex];

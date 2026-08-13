@@ -1,19 +1,14 @@
 package me.stivendarsi.orbit.command;
 
 import io.papermc.paper.command.brigadier.Commands;
-import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import me.stivendarsi.orbit.quest.QuestData;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.Duration;
 import java.time.format.DateTimeFormatter;
-import java.util.concurrent.TimeUnit;
 
 import static com.mojang.brigadier.arguments.IntegerArgumentType.integer;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
@@ -43,30 +38,41 @@ public class CommandHandler {
                     )
                     .build());
 
-            commands.register(Commands.literal("warning-only-allowed-for-stivendarsi").requires(source -> source.getSender().isOp())
-//                    .then(Commands.literal("start-timer").executes(ctx -> {
+//            commands.register(Commands.literal("warning-only-allowed-for-stivendarsi").requires(source -> source.getSender().isOp())
+////                    .then(Commands.literal("start-timer").executes(ctx -> {
+////
+////                        ctx.getSource().getSender().sendMessage("מתחיל בעוד 5 שניות");
+////                        Bukkit.getAsyncScheduler().runAtFixedRate(orbitInstance(), scheduledTask -> {
+////                            ctx.getSource().getSender().sendMessage("הודעה הבאה עוד 10 שניות");
+////                        }, 5, TimeUnit.SECONDS.toSeconds(10), TimeUnit.SECONDS);
+////                        return 1;
+////                    }))
+////                    .then(Commands.literal("stop-timer").executes(ctx -> {
+////                        Bukkit.getAsyncScheduler().cancelTasks(orbitInstance());
+////                        ctx.getSource().getSender().sendMessage("כל המשימות נעצרו");
+////                        return 1;
+////                    }))
+//                    .then(Commands.literal("migrate")
+//                            .then(Commands.argument("player_name", string()).executes(ctx -> {
+//                                String playerName = ctx.getArgument("player_name", String.class);
 //
-//                        ctx.getSource().getSender().sendMessage("מתחיל בעוד 5 שניות");
-//                        Bukkit.getAsyncScheduler().runAtFixedRate(orbitInstance(), scheduledTask -> {
-//                            ctx.getSource().getSender().sendMessage("הודעה הבאה עוד 10 שניות");
-//                        }, 5, TimeUnit.SECONDS.toSeconds(10), TimeUnit.SECONDS);
-//                        return 1;
-//                    }))
-//                    .then(Commands.literal("stop-timer").executes(ctx -> {
-//                        Bukkit.getAsyncScheduler().cancelTasks(orbitInstance());
-//                        ctx.getSource().getSender().sendMessage("כל המשימות נעצרו");
-//                        return 1;
-//                    }))
-                    .then(Commands.literal("migrate")
-                            .then(Commands.argument("user", player()).executes(ctx -> {
-                                final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("user", PlayerSelectorArgumentResolver.class);
-                                final Player target = targetResolver.resolve(ctx.getSource()).getFirst();
+//                                UUID uuid = Bukkit.getPlayerUniqueId(playerName);
+//
+//                                mainHandler().redisClient().migrateUser(uuid);
+//
+//                                return 1;
+//                            }))
+//                    ).then(Commands.literal("migrate-all").executes(ctx -> {
+//
+//                        Bukkit.getAsyncScheduler().runNow(orbitInstance(), task -> {
+//                            mainHandler().redisClient().migrateAllUsers();
+//                        });
+//
+//
+//                                return 1;
+//                            })
+//                    ).build());
 
-                                mainHandler().redisClient().migrateUser(target.getUniqueId());
-
-                                return 1;
-                            }))
-                    ).build());
 
             commands.register(Commands.literal("quest-debug").requires(source -> source.getSender().hasPermission(orbitAdmin))
                     .then(Commands.argument("quest-id", word()).executes(OrbitCommands::getQuestData)
@@ -89,7 +95,7 @@ public class CommandHandler {
                                     }
                             ))
                             .then(Commands.literal("next").executes(context -> {
-                                        context.getSource().getSender().sendRichMessage(mainHandler().questHandler().getNextQuestTime().format(DateTimeFormatter.ISO_DATE_TIME));
+                                        context.getSource().getSender().sendRichMessage(mainHandler().questHandler().getNextDailyQuestTime().format(DateTimeFormatter.ISO_DATE_TIME));
                                         return 1;
                                     }
                             ))

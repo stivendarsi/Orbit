@@ -14,7 +14,7 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
     implementation("io.lettuce:lettuce-core:7.6.0.RELEASE")
-    compileOnly("com.nexomc:nexo:1.26.0")
+    compileOnly("com.nexomc:nexo:1.27.0")
     compileOnly("io.github.miniplaceholders:miniplaceholders-api:3.2.0")
     compileOnly("me.clip:placeholderapi:2.12.3")
     compileOnly("net.luckperms:api:5.5")

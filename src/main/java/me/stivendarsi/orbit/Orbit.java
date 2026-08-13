@@ -6,7 +6,7 @@ import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.placeholders.OrbitPlaceholders;
 import me.stivendarsi.orbit.quest.events.*;
-import me.stivendarsi.orbit.events.LoadUserExperienceHandler;
+import me.stivendarsi.orbit.events.UserDataHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.Tag;
 import net.luckperms.api.LuckPerms;
@@ -16,7 +16,6 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.text.NumberFormat;
-import java.util.UUID;
 
 public final class Orbit extends JavaPlugin {
 
@@ -55,7 +54,7 @@ public final class Orbit extends JavaPlugin {
         mainHandler.load();
 
         CommandHandler.register(this.getLifecycleManager());
-        getServer().getPluginManager().registerEvents(new LoadUserExperienceHandler(), this);
+        getServer().getPluginManager().registerEvents(new UserDataHandler(), this);
 
         getServer().getPluginManager().registerEvents(new EntityKillQuestHandler(), this);
         getServer().getPluginManager().registerEvents(new FishQuestHandler(), this);
