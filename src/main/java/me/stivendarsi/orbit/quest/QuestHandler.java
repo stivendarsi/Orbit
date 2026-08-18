@@ -110,7 +110,7 @@ public class QuestHandler {
         orbitInstance().getLogger().warning("Resting Daily Quests in: " + timeLeftAsString());
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
-            String key = RedisHandler.getQuestDataPath("*", QuestAppearType.daily);
+            String key = mainHandler().redisClient().getQuestDataPath("*", QuestAppearType.daily);
 
             resetQuestData(key, QuestAppearType.daily);
             this.dailyQuestData = getQuestsOfTheDay(2);
@@ -126,7 +126,7 @@ public class QuestHandler {
         long secondsLeftToEndOfSeason = calculateSecondsLeft(currentOrbit.end());
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
-            String key = RedisHandler.getQuestDataPath("*", QuestAppearType.season);
+            String key = mainHandler().redisClient().getQuestDataPath("*", QuestAppearType.season);
             resetQuestData(key, QuestAppearType.season);
         }, secondsLeftToEndOfSeason, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
     }

@@ -35,7 +35,7 @@ public class LocalUserData {
 
         for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
 
-            String key = RedisHandler.getUserDataPath(orbitIdentifier, userUUID);
+            String key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, userUUID);
 
             Map<String, String> userData = client.hgetall(key); // Get user data
 
@@ -44,8 +44,8 @@ public class LocalUserData {
 
             if (userData.isEmpty()) orbitInstance().getLogger().warning("Empty data, Check: " + key);
 
-            BitSet regular = RedisHandler.decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.regular.name(), null));
-            BitSet plus =  RedisHandler.decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.plus.name(), null));
+            BitSet regular = mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.regular.name(), null));
+            BitSet plus =  mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.plus.name(), null));
 
             this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
             this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userData.getOrDefault(DataType.experience.name(), ""), 0));

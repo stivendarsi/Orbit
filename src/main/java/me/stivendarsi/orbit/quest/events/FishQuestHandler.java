@@ -1,17 +1,22 @@
 package me.stivendarsi.orbit.quest.events;
 
+import com.nexomc.nexo.api.NexoBlocks;
+import io.papermc.paper.registry.keys.DamageTypeKeys;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.quest.enums.QuestListMode;
 import me.stivendarsi.orbit.quest.enums.QuestType;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
+import org.bukkit.Bukkit;
+import org.bukkit.Registry;
+import org.bukkit.World;
+import org.bukkit.damage.DamageType;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemType;
+import org.bukkit.inventory.MerchantRecipe;
 
 import java.util.UUID;
 

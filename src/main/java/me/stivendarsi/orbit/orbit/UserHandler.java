@@ -79,10 +79,10 @@ public class UserHandler {
             Preconditions.checkNotNull(orbitData, "Null orbit");
 
 
-            String regularBitSet = RedisHandler.encodeUnlockedTiersBitSetToString(t.getLeft(), orbitData.tierAmount());
-            String plusBitSet = RedisHandler.encodeUnlockedTiersBitSetToString(t.getRight(), orbitData.tierAmount());
+            String regularBitSet = mainHandler().redisClient().encodeUnlockedTiersBitSetToString(t.getLeft(), orbitData.tierAmount());
+            String plusBitSet = mainHandler().redisClient().encodeUnlockedTiersBitSetToString(t.getRight(), orbitData.tierAmount());
 
-            String userDataKey = RedisHandler.getUserDataPath(orbitIdentifier, localUserData.userUUID());
+            String userDataKey = mainHandler().redisClient().getUserDataPath(orbitIdentifier, localUserData.userUUID());
 
             Map<String, String> data = new HashMap<>();
 
@@ -99,7 +99,7 @@ public class UserHandler {
         }
         OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
         if (orbitData == null) return;
-        String key = RedisHandler.getUserDataPath(orbitData.identifier(), localUserData.userUUID());
+        String key = mainHandler().redisClient().getUserDataPath(orbitData.identifier(), localUserData.userUUID());
 
         HSetExArgs args = new HSetExArgs().ex(mainHandler().questHandler().dailyQuestTimeLeft().plusMinutes(1));
         mainHandler().redisClient().getSync().hsetex(key, args, dailyQuestData);

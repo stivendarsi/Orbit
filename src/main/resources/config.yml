@@ -3,6 +3,7 @@ redis:
   port: 19134
   user: "default"
   password: "A@pX#=sEk)x,luo5U5jx^G)Y&Vmi&oDGOr[&^Bly"
+  parent-folder: "orbit_test"
 
 messages:
   orbit-title-prefix: "מסלול התקדמות <head:<player_uuid>> | "
