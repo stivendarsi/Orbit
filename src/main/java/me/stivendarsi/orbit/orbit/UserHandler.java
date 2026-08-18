@@ -2,6 +2,8 @@ package me.stivendarsi.orbit.orbit;
 
 import com.google.common.base.Preconditions;
 import io.lettuce.core.HSetExArgs;
+import io.lettuce.core.api.async.RedisAsyncCommands;
+import io.lettuce.core.api.sync.RedisAclCommands;
 import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
@@ -13,6 +15,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
+import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.ZonedDateTime;
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,12 +56,9 @@ public class UserHandler {
     }
 
     public void unloadUser(UUID userUUID) {
-        saveUser(userUUID);
+        LocalUserData localUserData = this.userDataMap.getOrDefault(userUUID, null);
+        saveUser(localUserData);
         this.userDataMap.remove(userUUID);
-    }
-
-    private void saveUser(UUID userUUID) {
-        saveUser(this.userDataMap.getOrDefault(userUUID, null));
     }
 
     private void saveUser(@Nullable LocalUserData localUserData) {
@@ -64,7 +66,7 @@ public class UserHandler {
             orbitInstance().getLogger().warning("Null user... returning");
             return;
         }
-        RedisCommands<String, String> client = mainHandler().redisClient().getSync();
+        RedisAsyncCommands<String, String> client = mainHandler().redisClient().getAsync();
 
         OrbitData currentData = mainHandler().orbitHandler().getCurrentOrbit();
         if (currentData == null) throw new RuntimeException("Null orbit");
@@ -97,12 +99,14 @@ public class UserHandler {
         for (QuestData value : mainHandler().questHandler().dailyQuests()) {
             dailyQuestData.put(value.questIdentifier(), String.valueOf(value.getUserCount(localUserData.userUUID())));
         }
+
         OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
         if (orbitData == null) return;
         String key = mainHandler().redisClient().getUserDataPath(orbitData.identifier(), localUserData.userUUID());
+        mainHandler().redisClient().getAsync().hset(key, dailyQuestData);
 
-        HSetExArgs args = new HSetExArgs().ex(mainHandler().questHandler().dailyQuestTimeLeft().plusMinutes(1));
-        mainHandler().redisClient().getSync().hsetex(key, args, dailyQuestData);
+        ZonedDateTime ttl = mainHandler().questHandler().getNextDailyQuestTime();
+        mainHandler().redisClient().getAsync().hexpireat(key, Timestamp.valueOf(ttl.toLocalDateTime()), dailyQuestData.keySet().stream().toList().toArray(new String[0]));
     }
 
 

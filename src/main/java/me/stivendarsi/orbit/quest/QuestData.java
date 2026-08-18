@@ -122,16 +122,9 @@ public class QuestData {
         return this.completedCounter.getOrDefault(uuid, 0);
     }
 
-
-//    public void saveUserQuestData(UUID uuid) {
-//        if (!this.completedCounter.containsKey(uuid)) return;
-//        this.completedCounter.remove(uuid);
-//    }
-
     public QuestType questType() {
         return questType;
     }
-
 
     public QuestAppearType appearType() {
         return appearType;
@@ -172,7 +165,6 @@ public class QuestData {
     public String questIdentifier() {
         return questIdentifier;
     }
-
 
     public Duration currentSessionTimePlayed(UUID userUUID) {
         Duration played = Duration.ofMillis(System.currentTimeMillis() - PlayTimeQuestHandler.playTime().getOrDefault(userUUID, System.currentTimeMillis()));
