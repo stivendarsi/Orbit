@@ -22,7 +22,6 @@ public class BlockBreakQuestHandler implements Listener {
 
         BlockType blockType = event.getBlock().getType().asBlockType();
 
-
         for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
             update(questData, blockType, cause.getUniqueId());
         }

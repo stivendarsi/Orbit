@@ -28,7 +28,6 @@ public class PlayerDeathQuestHandler implements Listener {
         for (QuestData questData : orbitData.seasonQuests()) {
             update(questData, died.getUniqueId());
         }
-
     }
 
     private void update(QuestData questData, UUID uuid) {
