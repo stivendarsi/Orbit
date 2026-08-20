@@ -23,6 +23,8 @@ public class MessagesHandler {
     private String tierLevelUnlocked;
     private String levelTitle;
 
+    private String questsInfo;
+
     public void load() {
         FileConfiguration config = orbitInstance().getConfig();
 
@@ -36,6 +38,8 @@ public class MessagesHandler {
         redeemed = config.getString("messages.redeemed", "");
         noOrbitPermission = config.getString("messages.no-orbit-permission", "");
         orbitTitlePrefix = config.getString("messages.orbit-title-prefix");
+
+        questsInfo = String.join("<newline>", config.getStringList("messages.quests-info"));
 
         tierLocked = config.getString("messages.tiers.locked", "");
         tierUnlocked = config.getString("messages.tiers.unlocked", "");
@@ -79,6 +83,10 @@ public class MessagesHandler {
 
     public String getCanRedeem() {
         return canRedeem;
+    }
+
+    public String getQuestsInfo() {
+        return questsInfo;
     }
 
     public String getCannotRedeem() {

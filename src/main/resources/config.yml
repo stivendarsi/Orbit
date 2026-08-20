@@ -16,6 +16,11 @@ messages:
   cannot-redeem: "<red>אתה לא ברמה המתאימה</red>"
   no-orbit-permission: "<red>אין לך גישה למסלול ההתקדמות+</red>"
   redeemed: "<dark_gray>נלקח</dark_gray>"
+  quests-info:
+    - "המשימות מאפשרות לכם לקבל כוכבים כדי להתקדם במסלול התקדמות!"
+    - "משימות יומיות מתאפסות כל יום בשעה 15:00."
+    - "משימות עונתיות מתאפסות בכל סוף עונה!"
+
   tiers:
     locked: "<red>\uD83D\uDD12</red>"
     unlocked: "<green>\uD83D\uDD13</green>"
@@ -28,7 +33,7 @@ quests:
   kill-20-zombies:
     type: KILL_ENTITY
     mode: WHITE_LIST
-    allowed-entities: ["zombie"]
+    allowed-entities: [ "zombie" ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "להרוג 20 זומבים"
@@ -41,7 +46,7 @@ quests:
   kill-20-skeletons:
     type: KILL_ENTITY
     mode: WHITE_LIST
-    allowed-entities: ["skeleton"]
+    allowed-entities: [ "skeleton" ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "להרוג 20 סקלטונים"
@@ -55,7 +60,7 @@ quests:
   kill-20-spider:
     type: KILL_ENTITY
     mode: WHITE_LIST
-    allowed-entities: ["spider"]
+    allowed-entities: [ "spider" ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "להרוג 20 עכבישים רגילים"
@@ -69,7 +74,7 @@ quests:
   kill-wither:
     type: KILL_ENTITY
     mode: WHITE_LIST
-    allowed-entities: ["wither"]
+    allowed-entities: [ "wither" ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "להרוג ווידר"
@@ -83,7 +88,7 @@ quests:
   kill-20-creepers:
     type: KILL_ENTITY
     mode: WHITE_LIST
-    allowed-entities: ["creeper"]
+    allowed-entities: [ "creeper" ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "להרוג 20 קריפרים"
@@ -98,7 +103,7 @@ quests:
   kill-10-endermans:
     type: KILL_ENTITY
     mode: WHITE_LIST
-    allowed-entities: ["enderman"]
+    allowed-entities: [ "enderman" ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "להרוג 10 אנדרמנים"
@@ -113,7 +118,7 @@ quests:
   mine-1000-stone-blocks:
     type: BREAK_BLOCK
     mode: WHITE_LIST
-    allowed-blocks: ["stone"]
+    allowed-blocks: [ "stone" ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "לחצוב 1,000 אבנים"
@@ -128,7 +133,7 @@ quests:
   mine-2000-netherrack-blocks:
     type: BREAK_BLOCK
     mode: WHITE_LIST
-    allowed-blocks: ["netherrack"]
+    allowed-blocks: [ "netherrack" ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "לחצוב 2000 נד'רראק"
@@ -142,7 +147,7 @@ quests:
   kill-50-players:
     type: KILL_ENTITY
     mode: WHITE_LIST
-    allowed-entities: ["player"]
+    allowed-entities: [ "player" ]
     appears: SEASON # SEASON / DAILY
     description-width: 120
     description: "להרוג 50 שחקנים"
@@ -156,7 +161,7 @@ quests:
   play-5-days:
     type: PLAY_TIME
     mode: WHITE_LIST
-    allowed-entities: ["player"]
+    allowed-entities: [ "player" ]
     appears: SEASON # SEASON / DAILY
     description-width: 120
     description: "לשחק 5 ימים"
@@ -170,7 +175,7 @@ quests:
   mine-50000-blocks:
     type: BREAK_BLOCK
     mode: BLACK_LIST
-    allowed-entities: []
+    allowed-entities: [ ]
     appears: SEASON # SEASON / DAILY
     description-width: 125
     description: "לחצוב 50,000 בלוקים"
@@ -185,7 +190,7 @@ quests:
   mine-50-iron-ore-blocks:
     type: BREAK_BLOCK
     mode: WHITE_LIST
-    allowed-blocks: ["iron_ore"]
+    allowed-blocks: [ "iron_ore" ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "לחצוב 50 עפרת ברזל"
@@ -199,7 +204,7 @@ quests:
   caught-20-fish:
     type: FISHING
     mode: WHITE_LIST
-    allowed-items: ["cod", "salmon", "tropical_fish", "pufferfish"]
+    allowed-items: [ "cod", "salmon", "tropical_fish", "pufferfish" ]
     appears: DAILY # SEASON / DAILY
     description-width: 120
     description: "לדוג 20 דגים"
@@ -214,7 +219,7 @@ quests:
 orbits:
   season-1:
     title: "עונה 1 - <gradient:#78a7ff:#78d9ff:#78a7ff>החוף של טייגר</gradient>"
-    season-quests: ["mine-50000-blocks", "kill-50-players"]
+    season-quests: [ "mine-50000-blocks", "kill-50-players" ]
     start: "2025:05:26:00:00:00"
     end: "2026:09:01:15:00:00"
     tier-amount: 100
@@ -1619,7 +1624,7 @@ orbits:
 
   season-2:
     title: "<cut_tigeril_gold:עונה 2>" # "עונה 2 - <gradient:#d6960b:#fcfa86:#707070>חזרה ללימודים</gradient>"
-    season-quests: ["mine-50000-blocks", "kill-50-players"]
+    season-quests: [ "mine-50000-blocks", "kill-50-players" ]
     start: "2026:09:01:15:00:00"
     end: "2026:10:01:15:00:00"
     tier-amount: 1

@@ -66,12 +66,8 @@ public class QuestMenu {
         DialogBody dailyQuestsTitle = DialogBody.plainMessage(mm.deserialize("<u><gradient:#2a94f7:#63cbff:#2a94f7>משימות יומיות</gradient:#2a94f7:#63cbff:#2a94f7></u>"));
         DialogBody seasonQuestsTitle = DialogBody.plainMessage(mm.deserialize("<u><gradient:#e37602:#ffd500:#e37602>משימות עונתיות</gradient:#e37602:#ffd500:#e37602></u>"));
 
-        String info = """
-                המשימות מאפשרות לכם לקבל כוכבים כדי להתקדם במסלול התקדמות!
-                משימות יומיות מתאפסות כל יום בשעה 15:00.
-                משימות עונתיות מתאפסות בכל סוף עונה!
-                """;
-        DialogBody questInfo = DialogBody.plainMessage(mm.deserialize(info));
+
+        DialogBody questInfo = DialogBody.plainMessage(mm.deserialize(mainHandler().messagesHandler().getQuestsInfo()));
 
         List<DialogBody> bodies = new ArrayList<>();
 
@@ -82,7 +78,6 @@ public class QuestMenu {
         mainHandler().questHandler().dailyQuests().forEach(quest -> {
             bodies.add(getQuestBlock(quest, quest.getUserCount(userUUID)));
         });
-
 
         OrbitData currentOrbitData = mainHandler().orbitHandler().getCurrentOrbit();
         if (currentOrbitData == null) return bodies;
