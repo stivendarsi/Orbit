@@ -54,7 +54,7 @@ public class LocalUserData {
                 mainHandler().questHandler().loadUserDailyQuestData(userUUID, userData, orbitData);
                 mainHandler().questHandler().loadUserSeasonQuestData(userUUID, userData, orbitData);
                 if (mainHandler().messagesHandler().debugEnabled())
-                    orbitInstance().getLogger().warning("Finished loading orbit data of " + orbitIdentifier + " for user in: " + (System.currentTimeMillis() - startLoading) + "ms");
+                    orbitInstance().getLogger().warning("Finished loading orbit data of " + orbitIdentifier + " for " + userUUID + " in: " + (System.currentTimeMillis() - startLoading) + "ms");
             });
         }
     }

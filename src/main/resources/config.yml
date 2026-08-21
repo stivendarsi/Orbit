@@ -1065,10 +1065,10 @@ orbits:
           reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
         regular:
-          description: "<cut_money_green:'1,500₪'>"
-          name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1500"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,500₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          description: "<cut_epic_key:'מכוש 3 על 3'>"
+          name: "<sprite:'minecraft:items':item/netherite_pickaxe>"
+          reward-command: "givegodpickaxe <player_name>"
+          reward-message: "<cut_tigeril_gold:קיבלת> <gradient:#9a18d6:#e757f7:#9a18d6>מכוש 3 על 3</gradient> <cut_tigeril_gold:ממסלול ההתקדמות!>"
           nexo-id: ""
 
       60:
@@ -1199,17 +1199,17 @@ orbits:
 
       69:
         plus:
-          description: "<cut_money_green:'3,400₪'>"
-          name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 3400"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
-          nexo-id: ""
+          description: ""
+          name: "<sprite:'minecraft:items':'survival:item/exclusives_icons/sand_bucket_sprite'>"
+          reward-command: "nexo give bucket_bundle 1 <player_name>"
+          reward-message: "<cut_tigeril_gold:קיבלת <gradient:#1ec721:#a3ff8a:#1ec721>דלי חול</gradient>!>"
+          nexo-id: "bucket_bundle"
         regular:
-          description: "<cut_money_green:'1,700₪'>"
-          name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 1700"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:1,700₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
-          nexo-id: ""
+          description: ""
+          name: "<sprite:'minecraft:items':'survival:item/exclusives_icons/red_shovel_sprite'>"
+          reward-command: "nexo give red_shovel 1 <player_name>"
+          reward-message: "<cut_tigeril_gold:קיבלת <gradient:#fc2d2d:#ff5454:#fc2d2d>את חפירה</gradient>"
+          nexo-id: "red_shovel"
 
       70:
         plus:
@@ -1339,17 +1339,17 @@ orbits:
 
       79:
         plus:
-          description: "<cut_money_green:'3,800₪'>"
-          name: "<cut_money_icon>"
-          reward-command: "eco give <player_name> 3800"
-          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:3,800₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
-          nexo-id: ""
+          description: ""
+          name: "<sprite:'minecraft:items':'survival:item/exclusives_icons/leaf_skirt_sprite'>"
+          reward-command: "nexo give leaf_skirt 1 <player_name>"
+          reward-message: "<cut_tigeril_gold:קיבלת <gradient:#1ec721:#a3ff8a:#1ec721>חצאית עלים</gradient>!>"
+          nexo-id: "leaf_skirt"
         regular:
-          description: "<cut_epic_key:'מכוש 3 על 3'>"
-          name: "<sprite:'minecraft:items':item/netherite_pickaxe>"
-          reward-command: "givegodpickaxe <player_name>"
-          reward-message: "<cut_tigeril_gold:קיבלת> <gradient:#9a18d6:#e757f7:#9a18d6>מכוש 3 על 3</gradient> <cut_tigeril_gold:ממסלול ההתקדמות!>"
-          nexo-id: ""
+          description: ""
+          name: "<sprite:'minecraft:items':'survival:item/orbit/sprite/golden_card'>"
+          reward-command: "nexo give season_2_golden_card 1 <player_name>"
+          reward-message: "<cut_tigeril_gold:קיבלת כרטיס זהב ממסלול ההתקדמות!>"
+          nexo-id: "season_2_golden_card"
 
       80:
         plus:
@@ -1479,17 +1479,17 @@ orbits:
 
       89:
         plus:
-          description: ""
-          name: "<sprite:'minecraft:items':'survival:item/exclusives_icons/sand_bucket_sprite'>"
-          reward-command: "nexo give bucket_bundle 1 <player_name>"
-          reward-message: "<cut_tigeril_gold:קיבלת <gradient:#1ec721:#a3ff8a:#1ec721>דלי חול</gradient>!>"
-          nexo-id: "bucket_bundle"
+          description: "<cut_money_green:'4,400₪'>"
+          name: "<cut_money_icon>"
+          reward-command: "eco give <player_name> 4400"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:4,400₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          nexo-id: ""
         regular:
-          description: ""
-          name: "<sprite:'minecraft:items':'survival:item/exclusives_icons/red_shovel_sprite'>"
-          reward-command: "nexo give red_shovel 1 <player_name>"
-          reward-message: "<cut_tigeril_gold:קיבלת <gradient:#fc2d2d:#ff5454:#fc2d2d>את חפירה</gradient>"
-          nexo-id: "red_shovel"
+          description: "<cut_money_green:'2,200₪'>"
+          name: "<cut_money_icon>"
+          reward-command: "eco give <player_name> 2200"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:2,200₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          nexo-id: ""
 
       90:
         plus:
@@ -1619,17 +1619,17 @@ orbits:
 
       99:
         plus:
-          description: ""
-          name: "<sprite:'minecraft:items':'survival:item/exclusives_icons/leaf_skirt_sprite'>"
-          reward-command: "nexo give leaf_skirt 1 <player_name>"
-          reward-message: "<cut_tigeril_gold:קיבלת <gradient:#1ec721:#a3ff8a:#1ec721>חצאית עלים</gradient>!>"
-          nexo-id: "leaf_skirt"
+          description: "<cut_money_green:'40,000₪'>"
+          name: "<cut_money_icon>"
+          reward-command: "eco give <player_name> 40000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:40,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          nexo-id: ""
         regular:
-          description: ""
-          name: "<sprite:'minecraft:items':'survival:item/orbit/sprite/golden_card'>"
-          reward-command: "nexo give season_2_golden_card 1 <player_name>"
-          reward-message: "<cut_tigeril_gold:קיבלת כרטיס זהב ממסלול ההתקדמות!>"
-          nexo-id: "season_2_golden_card"
+          description: "<cut_money_green:'20,000₪'>"
+          name: "<cut_money_icon>"
+          reward-command: "eco give <player_name> 20000"
+          reward-message: "<cut_tigeril_gold:קיבלת> <cut_money_green:20,000₪> <cut_tigeril_gold:ממסלול ההתקדמות!>"
+          nexo-id: ""
 
   season-2:
     title: "<cut_tigeril_gold:עונה 2>" # "עונה 2 - <gradient:#d6960b:#fcfa86:#707070>חזרה ללימודים</gradient>"
