@@ -3,20 +3,15 @@ package me.stivendarsi.orbit.orbit;
 import com.google.common.base.Preconditions;
 import io.lettuce.core.HSetExArgs;
 import io.lettuce.core.api.async.RedisAsyncCommands;
-import io.lettuce.core.api.sync.RedisAclCommands;
-import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.redis.DataType;
-import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
-import java.sql.Timestamp;
-import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.BitSet;
 import java.util.HashMap;
@@ -49,11 +44,6 @@ public class UserHandler {
         }
     }
 
-    public void loadAllData() {
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            loadUser(onlinePlayer.getUniqueId());
-        }
-    }
 
     public void unloadUser(UUID userUUID) {
         LocalUserData localUserData = this.userDataMap.getOrDefault(userUUID, null);
@@ -63,7 +53,7 @@ public class UserHandler {
 
     private void saveUser(@Nullable LocalUserData localUserData) {
         if (localUserData == null) {
-            orbitInstance().getLogger().warning("Null user... returning");
+            if (mainHandler().messagesHandler().debugEnabled()) orbitInstance().getLogger().warning("Null user... returning");
             return;
         }
         RedisAsyncCommands<String, String> client = mainHandler().redisClient().getAsync();

@@ -47,7 +47,7 @@ public class MainHandler {
         this.userHandler.load();
 
       //  this.questHandler.loadAllData();
-        this.userHandler.loadAllData();
+      //  this.userHandler.loadAllData();
 
         this.orbitHandler.loadPermissions();
     }

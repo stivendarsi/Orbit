@@ -1,7 +1,6 @@
 package me.stivendarsi.orbit.orbit.menus;
 
 import com.google.common.base.Preconditions;
-import com.nexomc.nexo.glyphs.Glyph;
 import com.nexomc.nexo.glyphs.GlyphTag;
 import io.github.miniplaceholders.api.MiniPlaceholders;
 import io.papermc.paper.dialog.Dialog;
@@ -16,6 +15,7 @@ import me.stivendarsi.orbit.message.MessagesHandler;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.orbit.data.PrizeData;
+import me.stivendarsi.orbit.quest.QuestHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickCallback;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -81,8 +81,8 @@ public class OrbitMenu {
     }
 
     private DialogBody getOrbitEndText() {
-        String date = this.orbitData.end().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        String time = this.orbitData.end().format(DateTimeFormatter.ofPattern("HH:mm"));
+        String date = this.orbitData.end().format(DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(QuestHandler.ISRAEL_ZONE_ID));
+        String time = this.orbitData.end().format(DateTimeFormatter.ofPattern("HH:mm").withZone(QuestHandler.ISRAEL_ZONE_ID));
         Component text = MiniMessage.miniMessage().deserialize("<gradient:#ff771c:#ffe4c7>המסלול יסתיים ב-</gradient><gradient:#ff771c:#ffe4c7>" + date + " בשעה " + time + "</gradient>");
         return DialogBody.plainMessage(text, 300);
     }

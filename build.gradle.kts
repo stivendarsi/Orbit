@@ -33,7 +33,8 @@ tasks {
     shadowJar {
         destinationDirectory.set(file("D:/Minecraft/servers/26.2/plugins"))
         archiveClassifier.set("")
-        relocate("redis.clients.jedis", "me.stivendarsi.libs.jedis")
+
+        relocate("io.lettuce.core", "me.stivendarsi.libs.lettuce.core")
     }
 
     runServer {

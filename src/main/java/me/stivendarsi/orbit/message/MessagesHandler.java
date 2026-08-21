@@ -25,9 +25,11 @@ public class MessagesHandler {
 
     private String questsInfo;
 
+    private boolean debug;
+
     public void load() {
         FileConfiguration config = orbitInstance().getConfig();
-
+        debug = config.getBoolean("debug");
         existDialog = config.getString("messages.exist-dialog", "");
         regularName = config.getString("messages.regular-name", "");
         orbitRegularDescription = config.getString("messages.orbit-regular-description", "");
@@ -107,6 +109,10 @@ public class MessagesHandler {
 
     public String getLevelDescription() {
         return levelDescription;
+    }
+
+    public boolean debugEnabled() {
+        return debug;
     }
 
     public String getTierLevelLocked() {

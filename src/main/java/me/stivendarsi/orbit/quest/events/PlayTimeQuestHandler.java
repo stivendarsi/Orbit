@@ -61,6 +61,6 @@ public class PlayTimeQuestHandler implements Listener {
 
     private void update(QuestData questData, UUID uuid) {
         if (questData == null || questData.questType() != QuestType.PLAY_TIME) return;
-        questData.updateAndCheck(uuid, (int) questData.currentSessionTimePlayed(uuid).toMinutes());
+        //  questData.updateAndCheck(uuid, (int) questData.currentSessionTimePlayed(uuid).toMinutes());
     }
 }

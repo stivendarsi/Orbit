@@ -3,9 +3,8 @@ package me.stivendarsi.orbit.orbit.data;
 import com.google.common.base.Preconditions;
 import com.nexomc.nexo.glyphs.GlyphTag;
 import io.github.miniplaceholders.api.MiniPlaceholders;
-import io.lettuce.core.api.sync.RedisCommands;
+import io.lettuce.core.api.async.RedisAsyncCommands;
 import me.stivendarsi.orbit.Constants;
-import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.redis.DataType;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.Pair;
@@ -13,7 +12,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 import static me.stivendarsi.orbit.Constants.runCommandInConsole;
 import static me.stivendarsi.orbit.Orbit.mainHandler;
@@ -30,27 +32,30 @@ public class LocalUserData {
         this.userOrbitExperience = new HashMap<>();
         this.userUUID = userUUID;
 
-        RedisCommands<String, String> client = mainHandler().redisClient().getSync();
+        RedisAsyncCommands<String, String> client = mainHandler().redisClient().getAsync();
 
         for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
-
             String key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, userUUID);
+            long startLoading = System.currentTimeMillis();
+            client.hgetall(key).thenAccept(userData -> {
+                orbitInstance().getLogger().warning(userData.toString());
+                OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
+                Preconditions.checkNotNull(orbitData, "Null orbit data");
 
-            Map<String, String> userData = client.hgetall(key); // Get user data
+                if (userData.isEmpty() && mainHandler().messagesHandler().debugEnabled())
+                    orbitInstance().getLogger().warning("Creating new user data: " + userUUID);
 
-            OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
-            Preconditions.checkNotNull(orbitData, "Null orbit data");
+                BitSet regular = mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.regular.name(), null));
+                BitSet plus = mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.plus.name(), null));
 
-            if (userData.isEmpty()) orbitInstance().getLogger().warning("Empty data, Check: " + key);
+                this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
+                this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userData.getOrDefault(DataType.experience.name(), ""), 0));
 
-            BitSet regular = mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.regular.name(), null));
-            BitSet plus = mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.plus.name(), null));
-
-            this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
-            this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userData.getOrDefault(DataType.experience.name(), ""), 0));
-
-            mainHandler().questHandler().loadUserDailyQuestData(userUUID, userData);
-            mainHandler().questHandler().loadUserSeasonQuestData(userUUID, userData, orbitData);
+                mainHandler().questHandler().loadUserDailyQuestData(userUUID, userData, orbitData);
+                mainHandler().questHandler().loadUserSeasonQuestData(userUUID, userData, orbitData);
+                if (mainHandler().messagesHandler().debugEnabled())
+                    orbitInstance().getLogger().warning("Finished loading orbit data of " + orbitIdentifier + " for user in: " + (System.currentTimeMillis() - startLoading) + "ms");
+            });
         }
     }
 
@@ -70,23 +75,6 @@ public class LocalUserData {
     public @Nullable Pair<BitSet, BitSet> getTiersData(String orbitIdentifier) {
         return this.pairUnlocked.getOrDefault(orbitIdentifier, null);
     }
-
-//    public void countKill(String questIdentifier, UUID killedUUID) {
-//        Set<UUID> killedEntities = getKilledEntities(questIdentifier);
-//        killedEntities.add(killedUUID);
-//
-//        this.dailyQuestData.put(questIdentifier, killedEntities);
-//    }
-
-//    public Set<UUID> getKilledEntities(String questIdentifier) {
-//        Set<UUID> killedEntities = this.dailyQuestData.getOrDefault(questIdentifier, null);
-//        if (killedEntities == null) killedEntities = new HashSet<>();
-//        return killedEntities;
-//    }
-
-    // public Map<String, Set<UUID>> questEntityKilled() {
-    //     return dailyQuestData;
-    //   }
 
     public void takePrize(String orbitIdentifier, int prizeIndex, boolean plus) {
         Pair<BitSet, BitSet> data = this.pairUnlocked.getOrDefault(orbitIdentifier, null);

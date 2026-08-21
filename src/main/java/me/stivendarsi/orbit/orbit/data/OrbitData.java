@@ -2,20 +2,16 @@ package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
 import me.stivendarsi.orbit.quest.QuestData;
-import me.stivendarsi.orbit.quest.QuestHandler;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jspecify.annotations.Nullable;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
-import static me.stivendarsi.orbit.quest.QuestHandler.israelZoneID;
+import static me.stivendarsi.orbit.quest.QuestHandler.ORBIT_DATE_TIME_FORMATTER;
 
 public class OrbitData {
     private final String identifier;
@@ -38,11 +34,9 @@ public class OrbitData {
         Preconditions.checkNotNull(startString, "Null start string: " + orbitIdentifier);
         Preconditions.checkNotNull(endString, "Null end string: " + orbitIdentifier);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd:HH:mm:ss").withZone(israelZoneID);
 
-
-        this.start = ZonedDateTime.parse(startString, formatter);
-        this.end = ZonedDateTime.parse(endString, formatter);
+        this.start = ZonedDateTime.parse(startString, ORBIT_DATE_TIME_FORMATTER);
+        this.end = ZonedDateTime.parse(endString, ORBIT_DATE_TIME_FORMATTER);
 
         this.tierAmount = orbitSection.getInt("tier-amount");
         this.levelMultiplier = orbitSection.getInt("level-multiplier");

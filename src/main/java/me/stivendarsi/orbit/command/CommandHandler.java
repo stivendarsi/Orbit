@@ -3,12 +3,11 @@ package me.stivendarsi.orbit.command;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
-
-import java.time.format.DateTimeFormatter;
 
 import static com.mojang.brigadier.arguments.IntegerArgumentType.integer;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
@@ -16,6 +15,7 @@ import static com.mojang.brigadier.arguments.StringArgumentType.word;
 import static io.papermc.paper.command.brigadier.argument.ArgumentTypes.player;
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 import static me.stivendarsi.orbit.Orbit.orbitInstance;
+import static me.stivendarsi.orbit.quest.QuestHandler.ORBIT_DATE_TIME_FORMATTER;
 
 
 public class CommandHandler {
@@ -80,12 +80,17 @@ public class CommandHandler {
                                         for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
                                             builder.suggest(questData.questIdentifier());
                                         }
+                                        OrbitData current = mainHandler().orbitHandler().getCurrentOrbit();
+                                        if (current == null) return builder.buildFuture();
+                                        for (QuestData questData : current.seasonQuests()) {
+                                            builder.suggest(questData.questIdentifier());
+                                        }
                                         return builder.buildFuture();
                                     }
                             )
                     ).then(Commands.literal("timer")
                             .then(Commands.literal("now").executes(context -> {
-                                        context.getSource().getSender().sendRichMessage(mainHandler().questHandler().getCurrentTime().format(DateTimeFormatter.ISO_DATE_TIME));
+                                        context.getSource().getSender().sendRichMessage(mainHandler().questHandler().getCurrentTime().format(ORBIT_DATE_TIME_FORMATTER));
                                         return 1;
                                     }
                             ))
@@ -95,7 +100,7 @@ public class CommandHandler {
                                     }
                             ))
                             .then(Commands.literal("next").executes(context -> {
-                                        context.getSource().getSender().sendRichMessage(mainHandler().questHandler().getNextDailyQuestTime().format(DateTimeFormatter.ISO_DATE_TIME));
+                                        context.getSource().getSender().sendRichMessage(mainHandler().questHandler().getNextDailyQuestTime().format(ORBIT_DATE_TIME_FORMATTER));
                                         return 1;
                                     }
                             ))
@@ -118,15 +123,7 @@ public class CommandHandler {
                     )
 
                     .executes(OrbitCommands::open)
-                    .then(Commands.literal("reload").requires(source -> source.getSender().hasPermission(orbitAdmin)).executes(context -> {
-
-                        mainHandler().unLoad();
-
-                        orbitInstance().reloadConfig();
-                        mainHandler().load();
-                        context.getSource().getSender().sendRichMessage("<green>נטען מחדש");
-                        return 1;
-                    }))
+                    .then(Commands.literal("reload").requires(source -> source.getSender().hasPermission(orbitAdmin)).executes(Reload::reload))
                     .build());
         });
     }

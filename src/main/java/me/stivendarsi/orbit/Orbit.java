@@ -63,7 +63,7 @@ public final class Orbit extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayTimeQuestHandler(), this);
 
         mainHandler().questHandler().startDailyQuestChanging(); // start the task for changing quests.
-        mainHandler().questHandler().startSeasonQuestChanging();
+        mainHandler().orbitHandler().startHandleOrbitChange();
 
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) { //
             new OrbitPlaceholders().register();

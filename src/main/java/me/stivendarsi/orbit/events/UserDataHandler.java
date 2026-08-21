@@ -2,18 +2,21 @@ package me.stivendarsi.orbit.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
+import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class UserDataHandler implements Listener {
     @EventHandler
-    public void loadUserExperience(PlayerJoinEvent event) {
-        UUID userUUID = event.getPlayer().getUniqueId();
+    public void loadUserExperience(AsyncPlayerPreLoginEvent event) {
+        UUID userUUID = event.getUniqueId();
         mainHandler().userHandler().loadUser(userUUID);
+
     }
 
     @EventHandler
