@@ -92,21 +92,31 @@ public class UserHandler {
             data.put(DataType.plus.name(), plusBitSet);
             data.put(DataType.regular.name(), regularBitSet);
 
+
+            // Save seaon quests data
+            for (QuestData value : orbitData.seasonQuests()) {
+                data.put(value.questIdentifier(), String.valueOf(value.getUserCount(localUserData.userUUID())));
+                value.removeUser(localUserData.userUUID());
+            }
+
             client.hset(userDataKey, data);
         }
 
         Map<String, String> dailyQuestData = new HashMap<>();
         for (QuestData value : mainHandler().questHandler().dailyQuests()) {
             dailyQuestData.put(value.questIdentifier(), String.valueOf(value.getUserCount(localUserData.userUUID())));
+            value.removeUser(localUserData.userUUID());
         }
 
         OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
         if (orbitData == null) return;
-        String key = mainHandler().redisClient().getUserDataPath(orbitData.identifier(), localUserData.userUUID());
-        mainHandler().redisClient().getAsync().hset(key, dailyQuestData);
 
-        ZonedDateTime ttl = mainHandler().questHandler().getNextDailyQuestTime();
-        mainHandler().redisClient().getAsync().hexpireat(key, Timestamp.valueOf(ttl.toLocalDateTime()), dailyQuestData.keySet().stream().toList().toArray(new String[0]));
+        String key = mainHandler().redisClient().getUserDataPath(orbitData.identifier(), localUserData.userUUID());
+
+        ZonedDateTime dailyQuestsTTL = mainHandler().questHandler().getNextDailyQuestTime();
+        HSetExArgs exArgs = new HSetExArgs().exAt(dailyQuestsTTL.toInstant());
+
+        mainHandler().redisClient().getAsync().hsetex(key, exArgs, dailyQuestData);
     }
 
 

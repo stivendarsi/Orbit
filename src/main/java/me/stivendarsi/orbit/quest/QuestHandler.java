@@ -1,10 +1,7 @@
 package me.stivendarsi.orbit.quest;
 
 import com.google.common.base.Preconditions;
-import io.lettuce.core.KeyScanCursor;
-import io.lettuce.core.ScanArgs;
-import io.lettuce.core.ScanCursor;
-import io.lettuce.core.api.sync.RedisCommands;
+import me.stivendarsi.orbit.Orbit;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -13,7 +10,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.*;
@@ -25,6 +21,7 @@ import static me.stivendarsi.orbit.Orbit.orbitInstance;
 public class QuestHandler {
     private Map<String, QuestData> questMap;
     private final int DAILY_QUESTS_RESET_HOUR = 15;
+    public static final ZoneId israelZoneID = ZoneId.of("Asia/Jerusalem");
 
     private List<QuestData> dailyQuestData;
 
@@ -45,13 +42,19 @@ public class QuestHandler {
         this.dailyQuestData = getQuestsOfTheDay(2); // load today's quests
     }
 
-    public void loadUserQuestData(UUID user, Map<String, String> userData) {
+    public void loadUserDailyQuestData(UUID user, Map<String, String> userData) {
         for (QuestData dailyQuestData : dailyQuestData) {
             int amount = NumberUtils.toInt(userData.getOrDefault(dailyQuestData.questIdentifier(), null), 0);
             dailyQuestData.countUser(user, amount);
         }
     }
 
+    public void loadUserSeasonQuestData(UUID user, Map<String, String> userData, OrbitData orbitData) {
+        for (QuestData seasonQuestData : orbitData.seasonQuests()) {
+            int amount = NumberUtils.toInt(userData.getOrDefault(seasonQuestData.questIdentifier(), null), 0);
+            seasonQuestData.countUser(user, amount);
+        }
+    }
 
     public @Nullable QuestData getQuestData(String questIdentifier) {
         return this.questMap.getOrDefault(questIdentifier, null);
@@ -63,9 +66,6 @@ public class QuestHandler {
         orbitInstance().getLogger().warning("Resting Daily Quests in: " + timeLeftAsString());
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
-            //  String key = mainHandler().redisClient().getQuestDataPath("*", QuestAppearType.daily);
-
-            //  resetQuestData(key, QuestAppearType.daily);
             for (QuestData dailyQuest : this.dailyQuests()) {
                 dailyQuest.resetCounter();
             }
@@ -82,8 +82,6 @@ public class QuestHandler {
         long timeLeft = Duration.between(getCurrentTime(), currentOrbit.end()).toSeconds();
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
-            //   String key = mainHandler().redisClient().getQuestDataPath("*", QuestAppearType.season);
-            ///   resetQuestData(key, QuestAppearType.season);
             OrbitData current = mainHandler().orbitHandler().getCurrentOrbit();
             if (current == null) return;
             for (QuestData seasonQuest : current.seasonQuests()) {
@@ -106,7 +104,7 @@ public class QuestHandler {
     }
 
     public ZonedDateTime getCurrentTime() {
-        return ZonedDateTime.now(ZoneId.of("Asia/Jerusalem"));
+        return ZonedDateTime.now(israelZoneID);
     }
 
     public ZonedDateTime getNextDailyQuestTime() {

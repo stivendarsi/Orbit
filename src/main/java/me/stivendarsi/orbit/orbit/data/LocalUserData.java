@@ -3,11 +3,10 @@ package me.stivendarsi.orbit.orbit.data;
 import com.google.common.base.Preconditions;
 import com.nexomc.nexo.glyphs.GlyphTag;
 import io.github.miniplaceholders.api.MiniPlaceholders;
-import io.lettuce.core.HSetExArgs;
 import io.lettuce.core.api.sync.RedisCommands;
 import me.stivendarsi.orbit.Constants;
+import me.stivendarsi.orbit.quest.QuestData;
 import me.stivendarsi.orbit.redis.DataType;
-import me.stivendarsi.orbit.redis.RedisHandler;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
@@ -45,12 +44,13 @@ public class LocalUserData {
             if (userData.isEmpty()) orbitInstance().getLogger().warning("Empty data, Check: " + key);
 
             BitSet regular = mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.regular.name(), null));
-            BitSet plus =  mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.plus.name(), null));
+            BitSet plus = mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.plus.name(), null));
 
             this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
             this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userData.getOrDefault(DataType.experience.name(), ""), 0));
 
-            mainHandler().questHandler().loadUserQuestData(userUUID, userData);
+            mainHandler().questHandler().loadUserDailyQuestData(userUUID, userData);
+            mainHandler().questHandler().loadUserSeasonQuestData(userUUID, userData, orbitData);
         }
     }
 
@@ -84,9 +84,9 @@ public class LocalUserData {
 //        return killedEntities;
 //    }
 
-   // public Map<String, Set<UUID>> questEntityKilled() {
-   //     return dailyQuestData;
- //   }
+    // public Map<String, Set<UUID>> questEntityKilled() {
+    //     return dailyQuestData;
+    //   }
 
     public void takePrize(String orbitIdentifier, int prizeIndex, boolean plus) {
         Pair<BitSet, BitSet> data = this.pairUnlocked.getOrDefault(orbitIdentifier, null);

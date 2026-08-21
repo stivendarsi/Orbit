@@ -114,6 +114,10 @@ public class QuestData {
         this.completedCounter.clear();
     }
 
+    public void removeUser(UUID uuid){
+        this.completedCounter.remove(uuid);
+    }
+
     public void countUser(UUID uuid, int amount) {
         this.completedCounter.put(uuid, getUserCount(uuid) + amount);
     }

@@ -2,22 +2,26 @@ package me.stivendarsi.orbit.orbit.data;
 
 import com.google.common.base.Preconditions;
 import me.stivendarsi.orbit.quest.QuestData;
+import me.stivendarsi.orbit.quest.QuestHandler;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
+import static me.stivendarsi.orbit.quest.QuestHandler.israelZoneID;
 
 public class OrbitData {
     private final String identifier;
     private final String title;
-    private final LocalDateTime start;
-    private final LocalDateTime end;
+    private final ZonedDateTime start;
+    private final ZonedDateTime end;
     private final int tierAmount;
     private final int levelMultiplier;
     private final Pair<PrizeData, PrizeData>[] tiers;
@@ -34,9 +38,11 @@ public class OrbitData {
         Preconditions.checkNotNull(startString, "Null start string: " + orbitIdentifier);
         Preconditions.checkNotNull(endString, "Null end string: " + orbitIdentifier);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd:HH:mm:ss");
-        this.start = LocalDateTime.parse(startString, formatter);
-        this.end = LocalDateTime.parse(endString, formatter);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd:HH:mm:ss").withZone(israelZoneID);
+
+
+        this.start = ZonedDateTime.parse(startString, formatter);
+        this.end = ZonedDateTime.parse(endString, formatter);
 
         this.tierAmount = orbitSection.getInt("tier-amount");
         this.levelMultiplier = orbitSection.getInt("level-multiplier");
@@ -94,11 +100,11 @@ public class OrbitData {
         return title;
     }
 
-    public LocalDateTime start() {
+    public ZonedDateTime start() {
         return start;
     }
 
-    public LocalDateTime end() {
+    public ZonedDateTime end() {
         return end;
     }
 }

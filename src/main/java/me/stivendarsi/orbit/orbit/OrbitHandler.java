@@ -7,8 +7,10 @@ import org.bukkit.permissions.PermissionDefault;
 import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.*;
 
+import static me.stivendarsi.orbit.Orbit.mainHandler;
 import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class OrbitHandler {
@@ -55,8 +57,9 @@ public class OrbitHandler {
     }
 
     public @Nullable OrbitData getCurrentOrbit() {
+        ZonedDateTime now =  mainHandler().questHandler().getCurrentTime();
         return this.orbits.values().stream()
-                .filter(orbit -> orbit.start().isBefore(LocalDateTime.now()) && orbit.end().isAfter(LocalDateTime.now()))
+                .filter(orbit -> orbit.start().isBefore(now) && orbit.end().isAfter(now))
                 .findFirst().orElse(null);
     }
 
