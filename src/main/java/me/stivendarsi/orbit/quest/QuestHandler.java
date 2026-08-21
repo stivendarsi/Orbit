@@ -102,7 +102,7 @@ public class QuestHandler {
 
     public ZonedDateTime getNextDailyQuestTime() {
         ZonedDateTime now = getCurrentTime();
-        ZonedDateTime next = now.withHour(DAILY_QUESTS_RESET_HOUR).withMinute(0).withSecond(3).withNano(0);
+        ZonedDateTime next = now.withHour(DAILY_QUESTS_RESET_HOUR).withMinute(0).withSecond(0).withNano(0);
         if (next.isBefore(now)) next = next.plusDays(1);
         return next;
     }

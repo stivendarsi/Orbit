@@ -34,7 +34,7 @@ tasks {
         destinationDirectory.set(file("D:/Minecraft/servers/26.2/plugins"))
         archiveClassifier.set("")
 
-        relocate("io.lettuce.core", "me.stivendarsi.libs.lettuce.core")
+        relocate("io.lettuce", "me.stivendarsi.libs.lettuce")
     }
 
     runServer {

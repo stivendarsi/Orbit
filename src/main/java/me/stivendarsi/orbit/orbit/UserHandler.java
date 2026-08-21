@@ -3,6 +3,9 @@ package me.stivendarsi.orbit.orbit;
 import com.google.common.base.Preconditions;
 import io.lettuce.core.HSetExArgs;
 import io.lettuce.core.api.async.RedisAsyncCommands;
+import io.papermc.paper.registry.RegistryAccess;
+import io.papermc.paper.registry.RegistryKey;
+import io.papermc.paper.registry.keys.tags.BlockTypeTagKeys;
 import me.stivendarsi.orbit.orbit.data.LocalUserData;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
@@ -12,6 +15,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
+import java.rmi.registry.Registry;
 import java.time.ZonedDateTime;
 import java.util.BitSet;
 import java.util.HashMap;
