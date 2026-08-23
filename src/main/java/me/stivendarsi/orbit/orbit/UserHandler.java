@@ -18,28 +18,40 @@ import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class UserHandler {
     private final Map<UUID, LocalUserData> registeredUsers = new HashMap<>();
+    private final Map<UUID, CompletableFuture<LocalUserData>> loadingUsers = new HashMap<>();
 
     public void load() {
         this.registeredUsers.values().forEach(this::saveUserData);
         this.registeredUsers.clear();
 
-        Bukkit.getOnlinePlayers().forEach(player -> {
-            registerUser(player.getUniqueId());
-        });
+        Bukkit.getOnlinePlayers().forEach(player -> registerUser(player.getUniqueId()));
     }
 
+
     public void registerUser(UUID userUUID) {
+        if (registeredUsers.containsKey(userUUID) || loadingUsers.containsKey(userUUID)) return; // do not register if it is registered or registering
+
         LocalUserData localUserData = new LocalUserData(userUUID);
+
         long start = System.currentTimeMillis();
-        localUserData.loadUserDataAsync().thenAcceptAsync(_ -> {
-            this.registeredUsers.put(localUserData.userUUID(), localUserData);
+
+        CompletableFuture<LocalUserData> future = localUserData.loadUserDataAsync().thenApply(_ -> localUserData);
+
+        loadingUsers.put(userUUID, future);
+
+        future.thenAcceptAsync(loadedUser -> {
+            loadingUsers.remove(userUUID);
+            registeredUsers.put(userUUID, loadedUser);
+
             if (mainHandler().messagesHandler().debugEnabled()) orbitInstance().getLogger().warning("Finished loading user: " + userUUID + " in " + (System.currentTimeMillis() - start) + " ms");
+
         });
     }
 
@@ -50,9 +62,16 @@ public class UserHandler {
     }
 
     public void unregisterUser(UUID userUUID) {
-        LocalUserData localUserData = this.registeredUsers.getOrDefault(userUUID, null);
-        if (localUserData != null) saveUserData(localUserData);
-        this.registeredUsers.remove(userUUID);
+        LocalUserData localUserData = registeredUsers.remove(userUUID);
+
+        if (localUserData != null) {
+            saveUserData(localUserData);
+            return;
+        }
+
+        CompletableFuture<LocalUserData> loading = loadingUsers.remove(userUUID);
+        if (loading != null) loading.thenAcceptAsync(this::saveUserData);
+
     }
 
     private void saveUserData(@NotNull LocalUserData localUserData) {
@@ -60,6 +79,8 @@ public class UserHandler {
 
         OrbitData currentData = mainHandler().orbitHandler().getCurrentOrbit();
         if (currentData == null) throw new RuntimeException("Null orbit");
+
+        long start = System.currentTimeMillis();
 
         for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
             Pair<BitSet, BitSet> tiersData = localUserData.getTiersData(orbitIdentifier);
@@ -106,7 +127,9 @@ public class UserHandler {
         ZonedDateTime dailyQuestsTTL = mainHandler().questHandler().getNextDailyQuestTime();
         HSetExArgs exArgs = new HSetExArgs().exAt(dailyQuestsTTL.toInstant());
 
-        mainHandler().redisClient().getAsync().hsetex(key, exArgs, dailyQuestData);
+        mainHandler().redisClient().getAsync().hsetex(key, exArgs, dailyQuestData).thenAccept(_ -> {
+            if (mainHandler().messagesHandler().debugEnabled()) orbitInstance().getLogger().warning("Saved user: " + localUserData.userUUID() + " in: " + (System.currentTimeMillis() - start) + " ms");
+        });
     }
 
 

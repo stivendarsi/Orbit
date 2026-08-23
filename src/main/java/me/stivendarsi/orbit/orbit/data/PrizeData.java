@@ -3,6 +3,7 @@ package me.stivendarsi.orbit.orbit.data;
 import com.nexomc.nexo.api.NexoItems;
 import com.nexomc.nexo.items.ItemBuilder;
 import io.github.miniplaceholders.api.MiniPlaceholders;
+import me.stivendarsi.orbit.Constants;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.JoinConfiguration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -54,7 +55,7 @@ public class PrizeData {
         Component text;
         if (description == null || description.isEmpty()) text = Component.empty();
         else
-            text = MiniMessage.miniMessage().deserialize(String.join("<newline>", this.description), viewer, MiniPlaceholders.audienceGlobalPlaceholders());
+            text = Constants.color(viewer, String.join("<newline>", this.description));
 
         ItemBuilder itemBuilder = NexoItems.itemFromId(this.nexoItemId);
         if (itemBuilder == null) {

@@ -9,8 +9,6 @@ redis:
 debug: true
 
 messages:
-  exist-dialog: "<red>חזרה</red>"
-
   orbit:
     title-prefix: "מסלול התקדמות <head:<player_uuid>> | "
 
@@ -25,17 +23,17 @@ messages:
     can-redeem: "<green>ניתן לקחת</green>"
     cannot-redeem: "<red>אתה לא ברמה המתאימה</red>"
 
-    next-page: "הבא →"
-    previous-page: "← קודם"
-    back-button: "<red>חזרה 🗘</red>"
+    next-page: "→ הבא"
+    previous-page: "קודם ←"
+    back-button: "<red>חזרה <g:back:colorable>"
 
     info:
-     - "<#00e5ff>ברוך/ה הבא/ה <player_name>!</#00e5ff>"
-     - ""
-     - "<cut_progress_pink:'השלימו משימות, צברו כוכבים ⭐ והשתמשו בהם'>"
-     - "<cut_progress_pink:'כדי להתקדם במסלול ולפתוח פרסים!'>"
-     - ""
-     - "<#f7d600>שימו לב - מסלול ההתקדמות הוא זמני ⏳, אז אל תחכו יותר מדי! השלימו כמה שיותר משימות וצברו כוכבים לפני שהזמן נגמר.</#f7d600>"
+      - "<#00e5ff>ברוך/ה הבא/ה <player_name>!</#00e5ff>"
+      - ""
+      - "<cut_progress_pink:'השלימו משימות, צברו כוכבים ⭐ והשתמשו בהם'>"
+      - "<cut_progress_pink:'כדי להתקדם במסלול ולפתוח פרסים!'>"
+      - ""
+      - "<#f7d600>שימו לב - מסלול ההתקדמות הוא זמני ⏳, אז אל תחכו יותר מדי! השלימו כמה שיותר משימות וצברו כוכבים לפני שהזמן נגמר.</#f7d600>"
 
   quests:
     info:
@@ -48,12 +46,12 @@ messages:
       - "<#fffdd4><shadow:#292704:0.6>התאפסו המשימות העונתיות!"
 
   tiers:
-    locked: "<red><g:locked></red>"
-    unlocked: "<green><g:unlocked></green>"
+    locked: "<red><g:locked:colorable></red>"
+    unlocked: "<green><g:unlocked:colorable></green>"
     level-title: "<white><level></white> <level_status>"
     level-description: "<gray>רמה: <white><level>"
-    level-locked: "<red>נעול <g:locked></red>"
-    level-unlocked: "<green>פתוח <g:unlocked></green>"
+    level-locked: "<red>נעול <g:locked:colorable></red>"
+    level-unlocked: "<green>פתוח <g:unlocked:colorable></green>"
 
 
 quests:

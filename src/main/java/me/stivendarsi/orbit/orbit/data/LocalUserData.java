@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+import static io.lettuce.core.internal.Futures.await;
 import static me.stivendarsi.orbit.Constants.runCommandInConsole;
 import static me.stivendarsi.orbit.Orbit.mainHandler;
 
@@ -50,7 +51,7 @@ public class LocalUserData {
             String orbitIdentifier = orbitIdentifiers[i];
             String key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, userUUID);
 
-            futures[i] = client.hgetall(key).thenAcceptAsync(userData -> {
+            futures[i] = client.hgetall(key).thenAccept(userData -> {
                 OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
                 Preconditions.checkNotNull(orbitData, "Null orbit data");
 
@@ -84,11 +85,11 @@ public class LocalUserData {
     }
 
     public @Nullable Pair<BitSet, BitSet> getTiersData(String orbitIdentifier) {
-        return this.pairUnlocked.getOrDefault(orbitIdentifier, null);
+        return this.pairUnlocked.get(orbitIdentifier);
     }
 
     public void takePrize(String orbitIdentifier, int prizeIndex, boolean plus) {
-        Pair<BitSet, BitSet> data = this.pairUnlocked.getOrDefault(orbitIdentifier, null);
+        Pair<BitSet, BitSet> data = this.pairUnlocked.get(orbitIdentifier);
         Preconditions.checkNotNull(data, "Null tier data");
 
         if (plus) data.getRight().set(prizeIndex, true);

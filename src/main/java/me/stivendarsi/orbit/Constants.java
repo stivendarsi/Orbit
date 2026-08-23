@@ -1,8 +1,10 @@
 package me.stivendarsi.orbit;
 
 import com.nexomc.nexo.glyphs.GlyphTag;
+import com.nexomc.nexo.tags.NexoTags;
 import io.github.miniplaceholders.api.MiniPlaceholders;
 import me.clip.placeholderapi.PlaceholderAPI;
+import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
@@ -38,14 +40,14 @@ public class Constants {
         return color(null, msg);
     }
 
-    public static Component color(@Nullable Player viewer, String msg) {
+    public static Component color(@Nullable Audience viewer, String msg) {
         return color(viewer, msg, null);
     }
 
-    public static Component color(@Nullable Player viewer, String msg, @Nullable TagResolver resolver) {
+    public static Component color(@Nullable Audience viewer, String msg, @Nullable TagResolver resolver) {
         if (resolver == null) resolver = TagResolver.empty();
-        MiniMessage mm = MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build();
-        if (viewer == null) return mm.deserialize(msg, MiniPlaceholders.audienceGlobalPlaceholders());
-        return mm.deserialize(msg, viewer,resolver, MiniPlaceholders.audienceGlobalPlaceholders());
+        MiniMessage mm = MiniMessage.miniMessage(); // MiniMessage.builder().tags(GlyphTag.INSTANCE.getRESOLVER()).build();
+        if (viewer == null) return mm.deserialize(msg, MiniPlaceholders.audienceGlobalPlaceholders(), GlyphTag.INSTANCE.getRESOLVER());
+        return mm.deserialize(msg, viewer,resolver, MiniPlaceholders.audienceGlobalPlaceholders(), GlyphTag.INSTANCE.getRESOLVER());
     }
 }

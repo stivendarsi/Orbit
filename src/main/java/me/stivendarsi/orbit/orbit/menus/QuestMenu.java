@@ -11,7 +11,6 @@ import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.entity.Player;
 
 import java.text.NumberFormat;
@@ -100,7 +99,7 @@ public class QuestMenu {
 
         builder.add("<gradient:#d56cf5:#f59cff:#d56cf5>◆ " + questData.rewardDescription() + " ◆</gradient:#d56cf5:#f59cff:#d56cf5>");
 
-        Component text = MiniMessage.miniMessage().deserialize(String.join("<newline>", builder));
+        Component text = Constants.color(String.join("<newline>", builder));
         return DialogBody.item(questData.questIcon()).description(DialogBody.plainMessage(text, questData.descriptionWidth())).showTooltip(false).build();
     }
 }

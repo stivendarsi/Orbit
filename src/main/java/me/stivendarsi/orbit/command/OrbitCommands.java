@@ -24,6 +24,7 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 import org.jetbrains.annotations.NotNull;
 
+import java.text.NumberFormat;
 import java.util.UUID;
 
 import static me.stivendarsi.orbit.Orbit.*;
@@ -38,76 +39,110 @@ public class OrbitCommands {
         return 1;
     }
 
-    public static int setExperience(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        final PlayerSelectorArgumentResolver targetResolver = context.getArgument("target", PlayerSelectorArgumentResolver.class);
-        final Player target = targetResolver.resolve(context.getSource()).getFirst();
-
+    public static int setExperience(CommandContext<CommandSourceStack> context) {
+        final String playerName = context.getArgument("player_name", String.class);
+        UUID userUUID = Bukkit.getPlayerUniqueId(playerName);
+        if (userUUID == null) {
+            context.getSource().getSender().sendRichMessage("<red>שחקן לא נמצא");
+            return 0;
+        }
         int amount = context.getArgument("amount", Integer.class);
 
-        LocalUserData localUserData = mainHandler().userHandler().getUser(target.getUniqueId());
+        LocalUserData localUserData = mainHandler().userHandler().getUser(userUUID);
         Preconditions.checkNotNull(localUserData, "Null user data");
 
         OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
         Preconditions.checkNotNull(orbitData, "Null orbit data");
 
         localUserData.setUserOrbitExperience(orbitData.identifier(), amount);
-
+        Player user = Bukkit.getPlayer(userUUID);
+        if (user != null)
+            user.sendRichMessage("<cut_progress_pink:'הוגדרו לך %s⭐ כוכבים!'>".formatted(amount), MiniPlaceholders.audienceGlobalPlaceholders());
         return 1;
     }
 
 
     public static int modifyExperience(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        final PlayerSelectorArgumentResolver targetResolver = context.getArgument("target", PlayerSelectorArgumentResolver.class);
-        final Player target = targetResolver.resolve(context.getSource()).getFirst();
+        final String playerName = context.getArgument("player_name", String.class);
+        UUID userUUID = Bukkit.getPlayerUniqueId(playerName);
+        if (userUUID == null) {
+            context.getSource().getSender().sendRichMessage("<red>שחקן לא נמצא");
+            return 0;
+        }
 
         int amount = context.getArgument("amount", Integer.class);
 
-
-        LocalUserData localUserData = mainHandler().userHandler().getUser(target.getUniqueId());
+        LocalUserData localUserData = mainHandler().userHandler().getUser(userUUID);
         Preconditions.checkNotNull(localUserData, "Null user data");
 
         OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
         Preconditions.checkNotNull(orbitData, "Null orbit data");
 
         localUserData.modifyUserExperience(orbitData.identifier(), amount);
-        target.sendRichMessage("<cut_progress_pink:'קיבלת %s⭐ כוכבים!'>".formatted(amount), MiniPlaceholders.audienceGlobalPlaceholders());
+        Player user = Bukkit.getPlayer(userUUID);
+        if (user != null)
+            user.sendRichMessage("<cut_progress_pink:'קיבלת %s⭐ כוכבים!'>".formatted(amount), MiniPlaceholders.audienceGlobalPlaceholders());
         return 1;
     }
 
     public static int resetExperience(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-        final PlayerSelectorArgumentResolver targetResolver = context.getArgument("target", PlayerSelectorArgumentResolver.class);
-        final Player target = targetResolver.resolve(context.getSource()).getFirst();
+        final String playerName = context.getArgument("player_name", String.class);
+        UUID userUUID = Bukkit.getPlayerUniqueId(playerName);
+        if (userUUID == null) {
+            context.getSource().getSender().sendRichMessage("<red>שחקן לא נמצא");
+            return 0;
+        }
 
-        LocalUserData localUserData = mainHandler().userHandler().getUser(target.getUniqueId());
+        LocalUserData localUserData = mainHandler().userHandler().getUser(userUUID);
         Preconditions.checkNotNull(localUserData, "Null user data");
 
         OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
         Preconditions.checkNotNull(orbitData, "Null orbit data");
 
         localUserData.setUserOrbitExperience(orbitData.identifier(), 0);
+        Player user = Bukkit.getPlayer(userUUID);
+        if (user != null)
+            user.sendRichMessage("<cut_progress_pink:'אופסו לך כוכבים!'>", MiniPlaceholders.audienceGlobalPlaceholders());
         return 1;
     }
 
     public static int getExperience(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
-        final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("target", PlayerSelectorArgumentResolver.class);
-        final Player target = targetResolver.resolve(ctx.getSource()).getFirst();
+        final String playerName = ctx.getArgument("player_name", String.class);
+        UUID userUUID = Bukkit.getPlayerUniqueId(playerName);
 
-        LocalUserData localUserData = mainHandler().userHandler().getUser(target.getUniqueId());
+        if (userUUID == null) {
+            ctx.getSource().getSender().sendRichMessage("<red>שחקן לא נמצא");
+            return 0;
+        }
+
+        LocalUserData localUserData = mainHandler().userHandler().getUser(userUUID);
         Preconditions.checkNotNull(localUserData, "Null user data");
 
         OrbitData orbitData = mainHandler().orbitHandler().getCurrentOrbit();
         Preconditions.checkNotNull(orbitData, "Null orbit data");
 
         int amount = localUserData.getUserExperience(orbitData.identifier());
-        ctx.getSource().getSender().sendRichMessage("Target experience: " + amount);
+        ctx.getSource().getSender().sendRichMessage("<cut_progress_pink:'לשחקן %s יש %s⭐ כוכבים'>".formatted(playerName, amount), MiniPlaceholders.audienceGlobalPlaceholders());
         return 1;
     }
 
-    public static int getQuestData(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+    public static int getQuestData(CommandContext<CommandSourceStack> ctx) {
+        final String playerName = ctx.getArgument("player_name", String.class);
+        UUID userUUID = Bukkit.getPlayerUniqueId(playerName);
+
+        if (userUUID == null) {
+            ctx.getSource().getSender().sendRichMessage("<red>שחקן לא נמצא");
+            return 0;
+        }
         String questIdentifier = ctx.getArgument("quest-id", String.class);
         QuestData questData = mainHandler().questHandler().getQuestData(questIdentifier);
         if (questData == null) return 0;
-        ctx.getSource().getSender().sendRichMessage("הושלם: " + questData.getUserProgress(ctx.getSource().getExecutor().getUniqueId()));
+
+
+        String msg = "<#fffb00>השחקן " + playerName + " השלים " + NumberFormat.getNumberInstance().format(questData.getUserProgress(userUUID)) + " מתוך " + NumberFormat.getNumberInstance().format(questData.requiredAmount()) + "</#fffb00>";
+
+        Component msgComponent = Constants.color(ctx.getSource().getSender(), msg);
+        ctx.getSource().getSender().sendMessage(msgComponent);
         return 1;
     }
 
@@ -123,7 +158,6 @@ public class OrbitCommands {
         }
 
         Component playerNotFound = Constants.color("<red>משתמש לא נמצא.</red>");
-        //  Component orbitDoesntHavePermission = Constants.color("<red>אין גישה למסלול התקדמות זה.</red>");
 
         UUID userUuid = Bukkit.getPlayerUniqueId(playerName);
         if (userUuid == null) {
@@ -155,7 +189,7 @@ public class OrbitCommands {
             String title = "<gold>ייצא בעתיד</gold>";
             if (orbitData != null) title = orbitData.title();
             TagResolver resolver = TagResolver.builder().tag("orbit_title", Tag.preProcessParsed(title)).build();
-            Component receivedOrbitPermissionMessage = MiniMessage.miniMessage().deserialize("<cut_progress_pink:'קיבלת גישה למסלול התקדמות:'> <orbit_title>", player, resolver, MiniPlaceholders.audienceGlobalPlaceholders());
+            Component receivedOrbitPermissionMessage = Constants.color(player, "<cut_progress_pink:'קיבלת גישה למסלול התקדמות:'> <orbit_title>", resolver);
             player.sendMessage(receivedOrbitPermissionMessage);
         }
         return 1;

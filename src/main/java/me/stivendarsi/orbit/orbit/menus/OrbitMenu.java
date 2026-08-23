@@ -22,11 +22,13 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.Tag;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 
+import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -83,34 +85,26 @@ public class OrbitMenu {
     private DialogBody getOrbitEndText() {
         String date = this.orbitData.end().format(DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(QuestHandler.ISRAEL_ZONE_ID));
         String time = this.orbitData.end().format(DateTimeFormatter.ofPattern("HH:mm").withZone(QuestHandler.ISRAEL_ZONE_ID));
-        Component text = MiniMessage.miniMessage().deserialize("<gradient:#ff771c:#ffe4c7>המסלול יסתיים ב-</gradient><gradient:#ff771c:#ffe4c7>" + date + " בשעה " + time + "</gradient>");
+        Component text = Constants.color("<gradient:#ff771c:#ffe4c7>המסלול יסתיים ב-</gradient><gradient:#ff771c:#ffe4c7>" + date + " בשעה " + time + "</gradient>");
         return DialogBody.plainMessage(text, 300);
     }
 
     private DialogBody getDoneText() {
         int len = this.requiredExperience.length;
-        int requiredExperience = this.currentIndex + 1 >= len ? this.requiredExperience[len - 1] : this.requiredExperience[currentIndex + 1];
+        int requiredStars = this.currentIndex + 1 >= len ? this.requiredExperience[len - 1] : this.requiredExperience[currentIndex + 1];
 
 
         LocalUserData localUserData = mainHandler().userHandler().getUser(this.user);
         Preconditions.checkNotNull(localUserData, "Null user data");
 
 
-        String msg = "<cut_progress_pink:'⭐<orbit_stars> / ⭐<required_experience>'>";
+        String msg = "<cut_progress_pink:'⭐<orbit_stars> / ⭐<required_stars>'>";
 
         TagResolver experienceResolver = TagResolver.builder()
-                .tag("required_experience", Tag.preProcessParsed(String.valueOf(requiredExperience)))
+                .tag("required_stars", Tag.preProcessParsed(String.valueOf(NumberFormat.getNumberInstance().format(requiredStars))))
                 .build();
 
-        Player player = Bukkit.getPlayer(this.user);
-        Component msgComponent;
-
-        MiniMessage mm = MiniMessage.builder()
-                .tags(GlyphTag.INSTANCE.getRESOLVER())
-                .build();
-
-
-        msgComponent = mm.deserialize(msg, this.viewer, experienceResolver, MiniPlaceholders.audienceGlobalPlaceholders());
+        Component msgComponent = Constants.color(this.viewer, msg, experienceResolver);
 
         return DialogBody.plainMessage(msgComponent, 200);
     }
@@ -175,9 +169,6 @@ public class OrbitMenu {
 
     private MultiActionType getPageType(int page) {
 
-        MiniMessage mm = MiniMessage.miniMessage();
-        MessagesHandler mh = mainHandler().messagesHandler();
-
         List<ActionButton> buttons = new ArrayList<>();
 
         ActionButton corn = ActionButton.builder(Component.text("רמה\\מסלול")).width(60).build();
@@ -207,7 +198,7 @@ public class OrbitMenu {
             buttons.add(nextPage);
         }
 
-        ActionButton exist = ActionButton.create(Constants.color(this.viewer, mh.getBackButton()), null, 100, DialogAction.customClick((response, audience) -> {
+        ActionButton exist = ActionButton.create(Constants.color(this.viewer, mainHandler().messagesHandler().getBackButton()), null, 100, DialogAction.customClick((response, audience) -> {
             MainMenu.openMainMenu(this.viewer);
         }, ClickCallback.Options.builder().build()));
 
@@ -219,7 +210,7 @@ public class OrbitMenu {
         int min = page * 10;
         int max = min + 10;
 
-        MiniMessage mm = MiniMessage.miniMessage();
+        //   MiniMessage mm = MiniMessage.miniMessage();
         MessagesHandler mh = mainHandler().messagesHandler();
 
         for (int levelIndex = min; levelIndex < max; levelIndex++) {
@@ -234,13 +225,13 @@ public class OrbitMenu {
                     .build();
 
 
-            Component tierComponent = mm.deserialize(mh.getLevelTitle(), this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders());
-            Component status = mm.deserialize(mh.getLevelDescription(), this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()).appendNewline();
+            Component tierComponent = Constants.color(this.viewer, mh.getLevelTitle(), levelResolver);
+            Component status = Constants.color(this.viewer, mh.getLevelDescription(), levelResolver).appendNewline();
 
             if (isLevelIndexUnLocked(levelIndex))
-                status = status.append(mm.deserialize(mh.getTierLevelUnlocked(), this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()));
+                status = status.append(Constants.color(this.viewer, mh.getTierLevelUnlocked(), levelResolver));
             else
-                status = status.append(mm.deserialize(mh.getTierLevelLocked(), this.viewer, levelResolver, MiniPlaceholders.audienceGlobalPlaceholders()));
+                status = status.append(Constants.color(this.viewer, mh.getTierLevelLocked(), levelResolver));
 
 
             ActionButton actionButton = ActionButton.create(tierComponent, status, 35, null);

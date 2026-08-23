@@ -26,7 +26,7 @@ public class CommandHandler {
         manager.registerEventHandler(LifecycleEvents.COMMANDS, (event) -> {
             Commands commands = event.registrar();
             commands.register(Commands.literal("experience").requires(source -> source.getSender().hasPermission(orbitAdmin))
-                    .then(Commands.argument("target", player())
+                    .then(Commands.argument("player_name", string())
                             .then(Commands.literal("get").executes(OrbitCommands::getExperience))
                             .then(Commands.literal("reset").executes(OrbitCommands::resetExperience))
                             .then(Commands.literal("modify")
@@ -40,19 +40,20 @@ public class CommandHandler {
 
 
             commands.register(Commands.literal("quest-debug").requires(source -> source.getSender().hasPermission(orbitAdmin))
-                    .then(Commands.argument("quest-id", word()).executes(OrbitCommands::getQuestData)
-                            .suggests((context, builder) -> {
-                                        for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
-                                            builder.suggest(questData.questIdentifier());
-                                        }
-                                        OrbitData current = mainHandler().orbitHandler().getCurrentOrbit();
-                                        if (current == null) return builder.buildFuture();
-                                        for (QuestData questData : current.seasonQuests()) {
-                                            builder.suggest(questData.questIdentifier());
-                                        }
-                                        return builder.buildFuture();
-                                    }
-                            )
+                    .then(Commands.literal("get-amount").then(Commands.argument("player_name", string())
+                            .then(Commands.argument("quest-id", word()).executes(OrbitCommands::getQuestData)
+                                    .suggests((context, builder) -> {
+                                                for (QuestData questData : mainHandler().questHandler().dailyQuests()) {
+                                                    builder.suggest(questData.questIdentifier());
+                                                }
+                                                OrbitData current = mainHandler().orbitHandler().getCurrentOrbit();
+                                                if (current == null) return builder.buildFuture();
+                                                for (QuestData questData : current.seasonQuests()) {
+                                                    builder.suggest(questData.questIdentifier());
+                                                }
+                                                return builder.buildFuture();
+                                            }
+                                    )))
                     ).then(Commands.literal("timer")
                             .then(Commands.literal("now").executes(context -> {
                                         context.getSource().getSender().sendRichMessage(mainHandler().questHandler().getCurrentTime().format(ORBIT_DATE_TIME_FORMATTER));

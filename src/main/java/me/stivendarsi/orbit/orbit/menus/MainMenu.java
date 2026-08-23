@@ -3,13 +3,16 @@ package me.stivendarsi.orbit.orbit.menus;
 import com.google.common.base.Preconditions;
 import io.papermc.paper.dialog.Dialog;
 import io.papermc.paper.registry.RegistryKey;
+import io.papermc.paper.registry.data.dialog.ActionButton;
 import io.papermc.paper.registry.data.dialog.DialogBase;
+import io.papermc.paper.registry.data.dialog.action.DialogAction;
 import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.set.RegistrySet;
 import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickCallback;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -39,7 +42,10 @@ public class MainMenu {
 
 
             RegistrySet<Dialog> set = RegistrySet.valueSet(RegistryKey.DIALOG, dialogs);
-            DialogType type = DialogType.dialogList(set).build();
+
+            ActionButton exist = ActionButton.create(Constants.color(viewer, mainHandler().messagesHandler().getBackButton()), null, 100, null);
+
+            DialogType type = DialogType.dialogList(set).exitAction(exist).build();
 
             Component orbitInfo = Constants.color(viewer, mainHandler().messagesHandler().getOrbitInfo());
 
