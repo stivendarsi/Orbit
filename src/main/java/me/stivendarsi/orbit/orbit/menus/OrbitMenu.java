@@ -75,7 +75,7 @@ public class OrbitMenu {
                     .base(DialogBase.builder(title)
                             .pause(false)
                             .afterAction(DialogBase.DialogAfterAction.NONE)
-                            .externalTitle(Component.text("מסלול התקדמות")).body(bodies).build());
+                            .externalTitle(Component.text("מסלול התקדמות ✔")).body(bodies).build());
         });
         return dialog;
     }
@@ -190,7 +190,7 @@ public class OrbitMenu {
 
 
         if (0 <= page - 1) {
-            ActionButton prevPage = ActionButton.create(Component.text("קודם"), null, 90, DialogAction.customClick((response, audience) -> {
+            ActionButton prevPage = ActionButton.create(Constants.color(viewer, mainHandler().messagesHandler().getPreviousPage()), null, 90, DialogAction.customClick((response, audience) -> {
                 if (!(audience instanceof Player player)) return;
                 player.showDialog(getPage(page - 1));
             }, ClickCallback.Options.builder().build()));
@@ -199,7 +199,7 @@ public class OrbitMenu {
 
 
         if (page + 1 < this.requiredExperience.length / 10) {
-            ActionButton nextPage = ActionButton.create(Component.text("הבא"), null, 90, DialogAction.customClick((response, audience) -> {
+            ActionButton nextPage = ActionButton.create(Constants.color(viewer, mainHandler().messagesHandler().getNextPage()), null, 90, DialogAction.customClick((response, audience) -> {
                 if (!(audience instanceof Player player)) return;
                 player.showDialog(getPage(page + 1));
             }, ClickCallback.Options.builder().build()));
@@ -207,7 +207,7 @@ public class OrbitMenu {
             buttons.add(nextPage);
         }
 
-        ActionButton exist = ActionButton.create(Constants.color(this.viewer, mh.getExistDialog()), null, 100, DialogAction.customClick((response, audience) -> {
+        ActionButton exist = ActionButton.create(Constants.color(this.viewer, mh.getBackButton()), null, 100, DialogAction.customClick((response, audience) -> {
             MainMenu.openMainMenu(this.viewer);
         }, ClickCallback.Options.builder().build()));
 

@@ -51,7 +51,7 @@ public final class Orbit extends JavaPlugin {
         saveDefaultConfig();
         reloadConfig();
 
-        mainHandler.load();
+        mainHandler.load(orbitInstance().getServer().getConsoleSender());
 
         CommandHandler.register(this.getLifecycleManager());
         getServer().getPluginManager().registerEvents(new UserDataHandler(), this);
@@ -86,6 +86,6 @@ public final class Orbit extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        mainHandler().unLoad();
+        mainHandler().unLoad(orbitInstance().getServer().getConsoleSender());
     }
 }

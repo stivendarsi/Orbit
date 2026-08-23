@@ -12,7 +12,12 @@ public class Reload {
     public static int reload(CommandContext<CommandSourceStack> context) {
         orbitInstance().reloadConfig();
         orbitInstance().getServer().getAsyncScheduler().cancelTasks(orbitInstance());
-        mainHandler().load();
+
+
+        mainHandler().unLoad(context.getSource().getSender());
+
+        mainHandler().load(context.getSource().getSender());
+
         context.getSource().getSender().sendMessage(Component.text("נטען מחדש!", NamedTextColor.GREEN));
         return 1;
     }

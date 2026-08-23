@@ -24,20 +24,12 @@ import static me.stivendarsi.orbit.Orbit.mainHandler;
 public class QuestMenu {
     private final UUID userUUID;
 
-    private static ActionButton backButton;
-
     private static DialogBody dailyQuestsTitle;
     private static DialogBody seasonQuestsTitle;
     private static DialogBody questInfo;
+    private final Player viewer;
 
     public static void loadStaticBlocks() {
-        backButton = ActionButton.builder(Constants.color("<red>חזרה"))
-                .action(DialogAction.staticAction(ClickEvent.callback(audience -> {
-                    if (!(audience instanceof Player player)) return;
-                    MainMenu.openMainMenu(player);
-                }))).width(100)
-                .build();
-
         dailyQuestsTitle = DialogBody.plainMessage(Constants.color("<u><gradient:#2a94f7:#63cbff:#2a94f7>משימות יומיות</gradient:#2a94f7:#63cbff:#2a94f7></u>"));
         seasonQuestsTitle = DialogBody.plainMessage(Constants.color("<u><gradient:#e37602:#ffd500:#e37602>משימות עונתיות</gradient:#e37602:#ffd500:#e37602></u>"));
         questInfo = DialogBody.plainMessage(Constants.color(mainHandler().messagesHandler().getQuestsInfo()));
@@ -45,15 +37,23 @@ public class QuestMenu {
 
     public QuestMenu(Player viewer) {
         this.userUUID = viewer.getUniqueId();
+        this.viewer = viewer;
     }
 
     public Dialog getQuestDialog() {
+
+        ActionButton backButton = ActionButton.builder(Constants.color(viewer, mainHandler().messagesHandler().getBackButton()))
+                .action(DialogAction.staticAction(ClickEvent.callback(audience -> {
+                    if (!(audience instanceof Player player)) return;
+                    MainMenu.openMainMenu(player);
+                }))).width(100)
+                .build();
+
         Dialog questDialog = Dialog.create(b -> {
             b.empty()
                     .type(DialogType.notice(backButton))
-                    .base(DialogBase.builder(Component.text("משימות"))
+                    .base(DialogBase.builder(Component.text("משימות ⭐"))
                             .body(getBody())
-                            .externalTitle(Component.text("משימות"))
                             .pause(false)
                             .afterAction(DialogBase.DialogAfterAction.NONE)
                             .build()

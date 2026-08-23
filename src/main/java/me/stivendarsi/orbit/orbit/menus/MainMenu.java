@@ -4,8 +4,10 @@ import com.google.common.base.Preconditions;
 import io.papermc.paper.dialog.Dialog;
 import io.papermc.paper.registry.RegistryKey;
 import io.papermc.paper.registry.data.dialog.DialogBase;
+import io.papermc.paper.registry.data.dialog.body.DialogBody;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import io.papermc.paper.registry.set.RegistrySet;
+import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -38,7 +40,13 @@ public class MainMenu {
 
             RegistrySet<Dialog> set = RegistrySet.valueSet(RegistryKey.DIALOG, dialogs);
             DialogType type = DialogType.dialogList(set).build();
-            b.empty().type(type).base(DialogBase.builder(Component.text("תפריט ראשי")).build());
+
+            Component orbitInfo = Constants.color(viewer, mainHandler().messagesHandler().getOrbitInfo());
+
+            List<DialogBody> dialogBodies = new ArrayList<>();
+            dialogBodies.add(DialogBody.plainMessage(orbitInfo, 200));
+
+            b.empty().type(type).base(DialogBase.builder(Component.text("תפריט ראשי")).body(dialogBodies).build());
         });
         if (viewer != null) viewer.showDialog(dialog);
     }

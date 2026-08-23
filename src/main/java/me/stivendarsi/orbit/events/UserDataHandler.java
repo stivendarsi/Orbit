@@ -14,7 +14,6 @@ public class UserDataHandler implements Listener {
     public void loadUserExperience(AsyncPlayerPreLoginEvent event) {
         UUID userUUID = event.getUniqueId();
         mainHandler().userHandler().registerUser(userUUID);
-
     }
 
     @EventHandler
