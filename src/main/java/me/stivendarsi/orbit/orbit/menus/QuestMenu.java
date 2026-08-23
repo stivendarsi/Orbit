@@ -9,20 +9,13 @@ import io.papermc.paper.registry.data.dialog.type.DialogType;
 import me.stivendarsi.orbit.Constants;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
-import me.stivendarsi.orbit.quest.enums.QuestType;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.commons.lang3.time.DurationFormatUtils;
-import org.apache.commons.lang3.time.DurationUtils;
 import org.bukkit.entity.Player;
 
 import java.text.NumberFormat;
-import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,21 +23,31 @@ import static me.stivendarsi.orbit.Orbit.mainHandler;
 
 public class QuestMenu {
     private final UUID userUUID;
-    private final Player viewer;
 
-    public QuestMenu(Player viewer) {
-        this.userUUID = viewer.getUniqueId();
-        this.viewer = viewer;
-    }
+    private static ActionButton backButton;
 
-    public Dialog getQuestDialog() {
-        ActionButton backButton = ActionButton.builder(Constants.color(viewer, "<red>חזרה"))
+    private static DialogBody dailyQuestsTitle;
+    private static DialogBody seasonQuestsTitle;
+    private static DialogBody questInfo;
+
+    public static void loadStaticBlocks() {
+        backButton = ActionButton.builder(Constants.color("<red>חזרה"))
                 .action(DialogAction.staticAction(ClickEvent.callback(audience -> {
                     if (!(audience instanceof Player player)) return;
                     MainMenu.openMainMenu(player);
                 }))).width(100)
                 .build();
 
+        dailyQuestsTitle = DialogBody.plainMessage(Constants.color("<u><gradient:#2a94f7:#63cbff:#2a94f7>משימות יומיות</gradient:#2a94f7:#63cbff:#2a94f7></u>"));
+        seasonQuestsTitle = DialogBody.plainMessage(Constants.color("<u><gradient:#e37602:#ffd500:#e37602>משימות עונתיות</gradient:#e37602:#ffd500:#e37602></u>"));
+        questInfo = DialogBody.plainMessage(Constants.color(mainHandler().messagesHandler().getQuestsInfo()));
+    }
+
+    public QuestMenu(Player viewer) {
+        this.userUUID = viewer.getUniqueId();
+    }
+
+    public Dialog getQuestDialog() {
         Dialog questDialog = Dialog.create(b -> {
             b.empty()
                     .type(DialogType.notice(backButton))
@@ -62,13 +65,6 @@ public class QuestMenu {
 
 
     private List<DialogBody> getBody() {
-        MiniMessage mm = MiniMessage.miniMessage();
-        DialogBody dailyQuestsTitle = DialogBody.plainMessage(mm.deserialize("<u><gradient:#2a94f7:#63cbff:#2a94f7>משימות יומיות</gradient:#2a94f7:#63cbff:#2a94f7></u>"));
-        DialogBody seasonQuestsTitle = DialogBody.plainMessage(mm.deserialize("<u><gradient:#e37602:#ffd500:#e37602>משימות עונתיות</gradient:#e37602:#ffd500:#e37602></u>"));
-
-
-        DialogBody questInfo = DialogBody.plainMessage(mm.deserialize(mainHandler().messagesHandler().getQuestsInfo()));
-
         List<DialogBody> bodies = new ArrayList<>();
 
         bodies.add(questInfo);
@@ -76,7 +72,7 @@ public class QuestMenu {
         bodies.add(dailyQuestsTitle);
 
         mainHandler().questHandler().dailyQuests().forEach(quest -> {
-            bodies.add(getQuestBlock(quest, quest.getUserCount(userUUID)));
+            bodies.add(getQuestBlock(quest, quest.getUserProgress(userUUID)));
         });
 
         OrbitData currentOrbitData = mainHandler().orbitHandler().getCurrentOrbit();
@@ -85,7 +81,7 @@ public class QuestMenu {
         bodies.add(seasonQuestsTitle);
 
         currentOrbitData.seasonQuests().forEach(quest -> {
-            bodies.add(getQuestBlock(quest, quest.getUserCount(userUUID)));
+            bodies.add(getQuestBlock(quest, quest.getUserProgress(userUUID)));
         });
         return bodies;
     }
@@ -96,27 +92,7 @@ public class QuestMenu {
         boolean questCompleted = questData.requiredAmount() <= completed;
 
         builder.add("<gray>⏵ <gradient:#fabf1b:#faea3c:#fabf1b>" + questData.description() + "</gradient:#fabf1b:#faea3c:#fabf1b> ⏴</gray>");
-
-        if (questData.questType() == QuestType.PLAY_TIME) {
-            Duration completedDuration = Duration.ofMinutes(questData.getUserCount(userUUID)).plus(questData.currentSessionTimePlayed(userUUID));
-            // String completedTimeString = DurationFormatUtils.formatDuration(Duration.ofMinutes(questData.getUserCount(userUUID)).toMillis() + questData.currentSessionTimePlayed(userUUID).toMillis(), "dd:HH:mm");
-            String a = DurationFormatUtils.formatDurationWords(completedDuration.toMillis(), true, true);
-
-            a = a.replace(" day ", "ימים");
-            a = a.replace(" days ", "ימים");
-
-            a = a.replace(" hour ", "שעות");
-            a = a.replace(" hours ", "שעות");
-
-            a = a.replace(" minute ", "דקות");
-            a = a.replace(" minutes ", "דקות");
-
-            a = a.replace(" second ", "דקות");
-            a = a.replace(" seconds ", "דקות");
-
-            builder.add("<#fffb00>" + a + "</#fffb00>");
-        } else
-            builder.add("<#fffb00>" + NumberFormat.getNumberInstance().format(completed) + "/" + NumberFormat.getNumberInstance().format(questData.requiredAmount()) + "</#fffb00>");
+        builder.add("<#fffb00>" + NumberFormat.getNumberInstance().format(completed) + "/" + NumberFormat.getNumberInstance().format(questData.requiredAmount()) + "</#fffb00>");
 
         if (questCompleted)
             builder.add("<gradient:#07ba55:#32f02b:#07ba55>☑ הושלם</gradient:#07ba55:#32f02b:#07ba55>");

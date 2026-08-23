@@ -1,17 +1,13 @@
 package me.stivendarsi.orbit.orbit;
 
-import io.netty.util.internal.StringUtil;
-import me.stivendarsi.orbit.Orbit;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
-import org.apache.commons.lang3.StringUtils;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 import org.jspecify.annotations.Nullable;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -95,9 +91,10 @@ public class OrbitHandler {
             OrbitData current = mainHandler().orbitHandler().getCurrentOrbit();
             if (current == null) return;
             for (QuestData seasonQuest : current.seasonQuests()) {
-                seasonQuest.resetCounter();
+                seasonQuest.resetUsersProgress();
             }
             updateCurrentOrbit();
+            orbitInstance().getServer().sendRichMessage(mainHandler().messagesHandler().getQuestsSeasonReset());
         }, timeLeft, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);
     }
 }

@@ -38,41 +38,6 @@ public class CommandHandler {
                     )
                     .build());
 
-//            commands.register(Commands.literal("warning-only-allowed-for-stivendarsi").requires(source -> source.getSender().isOp())
-////                    .then(Commands.literal("start-timer").executes(ctx -> {
-////
-////                        ctx.getSource().getSender().sendMessage("מתחיל בעוד 5 שניות");
-////                        Bukkit.getAsyncScheduler().runAtFixedRate(orbitInstance(), scheduledTask -> {
-////                            ctx.getSource().getSender().sendMessage("הודעה הבאה עוד 10 שניות");
-////                        }, 5, TimeUnit.SECONDS.toSeconds(10), TimeUnit.SECONDS);
-////                        return 1;
-////                    }))
-////                    .then(Commands.literal("stop-timer").executes(ctx -> {
-////                        Bukkit.getAsyncScheduler().cancelTasks(orbitInstance());
-////                        ctx.getSource().getSender().sendMessage("כל המשימות נעצרו");
-////                        return 1;
-////                    }))
-//                    .then(Commands.literal("migrate")
-//                            .then(Commands.argument("player_name", string()).executes(ctx -> {
-//                                String playerName = ctx.getArgument("player_name", String.class);
-//
-//                                UUID uuid = Bukkit.getPlayerUniqueId(playerName);
-//
-//                                mainHandler().redisClient().migrateUser(uuid);
-//
-//                                return 1;
-//                            }))
-//                    ).then(Commands.literal("migrate-all").executes(ctx -> {
-//
-//                        Bukkit.getAsyncScheduler().runNow(orbitInstance(), task -> {
-//                            mainHandler().redisClient().migrateAllUsers();
-//                        });
-//
-//
-//                                return 1;
-//                            })
-//                    ).build());
-
 
             commands.register(Commands.literal("quest-debug").requires(source -> source.getSender().hasPermission(orbitAdmin))
                     .then(Commands.argument("quest-id", word()).executes(OrbitCommands::getQuestData)

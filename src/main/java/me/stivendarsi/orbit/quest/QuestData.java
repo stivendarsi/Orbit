@@ -6,9 +6,7 @@ import me.stivendarsi.orbit.quest.enums.QuestAppearType;
 import me.stivendarsi.orbit.quest.enums.QuestListMode;
 import me.stivendarsi.orbit.quest.enums.QuestType;
 import me.stivendarsi.orbit.quest.events.PlayTimeQuestHandler;
-import me.stivendarsi.orbit.redis.RedisHandler;
 import net.kyori.adventure.key.Key;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Registry;
 import org.bukkit.block.BlockType;
@@ -22,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.*;
 
-import static me.stivendarsi.orbit.Orbit.mainHandler;
 import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class QuestData {
@@ -37,14 +34,14 @@ public class QuestData {
     private final String rewardDescription;
     private final String rewardCommand;
 
-    private final Map<UUID, Integer> completedCounter;
+    private final Map<UUID, Integer> usersProgress;
 
     private final List<BlockType> allowedBlocks;
     private final List<EntityType> allowedEntities;
     private final List<ItemType> allowedItems;
 
     public QuestData(@NotNull String identifier, @NotNull ConfigurationSection questSection) {
-        this.completedCounter = new HashMap<>();
+        this.usersProgress = new HashMap<>();
         this.questIdentifier = identifier;
 
         String itemTypeString = questSection.getString("icon.type", "bedrock");
@@ -99,9 +96,9 @@ public class QuestData {
     }
 
     public void updateAndCheck(UUID uuid, int amountToCount) {
-        countUser(uuid, amountToCount);
+        countUserProgress(uuid, amountToCount);
 
-        boolean rewardPlayer = getUserCount(uuid) == this.requiredAmount;
+        boolean rewardPlayer = getUserProgress(uuid) == this.requiredAmount;
 
         if (rewardPlayer) {
             Player player = Bukkit.getPlayer(uuid);
@@ -110,20 +107,20 @@ public class QuestData {
         }
     }
 
-    public void resetCounter(){
-        this.completedCounter.clear();
+    public void resetUsersProgress(){
+        this.usersProgress.clear();
     }
 
-    public void removeUser(UUID uuid){
-        this.completedCounter.remove(uuid);
+    public void removeUserProgress(UUID uuid){
+        this.usersProgress.remove(uuid);
     }
 
-    public void countUser(UUID uuid, int amount) {
-        this.completedCounter.put(uuid, getUserCount(uuid) + amount);
+    public void countUserProgress(UUID uuid, int amount) {
+        this.usersProgress.put(uuid, getUserProgress(uuid) + amount);
     }
 
-    public int getUserCount(UUID uuid) {
-        return this.completedCounter.getOrDefault(uuid, 0);
+    public int getUserProgress(UUID uuid) {
+        return this.usersProgress.getOrDefault(uuid, 0);
     }
 
     public QuestType questType() {

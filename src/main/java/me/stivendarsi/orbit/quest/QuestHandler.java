@@ -48,7 +48,7 @@ public class QuestHandler {
         if (currentOrbit == null || !currentOrbit.identifier().equalsIgnoreCase(orbitData.identifier())) return;
         for (QuestData dailyQuestData : dailyQuestData) {
             int amount = NumberUtils.toInt(userData.getOrDefault(dailyQuestData.questIdentifier(), null), 0);
-            dailyQuestData.countUser(user, amount);
+            dailyQuestData.countUserProgress(user, amount);
         }
     }
 
@@ -60,7 +60,7 @@ public class QuestHandler {
                     userData.getOrDefault(seasonQuestData.questIdentifier(), null),
                     0
             );
-            seasonQuestData.countUser(user, amount);
+            seasonQuestData.countUserProgress(user, amount);
         }
     }
 
@@ -74,9 +74,12 @@ public class QuestHandler {
 
         orbitInstance().getServer().getAsyncScheduler().runAtFixedRate(orbitInstance(), task -> {
             for (QuestData dailyQuest : this.dailyQuests()) {
-                dailyQuest.resetCounter();
+                dailyQuest.resetUsersProgress();
             }
             this.dailyQuestData = getQuestsOfTheDay(2);
+
+            orbitInstance().getServer().sendRichMessage(mainHandler().messagesHandler().getQuestsDailyReset());
+
             orbitInstance().getLogger().warning("Restarted Daily Quests");
             orbitInstance().getLogger().warning("Next Daily Quests Reset in: " + timeLeftAsString());
         }, seconds, TimeUnit.DAYS.toSeconds(1), TimeUnit.SECONDS);

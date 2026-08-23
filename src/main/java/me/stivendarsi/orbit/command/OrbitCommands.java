@@ -107,7 +107,7 @@ public class OrbitCommands {
         String questIdentifier = ctx.getArgument("quest-id", String.class);
         QuestData questData = mainHandler().questHandler().getQuestData(questIdentifier);
         if (questData == null) return 0;
-        ctx.getSource().getSender().sendRichMessage("הושלם: " + questData.getUserCount(ctx.getSource().getExecutor().getUniqueId()));
+        ctx.getSource().getSender().sendRichMessage("הושלם: " + questData.getUserProgress(ctx.getSource().getExecutor().getUniqueId()));
         return 1;
     }
 

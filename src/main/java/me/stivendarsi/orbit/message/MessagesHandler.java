@@ -24,6 +24,8 @@ public class MessagesHandler {
     private String levelTitle;
 
     private String questsInfo;
+    private String questsDailyReset;
+    private String questsSeasonReset;
 
     private boolean debug;
 
@@ -41,7 +43,9 @@ public class MessagesHandler {
         noOrbitPermission = config.getString("messages.no-orbit-permission", "");
         orbitTitlePrefix = config.getString("messages.orbit-title-prefix");
 
-        questsInfo = String.join("<newline>", config.getStringList("messages.quests-info"));
+        questsInfo = String.join("<newline>", config.getStringList("messages.quests.info"));
+        questsDailyReset = String.join("<newline>", config.getStringList("messages.quests.daily-reset"));
+        questsSeasonReset = String.join("<newline>", config.getStringList("messages.quests.season-reset"));
 
         tierLocked = config.getString("messages.tiers.locked", "");
         tierUnlocked = config.getString("messages.tiers.unlocked", "");
@@ -113,6 +117,14 @@ public class MessagesHandler {
 
     public boolean debugEnabled() {
         return debug;
+    }
+
+    public String getQuestsDailyReset() {
+        return questsDailyReset;
+    }
+
+    public String getQuestsSeasonReset() {
+        return questsSeasonReset;
     }
 
     public String getTierLevelLocked() {

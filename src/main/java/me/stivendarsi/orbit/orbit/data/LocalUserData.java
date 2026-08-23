@@ -10,20 +10,21 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 import static me.stivendarsi.orbit.Constants.runCommandInConsole;
 import static me.stivendarsi.orbit.Orbit.mainHandler;
-import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class LocalUserData {
     private final Map<String, Integer> userOrbitExperience; // OrbitId, experience
-    private final Map<String, Pair<BitSet, BitSet>> pairUnlocked; // orbitId, regular | plus
+    private final Map<String, @NotNull Pair<BitSet, BitSet>> pairUnlocked; // orbitId, regular | plus
 
     private final UUID userUUID;
 
@@ -31,32 +32,42 @@ public class LocalUserData {
         this.pairUnlocked = new HashMap<>();
         this.userOrbitExperience = new HashMap<>();
         this.userUUID = userUUID;
+    }
 
-        RedisAsyncCommands<String, String> client = mainHandler().redisClient().getAsync();
+    public CompletableFuture<Void> loadUserDataAsync() {
+        this.pairUnlocked.clear();
+        this.userOrbitExperience.clear();
 
-        for (String orbitIdentifier : mainHandler().orbitHandler().getOrbitIdentifiers()) {
+        RedisAsyncCommands<String, String> asyncClient = mainHandler().redisClient().getAsync();
+
+        return loadOrbitsData(mainHandler().orbitHandler().getOrbitIdentifiers(), asyncClient);
+    }
+
+    private CompletableFuture<Void> loadOrbitsData(String[] orbitIdentifiers, RedisAsyncCommands<String, String> client) {
+        CompletableFuture<?>[] futures = new CompletableFuture<?>[orbitIdentifiers.length];
+
+        for (int i = 0; i < orbitIdentifiers.length; i++) {
+            String orbitIdentifier = orbitIdentifiers[i];
             String key = mainHandler().redisClient().getUserDataPath(orbitIdentifier, userUUID);
-            long startLoading = System.currentTimeMillis();
-            client.hgetall(key).thenAccept(userData -> {
-                orbitInstance().getLogger().warning(userData.toString());
+
+            futures[i] = client.hgetall(key).thenAcceptAsync(userData -> {
                 OrbitData orbitData = mainHandler().orbitHandler().getOrbit(orbitIdentifier);
                 Preconditions.checkNotNull(orbitData, "Null orbit data");
 
-                if (userData.isEmpty() && mainHandler().messagesHandler().debugEnabled())
-                    orbitInstance().getLogger().warning("Creating new user data: " + userUUID);
-
                 BitSet regular = mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.regular.name(), null));
+
                 BitSet plus = mainHandler().redisClient().decodeUnlockedTiersStringToBitSet(orbitData, userData.getOrDefault(DataType.plus.name(), null));
 
                 this.pairUnlocked.put(orbitIdentifier, Pair.of(regular, plus));
+
                 this.userOrbitExperience.put(orbitIdentifier, NumberUtils.toInt(userData.getOrDefault(DataType.experience.name(), ""), 0));
 
                 mainHandler().questHandler().loadUserDailyQuestData(userUUID, userData, orbitData);
                 mainHandler().questHandler().loadUserSeasonQuestData(userUUID, userData, orbitData);
-                if (mainHandler().messagesHandler().debugEnabled())
-                    orbitInstance().getLogger().warning("Finished loading orbit data of " + orbitIdentifier + " for " + userUUID + " in: " + (System.currentTimeMillis() - startLoading) + "ms");
-            });
+            }).toCompletableFuture();
         }
+
+        return CompletableFuture.allOf(futures);
     }
 
     public void modifyUserExperience(String orbitIdentifier, int experience) {
