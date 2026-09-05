@@ -2,6 +2,7 @@ package me.stivendarsi.orbit.orbit;
 
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.QuestData;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
@@ -16,8 +17,8 @@ import static me.stivendarsi.orbit.Orbit.mainHandler;
 import static me.stivendarsi.orbit.Orbit.orbitInstance;
 
 public class OrbitHandler {
-    private Map<String, OrbitData> orbits;
-    private Map<String, Permission> orbitPermission;
+    private final Map<String, OrbitData> orbits = new HashMap<>();
+    private final Map<String, Permission> orbitPermission = new HashMap<>();
 
     private OrbitData currentOrbitData;
 
@@ -25,7 +26,7 @@ public class OrbitHandler {
     public void load() {
         unLoadPermissions();
         List<String> orbitIdentifiers = new ArrayList<>(orbitInstance().getConfig().getConfigurationSection("orbits").getKeys(false));
-        this.orbits = new HashMap<>();
+        orbitPermission.clear();
 
         while (!orbitIdentifiers.isEmpty()) {
             String orbitIdentifier = orbitIdentifiers.removeFirst();
@@ -37,7 +38,7 @@ public class OrbitHandler {
     }
 
     public void unLoadPermissions() {
-        if (this.orbitPermission == null || this.orbitPermission.isEmpty()) return;
+        if (this.orbitPermission.isEmpty()) return;
         for (Permission permission : this.orbitPermission.values()) {
             orbitInstance().getServer().getPluginManager().removePermission(permission);
         }
@@ -46,9 +47,9 @@ public class OrbitHandler {
     }
 
     public void loadPermissions() {
-        this.orbitPermission = new HashMap<>();
         for (String orbitIdentifier : getOrbitIdentifiers()) {
             Permission orbitSeasonPermission = new Permission("orbit.access." + orbitIdentifier, PermissionDefault.FALSE);
+            Bukkit.getServer().getPluginManager().addPermission(orbitSeasonPermission);
             this.orbitPermission.put(orbitIdentifier, orbitSeasonPermission);
         }
     }

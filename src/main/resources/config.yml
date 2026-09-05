@@ -1,8 +1,8 @@
 redis:
-  host: "82.22.24.31"
-  port: 19134
-  user: "default"
-  password: "A@pX#=sEk)x,luo5U5jx^G)Y&Vmi&oDGOr[&^Bly"
+  host: ""
+  port:
+  user: ""
+  password: ""
   parent-folder: "orbit"
 
 

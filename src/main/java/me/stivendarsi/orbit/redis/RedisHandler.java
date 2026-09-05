@@ -4,8 +4,12 @@ import io.lettuce.core.*;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.async.RedisAsyncCommands;
 import io.lettuce.core.api.sync.RedisCommands;
+import io.lettuce.core.pubsub.RedisPubSubAdapter;
+import io.lettuce.core.pubsub.StatefulRedisPubSubConnection;
+import io.lettuce.core.pubsub.api.async.RedisPubSubAsyncCommands;
 import me.stivendarsi.orbit.orbit.data.OrbitData;
 import me.stivendarsi.orbit.quest.enums.QuestAppearType;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -27,12 +31,25 @@ public class RedisHandler {
         String user = c.getString("redis.user");
         String password = c.getString("redis.password");
 
-        this.parentFolder = c.getString("parent-folder", "orbit");
+        this.parentFolder = c.getString("redis.parent-folder", "orbit");
 
         RedisURI uri = RedisURI.builder().withHost(host).withPort(port).withAuthentication(user, password).build();
 
         RedisClient client = RedisClient.create(uri);
         this.connection = client.connect();
+
+//        StatefulRedisPubSubConnection<String, String> pubSubConnection = client.connectPubSub().async().getStatefulConnection();
+//
+//        pubSubConnection.addListener(new RedisPubSubAdapter<>() {
+//            @Override
+//            public void message(String channel, String message) {
+//                if (!channel.equalsIgnoreCase("orbit_saved")) return;
+//                UUID uuid = UUID.fromString(message);
+//            }
+//        });
+
+
+
     }
 
     public String getUserDataPath(String orbitIdentifier, UUID userUUID) {

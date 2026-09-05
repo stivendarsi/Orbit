@@ -31,7 +31,8 @@ tasks {
     }
 
     shadowJar {
-        destinationDirectory.set(file("D:/Minecraft/servers/26.2/plugins"))
+        destinationDirectory.set(file("D:/Minecraft/servers/network/survival_folia/plugins"))
+      //  destinationDirectory.set(file("D:/Minecraft/servers/26.2/plugins"))
         archiveClassifier.set("")
 
         relocate("io.lettuce", "me.stivendarsi.libs.lettuce")
